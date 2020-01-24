@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2020 at 05:33 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Generation Time: Jan 24, 2020 at 09:26 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -179,10 +179,10 @@ CREATE TABLE `komentar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penngguna`
+-- Table structure for table `pengguna`
 --
 
-CREATE TABLE `penngguna` (
+CREATE TABLE `pengguna` (
   `id_pengguna` varchar(15) NOT NULL,
   `nama_pengguna` varchar(50) NOT NULL,
   `jenis_kelamin` int(11) NOT NULL,
