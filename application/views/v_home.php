@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>CafeDine - Restuarant template</title>
+  <title>BengCool</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,32 +10,30 @@
 
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/bootstrap/bootstrap.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/themify/css/themify-icons.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/icofont/icofont.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/fontawesome/css/all.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/aos/aos.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/magnific-popup/magnific-popup.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/video-popup/modal-video.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/swiper/swiper.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/date-picker/datepicker.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/clock-picker/clockpicker.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/type1/plugins/devices.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/themify/css/themify-icons.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/icofont/icofont.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/fontawesome/css/all.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/aos/aos.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/magnific-popup/magnific-popup.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/video-popup/modal-video.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/swiper/swiper.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/date-picker/datepicker.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/clock-picker/clockpicker.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
 
   <!-- Main Stylesheet -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/favicon.png" type="image/x-icon">
 
 </head>
 
 <body>
-  <div class="preloader">
-    <img src="images/preloader.gif" alt="preloader" class="img-fluid">
-  </div>
+  
 
 <!-- Header Start -->
 
@@ -43,7 +41,7 @@
 	<nav class="navbar navbar-expand-lg main-nav py-lg-3 position-absolute w-100" id="main-nav">
 		<div class="container">
 			<a class="navbar-brand" href="index.html">
-				<img src="images/logo.png" alt="" class="img-fluid">
+				<img src="<?php echo base_url()?>assets/type1/images/logo.png" alt="" class="img-fluid">
 			</a>
 
 			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation"
@@ -57,28 +55,9 @@
 						<a class="nav-link" href="index.html">Home</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-					<li class="nav-item"><a class="nav-link" href="menu.html">Recipes</a></li>
-					<li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">Reservation</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="reservation.html">Reservation</a></li>
-							<li><a class="dropdown-item" href="cart.html">Cart</a></li>
-							<li><a class="dropdown-item" href="shipping.html">Shipping</a></li>
-							<li><a class="dropdown-item" href="payment.html">Payment</a></li>
-							<li><a class="dropdown-item" href="confirmation.html">Confirmation</a></li>
-						</ul>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false">Blog</a>
-						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="blog.html">Blog </a></li>
-							<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-						</ul>
-					</li>
-
+					<li class="nav-item"><a class="nav-link" href="menu.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">LogIn</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
 				</ul>
 			</div>
@@ -94,7 +73,7 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="images/banner/slide-1.jpg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/banner/slide-1.jpg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
             <div class="row">
@@ -111,7 +90,7 @@
       
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="images/banner/slide-2.jpg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/banner/slide-2.jpg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
             <div class="row">
@@ -128,7 +107,7 @@
       
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="images/banner/slide-3.jpg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/banner/slide-3.jpg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
             <div class="row">
@@ -197,7 +176,7 @@
 
 		<div class="row">
 			<div class="col-lg-4 col-md-4 mb-5 mb-lg-0" data-aos="fade-up">
-				<img src="images/about/img-1.jpg" alt="" class="img-fluid">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/img-1.jpg" alt="" class="img-fluid">
 				<div class="mt-3">
 					<h3>Quality Food</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.impedit maiores fugit illo deserunt!</p>
@@ -205,7 +184,7 @@
 			</div>
 
 			<div class="col-lg-4 col-md-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
-				<img src="images/about/img-2.jpg" alt="" class="img-fluid">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/img-2.jpg" alt="" class="img-fluid">
 				<div class="mt-3">
 					<h3>Friendly place</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.impedit maiores fugit illo deserunt!</p>
@@ -213,7 +192,7 @@
 			</div>
 
 			<div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="600">
-				<img src="images/about/img-3.jpg" alt="" class="img-fluid">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/img-3.jpg" alt="" class="img-fluid">
 				<div class="mt-3">
 					<h3>Affordable price</h3>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.impedit maiores fugit illo deserunt!</p>
@@ -271,7 +250,7 @@
 			<div class="col-lg-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;design&quot;,&quot;illustration&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex align-items-center">
-						<img src="images/menu/menu-1.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-1.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Vitello Tonato - <span>23$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -283,7 +262,7 @@
 			<div class="col-lg-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;branding&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex align-items-center">
-						<img src="images/menu/menu-2.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-2.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Crema di Pomodoro - <span>34$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -295,7 +274,7 @@
 			<div class="col-lg-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;illustration&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex align-items-center">
-						<img src="images/menu/menu-3.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-3.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Oatmeal Cookie - <span>13$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -307,7 +286,7 @@
 			<div class="col-lg-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;design&quot;,&quot;branding&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex  align-items-center">
-						<img src="images/menu/menu-4.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-4.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Seasonal Soup - <span>10$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -319,7 +298,7 @@
 			<div class="col-lg-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;illustration&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex align-items-center">
-						<img src="images/menu/menu-5.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-5.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Pizza Pane - <span>28$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -331,7 +310,7 @@
 			<div class="col-lg-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;design&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex align-items-center">
-						<img src="images/menu/menu-6.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-6.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Carpacio - <span>20$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -344,7 +323,7 @@
 			<div class="col-lg-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;branding&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex align-items-center">
-						<img src="images/menu/menu-7.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-7.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Insalata Rucola - <span>15$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -357,7 +336,7 @@
 				data-groups="[&quot;design&quot;,&quot;illustration&quot;,&quot;branding&quot;]">
 				<div class="menu-item position-relative ">
 					<div class="d-flex align-items-center">
-						<img src="images/menu/menu-8.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
+						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-8.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
 							<h4>Carpacio - <span>13$</span></h4>
 							<p>Chinese mustard/Chipotle aiol</p>
@@ -383,7 +362,7 @@
 			<div class="col-lg-10 col-md-12">
 				<div class="row align-items-center">
 					<div class="col-lg-6 col-md-6">
-						<!-- <img src="images/about/2-mbl.png" alt="" class="img-fluid"> -->
+						<!-- <img src="<?php echo base_url() ?>assets/type1/images/about/2-mbl.png" alt="" class="img-fluid"> -->
 
 
 						<!-- for change phone model follow this link: https://marvelapp.github.io/devices.css/ -->
@@ -404,7 +383,7 @@
 							</div>
 							<div class="inner-shadow"></div>
 							<div class="screen">
-								<img src="images/CafeDine.jpg" alt="" class="img-fluid">
+								<img src="<?php echo base_url() ?>assets/type1/images/CafeDine.jpg" alt="" class="img-fluid">
 							</div>
 						</div>
 					</div>
@@ -475,52 +454,52 @@
         <!-- for instagram post remove comments from bottom line and replace your user id and access token -->
         <!-- <div class="swiper-wrapper" id="instafeed" data-userId="4044026246" data-accessToken="4044026246.1677ed0.8896752506ed4402a0519d23b8f50a17"></div> -->
 
-        <!-- this is static images. after setup instagram, remove this bottom code to the end -->
+        <!-- this is static <?php echo base_url() ?>assets/type1/images. after setup instagram, remove this bottom code to the end -->
         <div class="swiper-wrapper" id="instafeed">
           <!-- Slides -->
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-4.jpg">
-              <img src="images/gallery/gallery-4.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-4.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-4.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-3.jpg">
-              <img src="images/gallery/gallery-3.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-3.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-3.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-5.jpg">
-              <img src="images/gallery/gallery-5.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-5.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-5.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-7.jpg">
-              <img src="images/gallery/gallery-7.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-7.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-7.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-1.jpg">
-              <img src="images/gallery/gallery-1.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-1.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-1.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide ">
-            <a class="popup-gallery" href="images/gallery/gallery-2.jpg">
-              <img src="images/gallery/gallery-2.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-2.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-2.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-3.jpg">
-              <img src="images/gallery/gallery-3.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-3.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-3.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-4.jpg">
-              <img src="images/gallery/gallery-4.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-4.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-4.jpg" alt="" class="img-fluid">
             </a>
           </div>
           <div class="swiper-slide">
-            <a class="popup-gallery" href="images/gallery/gallery-5.jpg">
-              <img src="images/gallery/gallery-5.jpg" alt="" class="img-fluid">
+            <a class="popup-gallery" href="<?php echo base_url() ?>assets/type1/images/gallery/gallery-5.jpg">
+              <img src="<?php echo base_url() ?>assets/type1/images/gallery/gallery-5.jpg" alt="" class="img-fluid">
             </a>
           </div>
         </div>
@@ -635,7 +614,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"></script> 
 <script src="<?php echo base_url() ?>assets/type1/plugins/google-map/gmap.js"></script>
 <!-- Main Script -->
-<script src="js/contact.js"></script>
-<script src="js/script.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/contact.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
 
 </html>
