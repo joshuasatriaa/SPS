@@ -71,6 +71,7 @@
 <!-- Header Close -->
 
 <!-- Login Modal -->
+
 <div class="modal">
   <div class="modal-container">
     <div class="modal-left">
@@ -79,13 +80,13 @@
       <div class="input-block">
         <label for="email" class="input-label">Email</label>
         <input type="email" name="email" id="email" placeholder="Email">
-      </div>
+      </div>	
       <div class="input-block">
         <label for="password" class="input-label">Password</label>
         <input type="password" name="password" id="password" placeholder="Password">
       </div>
       <div class="modal-buttons">
-        <a href="" class="">Forgot your password?</a>
+        <a href="#" class="">Forgot your password?</a>
         <button class="input-button">Login</button>
       </div>
       <p class="sign-up">Don't have an account? <a href="#">Sign up now</a></p>
@@ -101,6 +102,7 @@
   </div>
   
 </div>
+
 
 <!--  Banner start -->
 <section class="slider-hero hero-slider  hero-style-1  ">
