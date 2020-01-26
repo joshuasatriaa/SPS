@@ -5,17 +5,26 @@ class ForgotPassword extends CI_Controller
     {
         parent::__construct();
         $this->load->library('email');
+        $this->load->model('m_user');
 
 
     }
 
     function index(){
-        $this->load->view('V_forgotpassword');
+        $this->load->view('v_forgotpassword');
+    }
+
+    function accountNotFound($email){
+        $this->load->view('errors/v_erroraccountnotfound', $email);
+    }
+
+    function resetSuccess(){
+        $this->load->view('v_resetsuccess');
     }
 
     function forgotPass(){
         $em = $this->input->post('email');
-        $cek = $this->M_User->cek($email)->result();
+        $cek = $this->m_user->getRecord($email)->result();
         if($cek){
             
             $tkn = random_bytes(6);
@@ -26,15 +35,20 @@ class ForgotPassword extends CI_Controller
             $where = array(
                 'email' => $em,
             );
-            $this->M_User->update('user', $data, $where);
+            $this->m_user->updateRecord($where, $data, 'user');
             $this->sendEmail($em, $tkn);
             
+
+            $this->resetSuccess();
+        }
+        else{
+            $this->accountNotFound($em);
         }
         
     }
 
     function sendEmail($email, $token){
-        $cek = $this->M_User->seachByEmail($email)->result();
+        $cek = $this->m_user->getRecord($email)->result();
         if($cek){
             $account_name = "BengCool - Collaborative, Community, Marketplace";  
             $gmail_account_username = "bengcool.cs@gmail.com"; 

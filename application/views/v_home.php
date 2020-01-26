@@ -43,7 +43,7 @@
 <header class="navigation ">
 	<nav class="navbar navbar-expand-lg main-nav py-lg-3 position-absolute w-100" id="main-nav">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">
+			<a class="navbar-brand" href="<?php echo base_url()?>Home">
 				<img src="<?php echo base_url()?>assets/type1/images/logo.png" width="300px" class="img-fluid">
 			</a>
 
@@ -86,7 +86,7 @@
         <input type="password" name="password" id="password" placeholder="Password">
       </div>
       <div class="modal-buttons">
-        <a href="#" class="">Forgot your password?</a>
+        <a href="<?php echo base_url()?>ForgotPassword" class="">Forgot your password?</a>
         <button class="input-button">Login</button>
       </div>
       <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup">Sign up now</a></p>
