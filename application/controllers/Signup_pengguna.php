@@ -6,8 +6,8 @@
 		}
 		
 		function index(){	
-		$this->load->view('v_signup_pengguna');
-		}
+			$this->load->view('v_signup_pengguna');
+			}
 		
 		function insertData(){
 			$id = $this->input->post('id_pengguna');
