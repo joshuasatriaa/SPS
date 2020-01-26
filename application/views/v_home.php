@@ -55,7 +55,7 @@
 			<div class="collapse navbar-collapse" id="navigation">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="<?php echo base_url()?>Home">Home</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 					<li class="nav-item"><a class="nav-link" href="menu.html">Shop</a></li>
@@ -88,7 +88,7 @@
         <a href="" class="">Forgot your password?</a>
         <button class="input-button">Login</button>
       </div>
-      <p class="sign-up">Don't have an account? <a href="#">Sign up now</a></p>
+      <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup">Sign up now</a></p>
     </div>
     <div class="modal-right">
       <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="">
@@ -593,17 +593,6 @@
 			</div>
 		</div>
 
-		<div class="row justify-content-center mt-5">
-			<div class="col-lg-6 text-center">
-				<h4 class="text-white-50 mb-3">Get latest food recipe at your inbox</h4>
-				<form action="#" class="footer-newsletter">
-					<div class="form-group">
-						<button class="button"><span class="ti-email"></span></button>
-						<input type="email" class="form-control" placeholder="Enter Email">
-					</div>
-				</form>
-			</div>
-		</div>
 	</div>
 </footer>
 
