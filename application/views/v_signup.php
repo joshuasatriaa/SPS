@@ -91,7 +91,7 @@
           <div class="container">
 
             <!-- Sign Up start -->
-            <form action="<?php echo 'insertData'?>" method="POST" novalidate="novalidate">
+            <form action="<?php echo base_url().'Signup/insertData'?>" method="POST" novalidate="novalidate">
                 <h1>Sign Up</h1>
                 <fieldset>
                     <label for="name">Name:</label>
@@ -120,6 +120,12 @@
 
                     <label for="password">Phone Number:</label>
                     <input type="number" id="phonenumber" name="user_phonenumber">
+
+                    <label for="usertype">Are you a workshop owner/staff, or a single user?</label>
+                    <select data-placeholder="User Type" class="standardSelect" tabindex="1"name="user_type" id="type">
+                      <option value="1">Workshop Owner/Staff</option>
+                      <option value="2">Single User</option>
+                    </select>
                     
                 </fieldset>
                 <button type="submit">Sign Up</button>
