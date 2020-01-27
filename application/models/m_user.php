@@ -21,8 +21,9 @@ class m_user extends Ci_Model
     
     function getRecord($where)
 	{
-		return $this->db->query('SELECT a.id_user, a.email 
+		return $this->db->query('SELECT a.id_user, a.email, b.nama_pengguna 
 		FROM user a 
+		JOIN pengguna b
 		WHERE a.email = "'.$where.'"');
     }
     
