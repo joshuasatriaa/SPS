@@ -91,17 +91,35 @@
           <div class="container">
 
             <!-- Sign Up start -->
-            <form action="" method="post">
+            <form action="<?php echo 'insertData'?>" method="POST" novalidate="novalidate">
                 <h1>Sign Up</h1>
                 <fieldset>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="user_name">
             
                     <label for="mail">Email:</label>
-                    <input type="email" id="mail" name="user_email">
+                    <input type="email" id="email" name="user_email">
             
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="user_password">
+
+                    <label for="gender">Gender:</label>
+                    <select data-placeholder="Your Gender" class="standardSelect" tabindex="1"name="user_gender" id="gender">
+                      <option value="1">Laki - Laki</option>
+                      <option value="2">Perempuan</option>
+                    </select>
+                     
+                    <label for="password">Birth Date:</label>
+                    <input type="date" id="birthdate" name="user_birthdate">
+
+                    <label for="password">Birth Place:</label>
+                    <input type="text" id="birthplace" name="user_birthplace">
+
+                    <label for="password">Address:</label>
+                    <input type="text" id="address" name="user_address">
+
+                    <label for="password">Phone Number:</label>
+                    <input type="number" id="phonenumber" name="user_phonenumber">
                     
                 </fieldset>
                 <button type="submit">Sign Up</button>

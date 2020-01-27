@@ -10,17 +10,17 @@
 			}
 		
 		function insertData(){
-			$id = $this->input->post('id_pengguna');
-			$nama = $this->input->post('nama_pengguna');
-			$kelamin = $this->input->post('jenis_kelamin');
-			$tglLahir = $this->input->post('tanggal_lahir');
-			$tmpLahir = $this->input->post('tempat_lahir');
-			$alamat = $this->input->post('alamat');
+			$id = $this->input->post('id');
+			$nama = $this->input->post('name');
+			$kelamin = $this->input->post('gender');
+			$tglLahir = $this->input->post('birthdate');
+			$tmpLahir = $this->input->post('birthplace');
+			$alamat = $this->input->post('address');
 			$email = $this->input->post('email');
-			$telp = $this->input->post('telepon');
-			$tglRegis = $this->input->post('tanggal_registrasi');
-			$gambar = $this->input->post('gambar');
-			$tipe = $this->input->post('tipe_pengguna');
+			$telp = $this->input->post('phonenumber');
+			$tglRegis = $this->input->post('registrationdate');
+			$gambar = $this->input->post('picture');
+			$tipe = $this->input->post('usertype');
 			
 			$data = array(
 				'id_pengguna' => $id,
