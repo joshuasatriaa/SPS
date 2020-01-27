@@ -90,52 +90,22 @@
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
-            <!-- Sign Up start -->
-            <form action="<?php echo 'Signup_pengguna/insertData'?>" method="POST" novalidate="novalidate">
-
-            <form action="<?php echo base_url().'Signup/insertData'?>" method="POST" novalidate="novalidate">
-
-                <h1>Sign Up</h1>
+            <!-- Login start -->
+            <form action="<?php echo 'login'?>" method="POST">
+                <h1>Login</h1>
                 <fieldset>
-                    <label for="id"> ID:</label>
-                    <input type="text" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="user_name">
-            
                     <label for="mail">Email:</label>
                     <input type="email" id="email" name="user_email">
             
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="user_password">
 
-                    <label for="gender">Gender:</label>
-                    <select data-placeholder="Your Gender" class="standardSelect" tabindex="1"name="user_gender" id="gender">
-                      <option value="1">Laki - Laki</option>
-                      <option value="2">Perempuan</option>
-                    </select>
-                     
-                    <label for="password">Birth Date:</label>
-                    <input type="date" id="birthdate" name="user_birthdate">
-
-                    <label for="password">Birth Place:</label>
-                    <input type="text" id="birthplace" name="user_birthplace">
-
-                    <label for="password">Address:</label>
-                    <input type="text" id="address" name="user_address">
-
-                    <label for="password">Phone Number:</label>
-                    <input type="number" id="phonenumber" name="user_phonenumber">
-
-                    <label for="usertype">Are you a workshop owner/staff, or a single user?</label>
-                    <select data-placeholder="User Type" class="standardSelect" tabindex="1"name="user_type" id="type">
-                      <option value="1">Workshop Owner/Staff</option>
-                      <option value="2">Single User</option>
-                    </select>
+                    
                     
                 </fieldset>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Login</button>
             </form>
-            <!-- Sign Up end -->
+            <!-- Login end -->
            
           </div>
         </div> 

@@ -9,9 +9,9 @@ class m_user extends Ci_Model
 		
 	}
     
-    function insertTable($a,$b)
+    function insertTable($table,$where)
 	{
-		$this->db->insert($a,$b);
+		$this->db->insert($table,$where);
 	}
     
     function editRecord($where,$table)
