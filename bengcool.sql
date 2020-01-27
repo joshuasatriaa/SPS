@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2020 at 09:26 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Jan 27, 2020 at 05:55 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -192,16 +192,23 @@ CREATE TABLE `pengguna` (
   `email` varchar(50) NOT NULL,
   `telepon` varchar(12) NOT NULL,
   `tanggal_registrasi` datetime NOT NULL,
-  `gambar` text NOT NULL,
-  `tipe_pengguna` int(11) NOT NULL,
+  `gambar` text,
+  `tipe_pengguna` int(11) DEFAULT NULL,
   `user_add` varchar(50) NOT NULL,
   `waktu_add` datetime NOT NULL,
-  `user_edit` varchar(50) NOT NULL,
-  `waktu_edit` datetime NOT NULL,
-  `user_delete` varchar(50) NOT NULL,
-  `waktu_delete` datetime NOT NULL,
+  `user_edit` varchar(50) DEFAULT NULL,
+  `waktu_edit` datetime DEFAULT NULL,
+  `user_delete` varchar(50) DEFAULT NULL,
+  `waktu_delete` datetime DEFAULT NULL,
   `status_delete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengguna`
+--
+
+INSERT INTO `pengguna` (`id_pengguna`, `nama_pengguna`, `jenis_kelamin`, `tanggal_lahir`, `tempat_lahir`, `alamat`, `email`, `telepon`, `tanggal_registrasi`, `gambar`, `tipe_pengguna`, `user_add`, `waktu_add`, `user_edit`, `waktu_edit`, `user_delete`, `waktu_delete`, `status_delete`) VALUES
+('USER-1', 'Kelvin', 1, '1997-09-17', 'Jakarta', 'Depok', 'kelvincahyadi@gmail.com', '081290006197', '2020-01-27 23:47:30', NULL, NULL, 'USER-1', '2020-01-27 23:47:30', NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 

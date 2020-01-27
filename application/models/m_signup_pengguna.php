@@ -3,6 +3,11 @@
 		function insertTable($a,$b){
 		$this->db->insert($a,$b);
 		}
+		function tampilkanData()
+	{
+		$query=$this->db->get('pengguna');
+		return $query;
 		
+	}
 }
 ?>	
