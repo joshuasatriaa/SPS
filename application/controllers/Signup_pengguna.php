@@ -3,6 +3,7 @@
 		function __construct(){
 		parent::__construct();		
 		$this->load->model('m_signup_pengguna');
+		$this->load->model('m_user');
 		}
 		
 		function index(){	
@@ -18,6 +19,7 @@
 			$tmpLahir = $this->input->post('user_birthplace');
 			$alamat = $this->input->post('user_address');
 			$email = $this->input->post('user_email');
+			$pass = $this->input->post('user_password');
 			$telp = $this->input->post('user_phonenumber');
 			$tglRegis = $this->input->post('user_registrationdate');
 			$gambar = $this->input->post('user_picture');
@@ -41,6 +43,14 @@
 			$this->db->set('tanggal_registrasi', 'NOW()', FALSE);
 			$this->db->set('waktu_add', 'NOW()', FALSE);
 			$this->m_signup_pengguna->insertTable('pengguna', $data);
+
+			$data2 = array(
+				'id_user' => $id,
+				'email' => $email,
+				'password' => md5($pass), 
+			);
+	
+			$this->m_user->insertTable('user', $data2);
 			redirect('../SPS');
 			
 			
