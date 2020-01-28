@@ -54,4 +54,5 @@ class Signup extends CI_Controller {
 		$this->m_user->insertTable('user', $data2);
 
 	}
+
 }

@@ -71,6 +71,11 @@
 			
 			
 		}
+
+		function awal()
+		{
+			$this->load->view('v_signup_pengguna1');
+		}
 		
 }	
 ?>
