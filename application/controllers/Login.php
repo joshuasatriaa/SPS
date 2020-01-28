@@ -32,7 +32,17 @@ class Login extends CI_Controller{
 			echo "Please input password";
 		}
 		else if($cek){
+
+			//ambil nama
+			$where1 = array(
+				'email' => $email
+				);
+			$ceknama = $this->m_login->cek_login("pengguna", $where1)->row_array();
+
+			//session
 			$data_session = array(
+				'nama' => $ceknama['nama_pengguna'],
+				'id_user' => $cek['id_user'],
 				'email' => $cek['email'],
 				'password' => $cek['password']
 			);

@@ -26,7 +26,7 @@
 							<div class="dropdown" >
 								<button class="dropbtn">
 									<b>
-										<?php echo $this->session->userdata('email') ?>
+										<?php echo $this->session->userdata('nama') ?>
 										<i class="fa fa-caret-down"></i>
 									</b>
 								</button>
