@@ -10,5 +10,14 @@
 		return $query;
 		
 	}
+	function tampilkanRecordProfile($id_pengguna)
+	{
+		return $this->db->query('SELECT id_pengguna, nama_pengguna, jenis_kelamin, tanggal_lahir, tempat_lahir, alamat, telepon, email FROM pengguna WHERE id_pengguna="'.$id_pengguna.'"');
+	}
+	function updateRecord($where,$data,$table)
+	{
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
 }
 ?>	

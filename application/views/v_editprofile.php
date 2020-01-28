@@ -103,7 +103,7 @@
                     <input type="text" id="name" name="user_name" value="<?php echo $list->nama_pengguna ?>">
             
                     <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email" value="<?php echo $list->email ?>">
+                    <input type="email" id="email" name="user_email" value="<?php echo $list->email ?>" readonly>
 
                     <label for="gender">Gender:</label>
                     <select data-placeholder="Your Gender" class="standardSelect" tabindex="1"name="user_gender" id="gender">
@@ -124,7 +124,7 @@
                     <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo $list->telepon ?>">
                     
                 </fieldset>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Submit</button>
             <?php } ?>
             </form>
             <!-- Sign Up end -->
