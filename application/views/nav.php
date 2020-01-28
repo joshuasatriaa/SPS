@@ -21,7 +21,7 @@
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Contact</a></li>
 
 					<?php if($this->session->userdata('email') != null) {?>
-						<li class="nav-item"><a class="nav-link" href="gallery.html"><?php echo $this->session->userdata('email')?></a></li>
+						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Edit_profile"><?php echo $this->session->userdata('email')?></a></li>
 						
 					<?php }else{ ?>
 						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>

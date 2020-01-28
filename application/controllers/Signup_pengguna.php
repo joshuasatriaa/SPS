@@ -53,7 +53,21 @@
 			$this->m_user->insertTable('user', $data2);
 			redirect('../SPS');
 			
-			
+			/*public function Editprofile()
+			{
+				$data['nav'] = "User";
+				$this->load->model('M_user');
+				$data['user'] = $this->m_user->tampilkanData()->result();
+				$data['pengguna'] = $this->m_signup_pengguna->tampilkanData()->result();
+				$this->head();
+				$this->load->view("LandingPage/Template/profile-css");
+				$this->load->view('LandingPage/Template/nav', $data);
+				$this->load->view("LandingPage/Home/V_Editprofile");
+				//$this->load->view("User/V_profile", $data);
+				$this->foot();
+
+				
+			}*/
 			
 			
 			
