@@ -11,36 +11,38 @@ class Login extends CI_Controller{
 		
 	function index()
 	{
-		$this->load->view('v_login');
-	}
-	
-	
-	function login(){
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$where = array(
 			'email' => $email,
 			'password' => $password
 			);
-		$cek = $this->m_login->cek_login("user", $where)->num_rows();
+		$cek = $this->m_login->cek_login("user", $where)->row_array();
 		
-		if($cek > 0){
+		if($email == "" && $password == "")
+		{
+			echo "Please input email and password";
+		}
+		else if($email == "")
+		{
+			echo "Please input email";
+		}
+		else if($password == "")
+		{
+			echo "Please input password";
+		}
+		else if($cek){
 			$data_session = array(
-				'email' => $email,
-				'password' => $password,
-				'login' => TRUE
-				);
+				'email' => $cek['email'],
+				'password' => $cek['password']
+			);
 			$this->session->set_userdata($data_session);
 			
-			//redirect('');
+			redirect('Home');
 		}else{
-			echo "email dan password salah !";
+			echo "Wrong email and password !";
 		}	
 	}
-	
-	
-	
-	
 	
 	function logout(){
 		$this->session->sess_destroy();

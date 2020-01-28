@@ -51,8 +51,8 @@
 <div class="modal">
   <div class="modal-container">
     <div class="modal-left">
+	<form  action="<?php echo base_url('Login') ?>" method="post">
       <h1 class="modal-title">Welcome!</h1>
-      <p class="modal-desc">Fanny pack hexagon food truck, street art waistcoat kitsch.</p>
       <div class="input-block">
         <label for="email" class="input-label">Email</label>
         <input type="email" name="email" id="email" placeholder="Email">
@@ -63,12 +63,13 @@
       </div>
       <div class="modal-buttons">
         <a href="<?php echo base_url()?>ForgotPassword" class="">Forgot your password?</a>
-        <button class="input-button">Login</button>
+        <button class="input-button" type="submit">Login</button>
       </div>
       <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup_pengguna">Sign up now</a></p>
     </div>
     <div class="modal-right">
       <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="">
+	</form>
     </div>
     <button class="icon-button close-button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">

@@ -19,7 +19,14 @@
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop">Shop</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Contact</a></li>
-					<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
+
+					<?php if($this->session->userdata('email') != null) {?>
+						<li class="nav-item"><a class="nav-link" href="gallery.html"><?php echo $this->session->userdata('email')?></a></li>
+						
+					<?php }else{ ?>
+						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
+					<?php } ?>
+
 				</ul>
 			</div>
 		</div>
