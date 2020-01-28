@@ -23,7 +23,6 @@
 			$telp = $this->input->post('user_phonenumber');
 			$tglRegis = $this->input->post('user_registrationdate');
 			$gambar = $this->input->post('user_picture');
-			$tipe = $this->input->post('user_type');
 			
 			$data = array(
 				'id_pengguna' => $id,
@@ -35,7 +34,6 @@
 				'email' => $email,
 				'telepon' => $telp,
 				'gambar' => $gambar,
-				'tipe_pengguna' => $tipe,
 				'user_add' => $id,
 				'status_delete' => "0"
 				);

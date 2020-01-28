@@ -14,8 +14,7 @@
             $data['pengguna'] = $this->m_signup_pengguna->tampilkanData()->result();
 			$this->load->view('v_editprofile',$data);
 		}
-		 
-		
-		}
+
+	}
 			
 ?>

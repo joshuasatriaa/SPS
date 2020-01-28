@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 27, 2020 at 05:55 PM
+-- Generation Time: Jan 28, 2020 at 04:10 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -193,7 +193,6 @@ CREATE TABLE `pengguna` (
   `telepon` varchar(12) NOT NULL,
   `tanggal_registrasi` datetime NOT NULL,
   `gambar` text,
-  `tipe_pengguna` int(11) DEFAULT NULL,
   `user_add` varchar(50) NOT NULL,
   `waktu_add` datetime NOT NULL,
   `user_edit` varchar(50) DEFAULT NULL,
@@ -207,8 +206,8 @@ CREATE TABLE `pengguna` (
 -- Dumping data for table `pengguna`
 --
 
-INSERT INTO `pengguna` (`id_pengguna`, `nama_pengguna`, `jenis_kelamin`, `tanggal_lahir`, `tempat_lahir`, `alamat`, `email`, `telepon`, `tanggal_registrasi`, `gambar`, `tipe_pengguna`, `user_add`, `waktu_add`, `user_edit`, `waktu_edit`, `user_delete`, `waktu_delete`, `status_delete`) VALUES
-('USER-1', 'Kelvin', 1, '1997-09-17', 'Jakarta', 'Depok', 'kelvincahyadi@gmail.com', '081290006197', '2020-01-27 23:47:30', NULL, NULL, 'USER-1', '2020-01-27 23:47:30', NULL, NULL, NULL, NULL, 0);
+INSERT INTO `pengguna` (`id_pengguna`, `nama_pengguna`, `jenis_kelamin`, `tanggal_lahir`, `tempat_lahir`, `alamat`, `email`, `telepon`, `tanggal_registrasi`, `gambar`, `user_add`, `waktu_add`, `user_edit`, `waktu_edit`, `user_delete`, `waktu_delete`, `status_delete`) VALUES
+('USER-1', 'Kelvin', 1, '1997-09-17', 'Jakarta', 'Depok', 'kelvin@gmail.com', '081290006197', '2020-01-28 09:59:07', NULL, 'USER-1', '2020-01-28 09:59:07', NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -309,6 +308,29 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `email`, `password`) VALUES
+('USER-1', 'kelvin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`id_pengguna`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

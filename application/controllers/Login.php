@@ -11,6 +11,7 @@ class Login extends CI_Controller{
 		
 	function index()
 	{
+		$this->load->view('v_login');
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$where = array(
