@@ -15,7 +15,7 @@ class Login extends CI_Controller{
 		$password = $this->input->post('password');
 		$where = array(
 			'email' => $email,
-			'password' => $password
+			'password' => md5($password)
 			);
 		$cek = $this->m_login->cek_login("user", $where)->row_array();
 		
