@@ -21,7 +21,22 @@
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Contact</a></li>
 
 					<?php if($this->session->userdata('email') != null) {?>
-						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Edit_profile"><?php echo $this->session->userdata('email')?></a></li>
+						<li class="nav-item">
+						
+							<div class="dropdown" >
+								<button class="dropbtn">
+									<b>
+										<?php echo $this->session->userdata('email') ?>
+										<i class="fa fa-caret-down"></i>
+									</b>
+								</button>
+								<div class="dropdown-content">
+									<a href="<?php echo base_url() ?>Edit_profile" class="nav-link">Profile</a>
+									<a href="<?php echo base_url() ?>Login/logout" class="nav-link">Logout</a>    
+								</div>
+							</div>
+						
+						</li>
 						
 					<?php }else{ ?>
 						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
