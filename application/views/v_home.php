@@ -48,10 +48,10 @@
 
 <!-- Login Modal -->
 
-<div class="modal">
+<div class="modal" id>
   <div class="modal-container">
     <div class="modal-left">
-	<form  action="<?php echo base_url('Login') ?>" method="post">
+	<form>
       <h1 class="modal-title">Welcome!</h1>
       <div class="input-block">
         <label for="email" class="input-label">Email</label>
@@ -61,9 +61,10 @@
         <label for="password" class="input-label">Password</label>
         <input type="password" name="password" id="password" placeholder="Password">
       </div>
+	  <div class="alert alert-danger print-error-msg" style="display:none"></div>
       <div class="modal-buttons">
         <a href="<?php echo base_url()?>ForgotPassword" class="">Forgot your password?</a>
-        <button class="input-button" type="submit">Login</button>
+        <button class="input-button btn-submit" type="submit">Login</button>
       </div>
       <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup_pengguna/awal">Sign up now</a></p>
     </div>
@@ -623,4 +624,43 @@
 <!-- Login Script -->
 <script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
+<script type="text/javascript">
+
+
+	$(document).ready(function() {
+	    $(".btn-submit").click(function(e){
+	    	e.preventDefault();
+
+
+	    	var _token = $("input[name='_token']").val();
+	    	
+	    	var email = $("input[name='email']").val();
+	    	var pass = $("input[name='password']").val();
+	    	
+
+
+	        $.ajax({
+	            url: "<?php echo base_url() ?>Login",
+	            type:'POST',
+	            dataType: "json",
+	            data: {email:email, password:pass},
+	            success: function(data) {
+	                if($.isEmptyObject(data.error)){
+	                	$(".print-error-msg").css('display','none');
+						
+	                }else{
+						$(".print-error-msg").css('display','block');
+	                	$(".print-error-msg").html(data.error);
+	                }
+	            }
+	        });
+
+
+	    }); 
+
+
+	});
+
+
+</script>
 </html>
