@@ -23,7 +23,7 @@ class m_user extends Ci_Model
 	{
 		return $this->db->query('SELECT a.id_user, a.email, b.nama_pengguna 
 		FROM user a 
-		JOIN pengguna b
+		JOIN pengguna b ON a.id_user = b.id_pengguna
 		WHERE a.email = "'.$where.'"');
     }
     

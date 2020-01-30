@@ -20,8 +20,8 @@ class Login extends CI_Controller{
             echo json_encode(['error'=>$errors]);
 			
 		}else{
-			$email = $this->input->post('email');
-			$password = $this->input->post('password');
+			$email = htmlspecialchars($this->input->post('email'));
+			$password =htmlspecialchars($this->input->post('password'));
 			$where = array(
 				'email' => $email,
 				'password' => md5($password),

@@ -99,31 +99,40 @@
                 <fieldset>
                     <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="user_name">
-            
+                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>">
+                    <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
+
                     <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email">
+                    <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>">
+                    <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
             
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="user_password">
+                    <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
 
                     <label for="gender">Gender:</label>
                     <select data-placeholder="Your Gender" class="standardSelect" tabindex="1"name="user_gender" id="gender">
-                      <option value="1">Laki - Laki</option>
-                      <option value="2">Perempuan</option>
+                      <option value="1" <?php echo set_select('user_gender','1', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Laki - Laki</option>
+                      <option value="2" <?php echo set_select('user_gender','2', ( !empty($gender) && $gender == "2" ? TRUE : FALSE )); ?>>Perempuan</option>
                     </select>
+                    <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
                      
                     <label for="password">Birth Date:</label>
-                    <input type="date" id="birthdate" name="user_birthdate">
+                    <input type="date" id="birthdate" name="user_birthdate" value="<?php echo set_value('user_birthdate');?>">
+                    <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
+
 
                     <label for="password">Birth Place:</label>
-                    <input type="text" id="birthplace" name="user_birthplace">
+                    <input type="text" id="birthplace" name="user_birthplace" value="<?php echo set_value('user_birthplace');?>">
+                    <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
 
                     <label for="password">Address:</label>
-                    <input type="text" id="address" name="user_address">
+                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>">
+                    <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
 
                     <label for="password">Phone Number:</label>
-                    <input type="number" id="phonenumber" name="user_phonenumber">
+                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>">
+                    <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                     
                 </fieldset>
                 <button type="submit">Sign Up</button>
