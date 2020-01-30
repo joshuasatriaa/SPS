@@ -44,7 +44,7 @@ class Login extends CI_Controller{
 					'password' => $cek['password']
 				);
 				$this->session->set_userdata($data_session);
-				
+				echo json_encode(['success'=>"berhasil login"]);
 			}else{
 				$where2 = array(
 					'email' => $email,

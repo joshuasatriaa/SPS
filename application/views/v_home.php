@@ -631,7 +631,6 @@
 	    $(".btn-submit").click(function(e){
 	    	e.preventDefault();
 
-
 	    	var _token = $("input[name='_token']").val();
 	    	
 	    	var email = $("input[name='email']").val();
@@ -645,18 +644,25 @@
 	            dataType: "json",
 	            data: {email:email, password:pass},
 	            success: function(data) {
+					
 	                if($.isEmptyObject(data.error)){
 	                	$(".print-error-msg").css('display','none');
-						location.reload();
+						window.location.reload(true);
 	                }else{
 						$(".print-error-msg").css('display','block');
 	                	$(".print-error-msg").html(data.error);
 	                }
+					
 	            }
 	        });
 
 
 	    }); 
+
+		$("#password").on("input", function(){
+        	$(".print-error-msg").css('display','none');
+	    });
+		
 
 
 	});

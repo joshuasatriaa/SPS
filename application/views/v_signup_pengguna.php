@@ -97,8 +97,7 @@
 
                 <h1>Sign Up</h1>
                 <fieldset>
-                    <label for="id"> ID:</label>
-                    <input type="text" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
+                    <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="user_name">
             
