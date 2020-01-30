@@ -31,7 +31,7 @@ class ForgotPassword extends CI_Controller
             $tkn = $this->generate_string(20);
 
             $data = array(
-                'password' => $tkn,
+                'password' => md5($tkn),
             );
             $where = array(
                 'email' => $em,
