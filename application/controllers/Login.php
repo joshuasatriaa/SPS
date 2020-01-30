@@ -45,7 +45,6 @@ class Login extends CI_Controller{
 				);
 				$this->session->set_userdata($data_session);
 				
-				redirect($this->uri->uri_string());
 			}else{
 				$where2 = array(
 					'email' => $email,
@@ -65,6 +64,7 @@ class Login extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect('Home');
 	}
+
 }
 			
 ?>

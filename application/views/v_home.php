@@ -647,7 +647,7 @@
 	            success: function(data) {
 	                if($.isEmptyObject(data.error)){
 	                	$(".print-error-msg").css('display','none');
-						
+						location.reload();
 	                }else{
 						$(".print-error-msg").css('display','block');
 	                	$(".print-error-msg").html(data.error);
