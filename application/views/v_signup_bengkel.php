@@ -90,29 +90,48 @@
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
-            <div class="conatiner1">
-	            <div class="wrap1">
-    
-                    <a href = "<?php echo base_url()?>Signup_bengkel">
-                        <div class="box one">
-                            <h1>Bengkel</h1>
-                            <div class="poster p1">
-                                
-                            </div>
-                        </div>
-                    </a>
+            <!-- Sign Up start -->
+            <form action="<?php echo 'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate">
+
+            <form action="<?php echo base_url().'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate">
+
+                <h1>Sign Up</h1>
+                <fieldset>
+                    <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>">
+                    <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
+
+                    <label for="mail">Email:</label>
+                    <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>">
+                    <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
+            
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="user_password">
+                    <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
+                     
+                    <label for="password">Open Time:</label>
+                    <input type="time" id="opentime" name="user_opentime" value="<?php echo set_value('user_opentime');?>">
+                    <?php echo form_error('user_opentime', '<small class="text-danger">', '</small>') ?>
+
+
+                    <label for="password">Close Time:</label>
+                    <input type="time" id="closetime" name="user_closetime" value="<?php echo set_value('user_closetime');?>">
+                    <?php echo form_error('user_closetime', '<small class="text-danger">', '</small>') ?>
+
+                    <label for="password">Address:</label>
+                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>">
+                    <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
+
+                    <label for="password">Phone Number:</label>
+                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>">
+                    <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                     
-                    <a href = "<?php echo base_url()?>Signup_pengguna">
-                        <div class="box two">
-                            <H1>User</H1>
-                            <div class="poster p2">
-                                
-                            </div>
-                        </div>
-                    </a>
-	
-	            </div>
-            </div>
+                </fieldset>
+                <button type="submit">Sign Up</button>
+            </form>
+            <!-- Sign Up end -->
            
           </div>
         </div> 
