@@ -4,19 +4,20 @@
 		parent::__construct();		
 		$this->load->model('m_signup_pengguna');
 		$this->load->model('m_user');
+		$this->load->library('form_validation');
 		}
 		
 		function index(){	
 			$data['count']=$this->m_signup_pengguna->tampilkanData()->num_rows();
 			$data['gender'] = $this->input->get('user_gender');
 			$this->load->view('v_signup_pengguna',$data);
-			}
+		}
 		 
 		function insertData(){
 			
             $this->form_validation->set_rules('user_name', 'Name', 'required|trim');
             $this->form_validation->set_rules('user_gender', 'Sex', 'required|trim');
-            $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
+            $this->form_validation->set_rules('user_email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
             $this->form_validation->set_rules('user_birthplace', 'Place of Birth', 'required|trim');
             $this->form_validation->set_rules('user_birthdate', 'Date of Birth', 'required|trim');
             $this->form_validation->set_rules('user_address', 'Address', 'required|trim');
@@ -24,7 +25,9 @@
             $this->form_validation->set_rules('user_password', 'Password', 'required|trim|min_length[6]');
 
 			if($this->form_validation->run() == FALSE){
-				echo validation_errors();
+				$data['count']=$this->m_signup_pengguna->tampilkanData()->num_rows();
+				$data['gender'] = $this->input->get('user_gender');
+				$this->load->view('v_signup_pengguna',$data);
 			}
 			else{
 				$id = htmlspecialchars($this->input->post('user_id'), TRUE);
@@ -63,7 +66,7 @@
 				);
 		
 				$this->m_user->insertTable('user', $data2);
-				redirect('Home');
+				redirect('Signup_pengguna/loginsuccess');
 				
 				/*public function Editprofile()
 				{
@@ -91,6 +94,10 @@
 		function awal()
 		{
 			$this->load->view('v_signup_pengguna1');
+		}
+
+		function loginsuccess(){
+			$this->load->view('v_loginsuccess');
 		}
 		
 }	

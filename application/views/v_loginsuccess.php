@@ -7,6 +7,7 @@
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="refresh" content="2;url=<?php echo base_url()?>Home">
 
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
@@ -89,53 +90,13 @@
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
-
-            <!-- Sign Up start -->
-            <form action="<?php echo base_url().'Signup_pengguna/insertData'?>" method="POST" novalidate="novalidate">
-                <h1>Sign Up</h1>
-                <fieldset>
-                    <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>">
-                    <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email" value="<?php echo set_value('user_email');?>">
-                    <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
+          <div class="card text-center">
+            <div class="card-body">
+                <h3 class="card-title">Login Successful!</h3>
+                <p class="card-text">Redirecting to homepage...</p>
+            </div>
+        </div>
             
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="user_password">
-                    <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="gender">Sex:</label>
-                    <select data-placeholder="Your Sex" class="standardSelect" tabindex="1"name="user_gender" id="gender">
-                      <option value="" <?php echo set_select('user_gender','0', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Choose Sex</option>
-                      <option value="1" <?php echo set_select('user_gender','1', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Male</option>
-                      <option value="2" <?php echo set_select('user_gender','2', ( !empty($gender) && $gender == "2" ? TRUE : FALSE )); ?>>Female</option>
-                    </select>
-                    <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
-                     
-                    <label for="password">Birth Date:</label>
-                    <input type="date" id="birthdate" name="user_birthdate" value="<?php echo set_value('user_birthdate');?>">
-                    <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
-
-
-                    <label for="password">Birth Place:</label>
-                    <input type="text" id="birthplace" name="user_birthplace" value="<?php echo set_value('user_birthplace');?>">
-                    <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="password">Address:</label>
-                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>">
-                    <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="password">Phone Number:</label>
-                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>">
-                    <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
-                    
-                </fieldset>
-                <button type="submit">Sign Up</button>
-            </form>
-            <!-- Sign Up end -->
            
           </div>
         </div> 
