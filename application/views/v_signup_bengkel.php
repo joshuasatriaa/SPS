@@ -48,7 +48,7 @@
 
 <!-- Header Close -->
 
-<
+
 <?php
 	include 'modal-login.php';
 ?>
@@ -73,16 +73,13 @@
                 <fieldset>
                     <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
 
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>">
+                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
                     <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
 
-                    <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>">
+                    <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>" placeholder="Email">
                     <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
             
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="user_password">
+                    <input type="password" id="password" name="user_password" placeholder="Password">
                     <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
                      
                     <label for="password">Open Time:</label>
@@ -94,12 +91,10 @@
                     <input type="time" id="closetime" name="user_closetime" value="<?php echo set_value('user_closetime');?>">
                     <?php echo form_error('user_closetime', '<small class="text-danger">', '</small>') ?>
 
-                    <label for="password">Address:</label>
-                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>">
+                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>" placeholder="Address">
                     <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
 
-                    <label for="password">Phone Number:</label>
-                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>">
+                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone NUmber">
                     <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                     
                 </fieldset>

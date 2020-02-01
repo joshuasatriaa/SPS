@@ -62,25 +62,22 @@
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
+            
 
             <!-- Sign Up start -->
             <form action="<?php echo base_url().'Signup_pengguna/insertData'?>" method="POST" novalidate="novalidate">
                 <h1>Sign Up</h1>
                 <fieldset>
                     <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>">
+                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
                     <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
 
-                    <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email" value="<?php echo set_value('user_email');?>">
+                    <input type="email" id="email" name="user_email" value="<?php echo set_value('user_email');?>" placeholder="Email">
                     <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
             
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="user_password">
+                    <input type="password" id="password" name="user_password" placeholder="Password">
                     <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
 
-                    <label for="gender">Sex:</label>
                     <select data-placeholder="Your Sex" class="standardSelect" tabindex="1"name="user_gender" id="gender">
                       <option value="" <?php echo set_select('user_gender','0', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Choose Sex</option>
                       <option value="1" <?php echo set_select('user_gender','1', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Male</option>
@@ -92,17 +89,13 @@
                     <input type="date" id="birthdate" name="user_birthdate" value="<?php echo set_value('user_birthdate');?>">
                     <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
 
-
-                    <label for="password">Birth Place:</label>
-                    <input type="text" id="birthplace" name="user_birthplace" value="<?php echo set_value('user_birthplace');?>">
+                    <input type="text" id="birthplace" name="user_birthplace" value="<?php echo set_value('user_birthplace');?>" placeholder="Birth Place">
                     <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
 
-                    <label for="password">Address:</label>
-                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>">
+                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>" placeholder="Address">
                     <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
 
-                    <label for="password">Phone Number:</label>
-                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>">
+                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone Number">
                     <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                     
                 </fieldset>
