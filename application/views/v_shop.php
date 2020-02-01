@@ -138,30 +138,17 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="row">
 			<div class="col-md-3">
 				<div class="category-sidebar">
 					<div class="widget1 category-list">
-	<h4 class="widget-header">All Category</h4>
-	<ul class="category-list">
-		<li><a href="category.html">Laptops <span>93</span></a></li>
-		<li><a href="category.html">Iphone <span>233</span></a></li>
-		<li><a href="category.html">Microsoft  <span>183</span></a></li>
-		<li><a href="category.html">Monitors <span>343</span></a></li>
-	</ul>
-</div>
+						<h4 class="widget-header">Add Items</h4>
+					</div>
 
-<div class="widget1 category-list">
-	<h4 class="widget-header">Nearby</h4>
-	<ul class="category-list">
-		<li><a href="category.html">New York <span>93</span></a></li>
-		<li><a href="category.html">New Jersy <span>233</span></a></li>
-		<li><a href="category.html">Florida  <span>183</span></a></li>
-		<li><a href="category.html">California <span>120</span></a></li>
-		<li><a href="category.html">Texas <span>40</span></a></li>
-		<li><a href="category.html">Alaska <span>81</span></a></li>
-	</ul>
-</div>
+					<div class="widget1 category-list">
+						<h4 class="widget-header">History</h4>
+					</div>
 
 <div class="widget1 filter">
 	<h4 class="widget-header">Show Produts</h4>
