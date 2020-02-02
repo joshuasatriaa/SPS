@@ -142,7 +142,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="category-sidebar">
-					<a href = "<?php echo base_url() ?>Shop/add_item">
+					<a href = "<?php echo base_url() ?>Barang">
 						<div class="widget1 category-list" style="cursor:pointer">
 							<h4 class="widget-header">Add Items</h4>
 						</div>

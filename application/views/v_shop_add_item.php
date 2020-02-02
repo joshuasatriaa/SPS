@@ -70,48 +70,34 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Add Items</h2>
-                        <form action="<?php echo 'insertData'?>" method="POST" class="register-form" id="register-form">
+                        <form action="<?php echo base_url().'Barang/insertData'?>" method="POST" class="register-form" id="register-form">
                             <div class="form-group">
-							<p>Item ID</p>
-                                <!--
-								<label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                -->
-								<input type="text" id="id_barang" placeholder="Item ID"/>
+							                <input type="hidden" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>" readonly>
                             </div>
                             <div class="form-group">
                                 <p>Item Name</p>
-                                <input type="text" id="nama" placeholder="Item Name"/>
+                                <input type="text" name="nama_barang" placeholder="Item Name"/>
                             </div>
                             <div class="form-group">
-                                <p>Seller ID</p>
-                                <input type="text" id="id_penjual" placeholder="Seller ID"/>
+                                <input type="hidden" name="id_penjual" placeholder="Seller ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
                             </div>
-							<div class="form-group">
+							              <!--
+                            <div class="form-group">
                                 <p>Gambar</p>
                                 <input type="text" id="gambar" placeholder="gambar"/>
                             </div>
-							<div class="form-group">
+                            -->
+							              <div class="form-group">
                                 <p>Price</p>
-                                <input type="text" id="harga" placeholder="Price"/>
+                                <input type="number" name="harga_barang" placeholder="Price"/>
                             </div>
-							<div class="form-group">
+							              <div class="form-group">  
                                 <p>Stock</p>
-                                <input type="numbers" id="stok" placeholder="Stock"/>
+                                <input type="number" name="stok_barang" placeholder="Stock"/>
                             </div>
-							<div class="form-group">
-                                <p>user_add</p>
-                                <input type="text" id="user_add" placeholder="user_add"/>
-                            </div>
-							<div class="form-group">
-                                <p>waktu_add</p>
-                                <input type="text" id="waktu_add" placeholder="waktu_add"/>
-                            </div>
-							
-							
-							
-                            
+							              
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Add"/>
+                                <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Add </button>
                             </div>
                         </form>
                     </div>
