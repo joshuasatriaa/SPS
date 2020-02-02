@@ -6,7 +6,7 @@ class Barang extends CI_Controller{
 	}
 	function index(){
 		$data['barang'] = $this->m_barang->tampilkan_barang()->result();
-		$this->load->view('v_barang', $data);
+		$this->load->view('v_shop_add_item', $data);
 	}
 	function insertData(){
 		$id_barang = $this->input->post('id_barang');
