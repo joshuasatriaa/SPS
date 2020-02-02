@@ -142,9 +142,11 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="category-sidebar">
-					<div class="widget1 category-list">
-						<h4 class="widget-header">Add Items</h4>
-					</div>
+					<a href = "<?php echo base_url() ?>Shop/add_item">
+						<div class="widget1 category-list" style="cursor:pointer">
+							<h4 class="widget-header">Add Items</h4>
+						</div>
+					</a>
 
 					<div class="widget1 category-list">
 						<h4 class="widget-header">History</h4>

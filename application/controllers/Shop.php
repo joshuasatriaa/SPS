@@ -7,4 +7,9 @@ class Shop extends CI_Controller {
 	{
 		$this->load->view('v_shop');
 	}
+
+	public function add_item()
+	{
+		$this->load->view('v_shop_add_item');
+	}
 }
