@@ -30,7 +30,7 @@ class Barang extends CI_Controller{
 		);
 		
 		$this->m_barang->insertTable('barang', $data);
-		redirect('barang');
+		redirect('Barang');
 	}
 		
 }
