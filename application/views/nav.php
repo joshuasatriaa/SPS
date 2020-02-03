@@ -23,7 +23,7 @@
 					<?php if($this->session->userdata('email') != null) {?>
 						<li class="nav-item">
 						
-							<div class="dropdown" >
+							<div class="dropdown" style="padding-left:30px;">
 								<button class="dropbtn">
 									<b>
 										<?php echo $this->session->userdata('nama') ?>
@@ -32,6 +32,7 @@
 								</button>
 								<div class="dropdown-content">
 									<a href="<?php echo base_url() ?>Edit_profile" class="nav-link">Profile</a>
+									<a href="<?php echo base_url() ?>Login/changepassword" class="nav-link">Change Password</a>
 									<a href="<?php echo base_url() ?>Login/logout" class="nav-link">Logout</a>    
 								</div>
 							</div>

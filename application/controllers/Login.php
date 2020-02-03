@@ -65,6 +65,29 @@ class Login extends CI_Controller{
 		redirect('Home');
 	}
 
+	function changepassword()
+	{
+		$this->load->view('v_password');
+	}
+
+	function changepassword1()
+	{
+		$id = $this->session->userdata('id_user');
+		$cekpassword = $this->m_login->cek_password($id)->row_array();
+
+		$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+		$cek1 = $this->encrypt->decode($cekpassword);
+		
+		if($cek1 == $password)
+		{
+			redirect('Home');
+		}
+		else
+		{
+			echo json_encode(['error'=>"Wrong password!"]);	
+		}
+	}
+
 }
 			
 ?>

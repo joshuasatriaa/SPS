@@ -142,6 +142,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<div class="category-sidebar">
+				<?php if($this->session->userdata('email') != null) {?>
 					<a href = "<?php echo base_url() ?>Barang">
 						<div class="widget1 category-list" style="cursor:pointer">
 							<h4 class="widget-header">Add Items</h4>
@@ -151,7 +152,7 @@
 					<div class="widget1 category-list">
 						<h4 class="widget-header">History</h4>
 					</div>
-
+				<?php } ?>
 <div class="widget1 filter">
 	<h4 class="widget-header">Show Produts</h4>
 	<select>
