@@ -30,7 +30,7 @@
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
 
   <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style2.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/type1/css/style3.css" rel="stylesheet">
 
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
@@ -65,41 +65,67 @@
           <div class="container">
 
             <!-- Sign Up start -->
-            <form action="<?php echo 'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate">
+            <!-- Sign up form -->
+            <section class="signup">
+              <div class="container1">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign Up</h2>
+                        
+                        <form action="<?php echo base_url().'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate">
 
-            <form action="<?php echo base_url().'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate">
+                          <fieldset>  
+                            <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
 
-                <h1>Sign Up</h1>
-                <fieldset>
-                    <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
+                            <div class="form-group">
+                              <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
+                              <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
+                            </div>
 
-                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
-                    <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
-
-                    <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>" placeholder="Email">
-                    <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
-            
-                    <input type="password" id="password" name="user_password" placeholder="Password">
-                    <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
-                     
-                    <label for="password">Open Time:</label>
-                    <input type="time" id="opentime" name="user_opentime" value="<?php echo set_value('user_opentime');?>">
-                    <?php echo form_error('user_opentime', '<small class="text-danger">', '</small>') ?>
-
-
-                    <label for="password">Close Time:</label>
-                    <input type="time" id="closetime" name="user_closetime" value="<?php echo set_value('user_closetime');?>">
-                    <?php echo form_error('user_closetime', '<small class="text-danger">', '</small>') ?>
-
-                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>" placeholder="Address">
-                    <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
-
-                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone NUmber">
-                    <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
+                            <div class="form-group">
+                              <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>" placeholder="Email">
+                              <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
+                            </div>
                     
-                </fieldset>
-                <button type="submit">Sign Up</button>
-            </form>
+                            <div class="form-group">
+                              <input type="password" id="password" name="user_password" placeholder="Password">
+                              <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="form-group">
+                              <p>Open Time:</p>
+                              <input type="time" id="opentime" name="user_opentime" value="<?php echo set_value('user_opentime');?>">
+                              <?php echo form_error('user_opentime', '<small class="text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="form-group">
+                              <p>Close Time:</p>
+                              <input type="time" id="closetime" name="user_closetime" value="<?php echo set_value('user_closetime');?>">
+                              <?php echo form_error('user_closetime', '<small class="text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="form-group">
+                              <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>" placeholder="Address">
+                              <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="form-group">
+                              <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone NUmber">
+                              <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
+                            </div>
+                      
+                          </fieldset>
+                          <div class="form-group form-button">
+                            <button type="submit" class="form-submit">Sign Up</button>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="signup-image">
+                      <figure><img src="<?php echo base_url() ?>assets/type1/images/signup4.png" ></figure>
+                    </div>
+                  </div>
+                </div>
+              </section>
             <!-- Sign Up end -->
            
           </div>
