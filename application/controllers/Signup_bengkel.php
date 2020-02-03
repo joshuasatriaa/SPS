@@ -59,8 +59,33 @@
 					'password' => md5($pass), 
 				);
 		
+				/* Upload Files */
+				$config['upload_path']          = './uploads/profile/bengkel';
+                $config['allowed_types']        = 'gif|jpg|jpeg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1300;
+                $config['max_height']           = 1024;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        
+                    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('upload', $error);
+                }
+                else
+                {
+                    $data = array('upload_data' => $this->upload->data());
+
+                    $this->load->view('success', $data);
+                }
+				
 				$this->m_user->insertTable('user', $data2);
-				redirect('Home');
+				redirect('Signup_bengkel/signUpSuccess');
 				
 				/*public function Editprofile()
 				{
@@ -79,16 +104,44 @@
 				}*/
 			}
 			
-			
-			
-			
-			
 		}
 
-		function awal()
+		public function awal()
 		{
 			$this->load->view('v_signup_pengguna1');
 		}
+
+		function signUpSuccess(){
+			$this->load->view('v_signupsuccess');
+		}
+
+		/* Upload Files */
+		public function upload_file()
+        {
+                $config['upload_path']          = './uploads/profile/bengkel';
+                $config['allowed_types']        = 'gif|jpg|jpeg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1300;
+                $config['max_height']           = 1024;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        
+                    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+
+                    $error = array('error' => $this->upload->display_errors());
+
+                    $this->load->view('upload', $error);
+                }
+                else
+                {
+                    $data = array('upload_data' => $this->upload->data());
+
+                    $this->load->view('success', $data);
+                }
+        }
 		
 }	
 ?>

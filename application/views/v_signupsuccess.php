@@ -92,7 +92,7 @@
           <div class="container">
           <div class="card text-center">
             <div class="card-body">
-                <h3 class="card-title">Login Successful!</h3>
+                <h3 class="card-title">Sign Up Successful!</h3>
                 <p class="card-text">Redirecting to homepage...</p>
             </div>
         </div>

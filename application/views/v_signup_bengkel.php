@@ -72,7 +72,7 @@
                     <div class="signup-form">
                         <h2 class="form-title">Sign Up</h2>
                         
-                        <form action="<?php echo base_url().'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate">
+                        <form action="<?php echo base_url().'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate" enctype=”multipart/form-data” accept-charset="utf-8">
 
                           <fieldset>  
                             <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
@@ -112,6 +112,11 @@
                             <div class="form-group">
                               <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone NUmber">
                               <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="form-group">
+                              <p> Profile Pictures </p>
+                              <input type="file" name="userfile" size="20" class=" mr-sm-2" />
                             </div>
                       
                           </fieldset>
