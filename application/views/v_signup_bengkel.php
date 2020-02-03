@@ -114,7 +114,7 @@
                             </div>
 
                             <div class="form-group">
-                              <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone NUmber">
+                              <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone Number">
                               <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                             </div>
 
@@ -122,6 +122,7 @@
                               <p> Profile Pictures </p>
                               <input type="file" name="userfile" size="20" class=" mr-sm-2" />
                             </div>
+                            <?php echo form_error('userfile', '<small class="text-danger">', '</small>') ?>
                       
                           </fieldset>
                           <div class="form-group form-button">
