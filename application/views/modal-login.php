@@ -6,11 +6,11 @@
 	<form>
       <h1 class="modal-title">Welcome!</h1>
       <div class="input-block">
-        <label for="email" class="input-label">Email</label>
+        <!--<label for="email" class="input-label">Email</label>-->
         <input type="email" name="email" id="email" placeholder="Email">
       </div>	
       <div class="input-block">
-        <label for="password" class="input-label">Password</label>
+        <!--<label for="password" class="input-label">Password</label>-->
         <input type="password" name="password" id="password" placeholder="Password">
       </div>
 	  <div class="alert alert-danger print-error-msg" style="display:none"></div>
