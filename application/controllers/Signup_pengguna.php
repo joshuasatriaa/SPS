@@ -22,7 +22,8 @@
             $this->form_validation->set_rules('user_birthdate', 'Date of Birth', 'required|trim');
             $this->form_validation->set_rules('user_address', 'Address', 'required|trim');
             $this->form_validation->set_rules('user_phonenumber', 'Telephone Number', 'required|trim|numeric');
-            $this->form_validation->set_rules('user_password', 'Password', 'required|trim|min_length[6]');
+			$this->form_validation->set_rules('user_password', 'Password', 'required|trim|min_length[6]|matches[user_password2]');
+			$this->form_validation->set_rules('user_password2', 'Confirm Password', 'required|trim|min_length[6]|matches[user_password]');
 
 			if($this->form_validation->run() == FALSE){
 				$data['count']=$this->m_signup_pengguna->tampilkanData()->num_rows();

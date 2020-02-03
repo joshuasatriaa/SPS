@@ -74,22 +74,26 @@
                         
                         <form action="<?php echo base_url().'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate" enctype=”multipart/form-data” accept-charset="utf-8">
 
-                          <fieldset>  
-                            <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
+                          <fieldset>
 
                             <div class="form-group">
-                              <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
+                              <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Workshop/Garage Name">
                               <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
                             </div>
 
                             <div class="form-group">
-                              <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>" placeholder="Email">
+                              <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>" placeholder="Workshop/Garage Email">
                               <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
                             </div>
                     
                             <div class="form-group">
                               <input type="password" id="password" name="user_password" placeholder="Password">
                               <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="form-group">
+                              <input type="password" id="password" name="user_password2" placeholder="Confirm Password">
+                              <?php echo form_error('user_password2', '<small class="text-danger">', '</small>') ?>
                             </div>
 
                             <div class="form-group">

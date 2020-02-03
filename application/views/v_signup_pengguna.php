@@ -91,6 +91,11 @@
                           </div>
 
                           <div class="form-group">
+                            <input type="password" id="password" name="user_password2" placeholder="Confirm Password" class=>
+                            <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
+                          </div>
+
+                          <div class="form-group">
                             <p> Choose Sex </p>
                             <select data-placeholder="Your Sex" class="standardSelect" tabindex="1"name="user_gender" id="gender">
                               <option value="" <?php echo set_select('user_gender','0', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Choose Sex</option>
