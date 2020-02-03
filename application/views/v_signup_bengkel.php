@@ -72,18 +72,15 @@
                     <div class="signup-form">
                         <h2 class="form-title">Sign Up</h2>
                         
-                        <form action="<?php echo base_url().'Signup_bengkel/insertData'?>" method="POST" novalidate="novalidate" enctype=”multipart/form-data” accept-charset="utf-8">
-
+                        <?php echo form_open_multipart(base_url().'Signup_bengkel/insertData');?>
                           <fieldset>  
-                            <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
-
                             <div class="form-group">
-                              <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
+                              <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Workshop/Garage Name">
                               <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
                             </div>
 
                             <div class="form-group">
-                              <input type="email" id="email" name="user_email" value="<?php echo set_value('email');?>" placeholder="Email">
+                              <input type="email" id="email" name="user_email" value="<?php echo set_value('user_email');?>" placeholder="Workshop/Garage Email">
                               <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
                             </div>
                     
@@ -115,17 +112,17 @@
                             </div>
 
                             <div class="form-group">
-                              <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone NUmber">
+                              <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone Number">
                               <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                             </div>
 
-                            <!--
+                            
                             <div class="form-group">
                               <p> Profile Pictures </p>
-                              <input type="file" name="userfile" size="20" class=" mr-sm-2" />
+                              <input type="file" name="userfile" size="20" class="mr-sm-2" />
                             </div>
--->
-                      
+                            <?php echo form_error('userfile', '<small class="text-danger">', '</small>') ?>
+                            <?php echo $error;?>
                           </fieldset>
                           <div class="form-group form-button">
                             <button type="submit" class="form-submit">Sign Up</button>

@@ -69,7 +69,7 @@
     
                     <a href = "<?php echo base_url()?>Signup_bengkel">
                         <div class="box one">
-                            <h1>Bengkel</h1>
+                            <h1>Workshop/Garage</h1>
                             <div class="poster p1">
                                 
                             </div>

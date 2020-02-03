@@ -8,8 +8,7 @@
 		}
 		
 		function index(){	
-			$data['count']=$this->m_user->tampilkanData()->num_rows();
-			$this->load->view('v_signup_bengkel',$data);
+			$this->load->view('v_signup_bengkel', array('error' => ''));
 			
 		}
 		 
@@ -29,10 +28,10 @@
 			}
 
 			if($this->form_validation->run() == FALSE){
-				$this->load->view('v_signup_bengkel');
+				$this->load->view('v_signup_bengkel', array('error' => ''));
 			}
 			else{
-				$count=$this->m_user->tampilkanData()->num_rows()+1;
+				$count=$this->m_signup_bengkel->tampilkanData()->num_rows()+1;
 
 				$id = 'BID-'.$count;
 				$nama = htmlspecialchars($this->input->post('user_name'), TRUE);
@@ -42,33 +41,44 @@
 				$email = htmlspecialchars($this->input->post('user_email'), TRUE);
 				$pass = htmlspecialchars($this->input->post('user_password'), TRUE);
 				$telp = htmlspecialchars($this->input->post('user_phonenumber'), TRUE);
-				$gambar = 'default.jpg';
+				$gambar = $this->upload_file();
 				
-				$data = array(
-					'id_bengkel' => $id,
-					'nama_bengkel' => $nama,
-					'jam_buka' => $jamBuka,
-					'jam_tutup' => $jamTutup,
-					'alamat' => $alamat,
-					'email' => $email,
-					'telepon' => $telp,
-					'gambar' => $gambar,
-					'user_add' => $id,
-					'status_delete' => "0"
-					);
+				if($gambar['error']){
+					$this->load->view('v_signup_bengkel', $gambar);
+				}else{
+					$gambarUpload = $this->upload->data();
+
+					$namaGambar = $gambarUpload['file_name'];
 					
-				$this->db->set('tanggal_registrasi', 'NOW()', FALSE);
-				$this->db->set('waktu_add', 'NOW()', FALSE);
-				$this->m_signup_bengkel->insertTable('bengkel', $data);
-	
-				$data2 = array(
-					'id_user' => $id,
-					'email' => $email,
-					'password' => md5($pass), 
-				);
+
+					$data = array(
+						'id_bengkel' => $id,
+						'nama_bengkel' => $nama,
+						'jam_buka' => $jamBuka,
+						'jam_tutup' => $jamTutup,
+						'alamat' => $alamat,
+						'email' => $email,
+						'telepon' => $telp,
+						'gambar' => $namaGambar,
+						'user_add' => $id,
+						'status_delete' => "0"
+						);
+						
+					$this->db->set('tanggal_registrasi', 'NOW()', FALSE);
+					$this->db->set('waktu_add', 'NOW()', FALSE);
+					$this->m_signup_bengkel->insertTable('bengkel', $data);
 		
-				$this->m_user->insertTable('user', $data2);
-				redirect('Upload');
+					$data2 = array(
+						'id_user' => $id,
+						'email' => $email,
+						'password' => md5($pass), 
+					);
+			
+					$this->m_user->insertTable('user', $data2);
+					redirect('Signup_bengkel/signUpSuccess');
+					
+				}
+				
 				
 				/*public function Editprofile()
 				{
@@ -97,6 +107,33 @@
 		function signUpSuccess(){
 			$this->load->view('v_signupsuccess');
 		}
+
+		public function upload_file()
+        {
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|jpeg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1300;
+                $config['max_height']           = 1024;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        
+                    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+
+                    $error = array('error' => $this->upload->display_errors());
+
+                    return $error;
+                }
+                else
+                {
+                    $data = array('upload_data' => $this->upload->data());
+
+                    return $data;
+                }
+        }
 		
 }	
 ?>
