@@ -5,9 +5,9 @@ class m_login extends CI_Model{
 		
 	}
 	
-	
-	
-	
-	
+	function cek_password($id_user)
+	{
+		return $this->db->query('SELECT password FROM user WHERE id_user="'.$id_user.'"');
+	}
 }
 ?>

@@ -7,6 +7,7 @@
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="refresh" content="2;url=<?php echo base_url()?>Home">
 
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
@@ -48,11 +49,37 @@
 
 <!-- Header Close -->
 
-
-<?php
-	include 'modal-login.php';
-?>
-
+<!-- Login Modal -->
+<div class="modal">
+  <div class="modal-container">
+    <div class="modal-left">
+      <h1 class="modal-title">Welcome!</h1>
+      <p class="modal-desc">Fanny pack hexagon food truck, street art waistcoat kitsch.</p>
+      <div class="input-block">
+        <label for="email" class="input-label">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email">
+      </div>
+      <div class="input-block">
+        <label for="password" class="input-label">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password">
+      </div>
+      <div class="modal-buttons">
+        <a href="" class="">Forgot your password?</a>
+        <button class="input-button">Login</button>
+      </div>
+      <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup">Sign up now</a></p>
+    </div>
+    <div class="modal-right">
+      <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="">
+    </div>
+    <button class="icon-button close-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
+</svg>
+      </button>
+  </div>
+  
+</div>
 
 <!--  Banner start -->
 <section class="slider-hero hero-slider  hero-style-1  ">
@@ -63,51 +90,13 @@
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
-
-            <!-- Sign Up start -->
-            <?php echo $this->session->flashdata('message'); ?>
-            <form action="<?php echo base_url().'Edit_profile/updateData'?>" method="POST" novalidate="novalidate">
-            <?php foreach($pengguna as $list) { ?>
-                <h1>Edit Profile</h1>
-                <fieldset>
-                    <input type="hidden" name="user_id" value="<?php echo $list->id_pengguna?>">
-
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="user_name" value="<?php echo $list->nama_pengguna ?>">
-                    <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
+          <div class="card text-center">
+            <div class="card-body">
+                <h3 class="card-title">Change Password Successful!</h3>
+                <p class="card-text">Redirecting to homepage...</p>
+            </div>
+        </div>
             
-                    <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email" value="<?php echo $list->email ?>">
-                    <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="gender">Gender:</label>
-                    <select data-placeholder="Your Gender" class="standardSelect" tabindex="1"name="user_gender" id="gender">
-                      <option value="1" <?php echo ($list->jenis_kelamin == 1 ? "selected" : "") ?>>Laki - Laki</option>
-                      <option value="2" <?php echo ($list->jenis_kelamin == 2 ? "selected" : "") ?>>Perempuan</option>
-                    </select>
-                    <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
-                     
-                    <label for="birthdate">Birth Date:</label>
-                    <input type="date" id="birthdate" name="user_birthdate" value="<?php echo $list->tanggal_lahir ?>">
-                    <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="birthplace">Birth Place:</label>
-                    <input type="text" id="birthplace" name="user_birthplace" value="<?php echo $list->tempat_lahir ?>">
-                    <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="user_address" value="<?php echo $list->alamat ?>">
-                    <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="phonenumber">Phone Number:</label>
-                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo $list->telepon ?>">
-                    <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
-                    
-                </fieldset>
-                <button type="submit">Submit</button>
-            <?php } ?>
-            </form>
-            <!-- Sign Up end -->
            
           </div>
         </div> 

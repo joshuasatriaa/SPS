@@ -66,7 +66,7 @@
 				);
 		
 				$this->m_user->insertTable('user', $data2);
-				redirect('Signup_pengguna/loginsuccess');
+				redirect('Signup_pengguna/signUpSuccess');
 				
 				/*public function Editprofile()
 				{
@@ -96,8 +96,8 @@
 			$this->load->view('v_signup_pengguna1');
 		}
 
-		function loginsuccess(){
-			$this->load->view('v_loginsuccess');
+		function signUpSuccess(){
+			$this->load->view('v_signupsuccess');
 		}
 		
 }	

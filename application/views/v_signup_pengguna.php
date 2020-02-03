@@ -30,7 +30,7 @@
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
 
   <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style2.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/type1/css/style3.css" rel="stylesheet">
 
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
@@ -48,37 +48,10 @@
 
 <!-- Header Close -->
 
-<!-- Login Modal -->
-<div class="modal">
-  <div class="modal-container">
-    <div class="modal-left">
-      <h1 class="modal-title">Welcome!</h1>
-      <p class="modal-desc">Fanny pack hexagon food truck, street art waistcoat kitsch.</p>
-      <div class="input-block">
-        <label for="email" class="input-label">Email</label>
-        <input type="email" name="email" id="email" placeholder="Email">
-      </div>
-      <div class="input-block">
-        <label for="password" class="input-label">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
-      </div>
-      <div class="modal-buttons">
-        <a href="" class="">Forgot your password?</a>
-        <button class="input-button">Login</button>
-      </div>
-      <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup">Sign up now</a></p>
-    </div>
-    <div class="modal-right">
-      <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="">
-    </div>
-    <button class="icon-button close-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
-</svg>
-      </button>
-  </div>
-  
-</div>
+<?php
+	include 'modal-login.php';
+?>
+
 
 <!--  Banner start -->
 <section class="slider-hero hero-slider  hero-style-1  ">
@@ -89,52 +62,76 @@
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
+            
 
             <!-- Sign Up start -->
-            <form action="<?php echo base_url().'Signup_pengguna/insertData'?>" method="POST" novalidate="novalidate">
-                <h1>Sign Up</h1>
-                <fieldset>
-                    <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>">
-                    <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
+            <!-- Sign up form -->
+            <section class="signup">
+              <div class="container1">
+                <div class="signup-content">
+                    <div class="signup-form">
+                      <h2 class="form-title">Sign Up</h2>  
+                        <form action="<?php echo base_url().'Signup_pengguna/insertData'?>" method="POST" novalidate="novalidate">
+                
+                        <fieldset>
+                          <div class="form-group">
+                            <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
+                            <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
+                            <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
+                            </div>
 
-                    <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email" value="<?php echo set_value('user_email');?>">
-                    <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
+                          <div class="form-group">
+                            <input type="email" id="email" name="user_email" value="<?php echo set_value('user_email');?>" placeholder="Email">
+                            <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
+                          </div>
+
+                          <div class="form-group">
+                            <input type="password" id="password" name="user_password" placeholder="Password" class=>
+                            <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
+                          </div>
+
+                          <div class="form-group">
+                            <p> Choose Sex </p>
+                            <select data-placeholder="Your Sex" class="standardSelect" tabindex="1"name="user_gender" id="gender">
+                              <option value="" <?php echo set_select('user_gender','0', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Choose Sex</option>
+                              <option value="1" <?php echo set_select('user_gender','1', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Male</option>
+                              <option value="2" <?php echo set_select('user_gender','2', ( !empty($gender) && $gender == "2" ? TRUE : FALSE )); ?>>Female</option>
+                            </select>
+                            <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
+                          </div>
+
+                          <div class="form-group">  
+                            <p>Birth Date:</p>
+                            <input type="date" id="birthdate" name="user_birthdate" value="<?php echo set_value('user_birthdate');?>">
+                            <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
+                          </div>
+
+                          <div class="form-group">
+                            <input type="text" id="birthplace" name="user_birthplace" value="<?php echo set_value('user_birthplace');?>" placeholder="Birth Place">
+                            <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
+                          </div>
+
+                          <div class="form-group">
+                            <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>" placeholder="Address">
+                            <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
+                          </div>
+
+                          <div class="form-group">
+                            <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone Number">
+                            <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
+                          </div>
+                            
+                        </fieldset>
+                        <button type="submit" class="form-submit">Sign Up</button>
+                      </form>
+                      </div>
+                      <div class="signup-image">
+                      <figure><img src="<?php echo base_url() ?>assets/type1/images/signup4.png" ></figure>
+                    </div>
+                  </div>
+                </div>
+              </section>
             
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="user_password">
-                    <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="gender">Sex:</label>
-                    <select data-placeholder="Your Sex" class="standardSelect" tabindex="1"name="user_gender" id="gender">
-                      <option value="" <?php echo set_select('user_gender','0', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Choose Sex</option>
-                      <option value="1" <?php echo set_select('user_gender','1', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Male</option>
-                      <option value="2" <?php echo set_select('user_gender','2', ( !empty($gender) && $gender == "2" ? TRUE : FALSE )); ?>>Female</option>
-                    </select>
-                    <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
-                     
-                    <label for="password">Birth Date:</label>
-                    <input type="date" id="birthdate" name="user_birthdate" value="<?php echo set_value('user_birthdate');?>">
-                    <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
-
-
-                    <label for="password">Birth Place:</label>
-                    <input type="text" id="birthplace" name="user_birthplace" value="<?php echo set_value('user_birthplace');?>">
-                    <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="password">Address:</label>
-                    <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>">
-                    <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
-
-                    <label for="password">Phone Number:</label>
-                    <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>">
-                    <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
-                    
-                </fieldset>
-                <button type="submit">Sign Up</button>
-            </form>
             <!-- Sign Up end -->
            
           </div>
