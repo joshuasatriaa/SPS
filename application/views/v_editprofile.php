@@ -65,37 +65,43 @@
           <div class="container">
 
             <!-- Sign Up start -->
-
+            <?php echo $this->session->flashdata('message'); ?>
             <form action="<?php echo base_url().'Edit_profile/updateData'?>" method="POST" novalidate="novalidate">
             <?php foreach($pengguna as $list) { ?>
                 <h1>Edit Profile</h1>
                 <fieldset>
-                    <label for="id"> ID:</label>
-                    <input type="text" id="id" name="user_id" value="<?php echo $list->id_pengguna ?>" readonly>
+                    <input type="hidden" name="user_id" value="<?php echo $list->id_pengguna?>">
 
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="user_name" value="<?php echo $list->nama_pengguna ?>">
+                    <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
             
                     <label for="mail">Email:</label>
-                    <input type="email" id="email" name="user_email" value="<?php echo $list->email ?>" readonly>
+                    <input type="email" id="email" name="user_email" value="<?php echo $list->email ?>">
+                    <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
 
                     <label for="gender">Gender:</label>
                     <select data-placeholder="Your Gender" class="standardSelect" tabindex="1"name="user_gender" id="gender">
                       <option value="1" <?php echo ($list->jenis_kelamin == 1 ? "selected" : "") ?>>Laki - Laki</option>
                       <option value="2" <?php echo ($list->jenis_kelamin == 2 ? "selected" : "") ?>>Perempuan</option>
                     </select>
+                    <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
                      
                     <label for="birthdate">Birth Date:</label>
                     <input type="date" id="birthdate" name="user_birthdate" value="<?php echo $list->tanggal_lahir ?>">
+                    <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
 
                     <label for="birthplace">Birth Place:</label>
                     <input type="text" id="birthplace" name="user_birthplace" value="<?php echo $list->tempat_lahir ?>">
+                    <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
 
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="user_address" value="<?php echo $list->alamat ?>">
+                    <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
 
                     <label for="phonenumber">Phone Number:</label>
                     <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo $list->telepon ?>">
+                    <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                     
                 </fieldset>
                 <button type="submit">Submit</button>

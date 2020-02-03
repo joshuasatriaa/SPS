@@ -2,9 +2,10 @@
     class Edit_profile extends CI_Controller
     {
 		function __construct(){
-		parent::__construct();		
-		$this->load->model('m_signup_pengguna');
-		$this->load->model('m_user');
+            parent::__construct();		
+            $this->load->model('m_signup_pengguna');
+            $this->load->model('m_user');
+            $this->load->library('form_validation');
 		}
 		
         function index()
@@ -15,9 +16,6 @@
             $this->load->view('v_editprofile',$data);
         }
         function updateData(){
-            
-            /*$this->load->library('form_validation');
-            
             $this->form_validation->set_rules('user_name', 'Name', 'required|trim');
             $this->form_validation->set_rules('user_gender', 'Sex', 'required|trim');
             $this->form_validation->set_rules('user_email', 'Email', 'required|trim|valid_email');
@@ -27,7 +25,10 @@
             $this->form_validation->set_rules('user_phonenumber', 'Telephone Number', 'required|trim|numeric');
     
             if($this->form_validation->run() == false){
-                echo validation_errors();
+                $data['user'] = $this->m_user->tampilkanData()->result();
+                $where1 = $this->session->userdata('id_user');
+                $data['pengguna'] = $this->m_signup_pengguna->tampilkanRecordProfile($where1)->result();
+                $this->load->view('v_editprofile',$data);
             }
             else{
                 $data_pengguna = array(
@@ -39,28 +40,22 @@
                     'alamat' => htmlspecialchars($this->input->post('user_address')), 
                     'telepon' => htmlspecialchars($this->input->post('user_phonenumber')), 
                     'user_edit' => $this->session->userdata('id_user'),  
-                );*/
-                $namapengguna = $this->input->post('user_name');
-                $jeniskelamin = $this->input->post('user_gender');
-                $tanggallahir = $this->input->post('user_birthdate');
-                $tempatlahir = $this->input->post('user_birthplace');
-                $alamat = $this->input->post('user_address');
-                $telepon = $this->input->post('user_phonenumber');
-                $useredit = $this->input->post('user_name');
-                $data=array(
-                    'nama_pengguna' => $namapengguna,
-                    'jenis_kelamin' => $jeniskelamin,
-                    'tanggal_lahir' => $tanggallahir,
-                    'tempat_lahir' => $tempatlahir,
-                    'alamat' => $alamat,
-                    'telepon' => $telepon,
-                    'user_edit' => $useredit
                 );
                 $where = array(
-                    'id_pengguna' => $this->input->post('id_pengguna'),
+                    'id_pengguna' => $this->session->userdata('id_user'),
                 );
-                $this->m_signup_pengguna->updateRecord($where,$data,'pengguna');
-                redirect('Edit_profile');
+                $this->db->set('waktu_edit', 'NOW()', FALSE);
+                $this->m_signup_pengguna->updateRecord($where,$data_pengguna,'pengguna');
+                
+                $password = $this->session->userdata('password');
+                
+                $this->session->set_userdata('nama', htmlspecialchars($this->input->post('user_name')));
+                $this->session->set_userdata('email', htmlspecialchars($this->input->post('user_email')));
+                $this->session->set_userdata('password', $password);
+                
+                $this->session->set_flashdata('message', '<div class="alert alert-success text-center p-t-25 p-b-50" role="alert">Your profile have been changed!</div>');
+                redirect('Edit_profile/index');
+            }
     }
 }
     
