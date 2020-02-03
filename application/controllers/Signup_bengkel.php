@@ -8,9 +8,9 @@
 		}
 		
 		function index(){	
-			$data['count']=$this->m_user->tampilkanData()->num_rows();
+			
 			$this->load->view('v_signup_bengkel',$data);
-			}
+		}
 		 
 		function insertData(){
 			
@@ -18,7 +18,8 @@
             $this->form_validation->set_rules('user_email', 'Email', 'required|trim|valid_email|is_unique[user.email]');
             $this->form_validation->set_rules('user_address', 'Address', 'required|trim');
             $this->form_validation->set_rules('user_phonenumber', 'Telephone Number', 'required|trim|numeric');
-            $this->form_validation->set_rules('user_password', 'Password', 'required|trim|min_length[6]');
+			$this->form_validation->set_rules('user_password', 'Password', 'required|trim|min_length[6]|matches[user_password2]');
+			$this->form_validation->set_rules('user_password2', 'Confirm Password', 'required|trim|min_length[6]|matches[user_password]');
             $this->form_validation->set_rules('user_opentime', 'Open Time', 'required|trim');
             $this->form_validation->set_rules('user_closetime', 'Close Time', 'required|trim');
 
@@ -26,7 +27,9 @@
 				echo validation_errors();
 			}
 			else{
-				$id = htmlspecialchars($this->input->post('user_id'), TRUE);
+				$count=$this->m_user->tampilkanData()->num_rows()+1;
+
+				$id = 'BID-'.$count;
 				$nama = htmlspecialchars($this->input->post('user_name'), TRUE);
 				$jamBuka = htmlspecialchars($this->input->post('user_opentime'), TRUE);
 				$jamTutup = htmlspecialchars($this->input->post('user_closetime'), TRUE);
