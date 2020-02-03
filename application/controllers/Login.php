@@ -76,9 +76,9 @@ class Login extends CI_Controller{
 		$cekpassword = $this->m_login->cek_password($id)->row_array();
 
 		$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-		$cek1 = $this->encrypt->decode($cekpassword);
 		
-		if($cek1 == $password)
+		
+		if($cekpassword == $password)
 		{
 			redirect('Home');
 		}
