@@ -93,6 +93,11 @@
                             </div>
 
                             <div class="form-group">
+                              <input type="password" id="password" name="user_password2" placeholder="Confirm Password">
+                              <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
+                            </div>
+
+                            <div class="form-group">
                               <p>Open Time:</p>
                               <input type="time" id="opentime" name="user_opentime" value="<?php echo set_value('user_opentime');?>">
                               <?php echo form_error('user_opentime', '<small class="text-danger">', '</small>') ?>

@@ -8,7 +8,7 @@
 		}
 		
 		function index(){	
-			$data['count']=$this->m_signup_pengguna->tampilkanData()->num_rows();
+			$data['count']=$this->m_user->tampilkanData()->num_rows();
 			$data['gender'] = $this->input->get('user_gender');
 			$this->load->view('v_signup_pengguna',$data);
 		}
@@ -67,7 +67,7 @@
 				);
 		
 				$this->m_user->insertTable('user', $data2);
-				redirect('Signup_pengguna/signUpSuccess');
+				redirect('Upload');
 				
 				/*public function Editprofile()
 				{
@@ -85,10 +85,6 @@
 					
 				}*/
 			}
-			
-			
-			
-			
 			
 		}
 

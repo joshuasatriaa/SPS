@@ -8,8 +8,9 @@
 		}
 		
 		function index(){	
+			$data['count']=$this->m_user->tampilkanData()->num_rows();
+			$this->load->view('v_signup_bengkel',$data);
 			
-			$this->load->view('v_signup_bengkel');
 		}
 		 
 		function insertData(){
