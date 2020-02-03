@@ -17,8 +17,8 @@
 
         public function upload_file()
         {
-                $config['upload_path']          = './uploads/';
-                $config['allowed_types']        = 'gif|jpg|jpeg|png|pdf|doc';
+                $config['upload_path']          = './uploads/profile/bengkel';
+                $config['allowed_types']        = 'gif|jpg|jpeg|png';
                 $config['max_size']             = 1000;
                 $config['max_width']            = 1300;
                 $config['max_height']           = 1024;

@@ -114,10 +114,12 @@
                               <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
                             </div>
 
+                            <!--
                             <div class="form-group">
                               <p> Profile Pictures </p>
                               <input type="file" name="userfile" size="20" class=" mr-sm-2" />
                             </div>
+-->
                       
                           </fieldset>
                           <div class="form-group form-button">
