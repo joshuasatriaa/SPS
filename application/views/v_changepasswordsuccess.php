@@ -7,6 +7,7 @@
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="refresh" content="2;url=<?php echo base_url()?>Home">
 
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
@@ -30,7 +31,7 @@
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
 
   <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style3.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/type1/css/style2.css" rel="stylesheet">
 
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
@@ -48,11 +49,37 @@
 
 <!-- Header Close -->
 
-
-<?php
-	include 'modal-login.php';
-?>
-
+<!-- Login Modal -->
+<div class="modal">
+  <div class="modal-container">
+    <div class="modal-left">
+      <h1 class="modal-title">Welcome!</h1>
+      <p class="modal-desc">Fanny pack hexagon food truck, street art waistcoat kitsch.</p>
+      <div class="input-block">
+        <label for="email" class="input-label">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email">
+      </div>
+      <div class="input-block">
+        <label for="password" class="input-label">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password">
+      </div>
+      <div class="modal-buttons">
+        <a href="" class="">Forgot your password?</a>
+        <button class="input-button">Login</button>
+      </div>
+      <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup">Sign up now</a></p>
+    </div>
+    <div class="modal-right">
+      <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="">
+    </div>
+    <button class="icon-button close-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
+</svg>
+      </button>
+  </div>
+  
+</div>
 
 <!--  Banner start -->
 <section class="slider-hero hero-slider  hero-style-1  ">
@@ -60,56 +87,16 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home6.jpeg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
-
-          <!-- Sign up form -->
-          <section class="signup">
-            <div class="container1">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Change Password</h2>
-                        <form action="<?php echo base_url().'Login/changepassword1'?>" method="POST" class="register-form" id="register-form">
-                            
-                            <div class="form-group">
-                                <p>Current Password</p>
-                                <input type="password" name="password1" placeholder="Current Password"/>
-                                <?php echo form_error('password1', '<small class="text-danger">', '</small>') ?>
-                                <?php echo "<small class='text-danger'>".$label."</small>"; ?>
-                            </div>
-                            <div class="form-group">
-                                <p>New Password</p>
-                                <input type="password" name="password2" placeholder="New Password"/>
-                                <?php echo form_error('password2', '<small class="text-danger">', '</small>') ?>
-                            </div>
-                            <div class="form-group">
-                                <p>Confirm Password</p>
-                                <input type="password" name="password3" placeholder="Confirm Password"/>
-                                <?php echo form_error('password3', '<small class="text-danger">', '</small>') ?>
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" name="id_penjual" placeholder="Seller ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
-                            </div>
-							              <!--
-                            <div class="form-group">
-                                <p>Gambar</p>
-                                <input type="text" id="gambar" placeholder="gambar"/>
-                            </div>
-                            -->
-							              
-                            <div class="form-group form-button">
-                                <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Add </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="<?php echo base_url() ?>assets/type1/images/password.png" ></figure>
-
-                    </div>
-                </div>
+          <div class="card text-center">
+            <div class="card-body">
+                <h3 class="card-title">Change Password Successful!</h3>
+                <p class="card-text">Redirecting to homepage...</p>
             </div>
-        </section>
+        </div>
+            
            
           </div>
         </div> 

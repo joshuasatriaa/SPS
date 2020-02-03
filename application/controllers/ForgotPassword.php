@@ -88,11 +88,11 @@ class ForgotPassword extends CI_Controller
          
            
             if($this->email->send()){
-                echo "berhasil";
+                //echo "berhasil";
             }
             else {
-               echo "error";
-               echo $this->email->print_debugger();
+               //echo "error";
+               //echo $this->email->print_debugger();
             }
         }
         

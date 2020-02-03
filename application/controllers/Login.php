@@ -67,25 +67,51 @@ class Login extends CI_Controller{
 
 	function changepassword()
 	{
-		$this->load->view('v_password');
+		$data['label'] = "";
+		$this->load->view('v_password', $data);
 	}
 
 	function changepassword1()
 	{
-		$id = $this->session->userdata('id_user');
-		$cekpassword = $this->m_login->cek_password($id)->row_array();
-
-		$password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-		$cek1 = $this->encrypt->decode($cekpassword);
+		$this->form_validation->set_rules('password1', 'Current Password', 'required|trim');
+        $this->form_validation->set_rules('password2', 'New Password', 'required|trim|matches[password3]|min_length[6]');
+        $this->form_validation->set_rules('password3', 'Confirm New Password', 'required|trim|matches[password2]|min_length[6]');
 		
-		if($cek1 == $password)
-		{
-			redirect('Home');
+		$where = array(
+			'id_user' => $this->session->userdata('id_user'),
+		);
+		$cekpassword = $this->m_login->cek_password($where['id_user'])->row_array();
+
+		$password = md5($this->input->post('password1'));
+		
+
+		if($this->form_validation->run() == false){
+			$data['label'] = "";
+			$this->load->view('v_password', $data);
 		}
-		else
-		{
-			echo json_encode(['error'=>"Wrong password!"]);	
+		else{
+			if($password == $cekpassword['password'])
+			{
+				
+				$datapost = array(
+					'password' => md5($this->input->post('password2')),
+				);
+				
+				$this->load->model('m_user');
+				$this->m_user->updateRecord($where, $datapost, 'user');
+				redirect('Login/changePasswordSuccess');
+			}
+			else
+			{
+				$data['label'] = "Your Current Password is wrong";
+				$this->load->view('v_password', $data);
+			}
 		}
+		
+	}
+
+	function changePasswordSuccess(){
+		$this->load->view('v_changepasswordsuccess');
 	}
 
 }
