@@ -17,6 +17,8 @@
 					</li>
 					<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop">Shop</a></li>
+					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Service">Service</a></li>
+					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Booking">Booking</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
                     <li class="nav-item"><a class="nav-link" href="gallery.html">Contact</a></li>
 

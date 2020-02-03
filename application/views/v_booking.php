@@ -48,6 +48,7 @@
 
 <!-- Header Close -->
 
+
 <?php
 	include 'modal-login.php';
 ?>
@@ -59,85 +60,52 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home6.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
-            
 
-            <!-- Sign Up start -->
-            <!-- Sign up form -->
-            <section class="signup">
-              <div class="container1">
+          <!-- Sign up form -->
+          <section class="signup">
+            <div class="container1">
                 <div class="signup-content">
                     <div class="signup-form">
-                      <h2 class="form-title">Sign Up</h2>  
-                        <form action="<?php echo base_url().'Signup_pengguna/insertData'?>" method="POST" novalidate="novalidate">
-                
-                        <fieldset>
-                          <div class="form-group">
-                            <input type="hidden" id="id" name="user_id" value="USER-<?php echo $count+1 ?>" readonly>
-                            <input type="text" id="name" name="user_name" value="<?php echo set_value('user_name');?>" placeholder="Name">
-                            <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>
+                        <h2 class="form-title">Booking Service</h2>
+                        <form action="<?php echo base_url().'Booking/insertData'?>" method="POST" class="register-form" id="register-form">
+                            <div class="form-group">
+							                <input type="hidden" id="id_booking" name="id_booking" value="BOOK-<?php echo $count+1 ?>" readonly>
                             </div>
-
-                          <div class="form-group">
-                            <input type="email" id="email" name="user_email" value="<?php echo set_value('user_email');?>" placeholder="Email">
-                            <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
-                          </div>
-
-                          <div class="form-group">
-                            <input type="password" id="password" name="user_password" placeholder="Password" class=>
-                            <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
-                          </div>
-
-                          <div class="form-group">
-                            <input type="password" id="password" name="user_password2" placeholder="Confirm Password" class=>
-                            <?php echo form_error('user_password', '<small class="text-danger">', '</small>') ?>
-                          </div>
-
-                          <div class="form-group">
-                            <p> Choose Sex </p>
-                            <select data-placeholder="Your Sex" class="standardSelect" tabindex="1"name="user_gender" id="gender">
-                              <option value="" <?php echo set_select('user_gender','0', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Choose Sex</option>
-                              <option value="1" <?php echo set_select('user_gender','1', ( !empty($gender) && $gender == "1" ? TRUE : FALSE )); ?>>Male</option>
-                              <option value="2" <?php echo set_select('user_gender','2', ( !empty($gender) && $gender == "2" ? TRUE : FALSE )); ?>>Female</option>
-                            </select>
-                            <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
-                          </div>
-
-                          <div class="form-group">  
-                            <p>Birth Date:</p>
-                            <input type="date" id="birthdate" name="user_birthdate" value="<?php echo set_value('user_birthdate');?>">
-                            <?php echo form_error('user_birthdate', '<small class="text-danger">', '</small>') ?>
-                          </div>
-
-                          <div class="form-group">
-                            <input type="text" id="birthplace" name="user_birthplace" value="<?php echo set_value('user_birthplace');?>" placeholder="Birth Place">
-                            <?php echo form_error('user_birthplace', '<small class="text-danger">', '</small>') ?>
-                          </div>
-
-                          <div class="form-group">
-                            <input type="text" id="address" name="user_address" value="<?php echo set_value('user_address');?>" placeholder="Address">
-                            <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
-                          </div>
-
-                          <div class="form-group">
-                            <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo set_value('user_phonenumber');?>" placeholder="Phone Number">
-                            <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
-                          </div>
-                            
-                        </fieldset>
-                        <button type="submit" class="form-submit">Sign Up</button>
-                      </form>
-                      </div>
-                      <div class="signup-image">
-                      <figure><img src="<?php echo base_url() ?>assets/type1/images/signup4.png" ></figure>
+                            <div class="form-group">
+                            <label for="servoce" class="control-label mb-1">Service</label><br>
+                             <select data-placeholder="Choose Service" class="standardSelect form-control" tabindex="1" name="service" id="service">
+                                <?php foreach($service as $a){?>
+                                                        <option value="<?php echo $a->id_service?>"><?php echo $a->nama_service?></option>
+                                                    <?php }?>
+                                </select>
+                             </div>
+                             <div class="form-group">
+                                <input type="hidden" name="id_pengguna" placeholder="User ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
+                            </div>
+                            <!-- <div class="form-group">
+                                <p>Gambar</p>
+                                <input type="text" id="gambar" placeholder="gambar"/>
+                            </div>
+                            -->
+							              <div class="form-group">
+                                <p>Booking Time</p>
+                                <input type="datetime-local" name="waktu_booking" placeholder=""/>
+                            </div>
+                            <div class="form-group form-button">
+                                <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Add </button>
+                            </div>
+                        </form>
                     </div>
-                  </div>
+                    <div class="signup-image">
+                        <figure><img src="<?php echo base_url() ?>assets/type1/images/signup-image.jpg" ></figure>
+
+                    </div>
                 </div>
-              </section>
-            
-            <!-- Sign Up end -->
+            </div>
+        </section>
            
           </div>
         </div> 
