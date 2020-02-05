@@ -12,7 +12,7 @@ class Login extends CI_Controller{
 		
 	function index()
 	{
-		$this->form_validation->set_rules('email', 'Email', 'required|trim');
+		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
 		if($this->form_validation->run() == false){
@@ -26,7 +26,7 @@ class Login extends CI_Controller{
 				'email' => $email,
 				'password' => md5($password),
 			);
-			$cek = $this->m_login->cek_login('user', $where)->row_array();
+			$cek = $this->m_login->cek_login('user', $email)->row_array();
 			
 			if($cek){
 
@@ -34,17 +34,32 @@ class Login extends CI_Controller{
 				$where1 = array(
 					'email' => $email
 					);
-				$ceknama = $this->m_login->cek_login("pengguna", $where1)->row_array();
+				$text = substr($cek['id_user'], 0, 4);
+				
+				if($text == "USER"){
 
-				//session
-				$data_session = array(
-					'nama' => $ceknama['nama_pengguna'],
-					'id_user' => $cek['id_user'],
-					'email' => $cek['email'],
-					'password' => $cek['password']
-				);
-				$this->session->set_userdata($data_session);
-				echo json_encode(['success'=>"berhasil login"]);
+					//session
+					$data_session = array(
+						'nama' => $cek['nama_pengguna'],
+						'id_user' => $cek['id_user'],
+						'email' => $cek['email'],
+						'password' => $cek['password']
+					);
+					$this->session->set_userdata($data_session);
+					echo json_encode(['success'=>"berhasil login"]);
+				}
+				else{
+					//session
+					$data_session = array(
+						'nama' => $cek['nama_bengkel'],
+						'id_user' => $cek['id_user'],
+						'email' => $cek['email'],
+						'password' => $cek['password']
+					);
+					$this->session->set_userdata($data_session);
+					echo json_encode(['success'=>"berhasil login"]);
+				}
+				
 			}else{
 				$where2 = array(
 					'email' => $email,
