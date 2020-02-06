@@ -1,6 +1,6 @@
 <!-- Login Modal -->
 
-<div class="modal" id>
+<div class="modal" id="loginModal">
   <div class="modal-container">
     <div class="modal-left">
 	<form>
@@ -31,4 +31,30 @@
       </button>
   </div>
   
+</div>
+
+
+<!-- Modal Profile -->
+<div class="modal1 fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true" style="z-index:100;position:absolute;top:20%;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <center>
+		  <a href="<?php echo base_url() ?>Edit_profile" class="btn btn-main mr-3" data-swiper-parallax="500">Edit Profile</a>
+	  </center><br>
+	  <center>
+		  <a href="<?php echo base_url() ?>Login/changepassword" class="btn btn-main mr-3" data-swiper-parallax="500">Change Password</a>
+	  </center><br>
+	  <center>
+		  <a href="<?php echo base_url() ?>Login/logout" class="btn btn-main mr-3" data-swiper-parallax="500">Log Out</a>
+	  </center>
+      </div>
+      
+    </div>
+  </div>
 </div>

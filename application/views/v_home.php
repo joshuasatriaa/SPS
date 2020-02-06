@@ -50,7 +50,6 @@
 	include 'modal-login.php';
 ?>
 
-
 <!--  Banner start -->
 <section class="slider-hero hero-slider  hero-style-1  ">
   <div class="swiper-container swiper-container-horizontal">
@@ -426,7 +425,6 @@
 		</div>
 	</div>
 </section>
-
 
 <!-- Slider main container -->
 <section class="instgram position-relative">
