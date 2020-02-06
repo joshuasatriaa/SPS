@@ -28,7 +28,7 @@
 
   <!-- Shop Stylesheet -->
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="<?php echo base_url()?>assets/type2/plugins/bootstrap/css/bootstrap.min.css">
+  <!--<link rel="stylesheet" href="<?php echo base_url()?>assets/type2/plugins/bootstrap/css/bootstrap.min.css">-->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type2/plugins/bootstrap/css/bootstrap-slider.css">
   <!-- Font Awesome -->
   <link href="<?php echo base_url()?>assets/type2/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -44,9 +44,6 @@
 
   <!-- Login Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
-
-  <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style2.css" rel="stylesheet">
 
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
