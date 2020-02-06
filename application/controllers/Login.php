@@ -42,6 +42,18 @@ class Login extends CI_Controller{
 						'nama' 	=> $cek['nama_pengguna'],
 						'id_user' => $cek['id_user'],
 						'email' => $email,
+						'tipe_user' => 'USER'
+					);
+					$this->session->set_userdata($data_session);
+					echo json_encode(['success'=>"berhasil login"]);
+				}
+				else if($text == "ADMN"){
+					//session
+					$data_session = array(
+						'nama' => $cek['nama_admin'],
+						'id_user' => $cek['id_user'],
+						'email' => $email,
+						'tipe_user' => 'ADMN'
 					);
 					$this->session->set_userdata($data_session);
 					echo json_encode(['success'=>"berhasil login"]);
@@ -52,6 +64,7 @@ class Login extends CI_Controller{
 						'nama' => $cek['nama_bengkel'],
 						'id_user' => $cek['id_user'],
 						'email' => $email,
+						'tipe_user' => 'BID'
 					);
 					$this->session->set_userdata($data_session);
 					echo json_encode(['success'=>"berhasil login"]);
