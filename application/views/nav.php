@@ -19,28 +19,22 @@
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop">Shop</a></li>
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Service">Service</a></li>
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Booking">Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Contact</a></li>
+					<li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
+					<!--
+					<li class="nav-item">
+						<a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+							<span class="ho1">nama</span>
+						</a>
+					</li>
+					-->
+                    
 
 					<?php if($this->session->userdata('email') != null) {?>
 						<li class="nav-item">
-						
-							<div class="dropdown" style="padding-left:30px;">
-								<button class="dropbtn">
-									<b>
-										<?php echo $this->session->userdata('nama') ?>
-										<i class="fa fa-caret-down"></i>
-									</b>
-								</button>
-								<div class="dropdown-content">
-									<a href="<?php echo base_url() ?>Edit_profile" class="nav-link">Profile</a>
-									<a href="<?php echo base_url() ?>Login/changepassword" class="nav-link">Change Password</a>
-									<a href="<?php echo base_url() ?>Login/logout" class="nav-link">Logout</a>    
-								</div>
-							</div>
-						
+							<a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+								<span class="ho1"> <?php echo $this->session->userdata('nama') ?> </span>
+							</a>
 						</li>
-						
 					<?php }else{ ?>
 						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
 					<?php } ?>
