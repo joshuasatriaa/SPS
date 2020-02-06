@@ -599,11 +599,9 @@
 	$(document).ready(function() {
 	    $(".btn-submit").click(function(e){
 	    	e.preventDefault();
-
-	    	var _token = $("input[name='_token']").val();
 	    	
 	    	var email = $("input[name='email']").val();
-	    	var pass = $("input[name='password']").val();
+	    	var password = $("input[name='password']").val();
 	    	
 
 
@@ -611,12 +609,13 @@
 	            url: "<?php echo base_url() ?>Login",
 	            type:'POST',
 	            dataType: "json",
-	            data: {email:email, password:pass},
+	            data: {email:email, password:password},
 	            success: function(data) {
 					
 	                if($.isEmptyObject(data.error)){
 	                	$(".print-error-msg").css('display','none');
 						window.location.reload(true);
+						
 	                }else{
 						$(".print-error-msg").css('display','block');
 	                	$(".print-error-msg").html(data.error);

@@ -21,29 +21,27 @@ class Login extends CI_Controller{
 			
 		}else{
 			$email = htmlspecialchars($this->input->post('email'));
-			$password =htmlspecialchars($this->input->post('password'));
-			$where = array(
-				'email' => $email,
-				'password' => md5($password),
-			);
-			$cek = $this->m_login->cek_login('user', $email)->row_array();
+			$password = htmlspecialchars($this->input->post('password'));
+
+			
+		 
+		
+			
+			$cek = $this->m_login->cek_login($email, $password)->row_array();
 			
 			if($cek){
-
-				//ambil nama
-				$where1 = array(
+				
+				 //ambil nama
+				 $where1 = array(
 					'email' => $email
 					);
 				$text = substr($cek['id_user'], 0, 4);
 				
 				if($text == "USER"){
-
-					//session
 					$data_session = array(
-						'nama' => $cek['nama_pengguna'],
+						'nama' 	=> $cek['nama_pengguna'],
 						'id_user' => $cek['id_user'],
 						'email' => $cek['email'],
-						'password' => $cek['password']
 					);
 					$this->session->set_userdata($data_session);
 					echo json_encode(['success'=>"berhasil login"]);
@@ -54,23 +52,19 @@ class Login extends CI_Controller{
 						'nama' => $cek['nama_bengkel'],
 						'id_user' => $cek['id_user'],
 						'email' => $cek['email'],
-						'password' => $cek['password']
 					);
 					$this->session->set_userdata($data_session);
 					echo json_encode(['success'=>"berhasil login"]);
 				}
 				
 			}else{
-				$where2 = array(
-					'email' => $email,
-				);
-				$cek_email = $this->m_login->cek_login("user", $where2)->row_array();
-				if($cek_email){
-					echo json_encode(['error'=>"Wrong password!"]);
-				}else{
-
-					echo json_encode(['error'=>"Email not registered!"]);
-				}
+				
+					$cek_email = $this->m_login->cek_email($email)->row_array();
+					if($cek_email){
+						echo json_encode(['error'=>"Wrong password!"]);
+					}else{
+						echo json_encode(['error'=>"Email not registered!"]);
+					}
 			}
 		}	
 	}
