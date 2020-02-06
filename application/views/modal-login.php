@@ -35,7 +35,7 @@
 
 
 <!-- Modal Profile -->
-<div class="modal1 fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true" style="z-index:100;position:absolute;top:20%;">
+<div class="modal1 fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true" style="position:absolute;top:20%;">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
