@@ -21,11 +21,7 @@ class Login extends CI_Controller{
 			
 		}else{
 			$email = htmlspecialchars($this->input->post('email'));
-			$password = htmlspecialchars($this->input->post('password'));
-
-			
-		 
-		
+			$password = md5(htmlspecialchars($this->input->post('password')));
 			
 			$cek = $this->m_login->cek_login($email, $password)->row_array();
 			
