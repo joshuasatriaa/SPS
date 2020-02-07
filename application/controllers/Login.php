@@ -35,7 +35,8 @@ class Login extends CI_Controller{
 				 $where1 = array(
 					'email' => $email
 					);
-				$text = substr($cek['id_user'], 0, 4);
+				$id=$cek['id_user'];
+				$text = substr($id,0,4);
 				
 				if($text == "USER"){
 					$data_session = array(
