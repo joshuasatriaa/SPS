@@ -90,29 +90,43 @@
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
-            <!-- input barang start -->
-            <form action="<?php echo 'insertData'?>" method="POST">
-                <h1>Input Barang</h1>
-                <fieldset>
-                    <label for="id_barang">id barang:</label>
-                    <input type="text" name="id_barang">
-                    <label for="nama_barang">nama barang:</label>
-                    <input type="text" name="nama">
-					<label for="id_penjual">id penjual:</label>
-                    <input type="text" name="id_penjual">
-					<label for="gambar_barang">gambar barang:</label>
-                    <input type="text" name="gambar">
-					<label for="harga_barang">harga barang:</label>
-                    <input type="numbers" name="harga">
-					<label for="stok_barang">stok barang:</label>
-                    <input type="numbers" name="stok">
-
-                    
-                    
-                </fieldset>
-                <button type="submit">Login</button>
-            </form>
-            <!-- input barang end -->
+            <!-- tampilkan barang start -->
+            
+                <h1>Tampilkan Barang</h1>
+                <table>
+					<thead>
+					<tr>
+						<td>ID Barang</td>
+						<td>Nama Barang</td>
+						<td>ID Penjual</td>
+						<td>Gambar Barang</td>
+						<td>Harga Barang</td>
+						<td>Stok Barang</td>
+						<td>User Add</td>
+						<td>Waktu Add</td>
+						<td>Aksi</td>
+					</tr>
+					</thead>
+					<tbody>
+					<?php
+					$i = 0;
+					foreach($barang as $list){ ?>
+					<tr>
+						<td><?php echo $list->id_barang ?></td>
+						<td><?php echo $list->nama_barang ?></td>
+						<td><?php echo $list->id_penjual ?></td>
+						<td><?php echo $list->gambar_barang ?></td>
+						<td><?php echo $list->harga_barang ?></td>
+						<td><?php echo $list->stok_barang ?></td>
+						<td><?php echo $list->user_add ?></td>
+						<td><?php echo $list->waktu_add ?></td>
+					</tr>
+					<?php
+					$i++; ?>
+					</tbody>
+				</table>
+                
+            <!-- tampilkan barang end -->
            
           </div>
         </div> 
@@ -229,5 +243,6 @@
 
 <!-- Login Script -->
 <script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
+
 
 </html>
