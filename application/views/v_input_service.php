@@ -79,6 +79,10 @@
                                 <input type="text" name="nama_service" placeholder="Service Name"/>
                             </div>
                             <div class="form-group">
+                                <input type="hidden" name="bengkel" placeholder="Seller ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
+                            </div>
+                            <!--
+                            <div class="form-group">
                             <label for="bengkel" class="control-label mb-1">Bengkel</label><br>
                              <select data-placeholder="Choose Bengkel" class="standardSelect form-control" tabindex="1" name="bengkel" id="bengkel">
                                 <?php foreach($bengkel as $a){?>
@@ -86,6 +90,7 @@
                                                     <?php }?>
                                 </select>
                              </div>
+                                -->
                             <!-- <div class="form-group">
                                 <p>Gambar</p>
                                 <input type="text" id="gambar" placeholder="gambar"/>

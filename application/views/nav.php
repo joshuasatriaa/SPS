@@ -10,15 +10,32 @@
 				<span class="fa fa-bars"></span>
 			</button>
 
+			<?php
+				$bengkel = "BID";
+				$user = "USER";
+				$admin = "ADMN";
+			?>
 			<div class="collapse navbar-collapse" id="navigation">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item">
                         <a class="nav-link" href="<?php echo base_url()?>Home">Home</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop">Shop</a></li>
-					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Service">Service</a></li>
-					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Booking">Booking</a></li>
+					<?php 
+						if($this->session->userdata('tipe_user') == $bengkel) {
+					?>
+						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Service">Service</a></li>
+						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Booking/CheckBooking">Booking</a></li>
+					<?php
+						}
+					?>
+					<?php 
+						if($this->session->userdata('tipe_user') == $user) {
+					?>
+						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Booking">Booking</a></li>
+					<?php
+						}
+					?>
 					<li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
 					<!--
 					<li class="nav-item">
