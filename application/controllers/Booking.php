@@ -38,4 +38,10 @@ class Booking extends CI_Controller {
 		$this->m_service->insertTable('booking', $data);
 		redirect('Booking');
 	}
+
+	function CheckBooking()
+	{
+		$data['databooking'] = $this->m_booking->tampilkan_bookingku($this->session->userdata('id_user'))->result();
+		$this->load->view('v_cek_booking',$data);
+	}
 }

@@ -30,4 +30,5 @@ class Service extends CI_Controller {
 		$this->m_service->insertTable('service', $data);
 		redirect('Service');
 	}
+	
 }
