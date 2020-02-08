@@ -226,19 +226,15 @@
                 <td class="action" data-title="Action">
                   <div class="">
                     <ul class="list-inline justify-content-center">
+                      
                       <li class="list-inline-item">
-                        <a data-toggle="tooltip" data-placement="top" title="view" class="view" href="category.html">
-                          <i class="fa fa-eye"></i>
+                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="<?php echo base_url() ?>Booking/ConfirmBooking/<?php echo $list->id_booking ?>">
+                          <i class="fa fa-check"></i>
                         </a>
                       </li>
                       <li class="list-inline-item">
-                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="">
-                          <i class="fa fa-pencil"></i>
-                        </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="">
-                          <i class="fa fa-trash"></i>
+                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="<?php echo base_url() ?>Booking/RejectBooking/<?php echo $list->id_booking ?>">
+                          <i class="fa fa-close"></i>
                         </a>
                       </li>
                     </ul>

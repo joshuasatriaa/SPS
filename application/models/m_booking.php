@@ -19,5 +19,17 @@ class m_booking extends CI_Model{
 		WHERE  b.id_bengkel="'.$where.'"');
 		return $query;
 	}
+
+	function confirm($where)
+	{
+		$query = $this->db->query('UPDATE Booking SET status_booking = 2 WHERE id_booking = "'.$where.'"');
+		return $query;
+	}
+
+	function reject($where)
+	{
+		$query = $this->db->query('UPDATE Booking SET status_booking = 1 WHERE id_booking = "'.$where.'"');
+		return $query;
+	}
 }
 ?>

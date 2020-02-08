@@ -44,4 +44,16 @@ class Booking extends CI_Controller {
 		$data['databooking'] = $this->m_booking->tampilkan_bookingku($this->session->userdata('id_user'))->result();
 		$this->load->view('v_cek_booking',$data);
 	}
+
+	function ConfirmBooking($id)
+	{
+		$this->m_booking->confirm($id);
+		redirect('Booking/CheckBooking');
+	}
+
+	function RejectBooking($id)
+	{
+		$this->m_booking->reject($id);
+		redirect('Booking/CheckBooking');
+	}
 }
