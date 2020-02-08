@@ -5,11 +5,11 @@ class Barang extends CI_Controller{
 		$this->load->model('m_barang');
 	}
 	function index(){
-		//$data['count'] = $this->m_barang->tampilkan_barang()->num_rows();
-		//$this->load->view('v_shop_add_item', $data);
+		$data['count'] = $this->m_barang->tampilkan_barang()->num_rows();
+		$this->load->view('v_shop_add_item', $data);
 		
-		$data['barang'] = $this->m_barang->tampilkan_barang()->result();
-		$this->load->view('v_test', $data);
+		//$data['barang'] = $this->m_barang->tampilkan_barang()->result();
+		//$this->load->view('v_test', $data);
 		
 	}
 	function insertData(){
