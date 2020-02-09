@@ -24,6 +24,11 @@
             $this->form_validation->set_rules('user_phonenumber', 'Telephone Number', 'required|trim|numeric');
 			$this->form_validation->set_rules('user_password', 'Password', 'required|trim|min_length[6]|matches[user_password2]');
 			$this->form_validation->set_rules('user_password2', 'Confirm Password', 'required|trim|min_length[6]|matches[user_password]');
+			
+			if (empty($_FILES['userfile']['name']))
+			{
+				$this->form_validation->set_rules('userfile', 'Profile Picture', 'required');
+			}
 
 			if($this->form_validation->run() == FALSE){
 				$data['count']=$this->m_signup_pengguna->tampilkanData()->num_rows();
@@ -40,34 +45,45 @@
 				$email = htmlspecialchars($this->input->post('user_email'), TRUE);
 				$pass = htmlspecialchars($this->input->post('user_password'), TRUE);
 				$telp = htmlspecialchars($this->input->post('user_phonenumber'), TRUE);
-				$gambar = 'default.jpg';
+				$gambar = $this->upload_file();
 				
-				$data = array(
-					'id_pengguna' => $id,
-					'nama_pengguna' => $nama,
-					'jenis_kelamin' => $kelamin,
-					'tanggal_lahir' => $tglLahir,
-					'tempat_lahir' => $tmpLahir,
-					'alamat' => $alamat,
-					'email' => $email,
-					'telepon' => $telp,
-					'gambar' => $gambar,
-					'user_add' => $id,
-					'status_delete' => "0"
-					);
+				if($gambar['error']){
+					$this->load->view('v_signup_bengkel', $gambar);
+				}else{
+					$gambarUpload = $this->upload->data();
+
+					$imgdata = file_get_contents($gambarUpload['full_path']);//get the content of the image using its path
+					$data = array(
+						'id_pengguna' => $id,
+						'nama_pengguna' => $nama,
+						'jenis_kelamin' => $kelamin,
+						'tanggal_lahir' => $tglLahir,
+						'tempat_lahir' => $tmpLahir,
+						'alamat' => $alamat,
+						'email' => $email,
+						'gambar' => $imgdata,
+						'telepon' => $telp,
+						'user_add' => $id,
+						'status_delete' => "0"
+						);
+
 					
-				$this->db->set('tanggal_registrasi', 'NOW()', FALSE);
-				$this->db->set('waktu_add', 'NOW()', FALSE);
-				$this->m_signup_pengguna->insertTable('pengguna', $data);
-	
-				$data2 = array(
-					'id_user' => $id,
-					'email' => $email,
-					'password' => md5($pass), 
-				);
-		
-				$this->m_user->insertTable('user', $data2);
-				redirect('Upload');
+						$this->db->set('tanggal_registrasi', 'NOW()', FALSE);
+						$this->db->set('waktu_add', 'NOW()', FALSE);
+						$this->m_signup_pengguna->insertTable('pengguna', $data);
+			
+						$data2 = array(
+							'id_user' => $id,
+							'email' => $email,
+							'password' => md5($pass), 
+						);
+				
+						$this->m_user->insertTable('user', $data2);
+						redirect('Signup_pengguna/sigunUpSuccess');
+
+				}
+					
+				
 				
 				/*public function Editprofile()
 				{
@@ -96,6 +112,33 @@
 		function signUpSuccess(){
 			$this->load->view('v_signupsuccess');
 		}
+
+		public function upload_file()
+        {
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|jpeg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1300;
+                $config['max_height']           = 1024;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        
+                    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+
+                    $error = array('error' => $this->upload->display_errors());
+
+                    return $error;
+                }
+                else
+                {
+                    $data = array('upload_data' => $this->upload->data());
+
+                    return $data;
+                }
+        }
 		
 }	
 ?>

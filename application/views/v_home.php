@@ -64,6 +64,7 @@
                 <span data-swiper-parallax="300" class="text-primary font-extra font-md">Collaborative</span>
                 <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Fresh,Delicious meal to reach your optimum health and fitness</h1>
                 <a href="menu.html" class="btn btn-main mr-3" data-swiper-parallax="500">About</a>
+				
               </div>
             </div>
           </div>

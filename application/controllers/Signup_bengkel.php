@@ -47,10 +47,8 @@
 					$this->load->view('v_signup_bengkel', $gambar);
 				}else{
 					$gambarUpload = $this->upload->data();
-
-					$namaGambar = $gambarUpload['file_name'];
 					
-
+					$imgdata = file_get_contents($gambarUpload['full_path']);//get the content of the image using its path
 					$data = array(
 						'id_bengkel' => $id,
 						'nama_bengkel' => $nama,
@@ -59,7 +57,7 @@
 						'alamat' => $alamat,
 						'email' => $email,
 						'telepon' => $telp,
-						'gambar' => $namaGambar,
+						'gambar' => $imgdata,
 						'user_add' => $id,
 						'status_delete' => "0"
 						);
