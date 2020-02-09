@@ -18,9 +18,9 @@ class Shop extends CI_Controller {
 		$keyword = $this->input->post('nama_barang');
 
 		$data['barang'] = $this->m_barang->searchBarang($keyword)->result();
-		$this->load->view('v_shop',$data);
-
-
+		$data['hasils'] = $keyword;
+		$data['jumlah'] = $this->m_barang->searchBarang($keyword)->num_rows();
+		$this->load->view('v_shopsearch',$data);
 	}
 
 }
