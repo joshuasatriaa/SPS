@@ -31,5 +31,11 @@ class m_booking extends CI_Model{
 		$query = $this->db->query('UPDATE Booking SET status_booking = 1 WHERE id_booking = "'.$where.'"');
 		return $query;
 	}
+
+	function cek_service($where)
+	{
+		$query = $this->db->query('SELECT * FROM Service WHERE id_bengkel = "'.$where.'"');
+		return $query;
+	}
 }
 ?>

@@ -176,19 +176,18 @@
 										<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><a href="<?php echo base_url()?>Booking/Booking"><?php echo $list->nama_bengkel ?></a></h4>
+										<h4 class="card-title"><?php echo $list->nama_bengkel ?></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-envelope-open"></i><?php echo $list->email ?></a>
+												<a><i class="fa fa-envelope-open"></i><?php echo $list->email ?></a>
 											</li>
 											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-comments"></i><?php echo $list->telepon ?></a>
+												<a><i class="fa fa-comments"></i><?php echo $list->telepon ?></a>
 											</li>
 											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-location-arrow"></i><?php echo $list->alamat ?></a>
+												<a><i class="fa fa-location-arrow"></i><?php echo $list->alamat ?></a>
 											</li>
 										</ul>
-										<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 										<div class="product-ratings">
 											<ul class="list-inline">
 												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
@@ -198,6 +197,11 @@
 												<li class="list-inline-item"><i class="fa fa-star"></i></li>
 											</ul>
 										</div>
+										<a href="<?php echo base_url()?>Booking/Booking/<?php echo $list->id_bengkel ?>">
+											<p class="card-text">
+												<button class="form-control">Book Service</button>
+											</p>
+										</a>
 									</div>
 								</div>
 							</div>

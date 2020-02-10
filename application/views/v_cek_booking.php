@@ -197,14 +197,14 @@
                     foreach($databooking as $list){
                 ?>
                 <td class="product-thumb">
-                  <img width="80px" height="auto" src="images/products/products-1.jpg" alt="image description"></td>
+					<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
                 <td class="product-details">
-                  <h3 class="title"><?php echo $list->nama_service ?></h3>
+                  <h3 class="title" style="padding-left:20px"><?php echo $list->nama_service . " - Rp" . $list->harga_service ?></h3>
                   <?php
                     $hasil = $list->status_booking;
                     ?>
-                  <span><strong>Date : </strong><time><?php echo $list->waktu_service ?></time> </span>
-                  <span class="status <?php if($hasil == 2){echo 'active';} ?>"><strong>Status : </strong>
+                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo $list->waktu_service ?></time> </span>
+                  <span class="status <?php if($hasil == 2){echo 'active';} ?>" style="padding-left:20px"><strong>Status : </strong>
                   <?php
                     if($hasil == 0)
                     {

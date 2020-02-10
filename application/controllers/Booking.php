@@ -13,11 +13,12 @@ class Booking extends CI_Controller {
 		$data['bengkels'] = $this->m_signup_bengkel->tampilkanData()->result();
 		$this->load->view('v_service', $data);
 	}
-	public function Booking()
+	public function Booking($id)
 	{
-        $data['bengkel'] = $this->m_signup_bengkel->tampilkanData()->result();
-        $data['service'] = $this->m_service->tampilkan_service()->result();
+        //$data['bengkel'] = $this->m_signup_bengkel->tampilkanData()->result();
+        //$data['service'] = $this->m_service->tampilkan_service()->result();
 		$data['count'] = $this->m_booking->tampilkan_booking()->num_rows();
+		$data['service'] = $this->m_booking->cek_service($id)->result();
 		$this->load->view('v_booking', $data);
 	}
 
