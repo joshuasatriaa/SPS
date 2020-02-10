@@ -20,6 +20,15 @@ class m_booking extends CI_Model{
 		return $query;
 	}
 
+	function tampilkan_mybooking($where)
+	{
+		$query = $this->db->query('SELECT * FROM booking a
+		JOIN service b ON a.id_service = b.id_service
+		JOIN bengkel c ON b.id_bengkel = c.id_bengkel
+		WHERE a.id_pengguna="'.$where.'"');
+		return $query;
+	}
+
 	function confirm($where)
 	{
 		$query = $this->db->query('UPDATE Booking SET status_booking = 2 WHERE id_booking = "'.$where.'"');
