@@ -125,7 +125,7 @@
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
 					<h2>Results For "<?php echo $hasils; ?>"</h2>
-					<p><?php echo $jumlah; ?> Results on <?php echo date("d/m/Y") ?></p>
+					<p><?php echo $jumlah; ?> Results on <?php echo date("d F Y") ?></p>
 				</div>
 			</div>
 		</div>

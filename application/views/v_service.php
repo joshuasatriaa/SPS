@@ -129,12 +129,26 @@
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
 					<h2>Results For BengCool Partner</h2>
-					<p>123 Results on 12 December, 2017</p>
+					<p><?php echo $jumlah; ?> Partner on <?php echo date("d F Y")?></p>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			
+			<div class="col-md-3">
+				<div class="category-sidebar">
+				<?php if($this->session->userdata('email') != null) {?>
+					<a href = "#">
+						<div class="widget1 category-list" style="cursor:pointer">
+							<h4 class="widget-header">Current Booking</h4>
+						</div>
+					</a>
+
+					<div class="widget1 category-list">
+						<h4 class="widget-header">History</h4>
+					</div>
+				<?php } ?>
+			</div>
+			</div>
 			<div class="col-md-9">
 				<div class="category-search-filter">
 					<div class="row">
@@ -177,6 +191,15 @@
 									</div>
 									<div class="card-body">
 										<h4 class="card-title"><?php echo $list->nama_bengkel ?></h4>
+										<div class="product-ratings">
+											<ul class="list-inline">
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											</ul>
+										</div>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
 												<a><i class="fa fa-envelope-open"></i><?php echo $list->email ?></a>
@@ -188,15 +211,6 @@
 												<a><i class="fa fa-location-arrow"></i><?php echo $list->alamat ?></a>
 											</li>
 										</ul>
-										<div class="product-ratings">
-											<ul class="list-inline">
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											</ul>
-										</div>
 										<a href="<?php echo base_url()?>Booking/Booking/<?php echo $list->id_bengkel ?>">
 											<p class="card-text">
 												<button class="form-control">Book Service</button>
