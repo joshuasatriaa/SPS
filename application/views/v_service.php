@@ -201,11 +201,11 @@
 									</div>
 								</div>
 							</div>
-							<!-- product end -->
-							<?php
+ 						</div>
+						 <!-- product end -->
+						 <?php
 								}
 							?>
- 						</div>
 						</div>
 						<!-- Modal -->
 						<!-- <div class="modal fade" id="inputDosen" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
@@ -304,8 +304,8 @@
 									<span class="sr-only">Previous</span>
 								</a>
 							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
+							<li class="page-item active"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
 							<li class="page-item"><a class="page-link" href="#">3</a></li>
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Next">
