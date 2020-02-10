@@ -164,39 +164,47 @@
 				</div>
 				<div class="product-grid-list">
 					<div class="row mt-30">
+						<?php
+							foreach($bengkels as $list){
+						?>
 						<div class="col-sm-12 col-lg-4 col-md-6">
 							<!-- product card -->
-<div class="product-item bg-light">
-	<div class="card">
-		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
-			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
-			</a>
-		</div>
-		<div class="card-body">
-		    <h4 class="card-title"><a href="<?php echo base_url()?>Booking/Booking">Bengkel Maju Sejahtera</a></h4>
-		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Otomotive</a>
-		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
-		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
-		    <div class="product-ratings">
-		    	<ul class="list-inline">
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
-		    	</ul>
-		    </div>
-		</div>
-	</div>
-</div>
+							<div class="product-item bg-light">
+								<div class="card">
+									<div class="thumb-content">
+										<!-- <div class="price">$200</div> -->
+										<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
+									</div>
+									<div class="card-body">
+										<h4 class="card-title"><a href="<?php echo base_url()?>Booking/Booking"><?php echo $list->nama_bengkel ?></a></h4>
+										<ul class="list-inline product-meta">
+											<li class="list-inline-item">
+												<a href="single.html"><i class="fa fa-envelope-open"></i><?php echo $list->email ?></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-comments"></i><?php echo $list->telepon ?></a>
+											</li>
+											<li class="list-inline-item">
+												<a href="#"><i class="fa fa-location-arrow"></i><?php echo $list->alamat ?></a>
+											</li>
+										</ul>
+										<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+										<div class="product-ratings">
+											<ul class="list-inline">
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+												<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- product end -->
+							<?php
+								}
+							?>
  						</div>
 						</div>
 						<!-- Modal -->

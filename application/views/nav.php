@@ -48,7 +48,7 @@
 
 					<?php if($this->session->userdata('email') != null) {?>
 						<li class="nav-item">
-							<a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+							<a class="nav-link modal-button">
 								<span class="ho1"> <?php echo $this->session->userdata('nama') ?> </span>
 							</a>
 						</li>
@@ -61,3 +61,5 @@
 		</div>
 	</nav>
 </header>
+
+<!-- Login Script -->

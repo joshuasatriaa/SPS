@@ -227,7 +227,7 @@
 									<div class="thumb-content">
 										<!-- <div class="price">$200</div> -->
 										<a href="single.html">
-											<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+											<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
 										</a>
 									</div>
 									<div class="card-body">
@@ -266,8 +266,8 @@
 									<span class="sr-only">Previous</span>
 								</a>
 							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
+							<li class="page-item active"><a class="page-link" href="#">1</a></li>
+							<li class="page-item"><a class="page-link" href="#">2</a></li>
 							<li class="page-item"><a class="page-link" href="#">3</a></li>
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Next">
