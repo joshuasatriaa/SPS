@@ -208,6 +208,9 @@
 												<a><i class="fa fa-comments"></i><?php echo $list->telepon ?></a>
 											</li>
 											<li class="list-inline-item">
+												<a><i class="fas fa-store"></i><?php echo $list->nama_bengkel ?></a>
+											</li>
+											<li class="list-inline-item">
 												<a><i class="fa fa-location-arrow"></i><?php echo $list->alamat ?></a>
 											</li>
 										</ul>

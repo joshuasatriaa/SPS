@@ -78,8 +78,8 @@
                             <label for="servoce" class="control-label mb-1">Service</label><br>
                              <select data-placeholder="Choose Service" class="standardSelect form-control" tabindex="1" name="service" id="service">
                                 <?php foreach($service as $a){?>
-                                                        <option value="<?php echo $a->id_service?>"><?php echo $a->nama_service . " - Rp " . $a->harga_service?></option>
-                                                    <?php }?>
+                                        <option value="<?php echo $a->id_service?>"><?php echo $a->nama_service . " - Rp " . $a->harga_service?></option>
+                                    <?php }?>
                                 </select>
                              </div>
                              <div class="form-group">

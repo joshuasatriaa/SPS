@@ -23,19 +23,19 @@
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop">Shop</a></li>
 					<?php 
 						if($this->session->userdata('tipe_user') == $bengkel) {
-					?>
+							?>
 						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Service">Service</a></li>
 						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Booking/CheckBooking">Booking</a></li>
 					<?php
 						}
-					?>
+						?>
 					<?php 
 						if($this->session->userdata('tipe_user') == $user) {
-					?>
+							?>
 						<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Booking">Booking</a></li>
 					<?php
 						}
-					?>
+						?>
 					<li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
 					<!--
 					<li class="nav-item">
@@ -55,7 +55,9 @@
 					<?php }else{ ?>
 						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
 					<?php } ?>
-
+					<?php if($this->session->userdata('tipe_user') != $bengkel || $this->session->userdata('tipe_user') == null){ ?>
+					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop"><i class="fas fa-shopping-cart"></i></a></li>
+					<?php } ?>
 				</ul>
 			</div>
 		</div>
