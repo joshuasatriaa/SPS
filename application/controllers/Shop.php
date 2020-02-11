@@ -23,4 +23,10 @@ class Shop extends CI_Controller {
 		$this->load->view('v_shopsearch',$data);
 	}
 
+	function ShopDetail($id)
+	{
+		$data['barang'] = $this->m_barang->tampilkanBarangIni($id)->result();
+		$this->load->view('v_shop_detail',$data);
+	}
+
 }

@@ -134,6 +134,10 @@
 					</a>
 
 					<div class="widget1 category-list">
+						<h4 class="widget-header">My Items</h4>
+					</div>
+
+					<div class="widget1 category-list">
 						<h4 class="widget-header">History</h4>
 					</div>
 				<?php } ?>
@@ -226,12 +230,12 @@
 								<div class="card">
 									<div class="thumb-content">
 										<!-- <div class="price">$200</div> -->
-										<a href="single.html">
+										<a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>">
 											<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
 										</a>
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><a href="single.html"><?php echo $list->nama_barang ?></a></h4>
+										<h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
 												<a href="single.html"><i class="fa fa-male"></i><?php echo $list->nama_pengguna ?></a>

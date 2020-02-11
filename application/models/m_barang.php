@@ -19,7 +19,12 @@ class m_barang extends CI_Model{
 		WHERE nama_barang LIKE "%'.$keyword.'%"');
 	}
 	
-	
+	function tampilkanBarangIni($where){
+		return $this->db->query('SELECT * FROM barang a
+		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna
+		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
+		WHERE id_barang = "'.$where.'" ');
+	}
 	
 	
 }
