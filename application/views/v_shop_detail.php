@@ -48,115 +48,7 @@
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
-<style>
 
-.product-slider {
-  padding: 40px 0;
-}
-
-.product-slider .carousel-indicators li {
-  background: #888;
-}
-
-.product-slider .carousel-indicators li.active {
-  background: #5672f9;
-}
-
-.product-slider .slick-dots {
-  display: flex;
-  bottom: -50px;
-}
-
-.product-slider .slick-dots li {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  padding-left: 0;
-}
-
-.product-slider .slick-dots li:first-child {
-  margin-left: 0;
-}
-
-.product-slider .slick-dots li:last-child {
-  margin-right: 0;
-}
-
-.product-slider .slick-dots li img {
-  max-width: 100%;
-  height: auto;
-}
-
-
-.product-item {
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-}
-
-.product-item .card {
-  border: none;
-}
-
-.product-item .card .card-body {
-  padding: 20px;
-}
-
-.product-item .card .card-body .card-title {
-  font-size: 18px;
-  margin-bottom: 5px;
-  font-weight: 600;
-}
-
-.product-item .card .card-body .card-text {
-  color: #777;
-}
-
-.product-item .thumb-content {
-  position: relative;
-}
-
-.product-item .thumb-content .price {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: #5672f9;
-  color: #fff;
-  display: inline-block;
-  padding: 4px 8px;
-  font-size: 12px;
-}
-
-.product-item .product-meta {
-  margin-bottom: 15px;
-}
-
-.product-item .product-meta li {
-  margin-right: 15px;
-}
-
-.product-item .product-meta li a {
-  color: #888;
-  font-size: 12px;
-}
-
-.product-item .product-meta li a i {
-  margin-right: 4px;
-}
-
-.product-item .product-ratings li {
-  margin-right: 1px;
-}
-
-.product-item .product-ratings li i {
-  font-size: 18px;
-  color: #dedede;
-  cursor: pointer;
-}
-
-.product-item .product-ratings .selected i {
-  color: #5672f9;
-}
-    </style>
 </head>
 
 <body>
@@ -273,10 +165,10 @@
 					<!-- product slider -->
 					<div class="product-slider">
 						<div class="product-slider-item my-4" data-image="images/products/products-1.jpg">
-							<img class="img-fluid w-100" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="product-img">
+							<img class="img-fluid w-100" src="images/products/products-1.jpg" alt="product-img">
 						</div>
-						<div class="product-slider-item my-4" data-image="<?php echo base_url() ?>assets/type1/images/home4.jpg">
-							<img class="d-block img-fluid w-100" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Second slide">
+						<div class="product-slider-item my-4" data-image="images/products/products-2.jpg">
+							<img class="d-block img-fluid w-100" src="images/products/products-2.jpg" alt="Second slide">
 						</div>
 						<div class="product-slider-item my-4" data-image="images/products/products-3.jpg">
 							<img class="d-block img-fluid w-100" src="images/products/products-3.jpg" alt="Third slide">

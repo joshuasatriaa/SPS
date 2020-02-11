@@ -130,7 +130,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="search-result bg-gray">
-					<h2>Current Booking</h2>
+					<h2>All Booking</h2>
 				</div>
 			</div>
 		</div>
@@ -195,10 +195,14 @@
                     {
                         echo "Rejected";
                     }
-                    else
+                    else if($hasil == 2)
                     {
                         echo "Confirmed";
-                    }
+					}
+					else
+					{
+						echo "Done";
+					}
                    ?>
                    </span>
                   

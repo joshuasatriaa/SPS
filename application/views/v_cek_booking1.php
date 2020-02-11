@@ -208,7 +208,7 @@
                   <div class="">
                     <ul class="list-inline justify-content-center">
                         <a href="<?php echo base_url() ?>Booking/DoneBooking/<?php echo $list->id_booking ?>">
-                            <button class="form-control">DONE</button>
+							<button class="btn btn-primary">DONE</button>
                         </a>
                     </ul>
                   </div>
