@@ -16,7 +16,16 @@ class m_booking extends CI_Model{
         FROM booking a 
         JOIN service b ON a.id_service = b.id_service
 		JOIN pengguna c ON a.id_pengguna = c.id_pengguna
-		WHERE  b.id_bengkel="'.$where.'"');
+		WHERE  b.id_bengkel="'.$where.'" AND waktu_service >= NOW();');
+		return $query;
+	}
+
+	function tampilkan_bookingku1($where){
+		$query = $this->db->query('SELECT *
+        FROM booking a 
+        JOIN service b ON a.id_service = b.id_service
+		JOIN pengguna c ON a.id_pengguna = c.id_pengguna
+		WHERE  b.id_bengkel="'.$where.'" AND status_booking = 2;');
 		return $query;
 	}
 
@@ -38,6 +47,12 @@ class m_booking extends CI_Model{
 	function reject($where)
 	{
 		$query = $this->db->query('UPDATE Booking SET status_booking = 1 WHERE id_booking = "'.$where.'"');
+		return $query;
+	}
+
+	function done($where)
+	{
+		$query = $this->db->query('UPDATE Booking SET status_booking = 3 WHERE id_booking = "'.$where.'"');
 		return $query;
 	}
 

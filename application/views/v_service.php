@@ -137,7 +137,7 @@
 			<div class="col-md-3">
 				<div class="category-sidebar">
 				<?php if($this->session->userdata('email') != null) {?>
-					<a href = "#">
+					<a href = "<?php echo base_url() ?>StatusBooking">
 						<div class="widget1 category-list" style="cursor:pointer">
 							<h4 class="widget-header">Current Booking</h4>
 						</div>

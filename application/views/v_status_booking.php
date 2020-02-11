@@ -139,7 +139,7 @@
 			<div class="col-md-3">
 				<div class="category-sidebar">
 				<?php if($this->session->userdata('email') != null) {?>
-					<a href = "<?php echo base_url() ?>Service/CheckBooking">
+					<a href = "#">
 						<div class="widget1 category-list" style="cursor:pointer">
 							<h4 class="widget-header">Current Booking</h4>
 						</div>
@@ -212,10 +212,14 @@
                     {
                         echo "Rejected";
                     }
-                    else
+                    else if($hasil == 2)
                     {
                         echo "Confirmed";
-                    }
+					}
+					else
+					{
+						echo "Done";
+					}
                    ?>
                    </span>
                   

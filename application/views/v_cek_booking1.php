@@ -175,7 +175,7 @@
             <tbody>
               <tr>
                 <?php
-                    foreach($databooking as $list){
+                    foreach($databooking1 as $list){
                 ?>
                 <td class="product-thumb">
 					<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
@@ -207,17 +207,9 @@
                 <td class="action" data-title="Action">
                   <div class="">
                     <ul class="list-inline justify-content-center">
-                      
-                      <li class="list-inline-item">
-                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="<?php echo base_url() ?>Booking/ConfirmBooking/<?php echo $list->id_booking ?>">
-                          <i class="fa fa-check"></i>
+                        <a href="<?php echo base_url() ?>Booking/DoneBooking/<?php echo $list->id_booking ?>">
+                            <button class="form-control">DONE</button>
                         </a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="<?php echo base_url() ?>Booking/RejectBooking/<?php echo $list->id_booking ?>">
-                          <i class="fa fa-close"></i>
-                        </a>
-                      </li>
                     </ul>
                   </div>
                 </td>
