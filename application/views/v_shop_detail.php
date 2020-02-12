@@ -49,6 +49,9 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
+  <!-- Image Slide CSS -->
+  <link href="<?php echo base_url() ?>assets/type2/css/image-slide.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -80,28 +83,28 @@
 
            
 
-<section class="page-search">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Advance Search -->
-				<div class="advance-search">
-					<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
-						<div class="form-row">
-							<div class="form-group col-md-10">
-								<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
-							</div>
-							<div class="form-group col-md-2">
-								
-								<button type="submit" class="btn btn-primary">Search Now</button>
+			<section class="page-search">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Advance Search -->
+							<div class="advance-search">
+								<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
+									<div class="form-row">
+										<div class="form-group col-md-10">
+											<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
+										</div>
+										<div class="form-group col-md-2">
+											
+											<button type="submit" class="btn btn-primary">Search Now</button>
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
-					</form>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-</section>
+			</section>
            
           </div>
         </div> 
@@ -163,23 +166,55 @@
 					</div>
 
 					<!-- product slider -->
-					<div class="product-slider">
-						<div class="product-slider-item my-4" data-image="images/products/products-1.jpg">
-							<img class="img-fluid w-100" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="product-img">
+					
+					<div class="carousel-container">
+					
+					<ul class="carousel my-carousel">
+						<input class="carousel__activator" type="radio" id="A" name="activator" checked="checked"/>
+						<input class="carousel__activator" type="radio" id="B" name="activator"/>
+						<input class="carousel__activator" type="radio" id="C" name="activator"/>
+						<input class="carousel__activator" type="radio" id="D" name="activator"/>
+						<input class="carousel__activator" type="radio" id="E" name="activator"/>
+						<div class="carousel__controls">
+						<label class="carousel__control carousel__control--backward" for="E"></label>
+						<label class="carousel__control carousel__control--forward" for="B"></label>
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-2.jpg">
-							<img class="d-block img-fluid w-100" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Second slide">
+						<div class="carousel__controls">
+						<label class="carousel__control carousel__control--backward" for="A"></label>
+						<label class="carousel__control carousel__control--forward" for="C"></label>
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-3.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-3.jpg" alt="Third slide">
+						<div class="carousel__controls">
+						<label class="carousel__control carousel__control--backward" for="B"></label>
+						<label class="carousel__control carousel__control--forward" for="D"></label>
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-1.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-1.jpg" alt="Third slide">
+						<div class="carousel__controls">
+						<label class="carousel__control carousel__control--backward" for="C"></label>
+						<label class="carousel__control carousel__control--forward" for="E"></label>
 						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-2.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-2.jpg" alt="Third slide">
+						<div class="carousel__controls">
+						<label class="carousel__control carousel__control--backward" for="D"></label>
+						<label class="carousel__control carousel__control--forward" for="A"></label>
 						</div>
+						<li class="carousel__slide">
+						</li>
+						<li class="carousel__slide">
+						</li>
+						<li class="carousel__slide">
+						</li>
+						<li class="carousel__slide">
+						</li>
+						<li class="carousel__slide">
+						</li>
+						<div class="carousel__indicators">
+						<label class="carousel__indicator" for="A"></label>
+						<label class="carousel__indicator" for="B"></label>
+						<label class="carousel__indicator" for="C"></label>
+						<label class="carousel__indicator" for="D"></label>
+						<label class="carousel__indicator" for="E"></label>
+						</div>
+					</ul>
 					</div>
+
 					<!-- product slider -->
 
 					<div class="content mt-5 pt-5">
@@ -534,4 +569,5 @@
 
 <!-- Shop JS End -->
 
+</body>
 </html>
