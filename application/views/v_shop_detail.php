@@ -127,27 +127,10 @@
 		
 		
 		<div class="row">
-			<div class="col-md-3">
-				<div class="category-sidebar">
-				<?php if($this->session->userdata('email') != null) {?>
-					<a href = "<?php echo base_url() ?>Barang">
-						<div class="widget1 category-list" style="cursor:pointer">
-							<h4 class="">Add Items</h4>
-						</div>
-					</a>
-
-					<div class="widget1 category-list">
-						<h4 class="">My Items</h4>
-					</div>
-
-					<div class="widget1 category-list">
-						<h4 class="">History</h4>
-					</div>
-				<?php } ?>
-
-
-				</div>
-			</div>
+		
+			<?php 
+				include('left-shop.php') 
+			?> 
 			<div class="col-md-9">
 			<?php foreach($barang as $list){ ?>
 			
