@@ -25,5 +25,17 @@
 			$this->db->where($where);
 			$this->db->update($table,$data);
 		}
+
+		function tampilkan_profile($where)
+		{
+			$query = $this->db->query('	SELECT * FROM Bengkel WHERE id_bengkel = "'.$where.'"');
+			return $query;
+		}
+
+		function tampilkan_rating($where)
+		{
+			$query = $this->db->query('	SELECT * FROM Rating WHERE id_penerima = "'.$where.'"');
+			return $query;
+		}
 }
 ?>	

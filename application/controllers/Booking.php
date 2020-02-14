@@ -70,4 +70,12 @@ class Booking extends CI_Controller {
 		$data['databooking1'] = $this->m_booking->tampilkan_bookingku1($this->session->userdata('id_user'))->result();
 		$this->load->view('v_cek_booking1',$data);
 	}
+
+	function ProfileBengkel($id)
+	{
+		$data['databengkel'] = $this->m_signup_bengkel->tampilkan_profile($id)->result();
+		$data['datarating'] = $this->m_signup_bengkel->tampilkan_rating($id)->result();
+
+		$this->load->view('v_bengkel_profile',$data);
+	}
 }

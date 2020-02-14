@@ -190,7 +190,11 @@
 										<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
 									</div>
 									<div class="card-body">
-										<h4 class="card-title"><?php echo $list->nama_bengkel ?></h4>
+										<a href="<?php echo base_url() ?>Booking/ProfileBengkel/<?php echo $list->id_bengkel ?>">
+											<h4 class="card-title">
+												<?php echo $list->nama_bengkel ?>
+											</h4>
+										</a>
 										<div class="product-ratings">
 											<ul class="list-inline">
 												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
@@ -207,9 +211,7 @@
 											<li class="list-inline-item">
 												<a><i class="fa fa-comments"></i><?php echo $list->telepon ?></a>
 											</li>
-											<li class="list-inline-item">
-												<a><i class="fas fa-store"></i><?php echo $list->nama_bengkel ?></a>
-											</li>
+											
 											<li class="list-inline-item">
 												<a><i class="fa fa-location-arrow"></i><?php echo $list->alamat ?></a>
 											</li>

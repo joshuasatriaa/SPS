@@ -61,5 +61,6 @@ class m_booking extends CI_Model{
 		$query = $this->db->query('SELECT * FROM Service WHERE id_bengkel = "'.$where.'"');
 		return $query;
 	}
+
 }
 ?>
