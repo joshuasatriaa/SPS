@@ -55,7 +55,7 @@
 					<?php }else{ ?>
 						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
 					<?php } ?>
-					<?php if($this->session->userdata('tipe_user') == $user || $this->session->userdata('tipe_user') != null){ ?>
+					<?php if($this->session->userdata('tipe_user') == $user && $this->session->userdata('tipe_user') != null){ ?>
 					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop"><i class="fas fa-shopping-cart"></i></a></li>
 					<?php } ?>
 				</ul>

@@ -134,21 +134,9 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3">
-				<div class="category-sidebar">
-				<?php if($this->session->userdata('email') != null) {?>
-					<a href = "<?php echo base_url() ?>StatusBooking">
-						<div class="widget1 category-list" style="cursor:pointer">
-							<h4 class="widget-header">Current Booking</h4>
-						</div>
-					</a>
-
-					<div class="widget1 category-list">
-						<h4 class="widget-header">History</h4>
-					</div>
-				<?php } ?>
-			</div>
-			</div>
+			<?php
+				include('left-booking.php');
+			?>
 			<div class="col-md-9">
 				<div class="category-search-filter">
 					<div class="row">
