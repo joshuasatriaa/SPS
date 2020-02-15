@@ -43,6 +43,7 @@ class m_booking extends CI_Model{
 		$query = $this->db->query('SELECT * FROM booking a
 		JOIN service b ON a.id_service = b.id_service
 		JOIN bengkel c ON b.id_bengkel = c.id_bengkel
+		LEFT JOIN rating d ON b.id_service = d.id_penerima
 		WHERE a.id_pengguna="'.$where.'" AND waktu_service >= NOW();');
 		return $query;
 	}
@@ -74,6 +75,12 @@ class m_booking extends CI_Model{
 	function rate($angka,$where)
 	{
 		$query = $this->db->query('INSERT INTO Rating ()* FROM Service WHERE id_bengkel = "'.$where.'"');
+		return $query;
+	}
+
+	function hitung_jumlah_rating()
+	{
+		$query=$this->db->get('rating');
 		return $query;
 	}
 }
