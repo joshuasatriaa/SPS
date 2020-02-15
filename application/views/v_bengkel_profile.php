@@ -142,17 +142,26 @@
                             $newDate = date("d F Y", strtotime($date1));
                             echo $newDate;   ?></center>
                         </h6>
+                        <?php foreach($datarating as $list){ ?>
                         <center>
                             <div class="product-ratings">
                                 <ul class="list-inline">
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
                                 </ul>
                             </div>
                         </center>
+                        <?php } ?>
+                        <br>
+                        <center>
+                            <button class="btn d-inline-block  btn-primary">CONTACT</button><br><br>
+                            <a href="<?php echo base_url()?>Booking/Booking/<?php echo $list->id_bengkel ?>">
+                                <button class="btn d-inline-block  btn-primary">BOOK SERVICE</button>
+                            </a>
+                        </center>   
 					</div>
 					<!-- Dashboard Links -->
 					
@@ -165,16 +174,27 @@
                     <a><i class="fa fa-envelope-open"></i> <?php echo $list->email ?></a><br>
                     <a><i class="fa fa-comments"></i> <?php echo $list->telepon ?></a><br>
                     <a><i class="fa fa-location-arrow"></i> <?php echo $list->alamat ?></a><br><br>
+                    <!--
                     <center>
-                        Give Rating<br>
+                        <h3>Give Rating</h3><br>
                         <ul class="list-inline">
-                            <li class="list-inline-item "><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item "><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item "><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item "><i class="fa fa-star"></i></li>
-                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/1/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/2/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/3/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/4/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/5/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
                         </ul>
                     </center>
+                    -->
+
+                    <h3>Services :</h3>
+                    <?php foreach($dataservice as $list){ ?>
+                        <ul>
+                            <li>
+                                <?php echo $list->nama_service . " - Rp " . $list->harga_service ?><br>
+                            </li>
+                        </ul>
+                    <?php } ?>
 				</div>
 				
 			</div>

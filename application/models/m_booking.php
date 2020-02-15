@@ -62,5 +62,10 @@ class m_booking extends CI_Model{
 		return $query;
 	}
 
+	function rate($angka,$where)
+	{
+		$query = $this->db->query('INSERT INTO Rating ()* FROM Service WHERE id_bengkel = "'.$where.'"');
+		return $query;
+	}
 }
 ?>

@@ -75,7 +75,14 @@ class Booking extends CI_Controller {
 	{
 		$data['databengkel'] = $this->m_signup_bengkel->tampilkan_profile($id)->result();
 		$data['datarating'] = $this->m_signup_bengkel->tampilkan_rating($id)->result();
+		$data['dataservice'] = $this->m_service->tampilkan_serviceku($id)->result();
 
 		$this->load->view('v_bengkel_profile',$data);
+	}
+
+	function RateBengkel($angka,$id)
+	{
+		$this->m_booking->rate($angka,$id);
+		redirect('Booking');
 	}
 }
