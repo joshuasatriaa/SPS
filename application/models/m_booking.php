@@ -43,7 +43,7 @@ class m_booking extends CI_Model{
 		$query = $this->db->query('SELECT * FROM booking a
 		JOIN service b ON a.id_service = b.id_service
 		JOIN bengkel c ON b.id_bengkel = c.id_bengkel
-		LEFT JOIN rating d ON b.id_service = d.id_penerima
+		LEFT JOIN rating d ON a.id_booking = d.id_transaksi
 		WHERE a.id_pengguna="'.$where.'" AND waktu_service >= NOW();');
 		return $query;
 	}
