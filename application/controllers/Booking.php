@@ -75,7 +75,27 @@ class Booking extends CI_Controller {
 	{
 		$data['databengkel'] = $this->m_signup_bengkel->tampilkan_profile($id)->result();
 		$data['datarating'] = $this->m_signup_bengkel->tampilkan_rating($id)->result();
+		$data['dataservice'] = $this->m_service->tampilkan_serviceku($id)->result();
 
 		$this->load->view('v_bengkel_profile',$data);
+	}
+
+	function RateBengkel($angka,$id,$idS)
+	{
+		$count=$this->m_booking->hitung_jumlah_rating()->num_rows()+1;
+
+		$idB = 'RATE-'.$count;
+		$data = array(
+			'id_rating' => $idB,
+			'id_pemberi' => $this->session->userdata('id_user'),
+			'id_penerima' => $id,
+			'id_transaksi' => $idS,
+			'rating_bengkel' => $angka
+			);
+			
+		$this->db->set('waktu_rating', 'NOW()', FALSE);
+		$this->m_booking->insertTable('rating', $data);
+		//$this->m_booking->rate($angka,$id);
+		redirect('Booking');
 	}
 }

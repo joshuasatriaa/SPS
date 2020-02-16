@@ -208,13 +208,23 @@
 					}
                    ?>
                    </span>
-                  
+                   <?php $bintang = $list->rating_bengkel ?>
+                   <?php if($hasil == 3){ ?>
+                        <span><strong style="padding-left:20px">Rate : </strong>
+                        
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/1/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=1){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/2/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=2){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/3/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=3){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/4/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=4){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
+                            <a href="<?php echo base_url() ?>Booking/RateBengkel/5/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=5){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
+                   <?php } ?>
                 </td>
               </tr>
               <tr>
                 <?php
                     }
                     ?>
+                    
                 
             </tbody>
           </table>
