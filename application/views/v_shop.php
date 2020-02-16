@@ -167,14 +167,18 @@
 									<div class="thumb-content">
 										<!-- <div class="price">$200</div> -->
 										<a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>">
-											<img class="card-img-top img-fluid" src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="Card image cap">
+										<?php
+                                            
+                                            echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
+                                            
+                                        ?>
 										</a>
 									</div>
 									<div class="card-body">
 										<h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4>
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-male"></i><?php echo $list->nama_pengguna ?></a>
+												<a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a>
 											</li>
 											<li class="list-inline-item">
 												<a href="#"><i class="fa fa-calendar"></i><?php echo $list->waktu_add ?></a>

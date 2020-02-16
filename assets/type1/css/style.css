@@ -581,7 +581,7 @@ ul.dropdown-menu > li > a:hover,
 }
 
 .section-header {
-  background: url("../images/bg/bg-2.jpg") 50% 50% no-repeat;
+  background: url("../images/home6.jpeg") 50% 50% no-repeat;
   background-size: cover;
   padding: calc(70px + 9rem) 0 9rem;
   position: relative;
@@ -1219,4 +1219,25 @@ textarea.form-control {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+}
+
+#lblCartCount {
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 5px;
+  vertical-align: top;
+  margin-left: -10px;
+}
+.badge {
+padding-left: 9px;
+padding-right: 9px;
+-webkit-border-radius: 9px;
+-moz-border-radius: 9px;
+border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+background-color: #c67605;
 }

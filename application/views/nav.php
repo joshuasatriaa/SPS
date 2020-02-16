@@ -56,7 +56,12 @@
 						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
 					<?php } ?>
 					<?php if($this->session->userdata('tipe_user') == $user || $this->session->userdata('tipe_user') != null){ ?>
-					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>Shop/cart"><i class="fas fa-shopping-cart"></i></a></li>
+					<li class="nav-item">
+						<a class="nav-link" href="<?php echo base_url()?>Shop/cart">
+							<i class="fas fa-shopping-cart"></i>
+							<span class='badge badge-warning' id='lblCartCount'>0</span>
+						</a>
+					</li>
 					<?php } ?>
 				</ul>
 			</div>

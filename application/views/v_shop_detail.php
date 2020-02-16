@@ -80,7 +80,7 @@
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
-
+		  <?php echo $this->session->flashdata('message'); ?>
            
 
 			<section class="page-search">
@@ -354,7 +354,10 @@
 																<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
 															</div>
 															<div class="col-12">
-																<button type="submit" class="btn btn-main">Sumbit</button>
+																<button type="submit" class="btn btn-main">Submit</button>
+																<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">
+  Launch demo modal
+</button>
 															</div>
 														</form>
 													</div>
@@ -378,9 +381,8 @@
 									<p class="member-time">Member Since Jun 27, 2017</p>
 									<a href="">See all ads</a>
 									<ul class="list-inline mt-20">
-										<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
-										<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
-												offer</a></li>
+										<li class="list-inline-item"><a href="#" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
+										<li class="list-inline-item"><a href="<?php echo base_url(). 'Shop/addCart/'. $list->id_barang?>" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer</a></li>
 									</ul>
 								</div>
 								<!-- Map Widget -->
@@ -553,7 +555,7 @@
 <script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
 
 <!-- Login Script -->
-<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
 <!-- Shop type2 -->
 
@@ -571,6 +573,35 @@
 <script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
 
 <!-- Shop JS End -->
+
+<script type="text/javascript">
+/*$(document).ready(function() {
+	    $(".btn-submit").click(function(e){
+	    	e.preventDefault();
+			var id = "<?php //echo $barang->id_barang ?>" ;
+	    	
+			
+	        $.ajax({
+	            url: "<?php //echo base_url() ?>Shop/cart",
+	            type:'POST',
+	            dataType: "json",
+	            data: {id:id},
+	            success: function(data) {
+					
+	                if($.isEmptyObject(data.error)){
+						$('#successModal').modal('show');
+						
+	                }else{
+						$('#failModal').modal('show');
+	                }
+					
+	            }
+	        });
+
+
+	    }); 
+	}); */
+</script>
 
 </body>
 </html>

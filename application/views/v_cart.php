@@ -24,17 +24,11 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
 
   <!-- Main Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
-
-  <!-- Login Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
-
-  <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style3.css" rel="stylesheet">
+  <link href="<?php echo base_url()?>assets/type1/css/style.css" rel="stylesheet">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
-  <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
 
 </head>
 
@@ -54,77 +48,82 @@
 ?>
 
 
-<!--  Banner start -->
-<section class="slider-hero hero-slider  hero-style-1  ">
-  
-    <div class="swiper-wrapper">
-      <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home6.jpeg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
+<section class="section-header bg-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <h1 class="text-capitalize mb-4 font-lg text-white">My Cart</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        
 
-          <!-- Sign up form -->
-          <section class="signup">
-            <div class="container1">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Add Items</h2>
-                        <?php echo form_open_multipart(base_url().'Barang/insertData');?>
-                            <div class="form-group">
-							                <input type="hidden" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <p>Item Name</p>
-                                <input type="text" name="nama_barang" placeholder="Item Name"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" name="id_penjual" placeholder="Seller ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
-                            </div>
-							              
-                            <div class="form-group">
-                                <p>Item Image</p>
-                                <input type="file" name="userfile" size="20" class="mr-sm-2" />
-                            </div>
-                            
-							<div class="form-group">
-                                <p>Price</p>
-                                <input type="number" name="harga_barang" placeholder="Price"/>
-                            </div>
-			                <div class="form-group">  
-                                <p>Stock</p>
-                                <input type="number" name="stok_barang" placeholder="Stock"/>
-                            </div>
-							              
-                            <div class="form-group form-button">
-                                <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Add </button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="<?php echo base_url() ?>assets/type1/images/signup-image.jpg" ></figure>
-
+<?php if($cart) {?>
+<form action="" method="post">
+    <section style="padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Select All Item</label>
+                        </div>
+                        <div>
+                            <?php $i = 1;
+                            foreach($cart as $list) {?>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    
+                                    <label class="custom-control-label" for="customCheck1">Nama Barang</label>
+									<div class="card">
+                                        <?php
+                                            
+                                            echo '<img src="data:image/jpeg;base64,' . base64_encode($list->gambar_barang).'" height="100" width="100" alt="Card image cap" />';
+                                            
+                                        ?>
+                                        <div class="card-body">
+                                        <h5 class="card-title"><?php echo $list->nama_barang?></h5>
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <?php }?>
+                        </div>
+                </div>
+                    
+                <div class="col-md-4 mx-auto">
+                    <div class="p-5 shadow rounded">
+                        <h3 class="mb-3">Total : </h3>
+                        <a href="https://themefisher.com/products/veggie-one-page-responsive-html5-restaurant-website-templates/" target="_blank" class="btn btn-main">Buy Premium Version</a>			
                     </div>
                 </div>
             </div>
-        </section>
-           
-          </div>
-        </div> 
-      </div>
-      <!-- end slide-item -->
-      
-  
-    </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
-</section>
-<!--  Banner End -->
+        </div>
+    </section>
+</form>
 
-<!--Footer start -->
+<?php }else{?>
+    <section style="padding: 100px 0;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 mx-auto">
+            <div class="text-center p-5 shadow rounded">
+					<h2 class="mb-3">Sorry, your cart is empty.</h2>
+					<h4 class="mb-3">Please check our store! We have a lot of stuff for you to see!</h4>
+					<a href="<?php echo base_url(). 'Shop'?>" class="btn btn-main">Shop Now</a>			
+				</div>
+            </div>
+		</div>
+	</div>
+</section>
+
+<?php }?>
+
 <footer class="section footer">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -173,7 +172,17 @@
 			</div>
 		</div>
 
-		
+		<div class="row justify-content-center mt-5">
+			<div class="col-lg-6 text-center">
+				<h4 class="text-white-50 mb-3">Get latest food recipe at your inbox</h4>
+				<form action="#" class="footer-newsletter">
+					<div class="form-group">
+						<button class="button"><span class="ti-email"></span></button>
+						<input type="email" class="form-control" placeholder="Enter Email">
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </footer>
 
@@ -199,7 +208,7 @@
 		</div>
 	</div>
 </section>
-<!-- Footer  End -->
+
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
@@ -223,6 +232,24 @@
 <script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
 
 <!-- Login Script -->
-<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
+<!-- Shop type2 -->
+
+<!-- JAVASCRIPTS -->
+<script src="<?php echo base_url() ?>assets/type2/plugins/jQuery/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/popper.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap-slider.js"></script>
+  <!-- tether js -->
+<script src="<?php echo base_url() ?>assets/type2/plugins/tether/js/tether.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/raty/jquery.raty-fa.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/slick-carousel/slick/slick.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
+
+<!-- Shop JS End -->
+
+</body>
 </html>

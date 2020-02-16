@@ -3,6 +3,7 @@ class Barang extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_barang');
+		$this->load->library('form_validation');
 	}
 	function index(){
 		$data['count'] = $this->m_barang->tampilkanBarang()->num_rows();
@@ -17,17 +18,22 @@ class Barang extends CI_Controller{
 		$nama = $this->input->post('nama_barang');
 		$id_penjual = $this->input->post('id_penjual');
 		//$gambar = $this->input->post('gambar_barang');
-		$gambar = 'default.jpg';
+		$gambar = $this->upload_file();
 		$harga = $this->input->post('harga_barang');
 		$stok = $this->input->post('stok_barang');
 		$user_add = $this->input->post('id_penjual');
 		//$waktu_add = $this->input->post('waktu_add');
 		
+
+
+		$gambarUpload = $this->upload->data();			
+		$imgdata = file_get_contents($gambarUpload['full_path']);//get the content of the image using its path
+
 		$data = array(
 			'id_barang' => $id_barang,
 			'nama_barang' => $nama,
 			'id_penjual' => $id_penjual,
-			'gambar_barang' => $gambar,
+			'gambar_barang' => $imgdata,
 			'harga_barang' => $harga,
 			'stok_barang' => $stok,
 			'user_add' => $user_add,
@@ -38,6 +44,33 @@ class Barang extends CI_Controller{
 		$this->m_barang->insertTable('barang', $data);
 		redirect('Shop');
 	}
+
+	public function upload_file()
+        {
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|jpeg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1300;
+                $config['max_height']           = 1024;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        
+                    $this->form_validation->set_error_delimiters('<p class="error">', '</p>');
+
+                    $error = array('error' => $this->upload->display_errors());
+
+                    return $error;
+                }
+                else
+                {
+                    $data = array('upload_data' => $this->upload->data());
+
+                    return $data;
+                }
+        }
 		
 }
 ?>

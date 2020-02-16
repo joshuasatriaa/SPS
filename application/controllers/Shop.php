@@ -6,6 +6,7 @@ class Shop extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_barang');
+		$this->load->model('m_pesanan');
 	}
 
 	public function index()
@@ -27,6 +28,40 @@ class Shop extends CI_Controller {
 	{
 		$data['barang'] = $this->m_barang->tampilkanBarangIni($id)->result();
 		$this->load->view('v_shop_detail',$data);
+	}
+
+	function cart(){
+		$data['cart'] = $this->m_pesanan->showCart($this->session->userdata('id_user'))->result();
+		$this->load->view('v_cart',$data);
+	}
+
+	function addCart($id){
+
+		$count = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows()+1;
+		$id_pesanan = "CART-".$count;
+		$detail_barang = $this->m_barang->tampilkanBarangIni($id)->row_array();
+
+		$data = [
+			'id_pesanan' => $id_pesanan, 
+			'id_pembeli' => $this->session->userdata('id_user'), 
+			'id_penjual' => $detail_barang['id_penjual'], 
+			'id_barang' => $id, 
+			'status_pesanan' => 0, 
+			 
+		];
+
+		$this->db->set('waktu_pesanan', 'NOW()', FALSE);
+		$this->m_pesanan->insertTable('pesanan', $data);
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Added to Cart!</div>');
+		redirect('Shop/ShopDetail/'.$id);
+
+
+	}
+
+	function loadImage($id){
+		$data = $this->m_pesanan->getImage($id)->row_array();
+		return $data;
 	}
 
 }
