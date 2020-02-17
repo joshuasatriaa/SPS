@@ -95,7 +95,15 @@
                 <h1>Tampilkan After Service Notification</h1>
                 <table>
 					<thead>
-					
+					<tr>
+						<td>ID Pesanan</td>
+						<td>ID Pembeli</td>
+						<td>ID Penjual</td>
+						<td>ID Barang</td>
+						<td>Status Pesanan</td>
+						<td>Waktu Pesanan</td>
+						
+					</tr>
 					</thead>
 					<tbody>
 					
