@@ -132,12 +132,12 @@
 					<div class="row">
 						<div class="col-md-6">
 							<strong>Short</strong>
-							<select>
-								<option>Most Recent</option>
-								<option value="1">Most Popular</option>
+							<select id="getProduct">
+								<option value="show-all" selected="selected">Most Recent</option>
 								<option value="2">Lowest Price</option>
-								<option value="4">Highest Price</option>
+								<option value="3">Highest Price</option>
 							</select>
+							
 						</div>
 						<div class="col-md-6">
 							<div class="view">
@@ -344,5 +344,82 @@
 <script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
 
 <!-- Shop JS End -->
+<!-- <script>
+jQuery(function()
+{		
+	// function untuk mengambil semua data
+	function getAll()
+	{
+		$.ajax({
+			url: 'ProductController.php',
+			data: 'action=show-all',
+			cache: false,
+			success: function(response){
+				// jika berhasil 
+				$("#show-product").html(response);
+			}
+		});			
+	}
+	
+	getAll(); // load ketika document ready
 
+	// ketika ada event change
+	$("#getProduct").change(function()
+	{				
+		var id = $(this).find(":selected").val();
+		var dataString = 'action='+ id;
+				
+		$.ajax({
+			url: 'ProductController.php',
+			data: dataString,
+			cache: false,
+			success: function(response){
+				// jika berhasil 
+				$("#show-product").html(response);
+			} 
+		});
+	})
+});
+</script>
+-->
+<script>
+$(document).ready(function()){
+
+function filter_data(page)
+{
+	$('#filter_data').html("<div id='loading'></div>");
+	var action ='fetch_data';
+	var minimum_price = $('#minimum_price').val();
+	var maximum_price = $('#maximum_price').val();
+	$.ajax({
+		url:"<?php echo base_url(); ?>Shop/fetch_data"+page,
+		method : "POST";
+		dataType : "JSON";
+		data:{action:action, minimum_price:minimum_price,maximum_price:maximum_price},
+	success:function(data)
+	{
+		$('.filter_data').html(data.product_list);
+		$('#pagination_link').html(data.pagination_link);
+	}
+	})
+
+}
+	$('#price_range').slider({
+		range:true;
+		min:1000;
+		max:100000000;
+		values:[1000,100000000],
+		step:100000,
+		stop:function(event,ui)
+		{
+			$('#price_show').html(ui.values[0] + values[1]);
+			$('#minimum_price').val(ui.values[0]);
+			$('#maximum_price').val(ui.values[1]);
+			filter_data(1);
+		}
+
+	})
+}
+</script>
 </html>
+

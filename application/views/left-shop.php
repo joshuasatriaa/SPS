@@ -34,11 +34,10 @@
 					<div class="widget1 price-range w-100">
 						<h4 class="widget-header">Price Range</h4>
 						<div class="block">
-											<input class="range-track w-100" type="text" data-slider-min="0" data-slider-max="5000" data-slider-step="5"
-											data-slider-value="[0,5000]">
-									<div class="d-flex justify-content-between mt-2">
-											<span class="value">$10 - $5000</span>
-									</div>
+						<input type="hidden" id="minimum_price" value="0" />
+						<input type="hidden" id="maximum_price" value="100000000"/>
+						<p id="price_show">1.000 - 100.000.000</p>
+						<div id="price_range"></div>
 						</div>
 					</div>
 
