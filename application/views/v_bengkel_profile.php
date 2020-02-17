@@ -142,19 +142,7 @@
                             $newDate = date("d F Y", strtotime($date1));
                             echo $newDate;   ?></center>
                         </h6>
-                        <?php foreach($datarating as $list){ ?>
-                        <center>
-                            <div class="product-ratings">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
-                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
-                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
-                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
-                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
-                                </ul>
-                            </div>
-                        </center>
-                        <?php } ?>
+                        
                         <br>
                         <center>
                             <button class="btn d-inline-block  btn-primary">CONTACT</button><br><br>
@@ -173,7 +161,23 @@
 					<h2><?php echo $list->nama_bengkel ?></h2>
                     <a><i class="fa fa-envelope-open"></i> <?php echo $list->email ?></a><br>
                     <a><i class="fa fa-comments"></i> <?php echo $list->telepon ?></a><br>
-                    <a><i class="fa fa-location-arrow"></i> <?php echo $list->alamat ?></a><br><br>
+					<a><i class="fa fa-location-arrow"></i> <?php echo $list->alamat ?></a><br>
+					
+					<?php foreach($datarating as $list){ ?>
+                        
+                            <div class="product-ratings">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                    <li class="list-inline-item "><i class="fa fa-star-o"></i></li>
+                                </ul>
+                            </div>
+                        
+                    <?php } ?>
+					
+					<br>
                     <!--
                     <center>
                         <h3>Give Rating</h3><br>
