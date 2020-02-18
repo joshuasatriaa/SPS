@@ -70,56 +70,15 @@
 ?>
 
 
-
-<!--  Banner start -->
-<section class="slider-hero hero-slider  hero-style-1  ">
-  
-    <div class="swiper-wrapper">
+  <!--  Banner start -->
+  <section class="slider-hero hero-slider  hero-style-1  ">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
-
-           
-
-			<section class="page-search">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<!-- Advance Search -->
-							<div class="advance-search">
-								<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
-									<div class="form-row">
-										<div class="form-group col-md-10">
-											<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
-										</div>
-										<div class="form-group col-md-2">
-											
-											<button type="submit" class="btn btn-primary">Search Now</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-           
-          </div>
-        </div> 
-      </div>
-      <!-- end slide-item -->
-      
-  
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vbooking.jpeg">      
+        </div>
     </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
-</section>
-<!--  Banner End -->
+    </section>
+    <!--  Banner End -->
 
 
 <?php foreach($databengkel as $list){ ?>
@@ -136,7 +95,7 @@
 							<img src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="" class="">
 						</div>
 						<!-- User Name -->
-                        <h5 class="text-center"><?php echo $list->nama_bengkel ?></h5>
+                        <h5 class="text-center" style="font-family: 'Open Sans', sans-serif;"><?php echo $list->nama_bengkel ?></h5>
                         <h6 style="color:gray;"><center>Member Since 
                             <?php $date1= $list->tanggal_registrasi;
                             $newDate = date("d F Y", strtotime($date1));
@@ -158,7 +117,7 @@
 			<div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
 				<!-- Edit Profile Welcome Text -->
 				<div class="widget welcome-message">
-					<h2><?php echo $list->nama_bengkel ?></h2>
+					<h2 style="font-family: 'Open Sans', sans-serif;"><?php echo $list->nama_bengkel ?></h2>
                     <a><i class="fa fa-envelope-open"></i> <?php echo $list->email ?></a><br>
                     <a><i class="fa fa-comments"></i> <?php echo $list->telepon ?></a><br>
 					<a><i class="fa fa-location-arrow"></i> <?php echo $list->alamat ?></a><br>
@@ -214,7 +173,7 @@
                     </center>
                     -->
 
-                    <h3>Services :</h3>
+                    <h3 style="font-family: 'Open Sans', sans-serif;">Services :</h3>
                     <?php foreach($dataservice as $list){ ?>
                         <ul>
                             <li>

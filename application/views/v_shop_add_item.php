@@ -60,7 +60,7 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home6.jpeg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop1.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
@@ -72,19 +72,36 @@
                         <h2 class="form-title">Add Items</h2>
                         <?php echo form_open_multipart(base_url().'Barang/insertData');?>
                             <div class="form-group">
-							                <input type="hidden" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>" readonly>
+							    <input type="hidden" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>" readonly>
                             </div>
+
+                            <div class="form-group">
+                                <input type="hidden" name="id_penjual" placeholder="Seller ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
+                            </div>
+
                             <div class="form-group">
                                 <p>Item Name</p>
                                 <input type="text" name="nama_barang" placeholder="Item Name"/>
                             </div>
+
                             <div class="form-group">
-                                <input type="hidden" name="id_penjual" placeholder="Seller ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
+                                <p>Description</p>
+                                <input type="text" name="keterangan_barang" placeholder="Item Description"/>
                             </div>
-							              
+			              
                             <div class="form-group">
-                                <p>Item Image</p>
+                                <p>Item Image (1)</p>
                                 <input type="file" name="userfile" size="20" class="mr-sm-2" />
+                            </div>
+
+                            <div class="form-group">
+                                <p>Item Image (2)</p>
+                                <input type="file" name="userfile2" size="20" class="mr-sm-2" />
+                            </div>
+
+                            <div class="form-group">
+                                <p>Item Image (3)</p>
+                                <input type="file" name="userfile3" size="20" class="mr-sm-2" />
                             </div>
                             
 							<div class="form-group">
