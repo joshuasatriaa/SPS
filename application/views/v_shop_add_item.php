@@ -91,7 +91,7 @@
 			              
                             <div class="form-group">
                                 <p>Item Image (1)</p>
-                                <input type="file" name="userfile" size="20" class="mr-sm-2" />
+                                <input type="file" name="userfile[]" size="20" class="mr-sm-2" multiple />
                             </div>
 
                             <div class="form-group">

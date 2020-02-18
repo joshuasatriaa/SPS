@@ -382,7 +382,11 @@
 									<a href="">See all ads</a>
 									<ul class="list-inline mt-20">
 										<li class="list-inline-item"><a href="#" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
+										<?php if($this->session->userdata('id_user')){?>
 										<li class="list-inline-item"><a href="<?php echo base_url(). 'Shop/addCart/'. $list->id_barang?>" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer</a></li>
+										<?php }else{?>
+											<li class="list-inline-item"><a class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3 btn-add-cart text-white">Make an offer</a></li>
+										<?php }?>
 									</ul>
 								</div>
 								<!-- Map Widget -->
@@ -601,6 +605,49 @@
 
 	    }); 
 	}); */
+</script>
+<script>
+$(document).ready(function(){
+	$(".btn-add-cart").click(function(e){
+		const modal = document.querySelector(".modal");
+		modal.classList.add("is-open");
+  		body.style.overflow = "hidden";
+	});
+
+	$(".btn-submit").click(function(e){
+	    	e.preventDefault();
+	    	
+	    	var email = $("input[name='email']").val();
+	    	var password = $("input[name='password']").val();
+	    	
+
+
+	        $.ajax({
+	            url: "<?php echo base_url() ?>Login",
+	            type:'POST',
+	            dataType: "json",
+	            data: {email:email, password:password},
+	            success: function(data) {
+					
+	                if($.isEmptyObject(data.error)){
+	                	$(".print-error-msg").css('display','none');
+						window.location.reload(true);
+						
+	                }else{
+						$(".print-error-msg").css('display','block');
+	                	$(".print-error-msg").html(data.error);
+	                }
+					
+	            }
+	        });
+
+
+	    }); 
+
+		$("#password").on("input", function(){
+        	$(".print-error-msg").css('display','none');
+	    });
+});
 </script>
 
 </body>
