@@ -10,7 +10,7 @@ class Booking extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['bengkels'] = $this->m_signup_bengkel->tampilkanData()->result();
+		$data['bengkels'] = $this->m_signup_bengkel->tampilkanData1()->result();
 		$data['jumlah'] = $this->m_signup_bengkel->tampilkanData()->num_rows();
 		$this->load->view('v_service', $data);
 	}

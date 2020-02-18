@@ -7,8 +7,19 @@
 		function tampilkanData()
 		{
 			$query=$this->db->get('bengkel');
+			return $query;	
+		}
+
+		function tampilkanData1()
+		{
+			return $this->db->query('SELECT * FROM bengkel JOIN lokasi_bengkel ON 
+			bengkel.id_bengkel = lokasi_bengkel.id_bengkel');
+		}
+
+		function tampilkanDataLokasi()
+		{
+			$query=$this->db->get('lokasi_bengkel');
 			return $query;
-			
 		}
 
 		function tampilkanRecordProfile($id_bengkel)
