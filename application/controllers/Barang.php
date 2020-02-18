@@ -33,7 +33,6 @@ class Barang extends CI_Controller{
 			'id_barang' => $id_barang,
 			'nama_barang' => $nama,
 			'id_penjual' => $id_penjual,
-			'gambar_barang' => $imgdata,
 			'harga_barang' => $harga,
 			'stok_barang' => $stok,
 			'user_add' => $user_add,
@@ -42,6 +41,14 @@ class Barang extends CI_Controller{
 		
 		$this->db->set('waktu_add', 'NOW()', FALSE);
 		$this->m_barang->insertTable('barang', $data);
+
+		$count_foto = $this->m_barang->tampilkanBarang()->num_rows()+1;
+		
+		$data = array(
+			'id_foto_barang' => 'FOTO_'.$id_barang.'_'.$count_foto,
+			'id_barang' => $id_barang,
+			'gambar_barang' => $imgdata,
+		);
 		redirect('Shop');
 	}
 

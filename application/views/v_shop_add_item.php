@@ -90,8 +90,8 @@
                             </div>
 			              
                             <div class="form-group">
-                                <p>Item Image </p>
-                                <input type="file" name="userfile" size="20" class="mr-sm-2" multiple/>
+                                <p>Item Image</p>
+                                <input type="file" name="userfile[]" size="20" class="mr-sm-2" multiple />
                             </div>
 
                             

@@ -12,6 +12,7 @@ class Shop extends CI_Controller {
 	public function index()
 	{
 		$data['barang'] = $this->m_barang->tampilkanBarang()->result();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_shop',$data);
 	}
 
@@ -27,11 +28,13 @@ class Shop extends CI_Controller {
 	function ShopDetail($id)
 	{
 		$data['barang'] = $this->m_barang->tampilkanBarangIni($id)->result();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_shop_detail',$data);
 	}
 
 	function cart(){
 		$data['cart'] = $this->m_pesanan->showCart($this->session->userdata('id_user'))->result();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_cart',$data);
 	}
 
