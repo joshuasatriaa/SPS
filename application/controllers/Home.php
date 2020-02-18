@@ -7,6 +7,7 @@ class Home extends CI_Controller {
 	{
 		
 		$this->load->model('m_signup_bengkel');
+		$this->load->model('m_pesanan');
 		if($this->session->userdata('id_user')){
 			$where = array(
 				'id_bengkel' => $this->session->userdata('id_user'),
@@ -14,10 +15,12 @@ class Home extends CI_Controller {
 	
 			$data['image'] = $this->m_signup_bengkel->getRecord('bengkel', $where);
 			
+			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 			$this->load->view('v_home', $data);
 		}
 		else{
-			$this->load->view('v_home');
+			$data['countCart'] = 0;
+			$this->load->view('v_home', $data);
 		}
 		
 		
