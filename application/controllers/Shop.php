@@ -22,6 +22,7 @@ class Shop extends CI_Controller {
 		$data['barang'] = $this->m_barang->searchBarang($keyword)->result();
 		$data['hasils'] = $keyword;
 		$data['jumlah'] = $this->m_barang->searchBarang($keyword)->num_rows();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_shopsearch',$data);
 	}
 

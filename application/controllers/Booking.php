@@ -6,12 +6,14 @@ class Booking extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_service');
         $this->load->model('m_signup_bengkel');
-        $this->load->model('m_booking');
+		$this->load->model('m_booking');
+		$this->load->model('m_pesanan');
 	}
 	public function index()
 	{
 		$data['bengkels'] = $this->m_signup_bengkel->tampilkanData1()->result();
 		$data['jumlah'] = $this->m_signup_bengkel->tampilkanData()->num_rows();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_service', $data);
 	}
 	public function Booking($id)
@@ -20,6 +22,7 @@ class Booking extends CI_Controller {
         //$data['service'] = $this->m_service->tampilkan_service()->result();
 		$data['count'] = $this->m_booking->tampilkan_booking()->num_rows();
 		$data['service'] = $this->m_booking->cek_service($id)->result();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_booking', $data);
 	}
 
@@ -44,6 +47,7 @@ class Booking extends CI_Controller {
 	function CheckBooking()
 	{
 		$data['databooking'] = $this->m_booking->tampilkan_bookingku($this->session->userdata('id_user'))->result();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_cek_booking',$data);
 	}
 

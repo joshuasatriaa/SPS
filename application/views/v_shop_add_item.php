@@ -71,9 +71,6 @@
                     <div class="signup-form">
                         <h2 class="form-title">Add Items</h2>
                         <?php echo form_open_multipart(base_url().'Barang/insertData');?>
-                            <div class="form-group">
-							    <input type="hidden" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>" readonly>
-                            </div>
 
                             <div class="form-group">
                                 <input type="hidden" name="id_penjual" placeholder="Seller ID" readonly value = "<?php echo $this->session->userdata('id_user') ?>"/>
@@ -81,27 +78,33 @@
 
                             <div class="form-group">
                                 <p>Item Name</p>
-                                <input type="text" name="nama_barang" placeholder="Item Name"/>
+                                <input type="text" name="nama_barang" placeholder="Item Name" value="<?php echo set_value('nama_barang') ?>" />
+                                <?php echo form_error('nama_barang', '<small class="text-danger">', '</small>') ?>
                             </div>
 
                             <div class="form-group">
                                 <p>Description</p>
-                                <input type="text" name="keterangan_barang" placeholder="Item Description"/>
+                                <input type="text" name="keterangan_barang" placeholder="Item Description" value="<?php echo set_value('keterangan_barang') ?>" />
+                                <?php echo form_error('keterangan_barang', '<small class="text-danger">', '</small>') ?>
                             </div>
 			              
                             <div class="form-group">
                                 <p>Item Image</p>
                                 <input type="file" name="userfile[]" size="20" class="mr-sm-2" multiple />
+                                <?php echo form_error('userfile[]', '<small class="text-danger">', '</small>') ?>
+                                <?php echo $error;?>
                             </div>
 
                             
 							<div class="form-group">
                                 <p>Price</p>
-                                <input type="number" name="harga_barang" placeholder="Price"/>
+                                <input type="number" id="harga_barang" name="harga_barang" placeholder="Price" value="<?php echo set_value('harga_barang') ?>" />
+                                <?php echo form_error('harga_barang', '<small class="text-danger">', '</small>') ?>
                             </div>
 			                <div class="form-group">  
                                 <p>Stock</p>
-                                <input type="number" name="stok_barang" placeholder="Stock"/>
+                                <input type="number" id="stok_barang" name="stok_barang" placeholder="Stock" value="<?php echo set_value('stok  _barang') ?>"/>
+                                <?php echo form_error('stok_barang', '<small class="text-danger">', '</small>') ?>
                             </div>
 							              
                             <div class="form-group form-button">
@@ -211,6 +214,7 @@
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type1/plugins/aos/aos.js"></script>

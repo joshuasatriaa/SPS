@@ -7,6 +7,7 @@ class Login extends CI_Controller{
 	{
 		parent::__construct();		
 		$this->load->model('m_login');
+		$this->load->model('m_pesanan');
 		$this->load->library('form_validation');
 	}
 		
@@ -87,11 +88,14 @@ class Login extends CI_Controller{
 	function changepassword()
 	{
 		$data['label'] = "";
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_password', $data);
 	}
 
 	function changepassword1()
 	{
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+
 		$this->form_validation->set_rules('password1', 'Current Password', 'required|trim');
         $this->form_validation->set_rules('password2', 'New Password', 'required|trim|matches[password3]|min_length[6]');
         $this->form_validation->set_rules('password3', 'Confirm New Password', 'required|trim|matches[password2]|min_length[6]');
@@ -122,6 +126,7 @@ class Login extends CI_Controller{
 			}
 			else
 			{
+				
 				$data['label'] = "Your Current Password is wrong";
 				$this->load->view('v_password', $data);
 			}
@@ -130,7 +135,8 @@ class Login extends CI_Controller{
 	}
 
 	function changePasswordSuccess(){
-		$this->load->view('v_changepasswordsuccess');
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$this->load->view('v_changepasswordsuccess', $data);
 	}
 
 }
