@@ -79,7 +79,7 @@
 						);
 				
 						$this->m_user->insertTable('user', $data2);
-						redirect('Signup_pengguna/sigunUpSuccess');
+						redirect('Signup_pengguna/signUpSuccess');
 
 				}
 					

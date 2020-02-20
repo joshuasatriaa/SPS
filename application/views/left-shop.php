@@ -9,11 +9,13 @@
 						</div>
 					</a>
 
-					<div class="widget1 category-list">
-						<h4 style="font-family: 'Open Sans', sans-serif;">
-							<center>My Items</center>
-						</h4>
-					</div>
+					<a href = "<?php echo base_url() ?>Barang/MyItem">
+						<div class="widget1 category-list">
+							<h4 style="font-family: 'Open Sans', sans-serif;">
+								<center>My Items</center>
+							</h4>
+						</div>
+					</a>
 
 					<div class="widget1 category-list">
 						<h4 style="font-family: 'Open Sans', sans-serif;">

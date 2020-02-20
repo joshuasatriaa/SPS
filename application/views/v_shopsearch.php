@@ -156,9 +156,12 @@
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
-										<!-- <div class="price">$200</div> -->
-										<a href="single.html">
-											<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+									<a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>">
+										<?php
+                                            
+                                            echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
+                                            
+                                        ?>
 										</a>
 									</div>
 									<div class="card-body">

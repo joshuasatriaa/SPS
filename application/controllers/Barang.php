@@ -8,6 +8,15 @@ class Barang extends CI_Controller{
 	function index(){
 		$data['count'] = $this->m_barang->tampilkanBarang()->num_rows();
 		$data['error'] = '';
+
+		$this->load->model('m_pesanan');
+		if($this->session->userdata('id_user')){
+			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		}
+		else
+		{
+			$data['countCart'] = 0;
+		}
 		$this->load->view('v_shop_add_item', $data);
 		
 		//$data['barang'] = $this->m_barang->tampilkan_barang()->result();
@@ -123,7 +132,12 @@ class Barang extends CI_Controller{
 
                     return $data;
                 }
-        }
+		}
+		
+		function MyItem()
+		{
+			
+		}
 		
 }
 ?>
