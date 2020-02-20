@@ -72,52 +72,23 @@
 
 
 <!--  Banner start -->
-<section class="slider-hero hero-slider  hero-style-1  ">
+<section class="slider-hero hero-slider  hero-style-1 ">
   
     <div class="swiper-wrapper">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
-		  <?php echo $this->session->flashdata('message'); ?>
+      <div class="swiper-slide slide-item" style="height:120px">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg" >
+          
            
 
-			<section class="page-search">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<!-- Advance Search -->
-							<div class="advance-search">
-								<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
-									<div class="form-row">
-										<div class="form-group col-md-10">
-											<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
-										</div>
-										<div class="form-group col-md-2">
-											
-											<button type="submit" class="btn btn-primary">Search Now</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-           
           </div>
-        </div> 
+        
       </div>
       <!-- end slide-item -->
       
   
     </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
+
 </section>
 <!--  Banner End -->
 
