@@ -3,6 +3,7 @@ class Barang extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_barang');
+		$this->load->model('m_pesanan');
 		$this->load->library('form_validation');
 	}
 	function index(){
@@ -136,7 +137,10 @@ class Barang extends CI_Controller{
 		
 		function MyItem()
 		{
-			
+			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+			$data['barangku'] = $this->m_barang->tampilkanBarangKu($this->session->userdata('id_user'))->result();
+
+			$this->load->view('v_user_myitem',$data);
 		}
 		
 }
