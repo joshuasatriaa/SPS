@@ -30,7 +30,7 @@
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
 
   <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style2.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/type1/css/style3.css" rel="stylesheet">
 
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
@@ -48,37 +48,11 @@
 
 <!-- Header Close -->
 
-<!-- Login Modal -->
-<div class="modal">
-  <div class="modal-container">
-    <div class="modal-left">
-      <h1 class="modal-title">Welcome!</h1>
-      <p class="modal-desc">Fanny pack hexagon food truck, street art waistcoat kitsch.</p>
-      <div class="input-block">
-        <label for="email" class="input-label">Email</label>
-        <input type="email" name="email" id="email" placeholder="Email">
-      </div>
-      <div class="input-block">
-        <label for="password" class="input-label">Password</label>
-        <input type="password" name="password" id="password" placeholder="Password">
-      </div>
-      <div class="modal-buttons">
-        <a href="" class="">Forgot your password?</a>
-        <button class="input-button">Login</button>
-      </div>
-      <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup">Sign up now</a></p>
-    </div>
-    <div class="modal-right">
-      <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="">
-    </div>
-    <button class="icon-button close-button">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
-</svg>
-      </button>
-  </div>
-  
-</div>
+
+<?php
+	include 'modal-login.php';
+?>
+
 
 <!--  Banner start -->
 <section class="slider-hero hero-slider  hero-style-1  ">
@@ -90,46 +64,65 @@
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
-            <!-- tampilkan barang start -->
+          <!-- Form -->
+          <section class="signup">
+            <div class="container1">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Edit Barang</h2>
+                        <?php echo $this->session->flashdata('message'); ?>
+                          <form action="<?php echo base_url().'Barang/updateData'?>" method="POST" novalidate="novalidate">
+                          <?php foreach($barang as $list) { ?>
+                            
+                                <input type="hidden" name="user_id" value="<?php echo $list->id_barang?>">
+
+                                <div class="form-group">
+                                  <p>Nama Barang</p>
+                                  <input type="text" name="nama" value="<?php echo $list->nama_barang ?>">
+                                 
+                                </div>
+                                
+                                <div class="form-group">
+                                  <p>ID Penjual</p>
+                                  <input type="text" name="id_penjual" value="<?php echo $list->id_penjual ?>">
+                                  
+                                </div>
+
+                                <div class="form-group">
+                                  <p>Gambar Barang<p>
+                                  <input type="file" name="gambar" size="20" value="<?= $list->gambar_barang ?>">
+                                </div>
+                                
+                                <div class="form-group">
+                                  <p>Harga Barang</p>
+                                  <input type="numbers" name="harga" value="<?php echo $list->harga_barang ?>">
+                                </div>
+
+                                <div class="form-group">
+                                  <p>Stok Barang</p>
+                                  <input type="numbers" name="stok_barang" value="<?php echo $list->stok_barang ?>">
+                                </div>
+
+                                
+
+                                
+                                <div class="form-group form-button">
+                                  <button type="submit" name="signup" id="signup" class="form-submit"value="Submit"> </button>
+                                </div>
+                              
+                            </form>
+                            <?php } ?>
+                    
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="<?php echo base_url() ?>assets/type1/images/signup-image.jpg" ></figure>
+
+                    </div>
+                </div>
+            </div>
+         </section>
+
             
-                <h1>Tampilkan Barang</h1>
-                <table>
-					<thead>
-					<tr>
-						<td>ID Barang</td>
-						<td>Nama Barang</td>
-						<td>ID Penjual</td>
-						<td>Gambar Barang</td>
-						<td>Harga Barang</td>
-						<td>Stok Barang</td>
-						<td>User Add</td>
-						<td>Waktu Add</td>
-						<td>Aksi</td>
-					</tr>
-					</thead>
-					<tbody>
-					<?php
-					$i = 0;
-					foreach($barang as $list){ ?>
-					<tr>
-						<td><?php echo $list->id_barang ?></td>
-						<td><?php echo $list->nama_barang ?></td>
-						<td><?php echo $list->id_penjual ?></td>
-						<td><?php echo $list->gambar_barang ?></td>
-						<td><?php echo $list->harga_barang ?></td>
-						<td><?php echo $list->stok_barang ?></td>
-						<td><?php echo $list->user_add ?></td>
-						<td><?php echo $list->waktu_add ?></td>
-						<td>
-						<a href="<?php echo base_url(). 'Barang/editData/'.$list->id_barang;?>"> <a href="<?php echo base_url(). 'Barang/hapusData/'.$list->id_barang;?>">
-						</td>
-					</tr>
-					<?php
-					$i++; ?>
-					</tbody>
-				</table>
-                
-            <!-- tampilkan barang end -->
            
           </div>
         </div> 
@@ -246,6 +239,5 @@
 
 <!-- Login Script -->
 <script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
-
 
 </html>

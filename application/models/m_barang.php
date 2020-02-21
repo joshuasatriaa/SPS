@@ -45,5 +45,18 @@ class m_barang extends CI_Model{
 		WHERE b.id_pengguna = "'.$where.'" ');
 	}
 	
+	function editData($where, $table){
+		return $this->db->get_where($table,$where);
+	}
+	
+	function updateData($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+	
+	function hapusData($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
+	
 }
 ?>

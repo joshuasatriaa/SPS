@@ -143,5 +143,52 @@ class Barang extends CI_Controller{
 			$this->load->view('v_user_myitem',$data);
 		}
 		
+		function editData($id_barang){
+			$where = array('id_barang' => $id_barang);
+			$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
+			$this->load->view('v_edit_barang',$data);
+		}
+		
+		
+		function updateData(){
+			id = $this->input->post('id_barang');
+			$nama = $this->input->post('nama');
+			$idPenjual = $this->input->post('id_penjual');
+			$gambar = $this->input->post('gambar');
+			$harga = $this->input->post('harga');
+			$stok = $this->input->post('stok');
+			
+			$data = array(
+				'id_barang' => $id,
+				'nama_barang' => $nama,
+				'id_penjual' => $idPenjual,
+				'gambar_barang' => $gambar,
+				'harga_barang' => $harga,
+				'stok_barang' => $stok
+				);
+			
+			$where = array(
+				'id_barang' => $id
+			);
+			
+			$this->m_barang->updateData($where,$data,'barang');
+		
+			redirect('Barang');
+			
+			
+			
+			
+			
+			
+		}
+		
+		function hapusData($id_barang){
+			$where = array('id_barang' => $id_barang);
+			$this->m_barang->hapusData($where,'barang');
+			redirect('Barang');
+		}
+	
+	
+	
 }
 ?>
