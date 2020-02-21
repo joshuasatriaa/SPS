@@ -101,6 +101,7 @@
                 <th>No</th>
                 <th>Image</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -136,6 +137,24 @@
                             echo "<span style ='color:Green;'>Ready</span>";
                         }
                     ?>
+                </td>
+
+                <td class="action" data-title="Action">
+                  <div class="">
+                    <ul class="list-inline justify-content-center">
+                      
+                      <li class="list-inline-item">
+                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="<?php echo base_url() ?>Barang/EditItem/<?php echo $list->id_barang ?>">
+                          <i class="fa fa-pencil"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="<?php echo base_url() ?>Barang/DeleteItem/<?php echo $list->id_barang ?>">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </td>
               </tr>
               <tr>
