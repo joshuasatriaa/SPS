@@ -13,6 +13,8 @@ class Shop extends CI_Controller {
 	{
 		$data['barang'] = $this->m_barang->tampilkanBarang()->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_shop',$data);
 	}
 
@@ -23,6 +25,8 @@ class Shop extends CI_Controller {
 		$data['hasils'] = $keyword;
 		$data['jumlah'] = $this->m_barang->searchBarang($keyword)->num_rows();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_shopsearch',$data);
 	}
 
@@ -30,12 +34,16 @@ class Shop extends CI_Controller {
 	{
 		$data['barang'] = $this->m_barang->tampilkanBarangIni($id)->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_shop_detail',$data);
 	}
 
 	function cart(){
 		$data['cart'] = $this->m_pesanan->showCart($this->session->userdata('id_user'))->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_cart',$data);
 	}
 

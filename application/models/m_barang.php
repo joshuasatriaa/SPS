@@ -57,6 +57,6 @@ class m_barang extends CI_Model{
 	function hapusData($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
-	
+	}
 }
 ?>

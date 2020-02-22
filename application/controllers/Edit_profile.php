@@ -15,6 +15,8 @@
             $where1 = $this->session->userdata('id_user');
             $data['pengguna'] = $this->m_signup_pengguna->tampilkanRecordProfile($where1)->result();
             $data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+            $data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		    $data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
             $this->load->view('v_editprofile',$data);
         }
         function updateData(){

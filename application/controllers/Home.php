@@ -3,11 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();
+		$this->load->model('m_signup_bengkel');
+		$this->load->model('m_pesanan');
+		$this->load->model('m_notif');
+	}
+	
 	public function index()
 	{
 		
-		$this->load->model('m_signup_bengkel');
-		$this->load->model('m_pesanan');
+		
 		if($this->session->userdata('id_user')){
 			$where = array(
 				'id_bengkel' => $this->session->userdata('id_user'),
@@ -16,6 +22,11 @@ class Home extends CI_Controller {
 			$data['image'] = $this->m_signup_bengkel->getRecord('bengkel', $where);
 			
 			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+
+			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+			
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+
 			$this->load->view('v_home', $data);
 		}
 		else{

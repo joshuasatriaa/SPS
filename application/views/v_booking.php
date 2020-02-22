@@ -75,9 +75,10 @@
 							                <input type="hidden" id="id_booking" name="id_booking" value="BOOK-<?php echo $count+1 ?>" readonly>
                             </div>
                             <div class="form-group">
-                            <label for="servoce" class="control-label mb-1">Service</label><br>
-                             <select data-placeholder="Choose Service" class="standardSelect form-control" tabindex="1" name="service" id="service">
-                                <?php foreach($service as $a){?>
+                                <label for="service" class="control-label mb-1">Service</label><br>
+                                <select data-placeholder="Choose Service" class="standardSelect form-control" tabindex="1" name="service" id="service">
+                                    <option value="">-</option>
+                                    <?php foreach($service as $a){?>
                                         <option value="<?php echo $a->id_service?>"><?php echo $a->nama_service . " - Rp " . $a->harga_service?></option>
                                     <?php }?>
                                 </select>
@@ -90,7 +91,7 @@
                                 <input type="text" id="gambar" placeholder="gambar"/>
                             </div>
                             -->
-							              <div class="form-group">
+                            <div class="form-group">
                                 <p>Booking Time</p>
                                 <input type="datetime-local" name="waktu_booking" placeholder=""/>
                             </div>
