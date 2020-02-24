@@ -39,7 +39,7 @@
 
 		function tampilkan_profile($where)
 		{
-			$query = $this->db->query('	SELECT * FROM Bengkel WHERE id_bengkel = "'.$where.'"');
+			$query = $this->db->query('	SELECT * FROM Bengkel a JOIN lokasi_bengkel b ON a.id_bengkel = b.id_bengkel WHERE a.id_bengkel = "'.$where.'"');
 			return $query;
 		}
 

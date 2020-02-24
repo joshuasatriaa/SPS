@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/clock-picker/clockpicker.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
+  
 
   <!-- Main Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
@@ -40,7 +41,9 @@
   <link href="<?php echo base_url()?>assets/type2/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="<?php echo base_url()?>assets/type2/css/style.css" rel="stylesheet">
-
+  <!-- Jquery UI -->
+  <link href="<?php echo base_url(); ?>assets/jquery-ui.css" rel = "stylesheet">
+  <link href="<?php echo base_url(); ?>assets/jquery-ui.min.css" rel = "stylesheet">
 
   <!-- Login Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
@@ -317,6 +320,7 @@
 
 <!-- JAVASCRIPTS -->
 <script src="<?php echo base_url() ?>assets/type2/plugins/jQuery/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/jquery-ui.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/popper.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap-slider.js"></script>
@@ -444,7 +448,7 @@ function filter_data(page)
 		step:100000,
 		stop:function(event,ui)
 		{
-			$('#price_show').html(ui.values[0] + values[1]);
+			$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
 			$('#minimum_price').val(ui.values[0]);
 			$('#maximum_price').val(ui.values[1]);
 			filter_data(1);

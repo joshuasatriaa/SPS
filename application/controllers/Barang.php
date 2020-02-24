@@ -13,6 +13,9 @@ class Barang extends CI_Controller{
 		$this->load->model('m_pesanan');
 		if($this->session->userdata('id_user')){
 			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+			
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		}
 		else
 		{
@@ -174,11 +177,6 @@ class Barang extends CI_Controller{
 			$this->m_barang->updateData($where,$data,'barang');
 		
 			redirect('Barang');
-			
-			
-			
-			
-			
 			
 		}
 		

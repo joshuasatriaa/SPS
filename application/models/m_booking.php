@@ -83,5 +83,9 @@ class m_booking extends CI_Model{
 		$query=$this->db->get('rating');
 		return $query;
 	}
+
+	function getPenggunaViaBooking($id){
+		$query = $this->db->query('SELECT a.id_pengguna, b.nama_pengguna FROM booking a JOIN pengguna b ON a.id_pengguna = b.id_pengguna WHERE a.id_pengguna = "'.$id.'"');
+	}
 }
 ?>
