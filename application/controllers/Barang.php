@@ -151,7 +151,7 @@ class Barang extends CI_Controller{
 		
 		
 		function updateData(){
-			id = $this->input->post('id_barang');
+			$id = $this->input->post('id_barang');
 			$nama = $this->input->post('nama');
 			$idPenjual = $this->input->post('id_penjual');
 			$gambar = $this->input->post('gambar');
