@@ -8,6 +8,10 @@ class m_barang extends CI_Model{
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
 		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel');
 	}
+	function tampilkanData()
+	{
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, b.email, a.harga_barang, a.gambar_barang, a.stok_barang FROM barang a JOIN user b ON a.id_penjual=b.id_user');
+	}
 	
 	
 	function insertTable($table,$where){
