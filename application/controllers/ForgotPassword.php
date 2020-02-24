@@ -12,6 +12,7 @@ class ForgotPassword extends CI_Controller
 
     function index(){
         $this->load->view('v_forgotpassword');
+        
     }
 
     function accountNotFound($email){

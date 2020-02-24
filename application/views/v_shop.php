@@ -77,35 +77,32 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop.jpg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
-
-           
-
-<section class="page-search">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<!-- Advance Search -->
-				<div class="advance-search">
-					<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
-						<div class="form-row">
-							<div class="form-group col-md-10">
-								<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
-							</div>
-							<div class="form-group col-md-2">
-								
-								<button type="submit" class="btn btn-primary">Search Now</button>
+			
+		 	 <section class="page-search">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- Advance Search -->
+							<div class="advance-search">
+								<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
+									<div class="form-row" style="padding-left:25%;">
+										<div class="form-group col-md-6">
+											<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
+										</div>
+											
+										<button type="submit" class="btn btn-primary">Search</button>
+									</div>
+									
+								</form>
 							</div>
 						</div>
-					</form>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-</section>
-           
+			</section>     
+
           </div>
         </div> 
       </div>
@@ -142,19 +139,7 @@
 							</select>
 							
 						</div>
-						<div class="col-md-6">
-							<div class="view">
-								<strong>Views</strong>
-								<ul class="list-inline view-switcher">
-									<li class="list-inline-item">
-										<a href="#" onclick="event.preventDefault();" class="text-info"><i class="fa fa-th-large"></i></a>
-									</li>
-									<li class="list-inline-item">
-										<a href="ad-list-view.html"><i class="fa fa-reorder"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 
@@ -386,6 +371,53 @@ jQuery(function()
 });
 </script>
 -->
+
+<!-- Login Ajax -->
+<script type="text/javascript">
+
+
+	$(document).ready(function() {
+	    $(".btn-submit").click(function(e){
+	    	e.preventDefault();
+	    	
+	    	var email = $("input[name='email']").val();
+	    	var password = $("input[name='password']").val();
+	    	
+
+
+	        $.ajax({
+	            url: "<?php echo base_url() ?>Login",
+	            type:'POST',
+	            dataType: "json",
+	            data: {email:email, password:password},
+	            success: function(data) {
+					
+	                if($.isEmptyObject(data.error)){
+	                	$(".print-error-msg").css('display','none');
+						window.location.reload(true);
+						
+	                }else{
+						$(".print-error-msg").css('display','block');
+	                	$(".print-error-msg").html(data.error);
+	                }
+					
+	            }
+	        });
+
+
+	    }); 
+
+		$("#password").on("input", function(){
+        	$(".print-error-msg").css('display','none');
+	    });
+		
+
+
+	});
+
+
+</script>
+
 <script>
 $(document).ready(function()){
 

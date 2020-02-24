@@ -592,6 +592,7 @@
 <!-- Login Script -->
 <script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
+<!-- Login Ajax -->
 <script type="text/javascript">
 
 

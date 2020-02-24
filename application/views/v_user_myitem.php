@@ -49,9 +49,6 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
-  <!-- Image Slide CSS -->
-  <link href="<?php echo base_url() ?>assets/type2/css/image-slide.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -70,8 +67,9 @@
 ?>
 
 
-  <!--  Banner start -->
-  <section class="slider-hero hero-slider  hero-style-1  ">
+
+    <!--  Banner start -->
+    <section class="slider-hero hero-slider  hero-style-1  ">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vbooking.jpeg">      
@@ -81,115 +79,127 @@
     <!--  Banner End -->
 
 
-<?php foreach($databengkel as $list){ ?>
-
-<section class="user-profile section">
+<section class="section-sm">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
-				<div class="sidebar">
-					<!-- User Widget -->
-					<div class="widget user">
-						<!-- User Image -->
-						<div class="image d-flex justify-content-center">
-							<img src="<?php echo base_url() ?>assets/type1/images/home4.jpg" alt="" class="">
-						</div>
-						<!-- User Name -->
-                        <h5 class="text-center" style="font-family: 'Open Sans', sans-serif;"><?php echo $list->nama_bengkel ?></h5>
-                        <h6 style="color:gray;"><center>Member Since 
-                            <?php $date1= $list->tanggal_registrasi;
-                            $newDate = date("d F Y", strtotime($date1));
-                            echo $newDate;   ?></center>
-                        </h6>
-                        
-                        <br>
-                        <center>
-                            <button class="btn d-inline-block  btn-primary">CONTACT</button><br><br>
-                            <a href="<?php echo base_url()?>Booking/Booking/<?php echo $list->id_bengkel ?>">
-                                <button class="btn d-inline-block  btn-primary">BOOK SERVICE</button>
-                            </a>
-                        </center>   
-					</div>
-					<!-- Dashboard Links -->
-					
-				</div>
+			<div class="col-md-12" style="margin-bottom:10px;">
+                <h2 style="font-family: 'Open Sans', sans-serif;">My Items </h2>
 			</div>
-			<div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
-				<!-- Edit Profile Welcome Text -->
-				<div class="widget welcome-message">
-					<h2 style="font-family: 'Open Sans', sans-serif;"><?php echo $list->nama_bengkel ?></h2>
-                    <a><i class="fa fa-envelope-open"></i> <?php echo $list->email ?></a><br>
-                    <a><i class="fa fa-comments"></i> <?php echo $list->telepon ?></a><br>
-					<a><i class="fa fa-location-arrow"></i> <?php echo $list->alamat ?></a><br>
-					
-					<!-- Default -->
-					<?php 
-						$counter=0;
-						$a = 0;
-					 ?>
-
-					 <!-- Penambahan -->
-					<?php
-						foreach($datarating as $list)
-						{
-							$a = $a + $list->rating_bengkel;
-							$counter++;
-						}
-					?>
-
-					<!-- Rata rata rating -->
-					<?php
-						if($counter != 0)
-						{
-							$rating = $a/$counter;
-						}
-					?>
-
-					<?php foreach($datarating as $list){ ?>
-                        
-                            <div class="product-ratings">
-                                <ul class="list-inline">
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=1){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=2){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=3){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=4){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=5){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                </ul>
-                            </div>
-                        
-                    <?php } ?>
-					
-					<br>
-                    <!--
-                    <center>
-                        <h3>Give Rating</h3><br>
-                        <ul class="list-inline">
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/1/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/2/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/3/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/4/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/5/<?php echo $list->id_bengkel ?>"><li class="list-inline-item "><i class="fa fa-star-o"></i></li></a>
-                        </ul>
-                    </center>
-                    -->
-
-                    <h3 style="font-family: 'Open Sans', sans-serif;">Services :</h3>
-                    <?php foreach($dataservice as $list){ ?>
-                        <ul>
-                            <li>
-                                <?php echo $list->nama_service . " - Rp " . $list->harga_service ?><br>
-                            </li>
-                        </ul>
-                    <?php } ?>
-				</div>
+		</div>
+		
+		<div class="row">
+			<?php
+				include('left-shop.php')
+			?>
+			<div class="col-md-9">
 				
+                <div class="widget dashboard-container my-adslist">
+          
+          <table class="table table-responsive product-dashboard-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Image</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <?php
+                    $no = 1;
+                    foreach($barangku as $list){
+                ?>
+                <td class="product-thumb">
+                <?php                       
+                    echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';                        
+                ?>
+                <td class="product-details">
+                  <h3 class="title" style="font-family: 'Open Sans', sans-serif;padding-left:20px;"><?php echo $list->nama_barang ?></h3>
+                  
+                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo $list->waktu_add ?></time> </span>
+                  <span class="status" style="padding-left:20px"><strong>Price : </strong>
+                        <?php echo "Rp " .$list->harga_barang; ?>
+                   </span>
+                   <span class="status" style="padding-left:20px"><strong>Stock : </strong>
+                        <?php echo $list->stok_barang; ?>
+                   </span>
+                
+                </td>
+                <td>
+                    <?php
+                        if($list->stok_barang = 0)
+                        {
+                            echo "<span style ='color:Red;'>Sold</span>";
+                        }
+                        else
+                        {
+                            echo "<span style ='color:Green;'>Ready</span>";
+                        }
+                    ?>
+                </td>
+
+                <td class="action" data-title="Action">
+                  <div class="">
+                    <ul class="list-inline justify-content-center">
+                      
+                      <li class="list-inline-item">
+                        <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="<?php echo base_url() ?>Barang/EditItem/<?php echo $list->id_barang ?>">
+                          <i class="fa fa-pencil"></i>
+                        </a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a class="delete" data-toggle="tooltip" data-placement="top" title="Delete" href="<?php echo base_url() ?>Barang/DeleteItem/<?php echo $list->id_barang ?>">
+                          <i class="fa fa-trash"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <?php
+                    }
+                    ?>
+                    
+                
+            </tbody>
+          </table>
+
+        </div>
+
+
+
+						</div>
+					</div>
+                </div>
+                <!-- 
+				<div class="pagination justify-content-center">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination">
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Previous</span>
+								</a>
+							</li>
+							<li class="page-item"><a class="page-link" href="#">1</a></li>
+							<li class="page-item active"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							<li class="page-item">
+								<a class="page-link" href="#" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+									<span class="sr-only">Next</span>
+								</a>
+							</li>
+						</ul>
+					</nav>
+                </div>
+                -->
 			</div>
 		</div>
 	</div>
 </section>
-
-<?php } ?>
-
 
 <!--Footer start -->
 <footer class="section footer">
@@ -309,5 +319,4 @@
 
 <!-- Shop JS End -->
 
-</body>
 </html>

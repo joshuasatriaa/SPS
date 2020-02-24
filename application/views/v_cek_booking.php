@@ -211,7 +211,7 @@
                 <td class="action" data-title="Action">
                   <div class="">
                     <ul class="list-inline justify-content-center">
-                      
+                      <?php if($hasil == 0){?>
                       <li class="list-inline-item">
                         <a class="edit" data-toggle="tooltip" data-placement="top" title="Edit" href="<?php echo base_url() ?>Booking/ConfirmBooking/<?php echo $list->id_booking ?>">
                           <i class="fa fa-check"></i>
@@ -222,6 +222,21 @@
                           <i class="fa fa-close"></i>
                         </a>
                       </li>
+					  <?php }else if($hasil == 2){?>
+						<li class="list-inline-item">
+                       	 	<button class="btn btn-primary" id="myButton">
+								Go to Current Booking
+                        	</button>
+                      	</li>
+					  <?php }else if($hasil == 1){?>
+					  	<li class="list-inline-item">
+                       	 	<button class="btn btn-danger" disabled>Rejected</button>
+                      	</li>
+					  <?php }else{?>
+						<li class="list-inline-item">
+                       	 	<button class="btn btn-success" disabled>Done</button>
+                      	</li>
+					  <?php }?>
                     </ul>
                   </div>
                 </td>
@@ -384,5 +399,9 @@
 <script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
 
 <!-- Shop JS End -->
-
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = "<?php echo base_url(). 'Booking/CurrentBooking'?>";
+    };
+</script>
 </html>

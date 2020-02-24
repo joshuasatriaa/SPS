@@ -54,7 +54,6 @@
 						'nama_bengkel' => $nama,
 						'jam_buka' => $jamBuka,
 						'jam_tutup' => $jamTutup,
-						'alamat' => $alamat,
 						'email' => $email,
 						'telepon' => $telp,
 						'gambar' => $imgdata,
@@ -65,6 +64,17 @@
 					$this->db->set('tanggal_registrasi', 'NOW()', FALSE);
 					$this->db->set('waktu_add', 'NOW()', FALSE);
 					$this->m_signup_bengkel->insertTable('bengkel', $data);
+
+					$countLokasi=$this->m_signup_bengkel->tampilkanDataLokasi()->num_rows()+1;
+					$idLokasi = 'LOC-'.$countLokasi;
+
+					$data1 = array(
+						'id_lokasi_bengkel' => $idLokasi,
+						'id_bengkel' => $id,
+						'alamat' => $alamat
+					);
+
+					$this->m_signup_bengkel->insertTable('lokasi_bengkel', $data1);
 		
 					$data2 = array(
 						'id_user' => $id,
@@ -76,23 +86,7 @@
 					redirect('Signup_bengkel/signUpSuccess');
 					
 				}
-				
-				
-				/*public function Editprofile()
-				{
-					$data['nav'] = "User";
-					$this->load->model('M_user');
-					$data['user'] = $this->m_user->tampilkanData()->result();
-					$data['pengguna'] = $this->m_signup_pengguna->tampilkanData()->result();
-					$this->head();
-					$this->load->view("LandingPage/Template/profile-css");
-					$this->load->view('LandingPage/Template/nav', $data);
-					$this->load->view("LandingPage/Home/V_Editprofile");
-					//$this->load->view("User/V_profile", $data);
-					$this->foot();
-	
-					
-				}*/
+			
 			}
 			
 		}

@@ -72,52 +72,23 @@
 
 
 <!--  Banner start -->
-<section class="slider-hero hero-slider  hero-style-1  ">
+<section class="slider-hero hero-slider  hero-style-1 ">
   
     <div class="swiper-wrapper">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
-		  <?php echo $this->session->flashdata('message'); ?>
+      <div class="swiper-slide slide-item" style="height:120px">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg" >
+          
            
 
-			<section class="page-search">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<!-- Advance Search -->
-							<div class="advance-search">
-								<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
-									<div class="form-row">
-										<div class="form-group col-md-10">
-											<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
-										</div>
-										<div class="form-group col-md-2">
-											
-											<button type="submit" class="btn btn-primary">Search Now</button>
-										</div>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-           
           </div>
-        </div> 
+        
       </div>
       <!-- end slide-item -->
       
   
     </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
+
 </section>
 <!--  Banner End -->
 
@@ -382,7 +353,11 @@
 									<a href="">See all ads</a>
 									<ul class="list-inline mt-20">
 										<li class="list-inline-item"><a href="#" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
+										<?php if($this->session->userdata('id_user')){?>
 										<li class="list-inline-item"><a href="<?php echo base_url(). 'Shop/addCart/'. $list->id_barang?>" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer</a></li>
+										<?php }else{?>
+											<li class="list-inline-item"><a class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3 btn-add-cart text-white">Make an offer</a></li>
+										<?php }?>
 									</ul>
 								</div>
 								<!-- Map Widget -->
@@ -601,6 +576,49 @@
 
 	    }); 
 	}); */
+</script>
+<script>
+$(document).ready(function(){
+	$(".btn-add-cart").click(function(e){
+		const modal = document.querySelector(".modal");
+		modal.classList.add("is-open");
+  		body.style.overflow = "hidden";
+	});
+
+	$(".btn-submit").click(function(e){
+	    	e.preventDefault();
+	    	
+	    	var email = $("input[name='email']").val();
+	    	var password = $("input[name='password']").val();
+	    	
+
+
+	        $.ajax({
+	            url: "<?php echo base_url() ?>Login",
+	            type:'POST',
+	            dataType: "json",
+	            data: {email:email, password:password},
+	            success: function(data) {
+					
+	                if($.isEmptyObject(data.error)){
+	                	$(".print-error-msg").css('display','none');
+						window.location.reload(true);
+						
+	                }else{
+						$(".print-error-msg").css('display','block');
+	                	$(".print-error-msg").html(data.error);
+	                }
+					
+	            }
+	        });
+
+
+	    }); 
+
+		$("#password").on("input", function(){
+        	$(".print-error-msg").css('display','none');
+	    });
+});
 </script>
 
 </body>

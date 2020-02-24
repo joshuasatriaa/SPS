@@ -131,7 +131,7 @@
                               <input type="file" name="userfile" size="20" class="mr-sm-2" />
                             </div>
                             <?php echo form_error('userfile', '<small class="text-danger">', '</small>') ?>
-                            <?php echo $error;?>
+                            
                         </fieldset>
                         <button type="submit" class="form-submit">Sign Up</button>
                       </form>
