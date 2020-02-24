@@ -64,4 +64,22 @@ class Shop extends CI_Controller {
 		return $data;
 	}
 
+	function fetch_data()
+	{
+		$minimum_price = $this->input->post('minimum_price');
+		$maximum_price = $this->input->post('maximum_price');
+		$this->load->library('pagination');
+		$config = array();
+		$config['base_url'] = '#';
+		$config['total_rows'] = $this->m_barang->count_all($minimum_price, $maximum_price);
+		$config['per_page'] = 8;
+		$config['uri_segment'] = 3;
+		$config['use_page_numbers'] = TRUE;
+		$this->pagination->initialize($config);
+		$page = $this->uri->segment(3);
+		$start = ($page - 1) * $config['per_page'];
+		$output = array('pagination_link' => $this->pagination->create_links(), 'product_list' => $this->m_barang->fetch_data($config["per_page"],$start,$minimum_price, $maximum_price));
+		echo json_encode($output);
+	}
+
 }
