@@ -6,6 +6,7 @@
             $this->load->model('m_signup_pengguna');
             $this->load->model('m_user');
             $this->load->model('m_pesanan');
+            $this->load->model('m_notif');
             $this->load->library('form_validation');
 		}
 		

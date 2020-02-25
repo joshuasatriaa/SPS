@@ -8,6 +8,7 @@ class Login extends CI_Controller{
 		parent::__construct();		
 		$this->load->model('m_login');
 		$this->load->model('m_pesanan');
+		$this->load->model('m_notif');
 		$this->load->library('form_validation');
 	}
 		

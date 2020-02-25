@@ -4,6 +4,7 @@ class Barang extends CI_Controller{
 		parent::__construct();
 		$this->load->model('m_barang');
 		$this->load->model('m_pesanan');
+		$this->load->model('m_notif');
 		$this->load->library('form_validation');
 	}
 	function index(){
@@ -142,6 +143,9 @@ class Barang extends CI_Controller{
 		{
 			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 			$data['barangku'] = $this->m_barang->tampilkanBarangKu($this->session->userdata('id_user'))->result();
+
+			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 
 			$this->load->view('v_user_myitem',$data);
 		}

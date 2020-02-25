@@ -7,6 +7,7 @@ class StatusBooking extends CI_Controller {
 		$this->load->model('m_service');
         $this->load->model('m_signup_bengkel');
 		$this->load->model('m_booking');
+		$this->load->model('m_notif');
 		$this->load->model('m_pesanan');
 	}
     function index()
