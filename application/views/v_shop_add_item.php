@@ -59,11 +59,16 @@
   
     <div class="swiper-wrapper">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
+      <div class="swiper-slide slide-item" style="height:1200px">
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop1.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
-
+        
+            <a href="<?php echo base_url()?>Shop">
+                <span style="position:absolute;left:10%;">
+                    <img src="https://image.flaticon.com/icons/svg/481/481117.svg" width="60" style="filter: invert(100%);">  
+                </span>
+            </a>
           <!-- Sign up form -->
           <section class="signup">
             <div class="container1">

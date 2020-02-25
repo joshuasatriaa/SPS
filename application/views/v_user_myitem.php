@@ -71,7 +71,7 @@
     <!--  Banner start -->
     <section class="slider-hero hero-slider  hero-style-1  ">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
+      <div class="swiper-slide slide-item" style="height:140px">
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vbooking.jpeg">      
         </div>
     </div>

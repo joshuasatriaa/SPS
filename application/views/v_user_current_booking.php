@@ -71,7 +71,7 @@
     <!--  Banner start -->
     <section class="slider-hero hero-slider  hero-style-1  ">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
+      <div class="swiper-slide slide-item" style="height:140px">
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vbooking.jpeg">      
         </div>
     </div>
@@ -83,7 +83,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" style="margin-bottom:10px;">
-                <h2 style="font-family: 'Open Sans', sans-serif;">Current Booking </h2>
+        <h2 style="font-family: 'Open Sans', sans-serif;">Current Booking </h2>
 			</div>
 		</div>
 		
