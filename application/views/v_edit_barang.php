@@ -59,8 +59,8 @@
   
     <div class="swiper-wrapper">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
+      <div class="swiper-slide slide-item" style="height:1200px">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop1.jpeg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
@@ -69,45 +69,42 @@
             <div class="container1">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Edit Barang</h2>
+                        <h2 class="form-title">Edit Item</h2>
                         <?php echo $this->session->flashdata('message'); ?>
                           <form action="<?php echo base_url().'Barang/updateData'?>" method="POST" novalidate="novalidate">
-                          <?php foreach($barang as $list) { ?>
+                          <?php foreach($barangEdit as $list) { ?>
                             
                                 <input type="hidden" name="user_id" value="<?php echo $list->id_barang?>">
 
                                 <div class="form-group">
-                                  <p>Nama Barang</p>
+                                  <p>Item Name</p>
                                   <input type="text" name="nama" value="<?php echo $list->nama_barang ?>">
-                                 
-                                </div>
-                                
-                                <div class="form-group">
-                                  <p>ID Penjual</p>
-                                  <input type="text" name="id_penjual" value="<?php echo $list->id_penjual ?>">
-                                  
                                 </div>
 
                                 <div class="form-group">
-                                  <p>Gambar Barang<p>
-                                  <input type="file" name="gambar" size="20" value="<?= $list->gambar_barang ?>">
+                                  <p>Description</p>
+                                  <input type="text" name="keterangan_barang" value="<?php echo $list->keterangan_barang ?>" />
+                                </div>
+                                
+                                  <input type="hidden" name="id_penjual" value="<?php echo $list->id_penjual ?>">
+
+                                <div class="form-group">
+                                  <p>Item Image</p>
+                                  <input type="file" name="userfile[]" size="20" class="mr-sm-2" multiple />
                                 </div>
                                 
                                 <div class="form-group">
-                                  <p>Harga Barang</p>
+                                  <p>Price</p>
                                   <input type="numbers" name="harga" value="<?php echo $list->harga_barang ?>">
                                 </div>
 
                                 <div class="form-group">
-                                  <p>Stok Barang</p>
+                                  <p>Stock</p>
                                   <input type="numbers" name="stok_barang" value="<?php echo $list->stok_barang ?>">
                                 </div>
 
-                                
-
-                                
                                 <div class="form-group form-button">
-                                  <button type="submit" name="signup" id="signup" class="form-submit"value="Submit"> </button>
+                                  <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Edit </button>
                                 </div>
                               
                             </form>
