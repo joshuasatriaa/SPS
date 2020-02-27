@@ -5,11 +5,13 @@ class ForgotPassword extends CI_Controller
     {
         parent::__construct();
         $this->load->library('email');
+        $this->load->library('form_validation');
         $this->load->model('m_user');
 
 
     }
 
+    
     function index(){
         $this->load->view('v_forgotpassword');
         
@@ -17,7 +19,7 @@ class ForgotPassword extends CI_Controller
 
     function accountNotFound($email){
         $data['email'] = $email;
-        $this->load->view('errors/v_erroraccountnotfound', $data);
+        $this->load->view('v_erroraccountnotfound', $data);
     }
 
     function resetSuccess(){
@@ -25,26 +27,33 @@ class ForgotPassword extends CI_Controller
     }
 
     function forgotPass(){
-        $em = $this->input->post('email');
-        $cek = $this->m_user->getRecord($em)->result();
-        if($cek){
-            
-            $tkn = $this->generate_string(20);
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 
-            $data = array(
-                'password' => md5($tkn),
-            );
-            $where = array(
-                'email' => $em,
-            );
-            $this->m_user->updateRecord($where, $data, 'user');
-            $this->sendEmail($em, $tkn);
-            
+        if($this->form_validation->run() == TRUE){
 
-            $this->resetSuccess();
-        }
-        else{
-            $this->accountNotFound($em);
+            $em = $this->input->post('email');
+            $cek = $this->m_user->getRecord($em)->result();
+            if($cek){
+                
+                $tkn = $this->generate_string(20);
+    
+                $data = array(
+                    'password' => md5($tkn),
+                );
+                $where = array(
+                    'email' => $em,
+                );
+                $this->m_user->updateRecord($where, $data, 'user');
+                $this->sendEmail($em, $tkn);
+                
+    
+                $this->resetSuccess();
+            }
+            else{
+                $this->accountNotFound($em);
+            }
+        }else{
+            $this->load->view('v_forgotpassword');
         }
         
     }
@@ -62,7 +71,7 @@ class ForgotPassword extends CI_Controller
                     Silakan lakukan login ke dalam sistem menggunakan password ini <br> <br>
                     Email : '.$cek["email"].' <br>
                     New Password : '.$token.' <br> <br>
-                    Jika anda tidak berusaha untuk mengubah password anda, segera lakukan login dan ubah password anda. <br> <br>
+                    Jika anda tidak berusaha untuk mengubah password anda, segera lakukan login menggunakan password baru ini dan ubah password/email anda. <br> <br>
                     <br>
                     <br>
                     <br>

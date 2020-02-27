@@ -36,6 +36,9 @@
     <!-- Main CSS-->
     <link href="<?php echo base_url() ?>assets/type1/css/main.css" rel="stylesheet" media="all">
 
+	<!-- Login Stylesheet -->
+	<link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
+
    <!-- Main Stylesheet -->
    <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
 
@@ -46,9 +49,6 @@
 </head>
 
 <body>
-  <div class="preloader">
-    <img src="<?php echo base_url() ?>assets/type1/images/preloader.gif" alt="preloader" class="img-fluid">
-  </div>
 <!-- Header Start -->
 <!-- Header Start -->
 
@@ -84,8 +84,9 @@
     <div class="card card-2">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h4 class="title">Please type your email below to reset your password.</h4>
+                    <h4 class="title">Please type your email below to reset your password. </h4>
                     <form action="<?php echo base_url() ?>ForgotPassword/forgotPass" method="POST">
+						<?php echo form_error('email', '<small class="text-danger">', '</small>') ?>
                         <div class="input-group">
                             <input class="input--style-2" type="text" placeholder="Email" name="email">
                         </div>
@@ -96,6 +97,7 @@
                 </div>
             </div>
 </div>
+
 </section>
 
 <footer class="section footer">
@@ -210,5 +212,8 @@
 
     <!-- Main JS-->
     <script src="<?php echo base_url() ?>assets/type1/js/global.js"></script>
+
+	<!-- Login Script -->
+<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
 </html>

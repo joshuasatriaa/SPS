@@ -34,10 +34,9 @@ class Barang extends CI_Controller{
 		$this->form_validation->set_rules('keterangan_barang', 'Item Description', 'required|trim');
 		$this->form_validation->set_rules('harga_barang', 'Price', 'required|trim');
 		$this->form_validation->set_rules('stok_barang', 'Item Stock', 'required|trim|numeric');
-
 		if (empty($_FILES['userfile']['name']))
 		{
-			$this->form_validation->set_rules('userfile[]', 'Item Image', 'required');
+			$this->form_validation->set_rules('userfile', 'Profile Picture', 'required');
 		}
 
 		if($this->form_validation->run() == FALSE){
@@ -63,13 +62,14 @@ class Barang extends CI_Controller{
 				'stok_barang' => $stok,
 				'keterangan_barang' => $ket,
 				'user_add' => $this->session->userdata('id_user'),
-				'status_delete' => "0"
+				'status_delete' => "0",
 			);
 			
 			$this->db->set('waktu_add', 'NOW()', FALSE);
 			$this->m_barang->insertTable('barang', $data);
 	
 			$filesCount = count($_FILES['userfile']['name']);
+			
 
 			for($i = 0; $i < $filesCount; $i++){
 				$_FILES['userfiles']['name']     = $_FILES['userfile']['name'][$i];
@@ -100,6 +100,9 @@ class Barang extends CI_Controller{
 						'gambar_barang' => file_get_contents($fileData['full_path'])
 					];
 					$this->m_barang->insertTable('foto_barang', $data1);
+					if($i == $filesCount-1){
+						redirect('Shop');
+					}
 				}else{
 					$data['count'] = $this->m_barang->tampilkanBarang()->num_rows();
 					$data['error'] = $this->upload->display_errors();
@@ -108,7 +111,8 @@ class Barang extends CI_Controller{
 	
 				
 			}
-			redirect('Shop');
+				
+			
 		}
 	}
 
