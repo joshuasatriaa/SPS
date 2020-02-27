@@ -62,7 +62,7 @@
             <div class="row">
               <div class="col-lg-7">
                 <span data-swiper-parallax="300" class="text-primary font-extra font-md">Collaborative</span>
-                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Fresh,Delicious meal to reach your optimum health and fitness</h1>
+                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">We unite workshops and community for growing together.</h1>
                 <a href="menu.html" class="btn btn-main mr-3" data-swiper-parallax="500">About</a>
 				
               </div>
@@ -80,7 +80,7 @@
             <div class="row">
               <div class="col-lg-7">
                 <span data-swiper-parallax="300" class="text-primary font-extra font-md">Community</span>
-                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Good food starts with good ingridients.Have a great time with us</h1>
+                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">Community means second family. We bring together those who love all things that related to cars. </h1>
                 <a href="menu.html" class="btn btn-main mr-3" data-swiper-parallax="500">About</a>
               </div>
             </div>
@@ -97,7 +97,7 @@
             <div class="row">
               <div class="col-lg-7">
                 <span data-swiper-parallax="300" class="text-primary font-extra font-md">Marketplace</span>
-                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">We deliver good quality food with great service to our customers</h1>
+                <h1 class="mt-3 mb-5 text-lg text-white" data-swiper-parallax="400">We deliver good quality goods with great service to our customers. Anybody can sell or buy things!</h1>
                 <a href="menu.html" class="btn btn-main mr-3" data-swiper-parallax="500">About</a>
               </div>
             </div>
@@ -121,9 +121,9 @@
 			<div class="row no-gutters">
 				<div class="col-lg-4 col-md-4">
 					<div class="intro-item" data-aos="fade-up">
-						<i class="icofont-soup-bowl"></i>
-						<h3 class="mt-3">Delicious Food</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia animi ipsam obcaecati.</p>
+						<i class="icofont-users-social"></i>
+						<h3 class="mt-3">Community Friendly</h3>
+						<p>We care about cars community, here you can make your own community, join communities and their activities, and get social through our forum.</p>
 					</div>
 				</div>
 
@@ -131,15 +131,15 @@
 					<div class="intro-item bg-gray " data-aos="fade-up" data-aos-delay="300">
 						<i class="icofont-tasks"></i>
 						<h3 class="mt-3">Online Order</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia animi ipsam obcaecati. </p>
+						<p>You can place your order for goods or service online, with our system. </p>
 					</div>
 				</div>
 
 				<div class="col-lg-4 col-md-4">
 					<div class="intro-item" data-aos="fade-up" data-aos-delay="600">
 						<i class="icofont-map-pins"></i>
-						<h3 class="mt-3">Free delivery</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia animi ipsam obcaecati. </p>
+						<h3 class="mt-3">Location "known"</h3>
+						<p>We store all location of your workshop, workshop owners! so your customers would know where are your workshop. </p>
 					</div>
 				</div>
 			</div>
@@ -153,8 +153,8 @@
 	<div class="container">
 		<div class="row  justify-content-center mb-5">
 			<div class="col-lg-8 text-center">
-				<span class="text-primary font-extra font-md">About CafeDine</span>
-				<h2 class="mt-3 mb-4">We are a modern restaurant in the center of the city </h2>
+				<span class="text-primary font-extra font-md">About Bengcool</span>
+				<h2 class="mt-3 mb-4">We are a community website with marketplace-based system </h2>
 			</div>
 		</div>
 
@@ -193,10 +193,10 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-8 text-center">
-				<span class="font-extra text-md-2 text-white-70">Prepare The Best Dishes</span>
-				<h2 class="mt-3 text-white mb-4">Come & Experience Our Best of World Class Cousine</h2>
+				<span class="font-extra text-md-2 text-white-70">Innovate Through Automotive</span>
+				<h2 class="mt-3 text-white mb-4">Come & Explore Our Great Store!</h2>
 
-				<a href="#" class="btn btn-white">book now</a>
+				<a href="<?php echo base_url().'Shop'?>" class="btn btn-white">Shop now</a>
 			</div>
 		</div>
 	</div>
@@ -208,25 +208,8 @@
 	<div class="container">
 		<div class="row  justify-content-center mb-5">
 			<div class="col-lg-8 text-center">
-				<span class="text-primary font-extra font-md">CafeDine Dishes</span>
-				<h2 class="mt-3 mb-4">We provide quality food.We care about your health </h2>
-			</div>
-		</div>
-
-		<div class="col-12 text-center mb-5">
-			<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				<label class="btn active">
-					<input type="radio" name="shuffle-filter" value="all" checked="checked"/>All
-				</label>
-				<label class="btn">
-					<input type="radio" name="shuffle-filter" value="design"/>Starter
-				</label>
-				<label class="btn">
-					<input type="radio" name="shuffle-filter" value="branding"/>Launch
-				</label>
-				<label class="btn">
-					<input type="radio" name="shuffle-filter" value="illustration"/>Dinner
-				</label>
+				<span class="text-primary font-extra font-md">Bengcool Goods & Services</span>
+				<h2 class="mt-3 mb-4">We provide the best goods and services, We care for you </h2>
 			</div>
 		</div>
 
@@ -374,22 +357,21 @@
 
 					<div class="col-lg-6 col-md-6">
 						<span class="text-primary font-md font-extra">Make it easy</span>
-						<h2 class="mt-3">Get the CafeDine App</h2>
-						<p class="mt-4">Get instant access to recipes from celebrity Cafedia and world-renowed brands right in your
-							pocker. </p>
+						<h2 class="mt-3">the Bengcool App</h2>
+						<p class="mt-4">Under Development right now! </p>
 
 						<div class="mt-5">
 							<a href="#" target="_blank" class="btn-download active mb-2">
 								<i class="ti ti-android"></i>
 								<div class="btn-text">
-									<span>Get it on</span>
+									<span>Get it later on</span>
 									Google Play
 								</div>
 							</a>
 							<a href="#" target="_blank" class="btn-download">
 								<i class="ti ti-apple"></i>
 								<div class="btn-text">
-									<span>Get it on</span>
+									<span>Get it later on</span>
 									app store
 								</div>
 							</a>
@@ -401,31 +383,6 @@
 	</div>
 </section>
 <!-- App  End -->
-
-
-  <section style="padding: 100px 0;">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 mx-auto">
-				<div class="text-center p-5 shadow rounded">
-					<h2 class="mb-3">You have downloaded free version of CafeDine.</h2>
-					<h4 class="mb-3">To get full access of this page please purchase the premium version</h4>
-					<h4>Why Premium?</h4>
-					<ul class="list-unstyled mb-4">
-						<li>Full Template Pack</li>
-						<li>Priority Support</li>
-						<li>Documentation Included</li>
-						<li>Monthly Update</li>
-						<li>Lifetime Download</li>
-						<li>Personal and commercial Use</li>
-						<li>One time payment</li>
-					</ul>
-					<a href="https://themefisher.com/products/veggie-one-page-responsive-html5-restaurant-website-templates/" target="_blank" class="btn btn-main">Buy Premium Version</a>			
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
 <!-- Slider main container -->
 <section class="instgram position-relative">
@@ -499,7 +456,7 @@
 			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
 				<div class="widget">
 					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
+					<p></p>
 
 					<ul class="list-inline footer-socials mt-4">
 						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
@@ -527,15 +484,15 @@
 			</div>
 			<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
 				<div class="widget">
-					<h4 class="mb-3">Opening Hours</h4>
+					<h4 class="mb-3">Office</h4>
 
 					<div class="info mb-4">
-						<p class="mb-0">Monday - Thursday</p>
-						<h5>10:00 AM - 11:00 PM</h5>
+						<p class="mb-0">​</p>
+						<h5>Jl. Tanjung Duren Timur 6 No.2A, Tj.Duren Selatan, Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470</h5>
 					</div>
 					<div class="info">
-						<p class="mb-0">Friday - Sunday</p>
-						<h5>12:00 AM - 03:00 AM</h5>
+						<p class="mb-0">Monday - Friday</p>
+						<h5>07:00 AM - 05:00 PM</h5>
 					</div>
 				</div>
 			</div>
