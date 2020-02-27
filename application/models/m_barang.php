@@ -2,11 +2,13 @@
 class m_barang extends CI_Model{
 	function tampilkanBarang(){
 		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,
-		a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat FROM barang a
+		a.harga_barang, a.waktu_add, a.stok_barang, b.nama_pengguna, d.gambar_barang, d.id_foto_barang, c.nama_bengkel, e.alamat FROM barang a
 		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
-		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel');
+		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
+		WHERE d.id_foto_barang LIKE "FOTO-BARANG-%1"
+		');
 	}
 	function tampilkanData()
 	{
@@ -30,13 +32,13 @@ class m_barang extends CI_Model{
 	}
 	
 	function tampilkanBarangIni($where){
-		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,COALESCE(b.gambar,c.gambar) AS gambar,
 		a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat FROM barang a
 		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
 		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
-		WHERE a.id_barang = "'.$where.'" ');
+		WHERE a.id_barang = "'.$where.'" LIMIT 1');
 	}
 	
 	function tampilkanBarangKu($where){
@@ -61,6 +63,13 @@ class m_barang extends CI_Model{
 	function hapusData($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
+	}
+
+	function tampilkanFotoBarangIni($where){
+		return $this->db->query('SELECT * FROM foto_barang
+		JOIN barang ON foto_barang.id_barang = barang.id_barang
+		WHERE barang.id_barang = "'.$where.'"');
+		
 	}
 }
 

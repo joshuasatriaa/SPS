@@ -108,7 +108,7 @@
                             </div>
 			                <div class="form-group">  
                                 <p>Stock</p>
-                                <input type="number" id="stok_barang" name="stok_barang" placeholder="Stock" value="<?php echo set_value('stok  _barang') ?>"/>
+                                <input type="number" id="stok_barang" name="stok_barang" placeholder="Stock" value="<?php echo set_value('stok_barang') ?>"/>
                                 <?php echo form_error('stok_barang', '<small class="text-danger">', '</small>') ?>
                             </div>
 							              

@@ -8,6 +8,7 @@ class Shop extends CI_Controller {
 		$this->load->model('m_barang');
 		$this->load->model('m_notif');
 		$this->load->model('m_pesanan');
+		$this->load->model('m_pesan');
 	}
 
 	public function index()
@@ -37,6 +38,9 @@ class Shop extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+
+		$data['jumlahfoto'] = $this->m_barang->tampilkanFotoBarangIni($id)->num_rows();
+		$data['foto'] = $this->m_barang->tampilkanFotoBarangIni($id)->result();
 		$this->load->view('v_shop_detail',$data);
 	}
 
@@ -93,6 +97,18 @@ class Shop extends CI_Controller {
 		$start = ($page - 1) * $config['per_page'];
 		$output = array('pagination_link' => $this->pagination->create_links(), 'product_list' => $this->m_barang->fetch_data($config["per_page"],$start,$minimum_price, $maximum_price));
 		echo json_encode($output);
+	}
+
+	function ContactBarang($idSaya,$idDia)
+	{
+		
+		$data['chat'] = $this->m_pesan->tampilkanPesan($idSaya,$idDia)->result();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+
+		$this->load->view('v_chat_barang',$data);
 	}
 
 }

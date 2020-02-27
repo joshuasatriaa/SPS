@@ -135,24 +135,21 @@
 									</ul>
 								</div>
 
+								
 								<!-- product slider -->
 								
 								<div class="w3-content w3-display-container">
-
+									
+									<?php foreach($foto as $list) { ?>
+									
 									<div class="w3-display-container mySlides">
-										<img src="<?php echo base_url() ?>assets/type1/images/home5.jpeg" style="width:100%">
-										<div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
-											1
-										</div>
+										
+										<?php    
+                                            echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" width="100%" />';
+                                        ?>
 									</div>
 
-									<div class="w3-display-container mySlides">
-										<img src="<?php echo base_url() ?>assets/type1/images/home4.jpeg" style="width:100%">
-										<div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
-											2
-										</div>
-									</div>
-
+									<?php } ?>
 
 									<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
 									<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
@@ -197,7 +194,7 @@
 										<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
 											<h3 class="tab-title" style="font-family: 'Open Sans', sans-serif;">Product Description</h3>
 											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+												<?php echo $list->keterangan_barang; ?>
 											</p>
 
 										</div>
@@ -275,6 +272,9 @@
 								</div>
 							</div>
 						</div>
+						<?php } ?> 
+
+						<?php foreach($barang as $list){ ?>
 						<div class="col-md-4">
 							<div class="sidebar">
 								<div class="widget text-center" >
@@ -283,12 +283,23 @@
 								</div>
 								<!-- User Profile widget -->
 								<div class="widget user text-center">
-									<img class="rounded-circle img-fluid mb-5 px-5" src="images/user/user-thumb.jpg" alt="foto">
-									<h4 style="font-family: 'Open Sans', sans-serif;"><a href=""><?php echo $list->nama_pengguna ?></a></h4>
+								
+									<?php
+                                            echo '<img class="rounded-circle img-fluid mb-5 px-5 " src="data:image/jpeg;base64,' .base64_encode($list->gambar).'" width="100%" />';   
+                                        ?>
+								
+									<h4 style="font-family: 'Open Sans', sans-serif;"><a href=""><?php if($list->nama_pengguna == null)
+											{
+												echo $list->nama_bengkel;
+											}
+											else
+											{
+												echo $list->nama_pengguna;
+											} ?></a></h4>
 									
 									
 									<ul class="list-inline mt-20">
-										<li class="list-inline-item"><a href="#" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
+										<li class="list-inline-item"><a href="<?php echo base_url()?>Chat/checkChatBarang/<?php echo $this->session->userdata('id_user') ?>/<?php echo $list->id_penjual ?>" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
 										<?php if($this->session->userdata('id_user')){?>
 										<li class="list-inline-item"><a href="<?php echo base_url(). 'Shop/addCart/'. $list->id_barang?>" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer</a></li>
 										<?php }else{?>
