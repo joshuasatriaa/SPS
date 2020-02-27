@@ -121,7 +121,7 @@
 											}
 											else
 											{
-												echo $list->nama_pengguna;echo $jumlahfoto;
+												echo $list->nama_pengguna;
 											}
 										?>	
 
@@ -144,10 +144,8 @@
 									
 									<div class="w3-display-container mySlides">
 										
-										<?php
-                                            
+										<?php    
                                             echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" width="100%" />';
-                                            
                                         ?>
 									</div>
 
