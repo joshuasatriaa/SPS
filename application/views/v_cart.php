@@ -68,29 +68,17 @@
             <div class="row">
                 <div class="col-md-8 mx-auto">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="select-all">
-                            <label class="custom-control-label" for="select-all">Select All Item</label>
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">Select All Item</label>
                         </div>
                         <div>
-							<?php $i = 1;
-							$total = 0;
+                            <?php $i = 1;
                             foreach($cart as $list) {?>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck<?php echo $i;?>">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
                                     
-                                    <label class="custom-control-label" for="customCheck<?php echo $i;?>">
-									<?php if($list->nama_bengkel == null){
-										echo $list->nama_pengguna;
-									}else{
-										echo $list->nama_bengkel;
-									} ?>
-									</label>
+                                    <label class="custom-control-label" for="customCheck1">Nama Barang</label>
 									<div class="card">
-										
-										<a href="<?php echo base_url(). 'Shop/removeFromCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;">
-												<i class="fas fa-times-circle fa-lg"></i>
-										</a>
-										
                                         <?php
                                             
                                             echo '<img src="data:image/jpeg;base64,' . base64_encode($list->gambar_barang).'" height="100" width="100" alt="Card image cap" />';
@@ -98,21 +86,20 @@
                                         ?>
                                         <div class="card-body">
                                         <h5 class="card-title"><?php echo $list->nama_barang?></h5>
-                                        <p class="card-text"><?php echo $list->keterangan_barang?></p>
-                                        <p class="card-text">Jumlah yang dibeli = <?php echo $list->jumlah_barang?> (@ = <?php echo $list->harga_barang; ?>)</p>
-                                        
+                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <?php $total += $list->harga_barang*$list->jumlah_barang; }?>
+                                <?php }?>
                         </div>
                 </div>
                     
                 <div class="col-md-4 mx-auto">
                     <div class="p-5 shadow rounded">
-                        <h3 class="mb-3">Total : Rp. <?php echo $total;?></h3>
-                        <a href="https://themefisher.com/products/veggie-one-page-responsive-html5-restaurant-website-templates/" target="_blank" class="btn btn-main">Buy</a>			
+                        <h3 class="mb-3">Total : </h3>
+                        <a href="https://themefisher.com/products/veggie-one-page-responsive-html5-restaurant-website-templates/" target="_blank" class="btn btn-main">Buy Premium Version</a>			
                     </div>
                 </div>
             </div>
@@ -263,27 +250,6 @@
 <script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
 
 <!-- Shop JS End -->
-<script type="text/javascript">
-$(document).ready(function (){
-// Listen for click on toggle checkbox
-$('#select-all').click(function(event) {   
-    if(this.checked) {
-        // Iterate each checkbox
-        $(':checkbox').each(function() {
-            this.checked = true;                        
-        });
-    } else {
-        $(':checkbox').each(function() {
-            this.checked = false;                       
-        });
-    }
-});
 
-
-
-});
-
-
-</script>
 </body>
 </html>

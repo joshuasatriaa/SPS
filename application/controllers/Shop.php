@@ -52,11 +52,8 @@ class Shop extends CI_Controller {
 		$this->load->view('v_cart',$data);
 	}
 
-	function addCart(){
+	function addCart($id){
 
-		$id = $this->input->post('id_barang');
-		$jumlah = $this->input->post('jumlah_barang');
-		
 		$count = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows()+1;
 		$id_pesanan = "CART-".$count;
 		$detail_barang = $this->m_barang->tampilkanBarangIni($id)->row_array();
@@ -64,8 +61,8 @@ class Shop extends CI_Controller {
 		$data = [
 			'id_pesanan' => $id_pesanan, 
 			'id_pembeli' => $this->session->userdata('id_user'), 
-			'id_barang' => $id,
-			'jumlah_barang' => $jumlah, 
+			'id_penjual' => $detail_barang['id_penjual'], 
+			'id_barang' => $id, 
 			'status_pesanan' => 0, 
 			 
 		];
@@ -76,13 +73,6 @@ class Shop extends CI_Controller {
 		$this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Added to Cart!</div>');
 		redirect('Shop/ShopDetail/'.$id);
 
-
-	}
-
-	function removeFromCart($id){
-
-		$this->m_pesanan->remove($id, $this->session->userdata('id_user'));
-		redirect('Shop/cart');
 
 	}
 
