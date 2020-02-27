@@ -27,7 +27,6 @@ class m_pesanan extends CI_Model{
 		WHERE id_pembeli = "'.$id.'" AND status_pesanan = 0');
 	}
 
-<<<<<<< HEAD
 	function editData($where, $table){
 		return $this->db->get_where($table,$where);
 	}
@@ -35,10 +34,10 @@ class m_pesanan extends CI_Model{
 	function updateData($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);
-=======
+	}
+	
 	function remove($id, $id2){
 		return $this->db->query('DELETE FROM pesanan WHERE id_barang = "'.$id.'" AND id_pembeli = "'.$id2.'" AND status_pesanan = 0');
->>>>>>> parent of 03ec31c... Revert "chat 2.0"
 	}
 	
 	function hapusData($where,$table){
