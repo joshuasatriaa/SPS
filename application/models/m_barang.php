@@ -32,7 +32,7 @@ class m_barang extends CI_Model{
 	}
 	
 	function tampilkanBarangIni($where){
-		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,b.gambar,
 		a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat FROM barang a
 		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
@@ -63,6 +63,13 @@ class m_barang extends CI_Model{
 	function hapusData($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
+	}
+
+	function tampilkanFotoBarangIni($where){
+		return $this->db->query('SELECT * FROM foto_barang
+		JOIN barang ON foto_barang.id_barang = barang.id_barang
+		WHERE barang.id_barang = "'.$where.'"');
+		
 	}
 }
 
