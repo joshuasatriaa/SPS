@@ -87,5 +87,12 @@ class m_booking extends CI_Model{
 	function getPenggunaViaBooking($id){
 		$query = $this->db->query('SELECT a.id_pengguna, b.nama_pengguna FROM booking a JOIN pengguna b ON a.id_pengguna = b.id_pengguna WHERE a.id_pengguna = "'.$id.'"');
 	}
+
+	function searchBengkel($keyword){
+		return $this->db->query('SELECT * FROM bengkel a
+		LEFT JOIN service b ON a.id_bengkel = b.id_bengkel
+		LEFT JOIN lokasi_bengkel e ON a.id_bengkel = e.id_bengkel
+		WHERE a.nama_bengkel LIKE "%'.$keyword.'%" ');
+	}
 }
 ?>

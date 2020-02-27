@@ -147,4 +147,16 @@ class Booking extends CI_Controller {
 		//$this->m_booking->rate($angka,$id);
 		redirect('Booking');
 	}
+
+	function searchBengkel(){
+		$keyword = $this->input->post('nama_bengkel');
+
+		$data['bengkels'] = $this->m_booking->searchBengkel($keyword)->result();
+		$data['hasils'] = $keyword;
+		$data['jumlah'] = $this->m_booking->searchBengkel($keyword)->num_rows();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$this->load->view('v_booksearch',$data);
+	}
 }
