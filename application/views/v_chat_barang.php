@@ -22,15 +22,31 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/clock-picker/clockpicker.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
+  
 
   <!-- Main Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
 
+  <!-- Shop Stylesheet -->
+  <!-- Bootstrap -->
+  <!--<link rel="stylesheet" href="<?php echo base_url()?>assets/type2/plugins/bootstrap/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/type2/plugins/bootstrap/css/bootstrap-slider.css">
+  <!-- Font Awesome -->
+  <link href="<?php echo base_url()?>assets/type2/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Owl Carousel -->
+  <link href="<?php echo base_url()?>assets/type2/plugins/slick-carousel/slick/slick.css" rel="stylesheet">
+  <link href="<?php echo base_url()?>assets/type2/plugins/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+  <!-- Fancy Box -->
+  <link href="<?php echo base_url()?>assets/type2/plugins/fancybox/jquery.fancybox.pack.css" rel="stylesheet">
+  <link href="<?php echo base_url()?>assets/type2/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+  <!-- CUSTOM CSS -->
+  <link href="<?php echo base_url()?>assets/type2/css/style.css" rel="stylesheet">
+  <!-- Jquery UI -->
+  <link href="<?php echo base_url(); ?>assets/jquery-ui.css" rel = "stylesheet">
+  <link href="<?php echo base_url(); ?>assets/jquery-ui.min.css" rel = "stylesheet">
+
   <!-- Login Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
-
-  <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style3.css" rel="stylesheet">
 
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
@@ -54,87 +70,28 @@
 ?>
 
 
+
 <!--  Banner start -->
-<section class="slider-hero hero-slider  hero-style-1  ">
+<section class="slider-hero hero-slider  hero-style-1 ">
   
     <div class="swiper-wrapper">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item" style="height:1200px">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop1.jpeg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
-
-          <!-- Form -->
-          <section class="signup">
-            <div class="container1">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Edit Item</h2>
-                        <?php echo $this->session->flashdata('message'); ?>
-                          <form action="<?php echo base_url().'Barang/updateData'?>" method="POST" novalidate="novalidate">
-                          <?php foreach($barangEdit as $list) { ?>
-                            
-                                <input type="hidden" name="user_id" value="<?php echo $list->id_barang?>">
-
-                                <div class="form-group">
-                                  <p>Item Name</p>
-                                  <input type="text" name="nama" value="<?php echo $list->nama_barang ?>">
-                                </div>
-
-                                <div class="form-group">
-                                  <p>Description</p>
-                                  <input type="text" name="keterangan_barang" value="<?php echo $list->keterangan_barang ?>" />
-                                </div>
-                                
-                                  <input type="hidden" name="id_penjual" value="<?php echo $list->id_penjual ?>">
-
-                                <div class="form-group">
-                                  <p>Item Image</p>
-                                  <input type="file" name="userfile[]" size="20" class="mr-sm-2" multiple />
-                                </div>
-                                
-                                <div class="form-group">
-                                  <p>Price</p>
-                                  <input type="numbers" name="harga" value="<?php echo $list->harga_barang ?>">
-                                </div>
-
-                                <div class="form-group">
-                                  <p>Stock</p>
-                                  <input type="numbers" name="stok_barang" value="<?php echo $list->stok_barang ?>">
-                                </div>
-
-                                <div class="form-group form-button">
-                                  <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Edit </button>
-                                </div>
-                              
-                            </form>
-                            <?php } ?>
-                    
-                    </div>
-                    <div class="signup-image">
-                        <figure><img src="<?php echo base_url() ?>assets/type1/images/signup-image.jpg" ></figure>
-
-                    </div>
-                </div>
-            </div>
-         </section>
-
-            
+      <div class="swiper-slide slide-item" style="height:120px">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg" >
+          
            
+
           </div>
-        </div> 
+        
       </div>
       <!-- end slide-item -->
       
   
     </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
+
 </section>
 <!--  Banner End -->
+
 
 <!--Footer start -->
 <footer class="section footer">
@@ -235,6 +192,96 @@
 <script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
 
 <!-- Login Script -->
-<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
+<!-- Shop type2 -->
+
+<!-- JAVASCRIPTS -->
+<script src="<?php echo base_url() ?>assets/type2/plugins/jQuery/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/popper.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap-slider.js"></script>
+  <!-- tether js -->
+<script src="<?php echo base_url() ?>assets/type2/plugins/tether/js/tether.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/raty/jquery.raty-fa.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/slick-carousel/slick/slick.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
+
+<!-- Shop JS End -->
+
+<script type="text/javascript">
+/*$(document).ready(function() {
+	    $(".btn-submit").click(function(e){
+	    	e.preventDefault();
+			var id = "<?php //echo $barang->id_barang ?>" ;
+	    	
+			
+	        $.ajax({
+	            url: "<?php //echo base_url() ?>Shop/cart",
+	            type:'POST',
+	            dataType: "json",
+	            data: {id:id},
+	            success: function(data) {
+					
+	                if($.isEmptyObject(data.error)){
+						$('#successModal').modal('show');
+						
+	                }else{
+						$('#failModal').modal('show');
+	                }
+					
+	            }
+	        });
+
+
+	    }); 
+	}); */
+</script>
+<script>
+$(document).ready(function(){
+	$(".btn-add-cart").click(function(e){
+		const modal = document.querySelector(".modal");
+		modal.classList.add("is-open");
+  		body.style.overflow = "hidden";
+	});
+
+	$(".btn-submit").click(function(e){
+	    	e.preventDefault();
+	    	
+	    	var email = $("input[name='email']").val();
+	    	var password = $("input[name='password']").val();
+	    	
+
+
+	        $.ajax({
+	            url: "<?php echo base_url() ?>Login",
+	            type:'POST',
+	            dataType: "json",
+	            data: {email:email, password:password},
+	            success: function(data) {
+					
+	                if($.isEmptyObject(data.error)){
+	                	$(".print-error-msg").css('display','none');
+						window.location.reload(true);
+						
+	                }else{
+						$(".print-error-msg").css('display','block');
+	                	$(".print-error-msg").html(data.error);
+	                }
+					
+	            }
+	        });
+
+
+	    }); 
+
+		$("#password").on("input", function(){
+        	$(".print-error-msg").css('display','none');
+	    });
+});
+</script>
+
+</body>
 </html>

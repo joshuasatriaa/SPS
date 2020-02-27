@@ -154,13 +154,6 @@ class Barang extends CI_Controller{
 			$this->load->view('v_user_myitem',$data);
 		}
 		
-		function editData($id_barang){
-			$where = array('id_barang' => $id_barang);
-			$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
-			$this->load->view('v_edit_barang',$data);
-		}
-		
-		
 		function updateData(){
 			$id = $this->input->post('id_barang');
 			$nama = $this->input->post('nama');
@@ -192,6 +185,19 @@ class Barang extends CI_Controller{
 			$where = array('id_barang' => $id_barang);
 			$this->m_barang->hapusData($where,'barang');
 			redirect('Barang');
+		}
+
+		function EditItem($id)
+		{
+			$where = array('id_barang' => $id);
+			$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
+			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+
+			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+
+
+			$this->load->view('v_edit_barang',$data);
 		}
 	
 	
