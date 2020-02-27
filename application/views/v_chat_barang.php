@@ -52,6 +52,51 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
+  <style>
+.container1 {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: #ddd;
+}
+
+.container1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container1 img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.container1 img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+  </style>
+
 </head>
 
 <body>
@@ -76,99 +121,64 @@
   
     <div class="swiper-wrapper">
       <!-- start slide-item -->
-      <div class="swiper-slide slide-item" style="height:120px">
+      <div class="swiper-slide slide-item" >
         <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg" >
-          
-           
+            <div class="container">
 
-          </div>
-        
-      </div>
-      <!-- end slide-item -->
-      
-  
+                <section class="section-sm">
+	                <div class="container">
+                        <?php foreach($chat as $list) {?>
+                            <?php if($list->id_pengirim == $this->session->userdata('id_user')){?>
+                                <div class="container1">
+                                    <span style="color:black"><?php echo $list->id_pengirim ?></span>
+                                    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+                                    <p><?php echo $list->pesan ?></p>
+                                    <span class="time-right"><?php echo $list->waktu_kirim ?></span>
+                                </div>
+                            <?php }else{ ?>
+                                <div class="container1 darker">
+                                    <span style="color:black"><?php echo $list->id_penerima ?></span>
+                                    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+                                    <p><?php echo $list->pesan ?></p>
+                                    <span class="time-right"><?php echo $list->waktu_kirim ?></span>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+
+                            <!-- Chat -->
+                            <section class="page-search">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            
+                                            <div class="advance-search">
+                                                <form action="<?php echo base_url()?>Chat/sendChat/<?php echo $idsaya?>/<?php echo $iddia ?>" method="post">
+                                                    <div class="form-row" >
+                                                        <div class="form-group col-md-8" style="margin-left:10%;">
+                                                            <input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="Type a Message" name="input_pesan">
+                                                        </div>
+                                                            
+                                                        <button type="submit" class="btn btn-primary">Send</button>
+                                                    </div>
+                                                    
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>     
+                            <!-- End Chat -->
+                    </div>
+                </section>
+            
+            </div>
+        </div>
+    </div>
     </div>
 
 </section>
-<!--  Banner End -->
 
 
-<!--Footer start -->
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
-
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-									class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-									class="ti-dribbble mr-2 "></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Contact Info</h4>
-
-					<ul class="list-unstyled mb-0 footer-contact">
-						<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-						<li><i class="ti-email"></i>mail@support.com</li>
-						<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Opening Hours</h4>
-
-					<div class="info mb-4">
-						<p class="mb-0">Monday - Thursday</p>
-						<h5>10:00 AM - 11:00 PM</h5>
-					</div>
-					<div class="info">
-						<p class="mb-0">Friday - Sunday</p>
-						<h5>12:00 AM - 03:00 AM</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		
-	</div>
-</footer>
-
-<section class="footer-btm py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-							class="text-white">themefisher.com</a></p>
-
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- Footer  End -->
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
