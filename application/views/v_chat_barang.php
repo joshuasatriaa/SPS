@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/clock-picker/clockpicker.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
+  
 
   <!-- Main Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
@@ -40,7 +41,9 @@
   <link href="<?php echo base_url()?>assets/type2/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
   <!-- CUSTOM CSS -->
   <link href="<?php echo base_url()?>assets/type2/css/style.css" rel="stylesheet">
-
+  <!-- Jquery UI -->
+  <link href="<?php echo base_url(); ?>assets/jquery-ui.css" rel = "stylesheet">
+  <link href="<?php echo base_url(); ?>assets/jquery-ui.min.css" rel = "stylesheet">
 
   <!-- Login Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
@@ -48,9 +51,6 @@
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
-
-  <!-- Image Slide CSS from w3schools-->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 
@@ -92,237 +92,6 @@
 </section>
 <!--  Banner End -->
 
-
-<section class="section-sm">
-	<div class="container">
-		
-		
-		<div class="row">
-		
-			
-			<div class="col-md-12">
-			<?php foreach($barang as $list){ ?>
-			
-			
-				<!-- Container Start -->
-				<div class="container">
-					<div class="row">
-						<!-- Left sidebar -->
-						<div class="col-md-8">
-							<div class="product-details">
-								<h1 class="product-title" style="font-family: 'Open Sans', sans-serif;"><?php echo $list->nama_barang ?></h1>
-								<div class="product-meta">
-									<ul class="list-inline">
-										<li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">
-										<?php
-											if($list->nama_pengguna == null)
-											{
-												echo $list->nama_bengkel;
-											}
-											else
-											{
-												echo $list->nama_pengguna;
-											}
-										?>	
-
-										</a></li>
-										<?php if($list->nama_pengguna == null)
-										{
-											?>
-										<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location <a href=""><?php echo $list->alamat ?></a>
-										<?php } ?>
-									</li>
-									</ul>
-								</div>
-
-								
-								<!-- product slider -->
-								
-								<div class="w3-content w3-display-container">
-									
-									<?php foreach($foto as $list) { ?>
-									
-									<div class="w3-display-container mySlides">
-										
-										<?php    
-                                            echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" width="100%" />';
-                                        ?>
-									</div>
-
-									<?php } ?>
-
-									<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-									<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
-
-								</div>
-
-								<!-- Script Image Slider-->
-								<script>
-								var slideIndex = 1;
-								showDivs(slideIndex);
-
-								function plusDivs(n) {
-								showDivs(slideIndex += n);
-								}
-
-								function showDivs(n) {
-								var i;
-								var x = document.getElementsByClassName("mySlides");
-								if (n > x.length) {slideIndex = 1}
-								if (n < 1) {slideIndex = x.length}
-								for (i = 0; i < x.length; i++) {
-									x[i].style.display = "none";  
-								}
-								x[slideIndex-1].style.display = "block";  
-								}
-								</script>
-								<!-- product slider -->
-
-								<div class="content mt-5 pt-5">
-									<ul class="nav nav-pills  justify-content-center" id="pills-tab" role="tablist">
-										<li class="nav-item">
-											<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home"
-											aria-selected="true">Product Details</a>
-										</li>
-										
-										<li class="nav-item">
-											<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact"
-											aria-selected="false">Reviews</a>
-										</li>
-									</ul>
-									<div class="tab-content" id="pills-tabContent">
-										<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-											<h3 class="tab-title" style="font-family: 'Open Sans', sans-serif;">Product Description</h3>
-											<p>
-												<?php echo $list->keterangan_barang; ?>
-											</p>
-
-										</div>
-										
-										<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-											<h3 class="tab-title">Product Review</h3>
-											<div class="product-review">
-												<div class="media">
-													<!-- Avater -->
-													<img src="images/user/user-thumb.jpg" alt="avater">
-													<div class="media-body">
-														<!-- Ratings -->
-														<div class="ratings">
-															<ul class="list-inline">
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-															</ul>
-														</div>
-														<div class="name">
-															<h5>Jessica Brown</h5>
-														</div>
-														<div class="date">
-															<p>Mar 20, 2018</p>
-														</div>
-														<div class="review-comment">
-															<p>
-																Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremqe laudant tota rem ape
-																riamipsa eaque.
-															</p>
-														</div>
-													</div>
-												</div>
-												<div class="review-submission">
-													<h3 class="tab-title">Submit your review</h3>
-													<!-- Rate -->
-													<div class="rate">
-														<div class="starrr"></div>
-													</div>
-													<div class="review-submit">
-														<form action="#" class="row">
-															<div class="col-lg-6">
-																<input type="text" name="name" id="name" class="form-control" placeholder="Name">
-															</div>
-															<div class="col-lg-6">
-																<input type="email" name="email" id="email" class="form-control" placeholder="Email">
-															</div>
-															<div class="col-12">
-																<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
-															</div>
-															<div class="col-12">
-																<button type="submit" class="btn btn-main">Submit</button>
-																<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">
-																Launch demo modal
-																</button>
-															</div>
-														</form>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<?php } ?> 
-
-						<?php foreach($barang as $list){ ?>
-						<div class="col-md-4">
-							<div class="sidebar">
-								<div class="widget text-center" >
-									
-									<h2 style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $list->harga_barang?></h2>
-								</div>
-								<!-- User Profile widget -->
-								<div class="widget user text-center">
-								
-									<?php
-                                            echo '<img class="rounded-circle img-fluid mb-5 px-5 " src="data:image/jpeg;base64,' .base64_encode($list->gambar).'" width="100%" />';   
-                                        ?>
-								
-									<h4 style="font-family: 'Open Sans', sans-serif;"><a href=""><?php if($list->nama_pengguna == null)
-											{
-												echo $list->nama_bengkel;
-											}
-											else
-											{
-												echo $list->nama_pengguna;
-											} ?></a></h4>
-									
-									
-									<ul class="list-inline mt-20">
-										<li class="list-inline-item"><a href="<?php echo base_url()?>/Shop/ContactBarang/<?php echo $this->session->userdata('id_user') ?>/<?php echo $list->id_penjual ?>" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
-										<?php if($this->session->userdata('id_user')){?>
-										<li class="list-inline-item"><a href="<?php echo base_url(). 'Shop/addCart/'. $list->id_barang?>" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an offer</a></li>
-										<?php }else{?>
-											<li class="list-inline-item"><a class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3 btn-add-cart text-white">Make an offer</a></li>
-										<?php }?>
-									</ul>
-								</div>
-								
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<!-- Container End -->
-
-
-			<?php } ?> 
-				
-				
-			</div>
-		</div>
-	</div>
-</section>
 
 <!--Footer start -->
 <footer class="section footer">
