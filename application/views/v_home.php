@@ -1,3 +1,7 @@
+<?php if(substr($this->session->userdata('id_user'),0,4) == 'ADMN'){
+	redirect('Dashboard/Admin');
+}?>
+
 <!DOCTYPE html>
 
 <head>
@@ -556,30 +560,28 @@
 	$(document).ready(function() {
 	    $(".btn-submit").click(function(e){
 	    	e.preventDefault();
-	    	
 	    	var email = $("input[name='email']").val();
 	    	var password = $("input[name='password']").val();
 	    	
 
-
-	        $.ajax({
-	            url: "<?php echo base_url() ?>Login",
-	            type:'POST',
-	            dataType: "json",
-	            data: {email:email, password:password},
-	            success: function(data) {
-					
-	                if($.isEmptyObject(data.error)){
-	                	$(".print-error-msg").css('display','none');
-						window.location.reload(true);
+				$.ajax({
+					url: "<?php echo base_url() ?>Login",
+					type:'POST',
+					dataType: "json",
+					data: {email:email, password:password},
+					success: function(data) {
+						if($.isEmptyObject(data.error)){
+							$(".print-error-msg").css('display','none');
+							window.location.reload(true);
+							
+						}else{
+							$(".print-error-msg").css('display','block');
+							$(".print-error-msg").html(data.error);
+						}
 						
-	                }else{
-						$(".print-error-msg").css('display','block');
-	                	$(".print-error-msg").html(data.error);
-	                }
-					
-	            }
-	        });
+					}
+				});
+			
 
 
 	    }); 
