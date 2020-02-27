@@ -155,30 +155,103 @@ class Barang extends CI_Controller{
 		}
 		
 		function updateData(){
-			$id = $this->input->post('id_barang');
-			$nama = $this->input->post('nama');
-			$idPenjual = $this->input->post('id_penjual');
-			$gambar = $this->input->post('gambar');
-			$harga = $this->input->post('harga');
-			$stok = $this->input->post('stok');
-			
-			$data = array(
-				'id_barang' => $id,
-				'nama_barang' => $nama,
-				'id_penjual' => $idPenjual,
-				'gambar_barang' => $gambar,
-				'harga_barang' => $harga,
-				'stok_barang' => $stok
+			$this->form_validation->set_rules('nama', 'Item Name', 'required|trim');
+			$this->form_validation->set_rules('keterangan_barang', 'Item Description', 'required|trim');
+			$this->form_validation->set_rules('harga', 'Item Price', 'required|trim');
+			$this->form_validation->set_rules('stok_barang', 'Item Stock', 'required|trim|numeric');
+
+			if (empty($_FILES['userfile']['name']))
+			{
+				$this->form_validation->set_rules('userfile', 'Profile Picture', 'required');
+			}
+
+			if($this->form_validation->run() == TRUE){
+
+				$id = $this->input->post('id_barang');
+				$nama = $this->input->post('nama');
+				$harga = $this->input->post('harga');
+				$stok = $this->input->post('stok_barang');
+				$keterangan = $this->input->post('keterangan_barang');
+				
+				$data = array(
+					'nama_barang' => $nama,
+					'harga_barang' => $harga,
+					'stok_barang' => $stok,
+					'keterangan_barang' => $keterangan,
+					'user_edit' => $this->session->userdata('id_user'),
 				);
+				
+				$where = array(
+					'id_barang' => $id
+				);
+				
+				$this->db->set('waktu_edit', 'NOW()', FALSE);
+				$this->m_barang->updateData($where,$data,'barang');
+
+
+				$this->m_barang->hapusData($where, 'foto_barang');
+				
+				$filesCount = count($_FILES['userfile']['name']);
 			
-			$where = array(
-				'id_barang' => $id
-			);
-			
-			$this->m_barang->updateData($where,$data,'barang');
-		
-			redirect('Barang');
-			
+
+				for($i = 0; $i < $filesCount; $i++){
+					$_FILES['userfiles']['name']     = $_FILES['userfile']['name'][$i];
+					$_FILES['userfiles']['type']     = $_FILES['userfile']['type'][$i];
+					$_FILES['userfiles']['tmp_name'] = $_FILES['userfile']['tmp_name'][$i];
+					$_FILES['userfiles']['error']     = $_FILES['userfile']['error'][$i];
+					$_FILES['userfiles']['size']     = $_FILES['userfile']['size'][$i];
+					
+					// File upload configuration
+					$config['upload_path']          = './uploads/';
+					$config['allowed_types']        = 'gif|jpg|jpeg|png';
+					$config['max_size']             = 1000;
+					$config['max_width']            = 1300;
+					$config['max_height']           = 1024;
+					
+					// Load and initialize upload library
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+					
+					// Upload file to server
+					if($this->upload->do_upload('userfiles')){
+						// Uploaded file data
+						$fileData = $this->upload->data();
+						
+						$data1 = [
+							'id_foto_barang' => 'FOTO-'.$id.'-'.($i+1),
+							'id_barang' => $id,
+							'gambar_barang' => file_get_contents($fileData['full_path'])
+						];
+						$this->m_barang->insertTable('foto_barang', $data1);
+						if($i == $filesCount-1){
+							$where = array('id_barang' => $id);
+							$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
+							$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+
+							$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+							$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+
+							$this->session->set_flashdata('message', '<div class="alert alert-success text-center p-t-25 p-b-50" role="alert">Your item information has changed!</div>');
+
+							$this->load->view('v_edit_barang',$data);
+						}
+					}else{
+						$data['count'] = $this->m_barang->tampilkanBarang()->num_rows();
+						$data['error'] = $this->upload->display_errors();
+						$this->load->view('v_shop_add_item', $data);
+					}
+				}	
+			}else{
+				$where = array('id_barang' => $this->input->post('id_barang'));
+				$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
+				$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+	
+				$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+				$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+	
+	
+				$this->load->view('v_edit_barang',$data);
+			}
 		}
 		
 		function hapusData($id_barang){
