@@ -30,7 +30,7 @@ class m_barang extends CI_Model{
 	}
 	
 	function tampilkanBarangIni($where){
-		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,b.gambar,
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,COALESCE(b.gambar,c.gambar) AS gambar,
 		a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat FROM barang a
 		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
