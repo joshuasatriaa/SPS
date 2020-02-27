@@ -254,10 +254,10 @@ class Barang extends CI_Controller{
 			}
 		}
 		
-		function hapusData($id_barang){
-			$where = array('id_barang' => $id_barang);
-			$this->m_barang->hapusData($where,'barang');
-			redirect('Barang');
+		function deleteItem($id){
+			
+			$this->m_barang->hapusData($id);
+			redirect('Barang/MyItem');
 		}
 
 		function EditItem($id)

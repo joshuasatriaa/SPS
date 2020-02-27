@@ -7,7 +7,7 @@ class m_barang extends CI_Model{
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
 		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
-		WHERE d.id_foto_barang LIKE "FOTO-BARANG-%1"
+		WHERE d.id_foto_barang LIKE "FOTO-BARANG-%1" AND a.status_delete != 1
 		');
 	}
 	function tampilkanData()
@@ -48,7 +48,7 @@ class m_barang extends CI_Model{
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
 		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
-		WHERE b.id_pengguna = "'.$where.'" AND d.id_foto_barang LIKE "FOTO-BARANG-%1" ');
+		WHERE b.id_pengguna = "'.$where.'" AND d.id_foto_barang LIKE "FOTO-BARANG-%1" AND a.status_delete != 1 ');
 	}
 	
 	function editData($where, $table){
@@ -60,9 +60,10 @@ class m_barang extends CI_Model{
 		$this->db->update($table,$data);
 	}
 	
-	function hapusData($where,$table){
-		$this->db->where($where);
-		$this->db->delete($table);
+	function hapusData($where){
+		return $this->db->query('UPDATE Barang
+		SET status_delete=1
+		WHERE id_barang= "'.$where.'" ');
 	}
 
 	function tampilkanFotoBarangIni($where){
