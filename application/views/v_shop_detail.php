@@ -300,9 +300,9 @@
 									
 									<form action="<?php echo base_url(). 'Shop/addCart'; ?>" method="post">
 											<input type="hidden" name="id_barang" value="<?php echo $list->id_barang;?>">
-											Amount : <input type="number" name="jumlah_barang" placeholder="Max amount <?php echo $list->stok_barang?>" max="<?php echo $list->stok_barang;?>" > 
+											Amount : <input type="number" name="jumlah_barang" value="1" min="1" max="<?php echo $list->stok_barang;?>" > 
 											<ul class="list-inline mt-20">
-												<li class="list-inline-item"><a href="#" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
+												<li class="list-inline-item"><a href="<?php echo base_url()?>Chat/checkChatBarang/<?php echo $this->session->userdata('id_user') ?>/<?php echo $list->id_penjual ?>" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
 												<?php if($this->session->userdata('id_user')){?>
 												<li class="list-inline-item">
 													<a><button type="submit" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Buy Item</button></a>
