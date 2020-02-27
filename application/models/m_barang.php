@@ -10,7 +10,7 @@ class m_barang extends CI_Model{
 	}
 	function tampilkanData()
 	{
-		return $this->db->query('SELECT a.id_barang, a.nama_barang, b.email, a.harga_barang, a.gambar_barang, a.stok_barang FROM barang a JOIN user b ON a.id_penjual=b.id_user');
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, b.email, a.harga_barang, a.keterangan_barang, a.stok_barang FROM barang a JOIN user b ON a.id_penjual=b.id_user');
 	}
 	
 	

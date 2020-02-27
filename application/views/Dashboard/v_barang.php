@@ -45,7 +45,7 @@
                                             Export
                                         </button>
                                     </a>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputDosen">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputBarang">
                                         <span class="ti-plus"></span> Input
                                     </button>
                                 </div>
@@ -57,9 +57,9 @@
                                             <th>ID Barang</th>
                                             <th>Nama Barang</th>
                                             <th>Email Penjual</th>
-                                            <th>Gambar Barang</th>
                                             <th>Harga Barang</th>
                                             <th>Stok Barang</th>
+                                            <th>Keterangan Barang</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -73,9 +73,9 @@
                                             <td><?php echo $list->id_barang ?></td>
                                             <td><?php echo $list->nama_barang ?></td>
                                             <td><?php echo $list->email?></td>
-                                            <td><?php echo $list->gambar_barang?></td>
                                             <td><?php echo $list->harga_barang ?></td>
                                             <td><?php echo $list->stok_barang ?></td>
+                                            <td><?php echo $list->keterangan_barang?></td>
                                             <td>
                                                 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editBarang_<?php echo $list->id_barang?>">Edit</button>
                                             </td>
@@ -104,12 +104,12 @@
                                                 <input  type="text" class="form-control" placeholder = "Nama Barang" id="nama_barang" name="nama_barang" value="<?php echo $list->nama_barang?>">
                                             </div>
                                             <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Email Penjual</label>
-                                                <input  type="text" class="form-control" placeholder = "Email Penjual" id="email_penjual" name="email_penjual" value="<?php echo $list->email?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Gambar Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Gambar Barang" id="gambar_barang" name="gambar_barang" value="<?php echo $list->gambar_barang?>">
+                                                <label for="cc-payment" class="control-label mb-1">Email Penjual</label><br>
+                                                <select data-placeholder="Pilih Email" class="standardSelect form-control" tabindex="1" name="id_user" id="id_user">
+                                                                        <?php foreach($user as $a){ ?>
+                                                                            <option value="<?php echo $a->id_user ?>" <?php echo (($list->id_penjual == $a->id_user)? "selected" : "" ) ?>><?php echo $a->email ?></option>
+                                                                        <?php } ?>
+                                                                    </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Harga Barang</label>
@@ -118,6 +118,10 @@
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Stok Barang</label>
                                                 <input  type="text" class="form-control" placeholder = "Stok Barang" id="stok_barang" name="stok_barang" value="<?php echo $list->stok_barang?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Keterangan Barang</label>
+                                                <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keterangan_barang" name="keterangan_barang" value="<?php echo $list->keterangan_barang?>">
                                             </div>
                         </div>
                         <div class="modal-footer">
@@ -140,7 +144,7 @@
         </div><!-- .content -->
 
         <!-- Modal -->
-        <div class="modal fade" id="inputDosen" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+        <div class="modal fade" id="inputBarang" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -154,7 +158,7 @@
                             <form action="<?php echo base_url().'Dashboard/Barang/insertData'?>" method="post" novalidate="novalidate">
                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">ID Barang</label>
-                                                <input type="text" class="form-control" placeholder = "ID Barang" id="id_barang" name="id_barang" readonly>
+                                                <input type="text" class="form-control" placeholder = "ID Barang" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>"readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Nama Barang</label>
@@ -162,11 +166,12 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Email Penjual</label>
-                                                <input  type="text" class="form-control" placeholder = "Email Penjual" id="email_penjual" name="email_penjual" >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Gambar Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Gambar Barang" id="gambar_barang" name="gambar_barang" >
+                                                <br>
+                                                    <select data-placeholder="Pilih Pengguna" class="standardSelect" tabindex="1" name="id_user">
+                                                    <?php foreach($user as $a){ ?>
+                                                        <option value="<?php echo $a->id_user ?>"><?php echo $a->email ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Harga Barang</label>
@@ -176,9 +181,13 @@
                                                 <label for="cc-payment" class="control-label mb-1">Stok Barang</label>
                                                 <input  type="text" class="form-control" placeholder = "Stok Barang" id="stok_barang" name="stok_barang" >
                                             </div>
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">keterangan Barang</label>
+                                                <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keterangan_barang" name="keterangan_barang" >
+                                            </div>
                                             </div>
 
-                        </div>
+                    
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -195,7 +204,7 @@
             <div class="footer-inner bg-white">
                 <div class="row">
                     <div class="col-sm-6">
-                        Copyright &copy; 2018 Ela Dosen
+                        Copyright &copy; 2018 Ela Barang
                     </div>
                     <div class="col-sm-6 text-right">
                         Designed by <a href="https://colorlib.com">Colorlib</a>

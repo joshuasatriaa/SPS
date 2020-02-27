@@ -41,6 +41,9 @@
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Admin/index';?>">Admin</a></li>
                             <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Barang/index';?>">Barang</a></li>
+                            <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Bengkel/index';?>">Bengkel</a></li>
+                            <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>">Pesanan</a></li>
+                            <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Service/index';?>">Service</a></li>
                             <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/User/index';?>">User</a></li>
                         </ul>
                     </li>

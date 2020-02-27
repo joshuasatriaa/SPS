@@ -31,7 +31,9 @@ class Barang extends CI_Controller {
 	public function index()
 	{
 		$data['barang'] = $this->m_barang->tampilkanData()->result();
+		$data['user'] = $this->m_user->tampilkanData()->result();
 		$this->head();
+		$data['count']=$this->m_barang->tampilkanData()->num_rows();
 		$this->load->view('Dashboard/v_barang',$data);
 		$this->foot();
 	}
@@ -43,10 +45,10 @@ class Barang extends CI_Controller {
 		
 		$this->form_validation->set_rules('id_barang', 'ID Barang', 'required|trim|is_unique[barang.id_barang]');
 		$this->form_validation->set_rules('nama_barang', 'Name', 'required|trim');
-		$this->form_validation->set_rules('id_penjual', 'ID Seller', 'required|trim');
-		$this->form_validation->set_rules('gambar_barang', 'Picture', 'required|trim');
-		$this->form_validation->set_rules('harga_barang', 'Price', 'required|trim|valid_email');
+		$this->form_validation->set_rules('id_user', 'ID Seller', 'required|trim');
+		$this->form_validation->set_rules('harga_barang', 'Price', 'required|trim');
 		$this->form_validation->set_rules('stok_barang', 'Stock', 'required|trim');
+		$this->form_validation->set_rules('keterangan_barang', 'Keterangan', 'required|trim');
 
 		
 		if($this->form_validation->run() == false){
@@ -56,8 +58,8 @@ class Barang extends CI_Controller {
 			$data_barang = array(
 				'id_barang' => htmlspecialchars($this->input->post('id_barang')), 
 				'nama_barang' => htmlspecialchars($this->input->post('nama_barang')), 
-				'id_penjual' => htmlspecialchars($this->input->post('id_penjual')), 
-				'gambar_barang' => htmlspecialchars($this->input->post('gambar_barang')), 
+				'id_penjual' => htmlspecialchars($this->input->post('id_user')), 
+				'keterangan_barang' => htmlspecialchars($this->input->post('keterangan_barang')),
 				'harga_barang' => htmlspecialchars($this->input->post('harga_barang')), 
 				'stok_barang' => htmlspecialchars($this->input->post('stok_barang')),
 				'user_add' => htmlspecialchars($this->input->post('id_user')),  
@@ -83,12 +85,11 @@ class Barang extends CI_Controller {
 	function updateData(){
 		$this->load->library('form_validation');
 		
-		$this->form_validation->set_rules('id_barang', 'ID Barang', 'required|trim|is_unique[barang.id_barang]');
 		$this->form_validation->set_rules('nama_barang', 'Name', 'required|trim');
-		$this->form_validation->set_rules('id_penjual', 'ID Seller', 'required|trim');
-		$this->form_validation->set_rules('gambar_barang', 'Picture', 'required|trim');
-		$this->form_validation->set_rules('harga_barang', 'Price', 'required|trim|valid_email');
+		$this->form_validation->set_rules('id_user', 'ID Seller', 'required|trim');
+		$this->form_validation->set_rules('harga_barang', 'Price', 'required|trim');
 		$this->form_validation->set_rules('stok_barang', 'Stock', 'required|trim');
+		$this->form_validation->set_rules('keterangan_barang', 'Keterangan', 'required|trim');
 
 		if($this->form_validation->run() == false){
 			echo validation_errors();
@@ -97,10 +98,10 @@ class Barang extends CI_Controller {
 			$data_barang = array(
 				'id_barang' => htmlspecialchars($this->input->post('id_barang')), 
 				'nama_barang' => htmlspecialchars($this->input->post('nama_barang')), 
-				'id_penjual' => htmlspecialchars($this->input->post('id_penjual')), 
-				'gambar_barang' => htmlspecialchars($this->input->post('gambar_barang')), 
+				'id_penjual' => htmlspecialchars($this->input->post('id_user')), 
 				'harga_barang' => htmlspecialchars($this->input->post('harga_barang')), 
 				'stok_barang' => htmlspecialchars($this->input->post('stok_barang')),
+				'keterangan_barang' => htmlspecialchars($this->input->post('keterangan_barang')),
 				'user_add' => htmlspecialchars($this->input->post('id_user')),  
 				'user_edit' => $this->session->userdata('id_user'),  
 			);

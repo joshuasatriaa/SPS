@@ -3,7 +3,10 @@ class m_pesanan extends CI_Model{
 	function tampilkanPesanan(){
 		return $this->db->query('SELECT * FROM pesanan');
 	}
-	
+	function tampilkanData()
+	{
+		return $this->db->query('SELECT a.id_pesanan, b.nama_pengguna, c.nama_barang, a.status_pesanan, a.waktu_pesanan FROM pesanan a JOIN user d ON a.id_pembeli=d.id_user JOIN pengguna b ON d.id_user=b.id_pengguna JOIN barang c ON a.id_barang=c.id_barang');
+	}
 	
 	function insertTable($table,$where){
 		$this->db->insert($table,$where);
@@ -24,7 +27,18 @@ class m_pesanan extends CI_Model{
 		WHERE id_pembeli = "'.$id.'" AND status_pesanan = 0');
 	}
 
+	function editData($where, $table){
+		return $this->db->get_where($table,$where);
+	}
 	
+	function updateData($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
 	
+	function hapusData($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
 }
 ?>
