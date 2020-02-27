@@ -130,17 +130,17 @@
                         <?php foreach($chat as $list) {?>
                             <?php if($list->id_pengirim == $this->session->userdata('id_user')){?>
                                 <div class="container1">
-                                    <span style="color:black"><?php echo $list->id_pengirim ?></span>
-                                    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
+                                    <span style="color:black"><?php echo "Me" ?></span>
+                                    
                                     <p><?php echo $list->pesan ?></p>
                                     <span class="time-right"><?php echo $list->waktu_kirim ?></span>
                                 </div>
                             <?php }else{ ?>
                                 <div class="container1 darker">
-                                    <span style="color:black"><?php echo $list->id_penerima ?></span>
-                                    <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:100%;">
-                                    <p><?php echo $list->pesan ?></p>
-                                    <span class="time-right"><?php echo $list->waktu_kirim ?></span>
+                                    <span style="color:black" class="float-right"><?php echo $list->nama_penerima ?></span><br>
+                                    
+                                    <p class="float-right"><?php echo $list->pesan ?></p>
+                                    <span class="time-left"><?php echo $list->waktu_kirim ?></span>
                                 </div>
                             <?php } ?>
                         <?php } ?>
