@@ -163,27 +163,35 @@
 		</div>
 
 		<div class="row">
-			<div class="col-lg-4 col-md-4 mb-5 mb-lg-0" data-aos="fade-up">
+			<div class="col-lg-3 col-md-3 mb-5 mb-lg-0" data-aos="fade-up">
 				<img src="<?php echo base_url() ?>assets/type1/images/about/img-1.jpg" alt="" class="img-fluid">
 				<div class="mt-3">
-					<h3>Quality Food</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.impedit maiores fugit illo deserunt!</p>
+					<h3>Andy Fransisko</h3>
+					<p>Project Manager</p>
 				</div>
 			</div>
 
-			<div class="col-lg-4 col-md-4 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
+			<div class="col-lg-3 col-md-3 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
 				<img src="<?php echo base_url() ?>assets/type1/images/about/img-2.jpg" alt="" class="img-fluid">
 				<div class="mt-3">
-					<h3>Friendly place</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.impedit maiores fugit illo deserunt!</p>
+					<h3>Calvin Fernando</h3>
+					<p>Web Developer</p>
 				</div>
 			</div>
 
-			<div class="col-lg-4 col-md-4" data-aos="fade-up" data-aos-delay="600">
+			<div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="600">
 				<img src="<?php echo base_url() ?>assets/type1/images/about/img-3.jpg" alt="" class="img-fluid">
 				<div class="mt-3">
-					<h3>Affordable price</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.impedit maiores fugit illo deserunt!</p>
+					<h3>Joshua Satria</h3>
+					<p>System Analyst</p>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="900">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/img-3.jpg" alt="" class="img-fluid">
+				<div class="mt-3">
+					<h3>Kelvin Cahyadi</h3>
+					<p>Business Analyst</p>
 				</div>
 			</div>
 		</div>
@@ -223,8 +231,7 @@
 					<div class="d-flex align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-1.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Vitello Tonato - <span>23$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Wheels</h4>
 						</div>
 					</div>
 				</div>
@@ -235,8 +242,7 @@
 					<div class="d-flex align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-2.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Crema di Pomodoro - <span>34$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Car Oil</h4>
 						</div>
 					</div>
 				</div>
@@ -247,8 +253,7 @@
 					<div class="d-flex align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-3.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Oatmeal Cookie - <span>13$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Tires</h4>
 						</div>
 					</div>
 				</div>
@@ -259,8 +264,7 @@
 					<div class="d-flex  align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-4.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Seasonal Soup - <span>10$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Ornaments & Decorations</h4>
 						</div>
 					</div>
 				</div>
@@ -271,8 +275,7 @@
 					<div class="d-flex align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-5.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Pizza Pane - <span>28$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Carwash</h4>
 						</div>
 					</div>
 				</div>
@@ -283,8 +286,7 @@
 					<div class="d-flex align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-6.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Carpacio - <span>20$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Engine Reparations</h4>
 						</div>
 
 					</div>
@@ -296,8 +298,7 @@
 					<div class="d-flex align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-7.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Insalata Rucola - <span>15$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Oil Change</h4>
 						</div>
 					</div>
 				</div>
@@ -309,8 +310,7 @@
 					<div class="d-flex align-items-center">
 						<img src="<?php echo base_url() ?>assets/type1/images/menu/menu-8.jpg" alt="" class="img-fluid mb-3 mb-lg-0">
 						<div>
-							<h4>Carpacio - <span>13$</span></h4>
-							<p>Chinese mustard/Chipotle aiol</p>
+							<h4>Spareparts</h4>
 						</div>
 					</div>
 				</div>
@@ -319,7 +319,7 @@
 
 		<div class="row">
 			<div class="col-lg-12 text-center mt-5">
-				<a href="menu.html" class="btn btn-black ">View full menu</a>
+				<a href="<?php echo base_url().'Shop'?>" class="btn btn-black ">View our shop</a>
 			</div>
 		</div>
 	</div>
@@ -392,7 +392,7 @@
 <section class="instgram position-relative">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <h3 class="insta-title">@Instagram</h3>
+      <h3 class="insta-title">@bengcool</h3>
 
       <div class="swiper-container" id="gallery-slider">
         <!-- for instagram post remove comments from bottom line and replace your user id and access token -->
@@ -460,7 +460,7 @@
 			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
 				<div class="widget">
 					<h4 class="mb-3">About</h4>
-					<p></p>
+					<p>We are a community website with marketplace-based system</p>
 
 					<ul class="list-inline footer-socials mt-4">
 						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
@@ -481,8 +481,8 @@
 
 					<ul class="list-unstyled mb-0 footer-contact">
 						<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-						<li><i class="ti-email"></i>mail@support.com</li>
-						<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
+						<li><i class="ti-email"></i>bengcool.cs@gmail.com</li>
+						<li><i class="ti-map"></i>Tanjung Duren, Jakarta Barat</li>
 					</ul>
 				</div>
 			</div>
@@ -510,16 +510,16 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-							class="text-white">themefisher.com</a></p>
+					<p class="mb-0 ">Copyright &copy; 2020 - <a href="https://themefisher.com/"
+							class="text-white">www.bengcool.com</a></p>
 
 					<div class="footer-menu mt-3 mt-lg-0">
 						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
+							<li class="list-inline-item pl-2"><a href="<?php echo base_url().'Home'?>">Home</a></li>
+							<li class="list-inline-item pl-2"><a href="<?php echo base_url().'Home'?>">About Us</a></li>
+							<li class="list-inline-item pl-2"><a href="<?php echo base_url().'Shop'?>">Shop</a></li>
+							<li class="list-inline-item pl-2"><a href="<?php echo base_url().'Home'?>">Privacy Policy</a></li>
+							<li class="list-inline-item pl-2"><a href="<?php echo base_url().'Home'?>">Use of terms</a></li>
 						</ul>
 					</div>
 				</div>
