@@ -69,38 +69,42 @@
             <div class="container1">
                 <div class="signup-content">
                     <div class="signup-form">
+                    <?php echo $this->session->flashdata('message'); ?>
                         <h2 class="form-title">Edit Item</h2>
-                        <?php echo $this->session->flashdata('message'); ?>
-                          <form action="<?php echo base_url().'Barang/updateData'?>" method="POST" novalidate="novalidate">
+                          <?php echo form_open_multipart(base_url().'Barang/updateData');?>
                           <?php foreach($barangEdit as $list) { ?>
                             
-                                <input type="hidden" name="user_id" value="<?php echo $list->id_barang?>">
+                                <input type="hidden" name="id_barang" value="<?php echo $list->id_barang?>">
 
                                 <div class="form-group">
                                   <p>Item Name</p>
                                   <input type="text" name="nama" value="<?php echo $list->nama_barang ?>">
+                                  <?php echo form_error('nama', '<small class="text-danger">', '</small>') ?>
                                 </div>
 
                                 <div class="form-group">
                                   <p>Description</p>
                                   <input type="text" name="keterangan_barang" value="<?php echo $list->keterangan_barang ?>" />
+                                  <?php echo form_error('keterangan_barang', '<small class="text-danger">', '</small>') ?>
                                 </div>
                                 
                                   <input type="hidden" name="id_penjual" value="<?php echo $list->id_penjual ?>">
 
                                 <div class="form-group">
                                   <p>Item Image</p>
-                                  <input type="file" name="userfile[]" size="20" class="mr-sm-2" multiple />
+                                  <input type="file" name="userfile[]" size="20" id="userfile" class="mr-sm-2" multiple />
                                 </div>
-                                
+                                <output id="list"></output>
                                 <div class="form-group">
                                   <p>Price</p>
                                   <input type="numbers" name="harga" value="<?php echo $list->harga_barang ?>">
+                                  <?php echo form_error('harga', '<small class="text-danger">', '</small>') ?>
                                 </div>
 
                                 <div class="form-group">
                                   <p>Stock</p>
                                   <input type="numbers" name="stok_barang" value="<?php echo $list->stok_barang ?>">
+                                  <?php echo form_error('stok_barang', '<small class="text-danger">', '</small>') ?>
                                 </div>
 
                                 <div class="form-group form-button">
@@ -237,4 +241,47 @@
 <!-- Login Script -->
 <script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
+<script>
+function handleFileSelect(evt) {
+  while (document.getElementById('list').firstChild) {
+    document.getElementById('list').removeChild(document.getElementById('list').firstChild);
+  }
+  
+    
+    var files = evt.target.files;
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = 
+          [
+            '<img style="height: 75px; border: 1px solid #000; margin: 5px" src="', 
+            e.target.result,
+            '" title="', escape(theFile.name), 
+            '"/>'
+          ].join('');
+          
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('userfile').addEventListener('change', handleFileSelect, false);
+</script>
 </html>

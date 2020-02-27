@@ -38,7 +38,7 @@ class m_barang extends CI_Model{
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
 		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
-		WHERE a.id_barang = "'.$where.'" LIMIT 1');
+		WHERE a.id_barang = "'.$where.'" AND d.id_foto_barang LIKE "FOTO-BARANG-%1" LIMIT 1');
 	}
 	
 	function tampilkanBarangKu($where){
@@ -48,7 +48,7 @@ class m_barang extends CI_Model{
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
 		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
-		WHERE b.id_pengguna = "'.$where.'" ');
+		WHERE b.id_pengguna = "'.$where.'" AND d.id_foto_barang LIKE "FOTO-BARANG-%1" ');
 	}
 	
 	function editData($where, $table){
