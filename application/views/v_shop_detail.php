@@ -285,11 +285,11 @@
 								</div>
 								<!-- User Profile widget -->
 								<div class="widget user text-center">
-									<img class="rounded-circle img-fluid mb-5 px-5" src="
+								
 									<?php
-                                            echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar).'" width="100%" />';   
+                                            echo '<img class="rounded-circle img-fluid mb-5 px-5 " src="data:image/jpeg;base64,' .base64_encode($list->gambar).'" width="100%" />';   
                                         ?>
-									" alt="foto">
+								
 									<h4 style="font-family: 'Open Sans', sans-serif;"><a href=""><?php if($list->nama_pengguna == null)
 											{
 												echo $list->nama_bengkel;
