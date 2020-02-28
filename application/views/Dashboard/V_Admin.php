@@ -66,7 +66,7 @@
                                         <tr align="center">
                                             <td> <?php echo $list->id_admin ?></td>
                                             <td> <?php echo $list->nama_admin ?></td>
-                                            <td> <?php echo $list->keterangan ?></td>
+                                            <td> <?php echo $list->level_admin ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editAdmin_<?php echo $list->id_admin?>">Edit</button>
                                             </td>

@@ -3,7 +3,7 @@ class m_admin extends CI_Model{
 
 	function tampilkanData()
 	{
-		return $this->db->query('SELECT id_admin, nama_admin, level_admin FROM admin');
+		return $this->db->query('SELECT * FROM admin');
 	}
     function insertTable($table,$where){
 		$this->db->insert($table,$where);
