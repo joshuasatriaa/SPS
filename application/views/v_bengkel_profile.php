@@ -123,40 +123,20 @@
 					<a><i class="fa fa-location-arrow"></i> <?php echo $list->alamat ?></a><br>
 					
 					<!-- Default -->
-					<?php 
-						$counter=0;
-						$a = 0;
-					 ?>
-
-					 <!-- Penambahan -->
-					<?php
-						foreach($datarating as $list)
-						{
-							$a = $a + $list->rating_bengkel;
-							$counter++;
-						}
-					?>
-
-					<!-- Rata rata rating -->
-					<?php
-						if($counter != 0)
-						{
-							$rating = $a/$counter;
-						}
-					?>
+					
 
 					<?php foreach($datarating as $list){ ?>
                         
                             <div class="product-ratings">
                                 <ul class="list-inline">
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=1){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=2){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=3){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=4){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
-                                    <li class="list-inline-item "><i class="fa <?php if($rating>=5){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                                    <li class="list-inline-item "><i class="fa <?php if($list->rating>=1){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                                    <li class="list-inline-item "><i class="fa <?php if($list->rating>=2){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                                    <li class="list-inline-item "><i class="fa <?php if($list->rating>=3){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                                    <li class="list-inline-item "><i class="fa <?php if($list->rating>=4){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                                    <li class="list-inline-item "><i class="fa <?php if($list->rating>=5){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
                                 </ul>
                             </div>
-                        
+                        <?php echo $list->rating; ?>
                     <?php } ?>
 					
 					<br>

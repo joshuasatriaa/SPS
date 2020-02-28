@@ -45,7 +45,7 @@
 
 		function tampilkan_rating($where)
 		{
-			$query = $this->db->query('	SELECT * FROM Rating WHERE id_penerima = "'.$where.'"');
+			$query = $this->db->query('	SELECT AVG(rating_bengkel) AS rating FROM Rating WHERE id_penerima = "'.$where.'"');
 			return $query;
 		}
 }
