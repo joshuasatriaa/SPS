@@ -5,7 +5,8 @@ class m_login extends CI_Model{
 	function cek_login($email, $password){
 		return $this->db->query('SELECT * FROM user a 
 		LEFT JOIN pengguna b ON a.id_user = b.id_pengguna 
-		LEFT JOIN bengkel c ON a.id_user = c.id_bengkel 
+		LEFT JOIN bengkel c ON a.id_user = c.id_bengkel
+		LEFT JOIN admin d ON a.id_user = d.id_admin 
 		WHERE a.email = "'.$email.'" 
 		AND a.password = "'.$password.'" 
 		OR b.status_delete = 0 AND c.status_delete = 0');
