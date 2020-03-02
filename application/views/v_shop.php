@@ -169,13 +169,13 @@
 												<a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a>
 											</li>
 											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-calendar"></i><?php echo $list->waktu_add ?></a>
+												<a href="#"><i class="fa fa-calendar"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->alamat_pengguna : $list->alamat ?></a>
 											</li>
 											<li class="list-inline-item">
 												<a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a>
 											</li>
 										</ul>
-										<p class="card-text">Rp <?php echo $list->harga_barang ?></p>
+										<p class="card-text">Rp. <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p>
 									</div>
 								</div>
 							</div>
@@ -420,7 +420,7 @@ jQuery(function()
 </script>
 
 <script>
-$(document).ready(function()){
+$(document).ready(function(){
 
 function filter_data(page)
 {
@@ -455,8 +455,8 @@ function filter_data(page)
 			filter_data(1);
 		}
 
-	})
-}
+	});
+});
 </script>
 </html>
 
