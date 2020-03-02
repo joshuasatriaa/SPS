@@ -258,6 +258,19 @@ a:hover {
   position: relative;
 }
 
+.searchbar{
+  padding: 80px 0px 10px;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 98;
+}
+
+.body{
+  margin-top: 150px;
+}
+
 .swiper-button-next {
   background-image: url("/images/002-right-arrow.svg");
   right: 40px;
@@ -345,6 +358,7 @@ a:hover {
 }
 
 #main-nav {
+  top: 0;
   z-index: 99;
 }
 
@@ -358,6 +372,7 @@ a:hover {
   color: #fff;
   letter-spacing: .5px;
   position: relative;
+  
 }
 
 @media (max-width: 1200px) {
