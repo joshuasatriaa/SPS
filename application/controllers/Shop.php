@@ -9,6 +9,7 @@ class Shop extends CI_Controller {
 		$this->load->model('m_notif');
 		$this->load->model('m_pesanan');
 		$this->load->model('m_pesan');
+		$this->load->model('m_pengguna');
 	}
 
 	public function index()
@@ -17,6 +18,7 @@ class Shop extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['member'] = $this->m_pengguna->checkMembership($this->session->userdata('id_user'))->result();
 		$this->load->view('v_shop',$data);
 	}
 
@@ -119,6 +121,13 @@ class Shop extends CI_Controller {
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 
 		$this->load->view('v_chat_barang',$data);
+	}
+
+	function membership(){
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$this->load->view('v_member',$data);
 	}
 
 }
