@@ -82,23 +82,7 @@
 			
 		 	 <section class="page-search">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<!-- Advance Search -->
-							<div class="advance-search">
-								<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
-									<div class="form-row" style="padding-left:25%;">
-										<div class="form-group col-md-6">
-											<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
-										</div>
-											
-										<button type="submit" class="btn btn-primary">Search</button>
-									</div>
-									
-								</form>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</section>     
 
@@ -118,100 +102,22 @@
 <!--  Banner End -->
 
 <div class="body">
-
-	
-	<section class="section-sm">
-		<div class="container">
-			<?php if($member->status_membership == 1){?>
-			<a href="<?php echo base_url().'Shop/membership'?>"><button class="btn btn-dark btn-lg btn-block mb-30">Merchant/Workshop Owner but not a member yet? <br><br>Click to join our membership and get all the exclusive benefits!</button>
-			</a>
-			<?php }?>
-			<div class="row">
-				<?php include('left-shop.php') 
-		?> 
-
-<div class="col-md-9">
-	<div class="category-search-filter">
+<section style="padding: 100px 0;">
+	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
-				<strong>Short</strong>
-				<select id="getProduct">
-					<option value="show-all" selected="selected">Most Recent</option>
-					<option value="2">Lowest Price</option>
-					<option value="3">Highest Price</option>
-				</select>
-				
-			</div>
-			
-		</div>
-	</div>
-	
-	<div class="product-grid-list">
-		<div class="row mt-30">
-			<?php
-							foreach($barang as $list){
-								?>
-						<!-- product card -->
-						<div class="col-sm-12 col-lg-4 col-md-6">
-							<div class="product-item bg-light">
-								<div class="card">
-									<div class="thumb-content">
-										<!-- <div class="price">$200</div> -->
-										<a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>">
-										<?php
-                                            
-                                            echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
-                                            
-											?>
-										</a>
-									</div>
-									<div class="card-body">
-										<h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4>
-										<ul class="list-inline product-meta">
-											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-calendar"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->alamat_pengguna : $list->alamat ?></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a>
-											</li>
-										</ul>
-										<p class="card-text">Rp. <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Product end -->
-						<?php
-							}
-							?>
-						</div>
-						
-					</div>
-				</div>
-				</div>
-				<div class="pagination justify-content-center">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-									<span class="sr-only">Next</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+			<div class="col-md-8 mx-auto">
+				<div class="text-center p-5 shadow rounded">
+					<h2 class="mb-3">Pay Membership</h2>
+					<h4 class="mb-3">To get access to all the feature we provide for customer members </h4>
+					<h4>Why go member?</h4>
+					<ul class="list-unstyled mb-4">
+						<li>Full Ads Support</li>
+						<li>Free and easy to use</li>
+						<li>Pay only when needed</li>
+						<li>Analytics</li>
+						<li>Subscription-based payment</li>
+					</ul>
+					<a href="<?php echo base_url(). 'Shop/goMember'?>" class="btn btn-main">Pay Membership</a>			
 				</div>
 			</div>
 		</div>
@@ -420,46 +326,6 @@ jQuery(function()
 	});
 
 
-</script>
-
-<script>
-$(document).ready(function(){
-
-function filter_data(page)
-{
-	$('#filter_data').html("<div id='loading'></div>");
-	var action ='fetch_data';
-	var minimum_price = $('#minimum_price').val();
-	var maximum_price = $('#maximum_price').val();
-	$.ajax({
-		url:"<?php echo base_url(); ?>Shop/fetch_data"+page,
-		method : "POST";
-		dataType : "JSON";
-		data:{action:action, minimum_price:minimum_price,maximum_price:maximum_price},
-	success:function(data)
-	{
-		$('.filter_data').html(data.product_list);
-		$('#pagination_link').html(data.pagination_link);
-	}
-	})
-
-}
-	$('#price_range').slider({
-		range:true;
-		min:1000;
-		max:100000000;
-		values:[1000,100000000],
-		step:100000,
-		stop:function(event,ui)
-		{
-			$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-			$('#minimum_price').val(ui.values[0]);
-			$('#maximum_price').val(ui.values[1]);
-			filter_data(1);
-		}
-
-	});
-});
 </script>
 </html>
 
