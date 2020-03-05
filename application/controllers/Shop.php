@@ -159,8 +159,8 @@ class Shop extends CI_Controller {
 			$data['member'] = 1;
 
 			$this->session->set_flashdata(
-				'message' => ""
-			)
+				'message' , ""
+			);
 			$this->load->view('v_shop', $data);
 		}else{
 			$data = array(
@@ -177,8 +177,8 @@ class Shop extends CI_Controller {
 			$data['member'] = 1;
 
 			$this->session->set_flashdata(
-				'message' => ""
-			)
+				'message' , ""
+			);
 			$this->load->view('v_shop', $data);
 
 		}
