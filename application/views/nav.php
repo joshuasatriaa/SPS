@@ -46,6 +46,7 @@
 					-->
                     
 
+					<!-- buat LogOut -->
 					<?php if($this->session->userdata('email') != null) {?>
 						<li class="nav-item">
 							<a class="nav-link modal-button">
@@ -55,6 +56,8 @@
 					<?php }else{ ?>
 						<li class="nav-item"><a class="nav-link modal-button">LogIn</a></li>
 					<?php } ?>
+
+					<!-- Shopping Cart -->
 					<?php if($this->session->userdata('tipe_user') == $user){ ?>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo base_url()?>Shop/cart">
@@ -64,6 +67,44 @@
 					</li>
 					
 					<?php } ?>
+					
+					<!-- Chat -->
+					<?php if($this->session->userdata('email') != null) {?>
+					<li class="nav-item">
+					<div class="dropdown">
+						<a class="nav-link" data-toggle="dropdown">
+							<i class="fas fa-comments"></i>
+							<span class='badge badge-warning' id='lblCartCount'>0</span>
+						</a>
+
+						<!-- ISI -->
+						<ul class="dropdown-menu">
+								<?php 
+								if($notif){
+										foreach($notif as $list){
+									?>
+								<li class="nav-item">
+									<small class="float-right"><?php echo date('d/m/Y H:i:s', strtotime($list->waktu_notifikasi)); ?></small>
+									<a href="<?php switch($list->id_tipe_notifikasi){
+										case 1: echo base_url().'Notif/CurrentBooking/'.$list->id_notifikasi;break;
+										case 2: echo base_url().'Notif/CurrentBooking/'.$list->id_notifikasi;break;}?>">
+										<?php echo ucwords(strtolower($list->isi_notifikasi));?>
+									</a>
+								</li>
+								<!-- <li class="nav-item"><a href="#">HTML</a></li>
+								<li class="nav-item"><a href="#">CSS</a></li>
+								<li class="nav-item"><a href="#">JavaScript</a></li> -->
+										<?php }?>
+								<?php }else{?>
+									<li class="nav-item"><a>You don't have any Messages!</a></li>
+								<?php }?>
+								
+						</ul>
+
+					</li>
+					<?php } ?>
+
+					<!-- Notifications -->
 					<?php if($this->session->userdata('tipe_user') == $user){?>
 					<li class="nav-item">
 						<div class="dropdown">
@@ -91,6 +132,7 @@
 								<?php }else{?>
 									<li class="nav-item"><a>You don't have any notifications!</a></li>
 								<?php }?>
+								
 							</ul>
 						</div>
 					</li>
