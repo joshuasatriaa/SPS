@@ -21,7 +21,19 @@ class m_pesan extends CI_Model{
 	{
 		return $this->db->query('SELECT * FROM Pesan');
 	}
-	
+    
+    function cekPesan($idSaya)
+    {
+        return $this->db->query('SELECT pesan.id_pengirim,GROUP_CONCAT(pesan.pesan) as `chat`,
+        COALESCE(pengguna.nama_pengguna,bengkel.nama_bengkel ) AS nama_pengirim
+        FROM Pesan
+        LEFT JOIN pengguna ON pesan.id_pengirim = pengguna.id_pengguna
+        LEFT JOIN bengkel ON bengkel.id_bengkel = pesan.id_pengirim   
+        WHERE 
+        Pesan.id_pengirim = "'.$idSaya.'" OR Pesan.id_penerima = "'.$idSaya.'"
+        GROUP BY pesan.id_pengirim
+        ');
+    }
 	
 }
 
