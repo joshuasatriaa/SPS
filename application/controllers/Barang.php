@@ -5,6 +5,7 @@ class Barang extends CI_Controller{
 		$this->load->model('m_barang');
 		$this->load->model('m_pesanan');
 		$this->load->model('m_notif');
+		$this->load->model('m_pesan');
 		$this->load->library('form_validation');
 	}
 	function index(){
@@ -17,6 +18,9 @@ class Barang extends CI_Controller{
 			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
 			
 			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		}
 		else
 		{
@@ -150,6 +154,9 @@ class Barang extends CI_Controller{
 
 			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
 			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 
 			$this->load->view('v_user_myitem',$data);
 		}
@@ -268,6 +275,9 @@ class Barang extends CI_Controller{
 
 			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
 			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 
 
 			$this->load->view('v_edit_barang',$data);

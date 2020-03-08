@@ -83,13 +83,20 @@
 								if($chat){
 										foreach($chat as $list){
 									?>
-								<li class="nav-item">
-									<small ><?php echo $list->chat ?></small>
-									
-								</li>
-								<!-- <li class="nav-item"><a href="#">HTML</a></li>
-								<li class="nav-item"><a href="#">CSS</a></li>
-								<li class="nav-item"><a href="#">JavaScript</a></li> -->
+									<a href="<?php echo base_url()?>Chat/checkChatBarang/<?php echo $this->session->userdata('id_user') ?>/<?php echo $list->id_penerima ?>">
+										<li class="nav-item" style="padding-left:10%;padding-right:10%;padding-top:5%;">
+											<small>
+											<?php 
+													echo $list->nama_penerima;
+											?>
+											</small>
+											: 
+											<br>
+											<small ><?php echo $list->chat ?></small>
+											<hr>
+										</li>
+									</a>
+								
 										<?php }?>
 								<?php }else{?>
 									<li class="nav-item"><a>You don't have any Messages!</a></li>

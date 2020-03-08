@@ -127,7 +127,7 @@
 
                 <section class="section-sm">
 	                <div class="container">
-                        <?php foreach($chat as $list) {?>
+                        <?php foreach($chat1 as $list) {?>
                             <?php if($list->id_pengirim == $this->session->userdata('id_user')){?>
                                 <div class="container1">
                                     <span style="color:black"><?php echo "Me" ?></span>

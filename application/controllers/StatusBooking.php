@@ -9,6 +9,7 @@ class StatusBooking extends CI_Controller {
 		$this->load->model('m_booking');
 		$this->load->model('m_notif');
 		$this->load->model('m_pesanan');
+		$this->load->model('m_pesan');
 	}
     function index()
 	{
@@ -16,6 +17,9 @@ class StatusBooking extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_status_booking',$data);
 	}
 
@@ -25,6 +29,9 @@ class StatusBooking extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_user_current_booking',$data);
 	}
 }

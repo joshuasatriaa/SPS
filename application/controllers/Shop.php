@@ -19,6 +19,9 @@ class Shop extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		//$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->result();
 		$this->load->view('v_shop',$data);
 	}
@@ -32,6 +35,9 @@ class Shop extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_shopsearch',$data);
 	}
 
@@ -44,6 +50,9 @@ class Shop extends CI_Controller {
 
 		$data['jumlahfoto'] = $this->m_barang->tampilkanFotoBarangIni($id)->num_rows();
 		$data['foto'] = $this->m_barang->tampilkanFotoBarangIni($id)->result();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_shop_detail',$data);
 	}
 
@@ -52,6 +61,9 @@ class Shop extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_cart',$data);
 	}
 
@@ -115,11 +127,15 @@ class Shop extends CI_Controller {
 	function ContactBarang($idSaya,$idDia)
 	{
 		
-		$data['chat'] = $this->m_pesan->tampilkanPesan($idSaya,$idDia)->result();
+		$data['chat1'] = $this->m_pesan->tampilkanPesan($idSaya,$idDia)->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 
 		$this->load->view('v_chat_barang',$data);
 	}
@@ -128,6 +144,9 @@ class Shop extends CI_Controller {
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_member',$data);
 	}
 

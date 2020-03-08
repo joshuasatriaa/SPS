@@ -7,6 +7,7 @@
             $this->load->model('m_user');
             $this->load->model('m_pesanan');
             $this->load->model('m_notif');
+            $this->load->model('m_pesan');
             $this->load->library('form_validation');
 		}
 		
@@ -17,7 +18,10 @@
             $data['pengguna'] = $this->m_signup_pengguna->tampilkanRecordProfile($where1)->result();
             $data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
             $data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
-		    $data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+            $data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+            $data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
             $this->load->view('v_editprofile',$data);
         }
         function updateData(){
