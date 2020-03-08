@@ -22,7 +22,7 @@ class Shop extends CI_Controller {
 		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
 
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-		//$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->result();
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$this->load->view('v_shop',$data);
 	}
 
@@ -147,6 +147,8 @@ class Shop extends CI_Controller {
 		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
 
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+		$data['checkmember'] = $this->m_member->searchNewestMembership($this->session->userdata('id_user'))->row_array();
+
 		$this->load->view('v_member',$data);
 	}
 
@@ -159,11 +161,11 @@ class Shop extends CI_Controller {
 			'id_user' => $this->session->userdata('id_user')
 		);
 
-		$cek = $this->m_member->cek('membership', $where)->num_rows();
-		$count = $this->m_member->tampilkan_semua_member()->num_rows();
+		$cek = $this->m_member->tampilkan_member('membership', $where)->num_rows();
+		$count = $this->m_member->tampilkan_semua_member()->num_rows()+1;
 		if($cek < 1){
 			$data = array(
-				'id_membership' => 'MBR-'.$count+1,
+				'id_membership' => 'MBR-'.$count,
 				'id_user' => $this->session->userdata('id_user'),
 				'jenis_membership' => 1,
 				'status_membership' => 1,
@@ -175,10 +177,12 @@ class Shop extends CI_Controller {
 			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
-			$data['member'] = 1;
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+			$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 
 			$this->session->set_flashdata(
-				'message' , ""
+				'message' , "Congratulations, now you are a member! Please try our membership function!"
 			);
 			$this->load->view('v_shop', $data);
 		}else{
@@ -193,10 +197,12 @@ class Shop extends CI_Controller {
 			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
-			$data['member'] = 1;
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+			$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 
 			$this->session->set_flashdata(
-				'message' , ""
+				'message' , "Your membership have been renewed!"
 			);
 			$this->load->view('v_shop', $data);
 

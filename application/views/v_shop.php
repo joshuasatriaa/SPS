@@ -122,9 +122,19 @@
 	
 	<section class="section-sm">
 		<div class="container">
-			<?php if($member->status_membership == 1){?>
+			<?php if($member == NULL){?>
 			<a href="<?php echo base_url().'Shop/membership'?>"><button class="btn btn-dark btn-lg btn-block mb-30">Merchant/Workshop Owner but not a member yet? <br><br>Click to join our membership and get all the exclusive benefits!</button>
 			</a>
+			<?php }else if($this->session->flashdata('message')){ ?>
+				<div class="alert alert-warning alert-dismissible fade show" role="alert">
+					<strong><?php echo $this->session->flashdata('message');?></strong>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				
+				</a>
+			<?php }else{?>
 			<?php }?>
 			<div class="row">
 				<?php include('left-shop.php') 

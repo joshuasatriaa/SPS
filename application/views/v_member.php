@@ -100,8 +100,8 @@
   
 </section>
 <!--  Banner End -->
-
 <div class="body">
+<?php if($checkmember == null){?>
 <section style="padding: 100px 0;">
 	<div class="container">
 		<div class="row">
@@ -123,7 +123,24 @@
 		</div>
 	</div>
 </section>
+<?php }else{?>
+	<section style="padding: 100px 0;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 mx-auto">
+				<div class="text-center p-5 shadow rounded">
+					<h2 class="mb-3">Renew Membership</h2>
+					<h4 class="mb-3">We have detected that you had been our member before. <br> Your latest membership ends in <?php echo date("d F Y", strtotime($checkmember['tanggal_selesai']))?></h4>
+					<h4>Renew your membership?</h4>
+					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main">Become Member</a>			
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
+
+<?php }?>
 <!--Footer start -->
 <footer class="section footer">
 	<div class="container">
