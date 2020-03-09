@@ -208,5 +208,38 @@ class Shop extends CI_Controller {
 
 		}
 	}
+	
+	function editCart($id_barang){
+		$where = array('id_barang' => $id_barang);
+		$data['cartEdit'] = $this->m_barang->editData($where,'barang')->result();
+		$this->load->view('v_edit_item_cart', $data);
+	}
+	
+	function updateCart(){
+
+		$id = $this->input->post('id_barang');
+		$jumlah = $this->input->post('jumlah_barang');
+		
+		$count = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows()+1;
+		$id_pesanan = "CART-".$count;
+		$detail_barang = $this->m_barang->tampilkanBarangIni($id)->row_array();
+
+		$data = [
+			'id_pesanan' => $id_pesanan, 
+			'id_pembeli' => $this->session->userdata('id_user'), 
+			'id_barang' => $id,
+			'jumlah_barang' => $jumlah, 
+			'status_pesanan' => 0, 
+			 
+		];
+
+		$this->db->set('waktu_pesanan', 'NOW()', FALSE);
+		$this->m_pesanan->updateData('pesanan', $data);
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Cart Edited!</div>');
+		redirect('Shop/ShopDetail/'.$id);
+
+
+	}
 
 }
