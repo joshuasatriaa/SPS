@@ -5,7 +5,7 @@ class m_pesanan extends CI_Model{
 	}
 	function tampilkanData()
 	{
-		return $this->db->query('SELECT a.id_pesanan, b.nama_pengguna, c.nama_barang, a.status_pesanan, a.waktu_pesanan FROM pesanan a JOIN user d ON a.id_pembeli=d.id_user JOIN pengguna b ON d.id_user=b.id_pengguna JOIN barang c ON a.id_barang=c.id_barang');
+		return $this->db->query('SELECT a.id_pesanan, b.nama_pengguna, c.nama_barang, a.status_pesanan, a.waktu_pesanan, b.gambar FROM pesanan a JOIN user d ON a.id_pembeli=d.id_user JOIN pengguna b ON d.id_user=b.id_pengguna JOIN barang c ON a.id_barang=c.id_barang');
 	}
 	
 	function insertTable($table,$where){

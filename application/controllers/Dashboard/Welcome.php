@@ -35,6 +35,7 @@ class Welcome extends CI_Controller {
         $data['countbengkel'] = $this->m_bengkel->tampilkanData()->num_rows();
         $data['countpengguna'] = $this->m_pengguna->tampilkanData()->num_rows();
         $data['countbarang'] = $this->m_barang->tampilkanData()->num_rows();
+        $data['pesanan'] = $this->m_pesanan->tampilkanData()->result();
 		/*if($this->session->userdata('tipe_akun') == 2){
 			$data['mahasiswa'] = $this->M_Mahasiswa->tampilkanRecord()->result();*/
 			$this->load->view('Dashboard/index',$data);/*;
