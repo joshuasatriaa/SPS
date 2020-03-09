@@ -36,10 +36,6 @@ class m_pesanan extends CI_Model{
 		$this->db->update($table,$data);
 	}
 	
-	function remove($id, $id2){
-		return $this->db->query('DELETE FROM pesanan WHERE id_barang = "'.$id.'" AND id_pembeli = "'.$id2.'" AND status_pesanan = 0');
-	}
-	
 	function hapusData($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
