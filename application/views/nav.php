@@ -60,7 +60,7 @@
 					<!-- Shopping Cart -->
 					<?php if($this->session->userdata('tipe_user') == $user){ ?>
 					<li class="nav-item">
-						<a class="nav-link" href="<?php echo base_url()?>Shop/cart">
+						<a class="nav-link" href="<?php echo base_url()?>Shop/editCart">
 							<i class="fas fa-shopping-cart"></i>
 							<span class='badge badge-warning' id='lblCartCount'><?php echo $countCart?></span>
 						</a>
