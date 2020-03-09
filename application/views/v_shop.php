@@ -157,12 +157,12 @@
 	</div>
 	
 	<div class="product-grid-list">
-		<div class="row mt-30">
+		<div class="row mt-30 ">
 			<?php
 							foreach($barang as $list){
 								?>
 						<!-- product card -->
-						<div class="col-sm-12 col-lg-4 col-md-6">
+						<div class="col-sm-12 col-lg-4 col-md-6 ">
 							<div class="product-item bg-light">
 								<div class="card">
 									<div class="thumb-content">
@@ -308,6 +308,7 @@
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- Bootstrap JS -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type1/plugins/aos/aos.js"></script>
@@ -391,6 +392,44 @@ jQuery(function()
 
 
 	$(document).ready(function() {
+
+		$('#price_range').change(function(e){
+			var action = 'fetch_data';
+			var minimum_price = $('#hidden_minimum_price').val();
+			var maximum_price = $('#hidden_maximum_price').val();
+			
+			$.ajax({
+				url:"<?php echo base_url(). 'Shop/filterSearch';?>",
+				method:"POST",
+				data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price},
+				success:function(data){
+
+				}
+			});
+		});
+		
+
+		$('#price_range').slider({
+			range:true,
+			min:10000,
+			max:100000000,
+			values:[10000,100000000],
+			step:1000,
+			stop:function(event,ui)
+			{
+				$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
+				$('#minimum_price').val(ui.values[0]);
+				$('#maximum_price').val(ui.values[1]);
+				$('#hidden_minimum_price').val(ui.values[0]);
+            	$('#hidden_maximum_price').val(ui.values[1]);
+				
+			}
+
+		});
+		
+
+
+
 	    $(".btn-submit").click(function(e){
 	    	e.preventDefault();
 	    	
@@ -454,21 +493,8 @@ function filter_data(page)
 	})
 
 }
-	$('#price_range').slider({
-		range:true;
-		min:1000;
-		max:100000000;
-		values:[1000,100000000],
-		step:100000,
-		stop:function(event,ui)
-		{
-			$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-			$('#minimum_price').val(ui.values[0]);
-			$('#maximum_price').val(ui.values[1]);
-			filter_data(1);
-		}
-
-	});
+	
+	
 });
 </script>
 </html>

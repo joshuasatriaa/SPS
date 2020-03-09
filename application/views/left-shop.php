@@ -43,6 +43,8 @@
 						<p id="price_show">1.000 - 100.000.000</p>
 						</div>
 						<div id="price_range"></div>
+						<input type="hidden" id="hidden_minimum_price" value="0" />
+                    	<input type="hidden" id="hidden_maximum_price" value="65000" />
 					</div>
 
 					<div class="widget1 product-shorting">
