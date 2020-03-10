@@ -32,13 +32,13 @@ class m_barang extends CI_Model{
 	}
 
 	function searchBarangAjax($min, $max){
-		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,
-		a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat FROM barang a
-		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna
-		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
-		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
-		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
-		WHERE a.harga_barang BETWEEN "%'.$min.'%" AND "'.$max.'" AND  d.id_foto_barang LIKE "FOTO-BARANG-%1"');
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual, a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat 
+		FROM barang a 
+		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna 
+		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel 
+		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang 
+		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel 
+		WHERE d.id_foto_barang LIKE "FOTO-BARANG-%1" AND a.harga_barang BETWEEN '.$min.' AND '.$max);
 	}
 	
 	function tampilkanBarangIni($where){
