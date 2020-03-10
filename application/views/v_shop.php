@@ -158,6 +158,7 @@
 	
 	<div class="product-grid-list">
 		<div class="row mt-30 ">
+				<div class="filter_data"></div>
 			<?php
 							foreach($barang as $list){
 								?>
@@ -393,7 +394,7 @@ jQuery(function()
 
 	$(document).ready(function() {
 
-		$('#price_range').change(function(e){
+		function filter_data(){
 			var action = 'fetch_data';
 			var minimum_price = $('#hidden_minimum_price').val();
 			var maximum_price = $('#hidden_maximum_price').val();
@@ -401,12 +402,18 @@ jQuery(function()
 			$.ajax({
 				url:"<?php echo base_url(). 'Shop/filterSearch';?>",
 				method:"POST",
+				dataType: 'JSON',
 				data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price},
 				success:function(data){
-
+					foreach(data.hasil){
+						$output .='<div class="col-sm-12 col-lg-4 col-md-6"><div class="product-item bg-light"><div class="card"><div class="thumb-content"><a href="<?php echo base_url() ?>Shop/ShopDetail php echo $list->id_barang ?>"> <?php
+                                             echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
+											?></a></div><div class="card-body"><h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4><ul class="list-inline product-meta"><li class="list-inline-item"><a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a></li><li class="list-inline-item"><a href="#"><i class="fa fa-calendar"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER")  $list->alamat_pengguna : $list->alamat ?></a></li>< class="list-inline-item"><a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a></li></ul><p class="card-text">Rp. <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p></div></div></div></div>';
+						$('.filter_data').html($output);
+					}
 				}
 			});
-		});
+		}
 		
 
 		$('#price_range').slider({
@@ -422,8 +429,8 @@ jQuery(function()
 				$('#maximum_price').val(ui.values[1]);
 				$('#hidden_minimum_price').val(ui.values[0]);
             	$('#hidden_maximum_price').val(ui.values[1]);
-				
-			}
+				filter_data();		
+			}, 
 
 		});
 		
@@ -469,33 +476,6 @@ jQuery(function()
 	});
 
 
-</script>
-
-<script>
-$(document).ready(function(){
-
-function filter_data(page)
-{
-	$('#filter_data').html("<div id='loading'></div>");
-	var action ='fetch_data';
-	var minimum_price = $('#minimum_price').val();
-	var maximum_price = $('#maximum_price').val();
-	$.ajax({
-		url:"<?php echo base_url(); ?>Shop/fetch_data"+page,
-		method : "POST";
-		dataType : "JSON";
-		data:{action:action, minimum_price:minimum_price,maximum_price:maximum_price},
-	success:function(data)
-	{
-		$('.filter_data').html(data.product_list);
-		$('#pagination_link').html(data.pagination_link);
-	}
-	})
-
-}
-	
-	
-});
 </script>
 </html>
 
