@@ -241,7 +241,7 @@ class Shop extends CI_Controller {
 	//	];
 
 	//	$this->db->set('waktu_pesanan', 'NOW()', FALSE);
-		$this->m_pesanan->gantiJumlah($id,$jumlah)->execute();
+		$this->m_pesanan->gantiJumlah($id,$jumlah);
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Cart Edited!</div>');
 		redirect('Shop/Cart');
@@ -256,8 +256,17 @@ class Shop extends CI_Controller {
 		$min = $this->input->post('minimum_price');
 		$max = $this->input->post('maximum_price');
 		
-		$hasil = $this->m_barang->searchBarangAjax($min, $max)->result_array();
-		echo json_encode(['hasil' => $hasil]);
+
+		$data['barang'] = $this->m_barang->searchBarangAjax($min, $max)->result();
+		$data['hasils'] = $keyword;
+		$data['jumlah'] = $this->m_barang->searchBarangAjax($min, $max)->num_rows();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+		$this->load->view('v_shop', $data);
 	}
 
 }

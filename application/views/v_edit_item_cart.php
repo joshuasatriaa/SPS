@@ -62,7 +62,7 @@
         
 
 <?php if($cartEdit) {?>
-<form action="" method="post">
+
     <section style="padding: 100px 0;">
         <div class="container">
             <div class="row">
@@ -112,7 +112,6 @@
             </div>
         </div>
     </section>
-</form>
 
 <?php }?>
 
