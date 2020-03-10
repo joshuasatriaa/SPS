@@ -24,17 +24,11 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
 
   <!-- Main Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
-
-  <!-- Login Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
-
-  <!-- SignUp Stylesheet -->
-  <link href="<?php echo base_url() ?>assets/type1/css/style3.css" rel="stylesheet">
+  <link href="<?php echo base_url()?>assets/type1/css/style.css" rel="stylesheet">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
-  <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
+  <link rel="icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
 
 </head>
 
@@ -54,73 +48,74 @@
 ?>
 
 
-<!--  Banner start -->
-<section class="slider-hero hero-slider  hero-style-1  ">
-  
-    <div class="swiper-wrapper">
-      <!-- start slide-item -->
-      <div class="swiper-slide slide-item" style="height:1200px">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop1.jpeg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
+<section class="section-header bg-1">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="text-center">
+          <h1 class="text-capitalize mb-4 font-lg text-white">My Cart</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        
 
-          <!-- Form -->
-          <section class="signup">
-            <div class="container1">
-                <div class="signup-content">
-                    <div class="signup-form">
-                    <?php echo $this->session->flashdata('message'); ?>
-                        <h2 class="form-title">Edit Item Cart</h2>
-                          <?php echo form_open_multipart(base_url().'Shop/updateCart');?>
-                          <?php foreach($cartEdit as $list) { ?>
-                            
-                                <input type="hidden" name="id_barang" value="<?php echo $list->id_barang?>">
-
-                                <div class="form-group">
-                                  <p>Item Name</p>
-                                  <input type="text" value="<?php echo $list->id_barang ?>">
-                                  
-                                </div>
-
-                                <div class="form-group">
-                                  <p>stock</p>
-                                  <input type="number" value="<?php echo $list->stok_barang ?>" />
+<?php if($cartEdit) {?>
+<form action="" method="post">
+    <section style="padding: 100px 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                        
+                        <div>
+							            <?php $i = 1;
+							            $total = 0;
+                            foreach($cartEdit as $list) {?>
+                                <div class="custom-control custom-checkbox">
+                                    
+									
+									</label>
+									<div class="card">
+										
+										
+                                        <?php
+                                            
+                                            echo '<img src="data:image/jpeg;base64,' . base64_encode($list->gambar_barang).'" height="100" width="100" alt="Card image cap" />';
+                                            
+                                        ?>
+                                        <span style="padding-left:10px">By : 
+                                        <?php if($list->nama_bengkel == null){
+                                            echo $list->nama_pengguna;
+                                          }else{
+                                            echo $list->nama_bengkel;
+                                          } ?>
+                                        </span>
+                                        <div class="card-body">
+                                        <h5 class="card-title"><?php echo $list->nama_barang?></h5>
+                                        <p class="card-text"><?php echo $list->keterangan_barang?></p>
+                                        <form action="<?php echo base_url(). 'Shop/updateCart'; ?>" method="post">
+                                          <p class="card-text">Jumlah yang dibeli = </p>
+                                          <input type="hidden" name="id_barang" value="<?php echo $list->id_barang;?>">
+                                            Amount : <input type="number" name="jumlah_barang" value="1" min="1" max="<?php echo $list->stok_barang;?>" > 
+                                          <button type="submit" class="btn">OK</button>
+                                        </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 
-                                  
-
-
-                                <div class="form-group form-button">
-                                  <button type="submit"  class="form-submit" value="Edit"/>Edit </button>
-                                </div>
-                              
-                            </form>
-                            <?php } ?>
-                    
-                    </div>
-                    
+                                <?php  }?>
+                        </div>
                 </div>
+                    
+                
             </div>
-         </section>
+        </div>
+    </section>
+</form>
 
-            
-           
-          </div>
-        </div> 
-      </div>
-      <!-- end slide-item -->
-      
-  
-    </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
-</section>
-<!--  Banner End -->
+<?php }?>
 
-<!--Footer start -->
 <footer class="section footer">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -169,7 +164,17 @@
 			</div>
 		</div>
 
-		
+		<div class="row justify-content-center mt-5">
+			<div class="col-lg-6 text-center">
+				<h4 class="text-white-50 mb-3">Get latest food recipe at your inbox</h4>
+				<form action="#" class="footer-newsletter">
+					<div class="form-group">
+						<button class="button"><span class="ti-email"></span></button>
+						<input type="email" class="form-control" placeholder="Enter Email">
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
 </footer>
 
@@ -195,7 +200,7 @@
 		</div>
 	</div>
 </section>
-<!-- Footer  End -->
+
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
@@ -219,49 +224,45 @@
 <script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
 
 <!-- Login Script -->
-<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
-<script>
-function handleFileSelect(evt) {
-  while (document.getElementById('list').firstChild) {
-    document.getElementById('list').removeChild(document.getElementById('list').firstChild);
-  }
-  
-    
-    var files = evt.target.files;
+<!-- Shop type2 -->
 
-    // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
+<!-- JAVASCRIPTS -->
+<script src="<?php echo base_url() ?>assets/type2/plugins/jQuery/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/popper.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap-slider.js"></script>
+  <!-- tether js -->
+<script src="<?php echo base_url() ?>assets/type2/plugins/tether/js/tether.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/raty/jquery.raty-fa.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/slick-carousel/slick/slick.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/fancybox/jquery.fancybox.pack.js"></script>
+<script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
 
-      // Only process image files.
-      if (!f.type.match('image.*')) {
-        continue;
-      }
-
-      var reader = new FileReader();
-
-      // Closure to capture the file information.
-      reader.onload = (function(theFile) {
-        return function(e) {
-          // Render thumbnail.
-          var span = document.createElement('span');
-          span.innerHTML = 
-          [
-            '<img style="height: 75px; border: 1px solid #000; margin: 5px" src="', 
-            e.target.result,
-            '" title="', escape(theFile.name), 
-            '"/>'
-          ].join('');
-          
-          document.getElementById('list').insertBefore(span, null);
-        };
-      })(f);
-
-      // Read in the image file as a data URL.
-      reader.readAsDataURL(f);
+<!-- Shop JS End -->
+<script type="text/javascript">
+$(document).ready(function (){
+// Listen for click on toggle checkbox
+$('#select-all').click(function(event) {   
+    if(this.checked) {
+        // Iterate each checkbox
+        $(':checkbox').each(function() {
+            this.checked = true;                        
+        });
+    } else {
+        $(':checkbox').each(function() {
+            this.checked = false;                       
+        });
     }
-  }
+});
 
-  document.getElementById('userfile').addEventListener('change', handleFileSelect, false);
+
+
+});
+
+
 </script>
+</body>
 </html>

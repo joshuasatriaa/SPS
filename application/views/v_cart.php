@@ -87,8 +87,14 @@
 									</label>
 									<div class="card">
 										
+										<!-- Delete -->
 										<a href="<?php echo base_url(). 'Shop/removeFromCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;">
 												<i class="fas fa-times-circle fa-lg"></i>
+										</a>
+
+										<!-- Edit -->
+										<a href="<?php echo base_url(). 'Shop/editCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;padding-right:10%;">
+											<i class="fas fa-pen fa-lg"></i>
 										</a>
 										
                                         <?php
