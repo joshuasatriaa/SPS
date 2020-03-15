@@ -252,21 +252,31 @@ class Shop extends CI_Controller {
 
 	function filterSearch(){
 
-		$action = $this->input->post('action');
-		$min = $this->input->post('minimum_price');
-		$max = $this->input->post('maximum_price');
+		$min = $this->input->get('minimum_price');
+		$max = $this->input->get('maximum_price');
 		
+		$data['hasil'] = $this->m_barang->searchBarangAjax($min, $max)->result();
+		
+		$return_arr = [];
+		foreach($data['hasil'] as $a){
+			$image = base64_encode($a->gambar_barang);
 
-		$data['barang'] = $this->m_barang->searchBarangAjax($min, $max)->result();
-		$data['hasils'] = $keyword;
-		$data['jumlah'] = $this->m_barang->searchBarangAjax($min, $max)->num_rows();
-		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
-		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
-		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
-		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
-
-		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-		$this->load->view('v_shop', $data);
+			$return_arr[] = [
+				'id_barang' => $a->id_barang,
+				'nama_barang' => $a->nama_barang,
+				'id_penjual' => $a->id_penjual, 
+				'harga_barang'=> $a->harga_barang,
+				'waktu_add' => $a->waktu_add, 
+				'stok_barang' => $a->stok_barang, 
+				'gambar_barang' => $image, 
+				'nama_pengguna' => $a->nama_pengguna,
+				'nama_bengkel' => $a->nama_bengkel,
+				'alamat' => $a->alamat,
+				'alamat_pengguna' =>$a->alamat_pengguna,
+			];
+		}
+		$encode_data = json_encode($return_arr);
+		echo $encode_data;
 	}
 
 }

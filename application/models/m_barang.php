@@ -32,7 +32,7 @@ class m_barang extends CI_Model{
 	}
 
 	function searchBarangAjax($min, $max){
-		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual, a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat 
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual, a.harga_barang, a.waktu_add, a.stok_barang, d.gambar_barang, b.nama_pengguna, c.nama_bengkel, e.alamat, b.alamat as alamat_pengguna 
 		FROM barang a 
 		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna 
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel 

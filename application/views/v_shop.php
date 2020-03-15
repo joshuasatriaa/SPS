@@ -116,7 +116,6 @@
   
 </section>
 <!--  Banner End -->
-
 <div class="body">
 
 	
@@ -138,71 +137,70 @@
 			<?php }?>
 			<div class="row">
 				<?php include('left-shop.php') 
-		?> 
+				?> 
 
-<div class="col-md-9">
-	<div class="category-search-filter">
-		<div class="row">
-			<div class="col-md-6">
-				<strong>Short</strong>
-				<select id="getProduct">
-					<option value="show-all" selected="selected">Most Recent</option>
-					<option value="2">Lowest Price</option>
-					<option value="3">Highest Price</option>
-				</select>
-				
-			</div>
-			
-		</div>
-	</div>
-	
-	<div class="product-grid-list">
-		<div class="row mt-30 ">
-				<div class="filter_data"></div>
-			<?php
-							foreach($barang as $list){
-								?>
-						<!-- product card -->
-						<div class="col-sm-12 col-lg-4 col-md-6 ">
-							<div class="product-item bg-light">
-								<div class="card">
-									<div class="thumb-content">
-										<!-- <div class="price">$200</div> -->
-										<a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>">
-										<?php
-                                            
-                                            echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
-                                            
-											?>
-										</a>
-									</div>
-									<div class="card-body">
-										<h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4>
-										<ul class="list-inline product-meta">
-											<li class="list-inline-item">
-												<a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-calendar"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->alamat_pengguna : $list->alamat ?></a>
-											</li>
-											<li class="list-inline-item">
-												<a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a>
-											</li>
-										</ul>
-										<p class="card-text">Rp. <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p>
-									</div>
-								</div>
+				<div class="col-md-9">
+					<div class="category-search-filter">
+						<div class="row">
+							<div class="col-md-6">
+								<strong>Short</strong>
+								<select id="getProduct">
+									<option value="show-all" selected="selected">Most Recent</option>
+									<option value="2">Lowest Price</option>
+									<option value="3">Highest Price</option>
+								</select>
+								
 							</div>
+							
 						</div>
-						<!-- Product end -->
-						<?php
-							}
-							?>
-						</div>
-						
+					</div>
+	
+					<div class="product-grid-list">
+						<div class="row mt-30 filter_data">
+							<?php
+											foreach($barang as $list){
+												?>
+										<!-- product card -->
+										<div class="col-sm-12 col-lg-4 col-md-6 ">
+											<div class="product-item bg-light">
+												<div class="card">
+													<div class="thumb-content">
+														<!-- <div class="price">$200</div> -->
+														<a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>">
+														<?php
+															
+															echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
+															
+															?>
+														</a>
+													</div>
+													<div class="card-body">
+														<h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4>
+														<ul class="list-inline product-meta">
+															<li class="list-inline-item">
+																<a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a>
+															</li>
+															<li class="list-inline-item">
+																<a href="#"><i class="fa fa-calendar"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->alamat_pengguna : $list->alamat ?></a>
+															</li>
+															<li class="list-inline-item">
+																<a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a>
+															</li>
+														</ul>
+														<p class="card-text">Rp. <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Product end -->
+										<?php
+											}
+											?>
+								
+						</div>				
 					</div>
 				</div>
-				</div>
+			</div>
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
@@ -224,9 +222,7 @@
 						</ul>
 					</nav>
 				</div>
-			</div>
-		</div>
-	</div>
+		
 </section>
 
 <!--Footer start -->
@@ -394,43 +390,53 @@ jQuery(function()
 
 	$(document).ready(function() {
 
-		function filter_data(){
-			var action = 'fetch_data';
-			var minimum_price = $('#hidden_minimum_price').val();
-			var maximum_price = $('#hidden_maximum_price').val();
+		function filter_data(minimum_price, maximum_price){
 			
 			$.ajax({
 				url:"<?php echo base_url(). 'Shop/filterSearch';?>",
-				method:"POST",
-				dataType: 'JSON',
-				data:{action:action, minimum_price:minimum_price, maximum_price:maximum_price},
+				type:"GET",
+				dataType: "json",
+				data:{minimum_price:minimum_price, maximum_price:maximum_price},
 				success:function(data){
-					foreach(data.hasil){
-						$output .='<div class="col-sm-12 col-lg-4 col-md-6"><div class="product-item bg-light"><div class="card"><div class="thumb-content"><a href="<?php echo base_url() ?>Shop/ShopDetail php echo $list->id_barang ?>"> <?php
-                                             echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
-											?></a></div><div class="card-body"><h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4><ul class="list-inline product-meta"><li class="list-inline-item"><a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a></li><li class="list-inline-item"><a href="#"><i class="fa fa-calendar"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER")  $list->alamat_pengguna : $list->alamat ?></a></li>< class="list-inline-item"><a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a></li></ul><p class="card-text">Rp. <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p></div></div></div></div>';
-						$('.filter_data').html($output);
+					$output = "";
+					for($i = 0; $i < data.length; $i++){
+						var nama = (data[$i].nama_bengkel == null) ? data[$i].nama_pengguna :data[$i].nama_bengkel;
+						var alamat = (data[$i].alamat == null) ? data[$i].alamat_pengguna :data[$i].alamat;
+						$output += "<div class='col-sm-12 col-lg-4 col-md-6'><div class='product-item bg-light'><div class='card'><div class='thumb-content'><a href='<?php echo base_url() ?>Shop/ShopDetail/"+data[$i].id_barang+"'><img class='card-img-top img-fluid' src='data:image/jpeg;base64,"+data[$i].gambar_barang+"' alt='Card image cap' /> </a></div><div class='card-body'><h4 class='card-title'><a href='<?php echo base_url() ?>Shop/ShopDetail/"+data[$i].id_barang+"'>"+data[$i].nama_barang+"</a></h4><ul class='list-inline product-meta'><li class='list-inline-item'><a href='single.html'><i class='fa fa-male'></i>"+nama+"</a></li><li class='list-inline-item'><a href='#'><i class='fa fa-calendar'></i>"+alamat+"</a></li><li class='list-inline-item'><a href='#'><i class='fa fa-shopping-basket'></i>"+data[$i].stok_barang+" left !</a></li></ul><p class='card-text'>Rp."+addCommas(data[$i].harga_barang)+"</p></div></div></div></div>";
 					}
+					$('.filter_data').html($output);
+					
 				}
 			});
 		}
 		
-
+		function addCommas(nStr) {
+			nStr += '';
+			var x = nStr.split('.');
+			var x1 = x[0];
+			var x2 = x.length > 1 ? '.' + x[1] : '';
+			var rgx = /(\d+)(\d{3})/;
+			while (rgx.test(x1)) {
+				x1 = x1.replace(rgx, '$1' + '.' + '$2');
+			}
+			return x1 + x2;
+		}
 		$('#price_range').slider({
 			range:true,
 			min:10000,
-			max:100000000,
-			values:[10000,100000000],
-			step:1000,
-			stop:function(event,ui)
+			max:10000000,
+			values:[10000,10000000],
+			step:10000,
+			slide:function(event,ui)
 			{
-				$('#price_show').html(ui.values[0] + ' - ' + ui.values[1]);
-				$('#minimum_price').val(ui.values[0]);
-				$('#maximum_price').val(ui.values[1]);
+				$('#price_show').html(addCommas(ui.values[0]) + ' - ' + addCommas(ui.values[1]));
+				$('#minimum_price').val(addCommas(ui.values[0]));
+				$('#maximum_price').val(addCommas(ui.values[1]));
 				$('#hidden_minimum_price').val(ui.values[0]);
-            	$('#hidden_maximum_price').val(ui.values[1]);
-				filter_data();		
-			}, 
+            	$('#hidden_maximum_price').val(ui.values[1]);	
+				$('.filter_data').empty();
+				filter_data(ui.values[0], ui.values[1]);		
+			},
 
 		});
 		
