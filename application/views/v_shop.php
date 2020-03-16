@@ -181,7 +181,7 @@
 																<a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a>
 															</li>
 															<li class="list-inline-item">
-																<a href="#"><i class="fa fa-calendar"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->alamat_pengguna : $list->alamat ?></a>
+																<a href="#"><i class="fa fa-location-arrow"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->alamat_pengguna : $list->alamat ?></a>
 															</li>
 															<li class="list-inline-item">
 																<a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a>

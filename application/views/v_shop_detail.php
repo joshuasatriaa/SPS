@@ -266,36 +266,36 @@
 											<h3 class="tab-title">Product Review</h3>
 											<div class="product-review">
 												<div class="media">
-													<!-- Avater -->
-													<img src="images/user/user-thumb.jpg" alt="avater">
+													
 													<div class="media-body">
 														<!-- review -->
 														<?php foreach($review as $list1){ ?>
+															
+															<div class="name">
+																<h5><?php echo $list1->nama_pengguna ?></h5>
+															</div>
+
 															<!-- Ratings -->
 															<div class="ratings">
 																<ul class="list-inline">
 																	<li class="list-inline-item">
-																		<i class="fa fa-star"></i>
+																		<i class="fa  <?php if($list1->rating_barang>=1){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i>
 																	</li>
 																	<li class="list-inline-item">
-																		<i class="fa fa-star"></i>
+																		<i class="fa  <?php if($list1->rating_barang>=2){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i>
 																	</li>
 																	<li class="list-inline-item">
-																		<i class="fa fa-star"></i>
+																		<i class="fa  <?php if($list1->rating_barang>=3){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i>
 																	</li>
 																	<li class="list-inline-item">
-																		<i class="fa fa-star"></i>
+																		<i class="fa  <?php if($list1->rating_barang>=4){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i>
 																	</li>
 																	<li class="list-inline-item">
-																		<i class="fa fa-star"></i>
+																		<i class="fa  <?php if($list1->rating_barang>=5){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i>
 																	</li>
 																</ul>
 															</div>
-
-														
-															<div class="name">
-																<h5><?php echo $list1->id_pemberi_rating ?></h5>
-															</div>
+															
 															<div class="date">
 																<p><?php echo $list1->waktu_rating ?></p>
 															</div>
