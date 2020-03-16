@@ -83,7 +83,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" style="margin-bottom:10px;">
-                <h2 style="font-family: 'Open Sans', sans-serif;">My Items </h2>
+                <h2 style="font-family: 'Open Sans', sans-serif;">History </h2>
 			</div>
 		</div>
 		
