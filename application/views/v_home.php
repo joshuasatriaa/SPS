@@ -32,6 +32,7 @@
 
   <!-- Login Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/type1/css/style-chat.css" rel="stylesheet">
 
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
@@ -53,6 +54,39 @@
 <?php
 	include 'modal-login.php';
 ?>
+<?php if($this->session->userdata('id_user')){?>
+<div class="floating-chat">
+	<span class="tooltiptext">Chat with our Admin!</span>
+    <i class="fa fa-comments" aria-hidden="true"></i>
+    <div class="chat">
+        <div class="header">
+            <span class="title">
+                what's on your mind?
+            </span>
+            <button>
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+                         
+        </div>
+        <ul class="messages">
+			<li class="other">Hi! How are you today? How can i help you?</li>
+            <!-- <li class="other">asdasdasasdasdasasdasdasasdasdasasdasdasasdasdasasdasdas</li>
+            <li class="other">Are we dogs??? 🐶</li>
+            <li class="self">no... we're human</li>
+            <li class="other">are you sure???</li>
+            <li class="self">yes.... -___-</li>
+            <li class="other">if we're not dogs.... we might be monkeys 🐵</li>
+            <li class="self">i hate you</li>
+            <li class="other">don't be so negative! here's a banana 🍌</li>
+            <li class="self">......... -___-</li> -->
+        </ul>
+        <div class="footer" style="padding-bottom:0;">
+            <div class="text-box" contenteditable="true" disabled="true"></div>
+            <button id="sendMessage">send</button>
+        </div>
+    </div>
+</div>
+<?php }?>
 
 <!--  Banner start -->
 <section class="slider-hero hero-slider  hero-style-1  ">
@@ -529,6 +563,8 @@
 </section>
 <!-- Footer  End -->
 
+
+
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
 <!-- Bootstrap JS -->
@@ -549,10 +585,11 @@
 <!-- Main Script -->
 <script src="<?php echo base_url() ?>assets/type1/js/contact.js"></script>
 <script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/script-chat.js"></script>
+
 
 <!-- Login Script -->
-<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
-
+<script src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 <!-- Login Ajax -->
 <script type="text/javascript">
 
@@ -596,4 +633,5 @@
 
 
 </script>
+</body>
 </html>
