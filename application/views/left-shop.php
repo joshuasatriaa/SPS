@@ -19,12 +19,18 @@
 						</a>
 					<?php } ?>
 
-					<div class="widget1 category-list">
-						<h4 style="font-family: 'Open Sans', sans-serif;">
-							<center>History<center>
-						</h4>
-					</div>
+					<?php if($this->session->userdata('tipe_user') == $user){?>
+						<a href = "<?php echo base_url() ?>Barang/History">
+							<div class="widget1 category-list">
+								<h4 style="font-family: 'Open Sans', sans-serif;">
+									<center>History</center>
+								</h4>
+							</div>
+						</a>
 					<?php } ?>
+
+					<?php } ?>
+
 					<div class="widget1 filter">
 						<h4 class="widget-header">Show Produts</h4>
 						<select>
