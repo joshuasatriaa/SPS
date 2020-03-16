@@ -129,6 +129,7 @@
                                                     <th>Name</th>
                                                     <th>Product</th>
                                                     <th>Time</th>
+                                                    <th>Quantity</th>
                                                     <th>Status</th>
                                                 </tr>
                                             </thead>
@@ -146,6 +147,7 @@
                                                     <td> <?php echo $list->nama_pengguna ?></td>
                                                     <td> <?php echo $list->nama_barang ?></td>
                                                     <td> <?php echo $list->waktu_pesanan ?></td>
+                                                    <td> <?php echo $list->jumlah_barang ?></td>
                                                     <td>
                                                         <span class="name"><?php if($list->status_pesanan=="1") echo "Paid"; else echo "Processing" ?></span>
                                                     </td>
@@ -192,4 +194,5 @@
         </footer>
         <!-- /.site-footer -->
     </div>
+    
     <!-- /#right-panel -->
