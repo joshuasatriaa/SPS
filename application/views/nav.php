@@ -36,7 +36,7 @@
 					<?php
 						}
 						?>
-					<li class="nav-item"><a class="nav-link" href="gallery.html">Forum</a></li>
+					<li class="nav-item"><a class="nav-link" href="<?php echo base_url()?>phpbb3">Forum</a></li>
 					<!--
 					<li class="nav-item">
 						<a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
