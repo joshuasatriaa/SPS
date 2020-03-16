@@ -52,6 +52,69 @@
   <!-- Image Slide CSS from w3schools-->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+  <style>
+
+		.cont {
+		width: 93%;
+		max-width: 350px;
+		text-align: center;
+		margin: 4% auto;
+		padding: 30px 0;
+		
+		color: #EEE;
+		
+		overflow: hidden;
+		}
+
+		hr {
+		margin: 20px;
+		border: none;
+		border-bottom: thin solid rgba(255,255,255,.1);
+		}
+
+		div.title { font-size: 2em; }
+
+		h1 span {
+		font-weight: 300;
+		color: #Fd4;
+		}
+
+		div.stars {
+		width: 270px;
+		display: inline-block;
+		}
+
+		input.star { display: none; }
+
+		label.star {
+		float: right;
+		padding: 10px;
+		font-size: 36px;
+		color: #444;
+		transition: all .2s;
+		}
+
+		input.star:checked ~ label.star:before {
+		content: '\f005';
+		color: #FD4;
+		transition: all .25s;
+		}
+
+		input.star-5:checked ~ label.star:before {
+		color: #FE7;
+		text-shadow: 0 0 20px #952;
+		}
+
+		input.star-1:checked ~ label.star:before { color: #F62; }
+
+		label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+		label.star:before {
+		content: '\f006';
+		font-family: FontAwesome;
+		}
+  </style>
+
 </head>
 
 <body>
@@ -206,62 +269,77 @@
 													<!-- Avater -->
 													<img src="images/user/user-thumb.jpg" alt="avater">
 													<div class="media-body">
-														<!-- Ratings -->
-														<div class="ratings">
-															<ul class="list-inline">
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-																<li class="list-inline-item">
-																	<i class="fa fa-star"></i>
-																</li>
-															</ul>
-														</div>
-														<div class="name">
-															<h5>Jessica Brown</h5>
-														</div>
-														<div class="date">
-															<p>Mar 20, 2018</p>
-														</div>
-														<div class="review-comment">
-															<p>
-																Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremqe laudant tota rem ape
-																riamipsa eaque.
-															</p>
-														</div>
+														<!-- review -->
+														<?php foreach($review as $list1){ ?>
+															<!-- Ratings -->
+															<div class="ratings">
+																<ul class="list-inline">
+																	<li class="list-inline-item">
+																		<i class="fa fa-star"></i>
+																	</li>
+																	<li class="list-inline-item">
+																		<i class="fa fa-star"></i>
+																	</li>
+																	<li class="list-inline-item">
+																		<i class="fa fa-star"></i>
+																	</li>
+																	<li class="list-inline-item">
+																		<i class="fa fa-star"></i>
+																	</li>
+																	<li class="list-inline-item">
+																		<i class="fa fa-star"></i>
+																	</li>
+																</ul>
+															</div>
+
+														
+															<div class="name">
+																<h5><?php echo $list1->id_pemberi_rating ?></h5>
+															</div>
+															<div class="date">
+																<p><?php echo $list1->waktu_rating ?></p>
+															</div>
+															<div class="review-comment">
+																<p>
+																	<?php echo $list1->keterangan ?>
+																</p>
+															</div>
+															<hr style="background-color:black;margin-left:0%">
+														<?php } ?>
+														<!-- end review-->
 													</div>
 												</div>
 												<div class="review-submission">
 													<h3 class="tab-title">Submit your review</h3>
 													<!-- Rate -->
-													<div class="rate">
-														<div class="starrr"></div>
-													</div>
+													
 													<div class="review-submit">
-														<form action="#" class="row">
-															<div class="col-lg-6">
-																<input type="text" name="name" id="name" class="form-control" placeholder="Name">
+														<form action="<?php echo base_url()?>Barang/ratingBarang" class="row rating" method="post">
+															<!--Stars-->
+															<div class="cont">
+																<div class="stars">
+																	
+																	<input class="star star-5" id="star-5-2" type="radio" name="ratingbarang" value = "5"/>
+																	<label class="star star-5" for="star-5-2"></label>
+																	<input class="star star-4" id="star-4-2" type="radio" name="ratingbarang" value = "4"/>
+																	<label class="star star-4" for="star-4-2"></label>
+																	<input class="star star-3" id="star-3-2" type="radio" name="ratingbarang" value = "3"/>
+																	<label class="star star-3" for="star-3-2"></label>
+																	<input class="star star-2" id="star-2-2" type="radio" name="ratingbarang" value = "2"/>
+																	<label class="star star-2" for="star-2-2"></label>
+																	<input class="star star-1" id="star-1-2" type="radio" name="ratingbarang" value = "1"/>
+																	<label class="star star-1" for="star-1-2"></label>
+																	
+																</div>
 															</div>
-															<div class="col-lg-6">
-																<input type="email" name="email" id="email" class="form-control" placeholder="Email">
+															<!-- STars -->
+
+															<input type = "hidden" name="idbarang" value = "<?php echo $list->id_barang ?>">
+															<div class="col-12">
+																<textarea name="keterangan" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
 															</div>
 															<div class="col-12">
-																<textarea name="review" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
-															</div>
-															<div class="col-12">
-																<button type="submit" class="btn btn-main">Submit</button>
-																<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#successModal">
-																Launch demo modal
-																</button>
+																<button type="submit" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Submit</button>
 															</div>
 														</form>
 													</div>
@@ -445,6 +523,18 @@
 <script src="<?php echo base_url() ?>assets/type2/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
+
+<!-- Star Rating Script -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46156385-1', 'cssscript.com');
+  ga('send', 'pageview');
+
+</script>
 
 <!-- Shop JS End -->
 

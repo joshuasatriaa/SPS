@@ -11,6 +11,7 @@ class Shop extends CI_Controller {
 		$this->load->model('m_pesan');
 		$this->load->model('m_pengguna');
 		$this->load->model('m_member');
+		$this->load->model('m_rating_barang');
 	}
 
 	public function index()
@@ -51,6 +52,8 @@ class Shop extends CI_Controller {
 		$data['jumlahfoto'] = $this->m_barang->tampilkanFotoBarangIni($id)->num_rows();
 		$data['foto'] = $this->m_barang->tampilkanFotoBarangIni($id)->result();
 		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['review'] = $this->m_rating_barang->tampilkanDataIni($id)->result();
 
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_shop_detail',$data);

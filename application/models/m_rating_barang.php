@@ -1,0 +1,20 @@
+<?php
+class m_rating_barang extends CI_Model{
+	
+	function tampilkanData()
+	{
+		return $this->db->query('SELECT * FROM rating_barang');
+    }
+
+    function tampilkanDataIni($idB)
+	{
+		return $this->db->query('SELECT * FROM rating_barang WHERE id_barang = "'.$idB.'" ');
+    }
+    
+    function insertTable($a,$b){
+		$this->db->insert($a,$b);
+
+	}
+	
+}
+?>

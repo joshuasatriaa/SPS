@@ -6,6 +6,7 @@ class Barang extends CI_Controller{
 		$this->load->model('m_pesanan');
 		$this->load->model('m_notif');
 		$this->load->model('m_pesan');
+		$this->load->model('m_rating_barang');
 		$this->load->library('form_validation');
 	}
 	function index(){
@@ -279,11 +280,26 @@ class Barang extends CI_Controller{
 
 			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 
-
 			$this->load->view('v_edit_barang',$data);
 		}
 	
-	
-	
+		function ratingBarang()
+		{
+			$count = $this->m_rating_barang->tampilkanData()->num_rows()+1;
+			$id_rating_barang = "RBAR-".$count;
+
+			$data = array(
+				'id_rating_barang' => $id_rating_barang,
+				'id_barang' => $this->input->post('idbarang'),
+				'rating_barang' => $this->input->post('ratingbarang'),
+				'id_pemberi_rating' => $this->session->userdata('id_user'),
+				'keterangan' => $this->input->post('keterangan')
+			);
+
+			$this->db->set('waktu_rating', 'NOW()', FALSE);
+			$this->m_rating_barang->insertTable('rating_barang', $data);
+
+			redirect('Shop');
+		}
 }
 ?>
