@@ -210,8 +210,15 @@ class Shop extends CI_Controller {
 	}
 	
 	function editCart($id_barang){
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+
 		$where = array('id_barang' => $id_barang);
-		$data['cartEdit'] = $this->m_barang->editData($where,'barang')->result();
+		$data['cartEdit'] = $this->m_pesanan->showThisCart($this->session->userdata('id_user'),$id_barang)->result();
 		$this->load->view('v_edit_item_cart', $data);
 	}
 	
@@ -220,26 +227,56 @@ class Shop extends CI_Controller {
 		$id = $this->input->post('id_barang');
 		$jumlah = $this->input->post('jumlah_barang');
 		
-		$count = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows()+1;
-		$id_pesanan = "CART-".$count;
-		$detail_barang = $this->m_barang->tampilkanBarangIni($id)->row_array();
+		//$count = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows()+1;
+		//$id_pesanan = "CART-".$count;
+		//$detail_barang = $this->m_barang->tampilkanBarangIni($id)->row_array();
 
-		$data = [
-			'id_pesanan' => $id_pesanan, 
-			'id_pembeli' => $this->session->userdata('id_user'), 
-			'id_barang' => $id,
-			'jumlah_barang' => $jumlah, 
-			'status_pesanan' => 0, 
+	//	$data = [
+	//		'id_pesanan' => $id_pesanan, 
+	//		'id_pembeli' => $this->session->userdata('id_user'), 
+	//		'id_barang' => $id,
+	//		'jumlah_barang' => $jumlah, 
+	//		'status_pesanan' => 0, 
 			 
-		];
+	//	];
 
-		$this->db->set('waktu_pesanan', 'NOW()', FALSE);
-		$this->m_pesanan->updateData('pesanan', $data);
+	//	$this->db->set('waktu_pesanan', 'NOW()', FALSE);
+		$this->m_pesanan->gantiJumlah($id,$jumlah);
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success text-center" role="alert">Cart Edited!</div>');
-		redirect('Shop/ShopDetail/'.$id);
+		redirect('Shop/Cart');
 
 
+	}
+
+
+	function filterSearch(){
+
+		$min = $this->input->get('minimum_price');
+		$max = $this->input->get('maximum_price');
+		
+		$data['hasil'] = $this->m_barang->searchBarangAjax($min, $max)->result();
+		
+		$return_arr = [];
+		foreach($data['hasil'] as $a){
+			$image = base64_encode($a->gambar_barang);
+
+			$return_arr[] = [
+				'id_barang' => $a->id_barang,
+				'nama_barang' => $a->nama_barang,
+				'id_penjual' => $a->id_penjual, 
+				'harga_barang'=> $a->harga_barang,
+				'waktu_add' => $a->waktu_add, 
+				'stok_barang' => $a->stok_barang, 
+				'gambar_barang' => $image, 
+				'nama_pengguna' => $a->nama_pengguna,
+				'nama_bengkel' => $a->nama_bengkel,
+				'alamat' => $a->alamat,
+				'alamat_pengguna' =>$a->alamat_pengguna,
+			];
+		}
+		$encode_data = json_encode($return_arr);
+		echo $encode_data;
 	}
 
 }

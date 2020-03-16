@@ -24,11 +24,17 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
 
   <!-- Main Stylesheet -->
-  <link href="<?php echo base_url()?>assets/type1/css/style.css" rel="stylesheet">
+  <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
+
+  <!-- Login Stylesheet -->
+  <link href="<?php echo base_url() ?>assets/type1/css/style1.css" rel="stylesheet">
+
+  <!-- SignUp Stylesheet -->
+  <link href="<?php echo base_url() ?>assets/type1/css/style2.css" rel="stylesheet">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
+  <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
 </head>
 
@@ -42,79 +48,98 @@
 
 <!-- Header Close -->
 
-
-<?php
-	include 'modal-login.php';
-?>
-
-
-<section class="section-header bg-1">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="text-center">
-          <h1 class="text-capitalize mb-4 font-lg text-white">My Cart</h1>
-        </div>
+<!-- Login Modal -->
+<div class="modal">
+  <div class="modal-container">
+    <div class="modal-left">
+      <h1 class="modal-title">Welcome!</h1>
+      <p class="modal-desc">Fanny pack hexagon food truck, street art waistcoat kitsch.</p>
+      <div class="input-block">
+        <label for="email" class="input-label">Email</label>
+        <input type="email" name="email" id="email" placeholder="Email">
       </div>
+      <div class="input-block">
+        <label for="password" class="input-label">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password">
+      </div>
+      <div class="modal-buttons">
+        <a href="" class="">Forgot your password?</a>
+        <button class="input-button">Login</button>
+      </div>
+      <p class="sign-up">Don't have an account? <a href="<?php echo base_url()?>Signup">Sign up now</a></p>
     </div>
+    <div class="modal-right">
+      <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dfd2ec5a01006fd8c4d7592a381d3776&auto=format&fit=crop&w=1000&q=80" alt="">
+    </div>
+    <button class="icon-button close-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
+</svg>
+      </button>
   </div>
-</section>
-        
+  
+</div>
 
-<?php if($cartEdit) {?>
+<!--  Banner start -->
+<section class="slider-hero hero-slider  hero-style-1  ">
+  
+    <div class="swiper-wrapper">
+      <!-- start slide-item -->
+      <div class="swiper-slide slide-item">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
+          <!-- <div class="overlay"></div> -->
+          <div class="container">
 
-    <section style="padding: 100px 0;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                        
-                        <div>
-							            <?php $i = 1;
-							            $total = 0;
-                            foreach($cartEdit as $list) {?>
-                                <div class="custom-control custom-checkbox">
-                                    
-									
-									</label>
-									<div class="card">
-										
-										
-                                        <?php
-                                            
-                                            echo '<img src="data:image/jpeg;base64,' . base64_encode($list->gambar_barang).'" height="100" width="100" alt="Card image cap" />';
-                                            
-                                        ?>
-                                        <span style="padding-left:10px">By : 
-                                        <?php if($list->nama_bengkel == null){
-                                            echo $list->nama_pengguna;
-                                          }else{
-                                            echo $list->nama_bengkel;
-                                          } ?>
-                                        </span>
-                                        <div class="card-body">
-                                        <h5 class="card-title"><?php echo $list->nama_barang?></h5>
-                                        <p class="card-text"><?php echo $list->keterangan_barang?></p>
-                                        <form action="<?php echo base_url(). 'Shop/updateCart'; ?>" method="post">
-                                          <p class="card-text">Jumlah yang dibeli = </p>
-                                          <input type="hidden" name="id_barang" value="<?php echo $list->id_barang;?>">
-                                            Amount : <input type="number" name="jumlah_barang" value="1" min="1" max="<?php echo $list->stok_barang;?>" > 
-                                          <button type="submit" class="btn">OK</button>
-                                        </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <?php  }?>
-                        </div>
-                </div>
-                    
+            <!-- tampilkan history start -->
+            
+                <h1>Tampilkan History Barang & Service</h1>
+                <table>
+					<thead>
+					<tr>
+						<td>ID pesanan</td>
+						<td>ID pembeli</td>
+						<td>ID penjual</td>
+						<td>ID barang</td>
+						<td>status pesanan</td>
+						<td>waktu pesanan</td>
+					</tr>
+					</thead>
+					<tbody>
+						<?php
+					$i = 0;
+					foreach($pesanan as $list){ ?>
+					<tr>
+						<td><?php echo $list->id_pesanan ?></td>
+						<td><?php echo $list->id_pembeli ?></td>
+						<td><?php echo $list->id_penjual ?></td>
+						<td><?php echo $list->id_barang ?></td>
+						<td><?php echo $list->status_pesanan ?></td>
+						<td><?php echo $list->waktu_pesanan ?></td>
+						
+					</tr>
+					<?php
+					$i++; ?>
+					</tbody>
+				</table>
                 
-            </div>
-        </div>
-    </section>
+            <!-- tampilkan history end -->
+           
+          </div>
+        </div> 
+      </div>
+      <!-- end slide-item -->
+      
+  
+    </div>
+    <!-- end swiper-wrapper -->
+    <!-- swipper controls -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  
+</section>
+<!--  Banner End -->
 
-<?php }?>
-
+<!--Footer start -->
 <footer class="section footer">
 	<div class="container">
 		<div class="row justify-content-center">
@@ -163,17 +188,7 @@
 			</div>
 		</div>
 
-		<div class="row justify-content-center mt-5">
-			<div class="col-lg-6 text-center">
-				<h4 class="text-white-50 mb-3">Get latest food recipe at your inbox</h4>
-				<form action="#" class="footer-newsletter">
-					<div class="form-group">
-						<button class="button"><span class="ti-email"></span></button>
-						<input type="email" class="form-control" placeholder="Enter Email">
-					</div>
-				</form>
-			</div>
-		</div>
+		
 	</div>
 </footer>
 
@@ -199,7 +214,7 @@
 		</div>
 	</div>
 </section>
-
+<!-- Footer  End -->
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
@@ -223,45 +238,7 @@
 <script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
 
 <!-- Login Script -->
-<script src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
-
-<!-- Shop type2 -->
-
-<!-- JAVASCRIPTS -->
-<script src="<?php echo base_url() ?>assets/type2/plugins/jQuery/jquery.min.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/popper.min.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/bootstrap/js/bootstrap-slider.js"></script>
-  <!-- tether js -->
-<script src="<?php echo base_url() ?>assets/type2/plugins/tether/js/tether.min.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/raty/jquery.raty-fa.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/slick-carousel/slick/slick.min.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/fancybox/jquery.fancybox.pack.js"></script>
-<script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
-
-<!-- Shop JS End -->
-<script type="text/javascript">
-$(document).ready(function (){
-// Listen for click on toggle checkbox
-$('#select-all').click(function(event) {   
-    if(this.checked) {
-        // Iterate each checkbox
-        $(':checkbox').each(function() {
-            this.checked = true;                        
-        });
-    } else {
-        $(':checkbox').each(function() {
-            this.checked = false;                       
-        });
-    }
-});
+<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
 
 
-
-});
-
-
-</script>
-</body>
 </html>

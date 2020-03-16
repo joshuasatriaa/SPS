@@ -21,6 +21,15 @@ class m_pesanan extends CI_Model{
 		LEFT JOIN pengguna e ON b.id_penjual = e.id_pengguna
 		WHERE id_pembeli = "'.$id.'" AND a.status_pesanan = 0 AND id_foto_barang LIKE "FOTO-BARANG-%1"');
 	}
+
+	function showThisCart($id,$idB){
+		return $this->db->query('SELECT * FROM pesanan a
+		JOIN barang b ON a.id_barang = b.id_barang
+		JOIN foto_barang c ON b.id_barang = c.id_barang
+		LEFT JOIN bengkel d ON b.id_penjual = d.id_bengkel
+		LEFT JOIN pengguna e ON b.id_penjual = e.id_pengguna
+		WHERE id_pembeli = "'.$id.'" AND a.status_pesanan = 0 AND id_foto_barang LIKE "FOTO-BARANG-%1" AND b.id_barang ="'.$idB.'"');
+	}
 	
 	function searchCart($id){
 		return $this->db->query('SELECT * FROM pesanan
@@ -39,6 +48,13 @@ class m_pesanan extends CI_Model{
 	function hapusData($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
+	}
+
+	function gantiJumlah($idB,$jumlah)
+	{
+		return $this->db->query('UPDATE pesanan
+		SET jumlah_barang="'.$jumlah.'"
+		WHERE id_barang="'.$idB.'" ');
 	}
 }
 ?>

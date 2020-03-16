@@ -40,9 +40,11 @@
 						<div class="block">
 						<input type="hidden" id="minimum_price" value="0" />
 						<input type="hidden" id="maximum_price" value="100000000"/>
-						<p id="price_show">1.000 - 100.000.000</p>
+						<p id="price_show">10.000 - 10.000.000</p>
 						</div>
 						<div id="price_range"></div>
+						<input type="hidden" id="hidden_minimum_price" value="" />
+                    	<input type="hidden" id="hidden_maximum_price" value="" />
 					</div>
 
 					<div class="widget1 product-shorting">
