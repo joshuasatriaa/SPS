@@ -45,9 +45,9 @@
                             <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>">Pesanan</a></li>
                             <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Service/index';?>">Service</a></li>
                             <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/User/index';?>">User</a></li>
-                            <li><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/ChatUser/index';?>">Chat dengan User</a></li>
                         </ul>
                     </li>
+                    <li class=""><i class="fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/ChatUser/index';?>">Chat With User</a></li>
                     <?php  } ?>
                 </ul>
             </div><!-- /.navbar-collapse -->
