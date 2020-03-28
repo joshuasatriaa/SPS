@@ -34,6 +34,21 @@ class PromoManagement extends CI_Controller {
 		$this->head();
 		$this->load->view('Dashboard/v_history_promo',$data);
 		$this->foot();
-	}
+    }
+    
+    public function updateData()
+    {
+        $data= array(
+            'jenis_promo' => $this->input->post('jenispromo'), 
+            'tanggal_mulai' => $this->input->post('tanggalmulai'), 
+            'tanggal_selesai' => $this->input->post('tanggalselesai')
+        );
+
+        $where = array(
+            'id_promo' => $this->input->post('idpromo'),
+        );
+        $this->m_promo->updateRecord($where,$data,'promo');
+        redirect('Dashboard/PromoManagement/History');
+    }
 }
 ?>

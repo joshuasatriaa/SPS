@@ -13,20 +13,11 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Master Data</h1>
+                                <h1>History Promo</h1>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li>Master Data</li>
-                                    <li class="active">Promo</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -104,14 +95,14 @@
                                                     </div>
                                                     <div class="modal-body">
                             
-                                                        <form action="<?php echo base_url().'Dashboard/Service/updateData'?>" method="POST" novalidate="novalidate">
+                                                        <form action="<?php echo base_url().'Dashboard/PromoManagement/updateData' ?>" method="POST" novalidate="novalidate">
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">ID Promo</label>
-                                                                <input type="text" class="form-control" name="id_service" value="<?php echo $list->id_promo ?>" readonly>
+                                                                <input type="text" class="form-control" name="idpromo" value="<?php echo $list->id_promo ?>" readonly>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Jenis Promo</label>
-                                                                <select class="form-control">
+                                                                <select class="form-control" name="jenispromo">
                                                                     <option value = "1" <?php if($list->jenis_promo == 1){echo 'selected';}?> >Discount 10%</option>
                                                                     <option value = "2" <?php if($list->jenis_promo == 2){echo 'selected';}?> >Discount 15%</option>
                                                                     <option value = "3" <?php if($list->jenis_promo == 3){echo 'selected';}?> >Discount 20%</option>
@@ -119,11 +110,11 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Mulai Promo</label>
-                                                                <input type="date" class="form-control" name="id_service" value="<?php echo $list->tanggal_mulai ?>" >
+                                                                <input type="date" class="form-control" name="tanggalmulai" value="<?php echo $list->tanggal_mulai ?>" >
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Akhir Promo</label>
-                                                                <input type="date" class="form-control" name="id_service" value="<?php echo $list->tanggal_selesai ?>" >
+                                                                <input type="date" class="form-control" name="tanggalselesai" value="<?php echo $list->tanggal_selesai ?>" >
                                                             </div>
                                                            
                                                     </div>
