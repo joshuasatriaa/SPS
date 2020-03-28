@@ -6,7 +6,7 @@ class PromoManagement extends CI_Controller {
 	function __construct()
 	{
 		parent:: __construct();
-		$this->load->model(array('m_admin'));
+		$this->load->model(array('m_promo'));
 	}
 	
 	public function head(){
@@ -28,23 +28,11 @@ class PromoManagement extends CI_Controller {
 
 	}
 	
-	public function index()
+	public function History()
 	{
-        $data['chatUser'] = $this->m_admin->tampilkanDataChat()->result();
-        $arr = [];
-        foreach($data['chatUser'] as $a){
-            $where = $a->id_pengirim;
-            $test = $this->m_admin->ambilDataUser($where)->row_array();
-
-            $arr = [
-                'nama_pengguna' => $test['nama_pengguna'],
-                'nama_bengkel' => $test['nama_bengkel'],
-            ];
-        }
-
-        $data['listUser'] = $arr;
+        $data['promo'] = $this->m_promo->tampilkan_semua_data()->result();
 		$this->head();
-		$this->load->view('Dashboard/v_chat_user',$data);
+		$this->load->view('Dashboard/v_history_promo',$data);
 		$this->foot();
 	}
 }

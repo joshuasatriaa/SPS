@@ -52,7 +52,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-file"></i>Promo Management</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-bookmark"></i><a href="<?php echo base_url() .'Dashboard/PromoManagement';?>"> Current</a></li>
-                            <li><i class="menu-icon fa fa-backward"></i><a href="<?php echo base_url() .'Dashboard/PromoManagement';?>"> History</a></li>
+                            <li><i class="menu-icon fa fa-backward"></i><a href="<?php echo base_url() .'Dashboard/PromoManagement/History';?>"> History</a></li>
                         </ul>
                     </li>
                     <li>
