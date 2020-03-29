@@ -13,7 +13,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>History Promo</h1>
+                                <h1>Current Promo</h1>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                             <th>Mulai Promo</th>
                                             <th>Akhir Promo</th>
                                             <th>Edit</th>
-                                            
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -80,7 +80,12 @@
                                             <td>
                                                 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editpromo_<?php echo $list->id_promo?>">Edit</button>
                                             </td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deletepromo_<?php echo $list->id_promo?>">Delete</button>
+                                            </td>
                                         </tr>
+
+                                        <!-- modal edit -->
                                         <div class="modal fade" id="editpromo_<?php echo $list->id_promo?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
@@ -92,7 +97,7 @@
                                                     </div>
                                                     <div class="modal-body">
                             
-                                                        <form action="<?php echo base_url().'Dashboard/PromoManagement/updateData1' ?>" method="POST" novalidate="novalidate">
+                                                        <form action="<?php echo base_url().'Dashboard/PromoManagement/updateData' ?>" method="POST" novalidate="novalidate">
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">ID Promo</label>
                                                                 <input type="text" class="form-control" name="idpromo" value="<?php echo $list->id_promo ?>" readonly>
@@ -114,29 +119,57 @@
                                                                 <input type="date" class="form-control" name="tanggalselesai" value="<?php echo $list->tanggal_selesai ?>" >
                                                             </div>
                                                            
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <input type="submit" class="btn btn-primary"></button>
+                                                        </div>
+                                                        </form>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                        <input type="submit" class="btn btn-primary"></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- modal end -->
+
+                                        <!-- modal delete -->
+                                        <div class="modal fade" id="deletepromo_<?php echo $list->id_promo?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mediumModalLabel">Confirmation</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
                                                     </div>
-                                                    </form>
+                                                    <div class="modal-body">
+                                                    Confirm Delete This Promo ?
+                                                    </div>
+                                                    
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                            <a href="<?php echo base_url().'Dashboard/PromoManagement/deleteData/'. $list->id_promo ?>">
+                                                                <button type="submit" class="btn btn-primary">Yes</button>
+                                                            </a>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- modal end -->
+
+
                                           <?php
                                             } 
                                             ?>
                                     </tbody>
                                 </table>
-                            </form>
-                            </div>
-                        </div>
-                    </div>
+                
+                            </div><!-- .animated -->
+                        </div><!-- .content -->
 
-
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
-
-        <!-- Modal -->
-        <div class="modal fade" id="inputservice" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+            <!-- Modal -->
+            <div class="modal fade" id="inputservice" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -147,7 +180,7 @@
                         </div>
                         <div class="modal-body">
                             
-                            <form action="<?php echo base_url().'Dashboard/PromoManagement/insertData1'?>" method="post" novalidate="novalidate">
+                            <form action="<?php echo base_url().'Dashboard/PromoManagement/insertData'?>" method="post" novalidate="novalidate">
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">ID Promo</label>
                                     <input type="text" class="form-control" name="idpromo" value="PRO-<?php echo $count+1 ?>" readonly>
@@ -177,6 +210,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal input end -->
 
 
         <div class="clearfix"></div>

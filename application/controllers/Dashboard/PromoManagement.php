@@ -31,17 +31,29 @@ class PromoManagement extends CI_Controller {
 	public function History()
 	{
         $data['promo'] = $this->m_promo->tampilkan_semua_data()->result();
+        $data['count'] = $this->m_promo->tampilkan_semua_data()->num_rows();
 		$this->head();
 		$this->load->view('Dashboard/v_history_promo',$data);
 		$this->foot();
     }
     
+    public function Current()
+    {
+        $data['promo'] = $this->m_promo->tampilkan_data_sekarang()->result();
+        $data['count'] = $this->m_promo->tampilkan_semua_data()->num_rows();
+		$this->head();
+		$this->load->view('Dashboard/v_current_promo',$data);
+		$this->foot();
+    }
+
     public function updateData()
     {
+        $statusdelete = "0";
         $data= array(
             'jenis_promo' => $this->input->post('jenispromo'), 
             'tanggal_mulai' => $this->input->post('tanggalmulai'), 
-            'tanggal_selesai' => $this->input->post('tanggalselesai')
+            'tanggal_selesai' => $this->input->post('tanggalselesai'),
+            'status_delete' => $statusdelete
         );
 
         $where = array(
@@ -49,6 +61,59 @@ class PromoManagement extends CI_Controller {
         );
         $this->m_promo->updateRecord($where,$data,'promo');
         redirect('Dashboard/PromoManagement/History');
+    }
+
+    public function insertData()
+    {
+        $statusdelete = "0";
+        $data= array(
+            'id_promo' => $this->input->post('idpromo'),
+            'jenis_promo' => $this->input->post('jenispromo'), 
+            'tanggal_mulai' => $this->input->post('tanggalmulai'), 
+            'tanggal_selesai' => $this->input->post('tanggalselesai'),
+            'status_delete' => $statusdelete
+        );
+
+        $this->m_promo->insertTable('promo',$data);
+		redirect('Dashboard/PromoManagement/History');
+    }
+
+    public function updateData1()
+    {
+        $statusdelete = "0";
+        $data= array(
+            'jenis_promo' => $this->input->post('jenispromo'), 
+            'tanggal_mulai' => $this->input->post('tanggalmulai'), 
+            'tanggal_selesai' => $this->input->post('tanggalselesai'),
+            'status_delete' => $statusdelete
+        );
+
+        $where = array(
+            'id_promo' => $this->input->post('idpromo'),
+        );
+        $this->m_promo->updateRecord($where,$data,'promo');
+        redirect('Dashboard/PromoManagement/Current');
+    }
+
+    public function insertData1()
+    {
+        $statusdelete = "0";
+        $data= array(
+            'id_promo' => $this->input->post('idpromo'),
+            'jenis_promo' => $this->input->post('jenispromo'), 
+            'tanggal_mulai' => $this->input->post('tanggalmulai'), 
+            'tanggal_selesai' => $this->input->post('tanggalselesai'),
+            'status_delete' => $statusdelete
+        );
+
+        $this->m_promo->insertTable('promo',$data);
+		redirect('Dashboard/PromoManagement/Current');
+    }
+
+    public function deleteData($id)
+    {
+        $this->m_promo->deleteRecord($id);
+        redirect('Dashboard/PromoManagement/Current');
     }
 }
 ?>
