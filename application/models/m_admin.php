@@ -24,11 +24,17 @@ class m_admin extends CI_Model{
 	}
 
 	function tampilkanDataChat(){
-		return $this->db->query('SELECT DISTINCT id_pengirim FROM pesan');
+		return $this->db->query('SELECT DISTINCT id_pengirim FROM pesan WHERE id_penerima = "ADMIN"');
 	}
 
 	function ambilDataUser($where){
-		return $this->db->query('SELECT nama_bengkel, nama_pengguna FROM pesan a JOIN bengkel b ON a.id_penerima = b.id_bengkel JOIN pengguna c ON a.id_penerima = c.id_pengguna WHERE id_pengirim = '.$where);
+		return $this->db->query('SELECT id_pengirim, nama_bengkel, nama_pengguna, pesan, waktu_kirim 
+		FROM pesan a 
+		LEFT JOIN bengkel b ON a.id_pengirim = b.id_bengkel 
+		LEFT JOIN pengguna c ON a.id_pengirim = c.id_pengguna 
+		WHERE id_pengirim = "'.$where.'" AND id_penerima = "ADMIN"
+		ORDER BY waktu_kirim DESC
+		LIMIT 1');
 	}
 }
 ?>

@@ -75,6 +75,8 @@ function sendNewMessage() {
     messagesContainer.finish().animate({
         scrollTop: messagesContainer.prop("scrollHeight")
     }, 250);
+
+    
 }
 
 function onMetaAndEnter(event) {

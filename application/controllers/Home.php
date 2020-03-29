@@ -31,6 +31,8 @@ class Home extends CI_Controller {
 			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
 
 			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+			
+			$data['chatAdmin'] = $this->m_pesan->cekPesanAdmin($this->session->userdata('id_user'))->result();
 
 			$this->load->view('v_home', $data);
 		}

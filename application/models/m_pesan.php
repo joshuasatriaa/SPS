@@ -13,8 +13,8 @@ class m_pesan extends CI_Model{
         GROUP BY pesan.id_pesan');
     }
     
-    function insertTable($a,$b){
-        $this->db->insert($a,$b);
+    function insertTable($table,$data){
+        $this->db->insert($table,$data);
     }
 
     function tampilkanData()
@@ -44,6 +44,29 @@ class m_pesan extends CI_Model{
         Pesan.id_pengirim = "'.$idSaya.'" OR Pesan.id_penerima = "'.$idSaya.'" AND id_penerima != "'.$idSaya.'"
         GROUP BY pesan.id_penerima');
     }
+
+    function cekPesanAdmin($id){
+        return $this->db->query('SELECT a.id_pengirim, a.id_penerima, a.pesan, b.nama_pengguna as nama_pengirim_pengguna, c.nama_bengkel as nama_pengirim_bengkel, d.nama_pengguna as nama_penerima_pengguna, e.nama_bengkel as nama_penerima_bengkel
+        FROM pesan a 
+        LEFT JOIN pengguna b ON (a.id_pengirim = b.id_pengguna)
+        LEFT JOIN bengkel c ON (a.id_pengirim = c.id_bengkel)
+        LEFT JOIN pengguna d ON (a.id_penerima = d.id_pengguna)
+        LEFT JOIN bengkel e ON (a.id_penerima = e.id_bengkel) 
+        WHERE a.id_pengirim IN ("'.$id.'", "ADMIN") AND a.id_penerima IN ("ADMIN", "'.$id.'") ORDER BY a.waktu_kirim 
+        ');
+    }
+
+    function cekPesanAdminBaru($id, $jumlah){
+        return $this->db->query('SELECT a.id_pengirim, a.id_penerima, a.pesan, b.nama_pengguna as nama_pengirim_pengguna, c.nama_bengkel as nama_pengirim_bengkel, d.nama_pengguna as nama_penerima_pengguna, e.nama_bengkel as nama_penerima_bengkel
+        FROM pesan a 
+        LEFT JOIN pengguna b ON (a.id_pengirim = b.id_pengguna)
+        LEFT JOIN bengkel c ON (a.id_pengirim = c.id_bengkel)
+        LEFT JOIN pengguna d ON (a.id_penerima = d.id_pengguna)
+        LEFT JOIN bengkel e ON (a.id_penerima = e.id_bengkel) 
+        WHERE a.id_pengirim IN ("'.$id.'", "ADMIN") AND a.id_penerima IN ("ADMIN", "'.$id.'") ORDER BY a.waktu_kirim LIMIT 10 OFFSET '.$jumlah.'
+        ');
+    }
+
 }
 
 ?>

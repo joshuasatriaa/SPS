@@ -13,6 +13,9 @@ class m_pengguna extends CI_Model{
 		return $this->db->get_where($table,$where);
 	}
 	
+	function getData($where, $table){
+		return $this->db->get_where($table,$where);
+	}
 	function updateData($where,$data,$table){
 		$this->db->where($where);
 		$this->db->update($table,$data);

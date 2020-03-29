@@ -45,6 +45,30 @@ class Chat extends CI_Controller {
 
 		redirect('Chat/checkChatBarang/'.$idSaya.'/'.$idDia);
 
+	}
+	
+	function sendChatAdmin()
+    {
+        $count = $this->m_pesan->tampilkanData()->num_rows()+1;
+        $id_pesan = "PESAN-".$count;
+		
+		$idSaya = $this->session->userdata('id_user');
+		$idDia = 'ADMIN';
+        $pesan = $this->input->post('input_pesan');
+
+		$data = [
+			'id_pesan' => $id_pesan, 
+			'id_pengirim' => $idSaya,
+			'id_penerima' => $idDia,
+			'pesan' => $pesan
+			 
+		];
+
+		$this->db->set('waktu_kirim', 'NOW()', FALSE);
+		$this->m_pesan->insertTable('pesan', $data);
+
+		echo json_encode(['success' => 'berhasil kirim']);
+
     }
 }
 ?>
