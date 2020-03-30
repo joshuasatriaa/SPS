@@ -117,7 +117,7 @@
 						<li>Analytics</li>
 						<li>Subscription-based payment</li>
 					</ul>
-					<a href="<?php echo base_url(). 'Shop/goMember'?>" class="btn btn-main">Become Member</a>			
+					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main">Become Member</a>			
 				</div>
 			</div>
 		</div>
