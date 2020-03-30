@@ -22,7 +22,7 @@
         var chat =  new Chat();
     	$(function() {
     	
-    		 chat.getState("<?php echo base_url().'Chat2/process'?>", "<?php echo $id_penerima; ?>"); 
+    		 chat.getState("<?php echo base_url().'Dashboard/ChatUser/process'?>", "<?php echo $id_penerima; ?>"); 
              
     		 // watch textarea for key presses
              $("#sendie").keydown(function(event) {  
@@ -53,7 +53,7 @@
                     // send 
                     if (length <= maxLength + 1) { 
                      
-    			        chat.send(text, "<?php echo base_url().'Chat2/process'?>", "<?php echo $id_penerima;?>");	
+    			        chat.send(text, "<?php echo base_url().'Dashboard/ChatUser/process'?>", "<?php echo $id_penerima;?>");	
                         $(this).val("");
                         console.log("pesan");
                     } else {
@@ -68,7 +68,7 @@
             
             window.addEventListener('load', 
                     function() { 
-                        setInterval(chat.update, 1000, '<?php echo base_url('Chat2/process');?>', '<?php echo $id_penerima; ?>');
+                        setInterval(chat.update, 1000, '<?php echo base_url('Dashboard/ChatUser/process');?>', '<?php echo $id_penerima; ?>');
                     }, false);
             });
 
