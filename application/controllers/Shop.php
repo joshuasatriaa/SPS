@@ -55,6 +55,8 @@ class Shop extends CI_Controller {
 
 		$data['review'] = $this->m_rating_barang->tampilkanDataIni($id)->result();
 
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_shop_detail',$data);
 	}
