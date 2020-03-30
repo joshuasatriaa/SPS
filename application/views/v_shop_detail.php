@@ -359,7 +359,12 @@
 									
 									<h2 style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $list->harga_barang?></h2>
 
-									You have promo
+									<?php
+									if($member != null)
+									{
+										echo "You have promo";
+									}
+									?>
 								</div>
 								<!-- User Profile widget -->
 								<div class="widget user text-center">
