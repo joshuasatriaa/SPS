@@ -634,7 +634,11 @@
 	    });
 		
 
-
+		window.addEventListener('load', 
+				function() { 
+					setInterval(updateChat, 1000, '<?php echo base_url(). 'Chat/update'?>', '<?php echo $this->session->userdata('id_user'); ?>');
+				}, false);
+		
 	});
 
 
@@ -735,6 +739,43 @@ function onMetaAndEnter(event) {
     if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
         sendNewMessage();
     }
+}
+
+function updateChat(url, receiver){
+	var messagesContainer = $('.messages');
+	var count = $('.messages li').length;
+	var lines = count-1;
+	$.ajax({
+		type: "POST",
+		url: url,
+		data: {  
+				'function': 'update',
+				'state' : lines,
+				'receiver' : receiver,
+				},
+		dataType: "json",
+		success: function(data){
+			if(data.text){
+				//$('.messages').empty();
+				for (var i = 0; i < data.text.length; i++) {
+					$id = data.text[i].id_pengirim;
+					if($id.substring(0,5) == "ADMIN"){
+						$nama = "other";
+					}
+					else{
+						$nama = "self";
+						}
+					$('.messages').append($("<li class='"+$nama+"'>"+ data.text[i].pesan +"</li>"));
+				}								  
+			}
+			document.getElementsByClassName('messages').scrollTop = document.getElementsByClassName('messages').scrollHeight - document.getElementsByClassName('messages').clientHeight;
+			console.log("berhasil");
+		},
+		error: function(xhr, status, error) {
+			console.log(xhr.responseText);
+		},
+	});
+   
 }
 </script>
 </body>

@@ -69,6 +69,30 @@ class Chat extends CI_Controller {
 
 		echo json_encode(['success' => 'berhasil kirim']);
 
-    }
+	}
+	
+	
+	function update(){
+			$id = $_POST['receiver'];
+			$state = $_POST['state'];
+			$lines = $this->m_pesan->cekPesanAdmin($id)->num_rows();
+			$log = array();
+			$count =  $lines;
+	
+			if($state == $count){
+				$log['state'] = $state;
+				$log['text'] = false;
+				
+			}else{
+					$text= array();
+					$log['state'] = $state + $lines - $state;
+					$pesan = $this->m_pesan->cekPesanAdminBaru($id, $state)->result();
+					
+					$log['text'] = $pesan; 
+			}
+			
+			echo json_encode($log);
+		
+	}
 }
 ?>

@@ -122,5 +122,7 @@ class ChatUser extends CI_Controller {
         //var_dump($log);
         echo json_encode($log);
     }
+
+    
 }
 ?>

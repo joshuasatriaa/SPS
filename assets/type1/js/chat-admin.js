@@ -77,10 +77,10 @@ function updateChat(url, receiver){
 				   document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
 				   //instanse = false;
 				   state = data.state;
-				   console.log("berhasil");
+				   //console.log("berhasil");
 			   },
 			   error: function(xhr, status, error) {
-				console.log(xhr.responseText);
+				//console.log(xhr.responseText);
 			  },
 			});
 			
