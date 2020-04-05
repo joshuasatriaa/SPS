@@ -9,7 +9,7 @@
     <div class="modal-left">
         <!-- Khusus untuk bengkel -->
         <?php if($this->session->userdata('tipe_user') == $bengkel){?>
-          <a href="<?php echo base_url() ?>Edit_profile">        
+          <a href="<?php echo base_url() ?>ReportingBengkel">
             <button class="form-control">Reporting</button><br>
           </a>
         <?php } ?>
