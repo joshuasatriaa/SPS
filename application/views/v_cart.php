@@ -10,6 +10,7 @@
 
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/jquery-ui.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/themify/css/themify-icons.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/icofont/icofont.min.css">
@@ -60,9 +61,83 @@
   </div>
 </section>
         
-
-<?php if($cart) {?>
-<form action="" method="post">
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="cart-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th class="p-name">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th><i class="ti-close"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                 $i = 1;
+                                 $total = 0;
+                                 foreach($cart as $list) {
+                                    ?>
+                                <tr>
+                                    <td class="cart-pic first-row">
+                                    <?php
+                                            
+                                            echo '<img src="data:image/jpeg;base64,' . base64_encode($list->gambar_barang).'" height="100" width="100" alt="Card image cap" />';
+                                            
+                                        ?>
+                                    </td>
+                                    <td class="cart-title first-row">
+                                        <h5><?php echo $list->nama_barang; ?></h5>
+                                    </td>
+                                    <td class="p-price first-row">Rp. <?php //echo $list->harga_barang; ?></td>
+                                    <td class="qua-col first-row">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="1">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="total-price first-row">$60.00</td>
+                                    <td class="close-td first-row"><i class="ti-close"></i></td>
+                                </tr>
+                                 <?php }?>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-4" style="height: 320px !important;position: sticky;top: 0;padding-top: 10px;">
+                    <div class="col-lg-12">
+                        <div class="discount-coupon">
+                            <h6>Discount Codes</h6>
+                            <form action="#" class="coupon-form">
+                                <input type="text" placeholder="Enter your codes">
+                                <button type="submit" class="site-btn coupon-btn">Apply</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="proceed-checkout">
+                            <ul>
+                                <li class="subtotal">Subtotal <span>$240.00</span></li>
+                                <li class="cart-total">Total <span>$240.00</span></li>
+                            </ul>
+                            <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+<?php //if($cart) {?>
+<!-- <form action="" method="post">
     <section style="padding: 100px 0;">
         <div class="container">
             <div class="row">
@@ -72,76 +147,80 @@
                             <label class="custom-control-label" for="select-all">Select All Item</label>
                         </div>
                         <div>
-							<?php $i = 1;
-							$total = 0;
-                            foreach($cart as $list) {?>
+							<?php 
+							// $i = 1;
+							// $total = 0;
+                            // foreach($cart as $list) {
+								?>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck<?php echo $i;?>">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck<?php //echo $i;?>">
                                     
-                                    <label class="custom-control-label" for="customCheck<?php echo $i;?>">
-									<?php if($list->nama_bengkel == null){
-										echo $list->nama_pengguna;
-									}else{
-										echo $list->nama_bengkel;
-									} ?>
+                                    <label class="custom-control-label" for="customCheck<?php //echo $i;?>">
+									<?php 
+									// if($list->nama_bengkel == null){
+									// 	echo $list->nama_pengguna;
+									// }else{
+									// 	echo $list->nama_bengkel;
+									// } 
+									?>
 									</label>
 									<div class="card">
-										
+									-->
 										<!-- Delete -->
-										<a href="<?php echo base_url(). 'Shop/removeFromCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;">
+										<!-- <a href="<?php //echo base_url(). 'Shop/removeFromCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;">
 												<i class="fas fa-times-circle fa-lg"></i>
-										</a>
+										</a> -->
 
 										<!-- Edit -->
-										<a href="<?php echo base_url(). 'Shop/editCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;padding-right:10%;">
+										<!-- <a href="<?php //echo base_url(). 'Shop/editCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;padding-right:10%;">
 											<i class="fas fa-pen fa-lg"></i>
-										</a>
+										</a> -->
 										
                                         <?php
                                             
-                                            echo '<img src="data:image/jpeg;base64,' . base64_encode($list->gambar_barang).'" height="100" width="100" alt="Card image cap" />';
+                                            //echo '<img src="data:image/jpeg;base64,' . base64_encode($list->gambar_barang).'" height="100" width="100" alt="Card image cap" />';
                                             
                                         ?>
-                                        <div class="card-body">
-                                        <h5 class="card-title"><?php echo $list->nama_barang?></h5>
-                                        <p class="card-text"><?php echo $list->keterangan_barang?></p>
-                                        <p class="card-text">Jumlah yang dibeli = <?php echo $list->jumlah_barang?> (@ = <?php echo $list->harga_barang; ?>)</p>
+                                        <!-- <div class="card-body">
+                                        <h5 class="card-title"><?php //echo $list->nama_barang?></h5>
+                                        <p class="card-text"><?php //echo $list->keterangan_barang?></p>
+                                        <p class="card-text">Jumlah yang dibeli = <?php //echo $list->jumlah_barang?> (@ = <?php //echo $list->harga_barang; ?>)</p>
                                         
                                         </div>
                                     </div>
                                 </div>
                                 
-                                <?php $total += $list->harga_barang*$list->jumlah_barang; }?>
+                                <?php //$total += $list->harga_barang*$list->jumlah_barang; }?>
                         </div>
                 </div>
                     
                 <div class="col-md-4 mx-auto">
                     <div class="p-5 shadow rounded">
-                        <h3 class="mb-3">Total : Rp. <?php echo $total;?></h3>
+                        <h3 class="mb-3">Total : Rp. <?php //echo $total;?></h3>
                         <a href="https://themefisher.com/products/veggie-one-page-responsive-html5-restaurant-website-templates/" target="_blank" class="btn btn-main">Buy</a>			
                     </div>
                 </div>
             </div>
         </div>
     </section>
-</form>
+</form>  -->
 
-<?php }else{?>
-    <section style="padding: 100px 0;">
+<?php //}else{?>
+    <!-- <section style="padding: 100px 0;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 mx-auto">
             <div class="text-center p-5 shadow rounded">
 					<h2 class="mb-3">Sorry, your cart is empty.</h2>
 					<h4 class="mb-3">Please check our store! We have a lot of stuff for you to see!</h4>
-					<a href="<?php echo base_url(). 'Shop'?>" class="btn btn-main">Shop Now</a>			
+					<a href="<?php //echo base_url(). 'Shop'?>" class="btn btn-main">Shop Now</a>			
 				</div>
             </div>
 		</div>
 	</div>
-</section>
+</section> -->
 
-<?php }?>
+<?php //}?>
 
 <footer class="section footer">
 	<div class="container">
@@ -231,6 +310,7 @@
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/jquery-ui.min.js"></script>
 <!-- Bootstrap JS -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type1/plugins/aos/aos.js"></script>
@@ -272,19 +352,36 @@
 <script type="text/javascript">
 $(document).ready(function (){
 // Listen for click on toggle checkbox
-$('#select-all').click(function(event) {   
-    if(this.checked) {
-        // Iterate each checkbox
-        $(':checkbox').each(function() {
-            this.checked = true;                        
-        });
-    } else {
-        $(':checkbox').each(function() {
-            this.checked = false;                       
-        });
-    }
-});
-
+    $('#select-all').click(function(event) {   
+        if(this.checked) {
+            // Iterate each checkbox
+            $(':checkbox').each(function() {
+                this.checked = true;                        
+            });
+        } else {
+            $(':checkbox').each(function() {
+                this.checked = false;                       
+            });
+        }
+    });
+    var proQty = $('.pro-qty');
+    proQty.prepend('<span class="dec qtybtn">-</span>');
+    proQty.append('<span class="inc qtybtn">+</span>');
+    proQty.on('click', '.qtybtn', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('inc')) {
+            var newVal = parseFloat(oldValue) + 1;
+        } else {
+            // Don't allow decrementing below zero
+            if (oldValue > 0) {
+                var newVal = parseFloat(oldValue) - 1;
+            } else {
+                newVal = 0;
+            }
+        }
+        $button.parent().find('input').val(newVal);
+    });
 
 
 });
