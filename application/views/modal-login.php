@@ -7,6 +7,12 @@
 <div class="modal" id="loginModal">
   <div class="modal-container">
     <div class="modal-left">
+        <!-- Khusus untuk bengkel -->
+        <?php if($this->session->userdata('tipe_user') == $bengkel){?>
+          <a href="<?php echo base_url() ?>Edit_profile">        
+            <button class="form-control">Reporting</button><br>
+          </a>
+        <?php } ?>
         <a href="<?php echo base_url() ?>Edit_profile">        
           <button class="form-control">Edit Profile</button><br>
         </a>
