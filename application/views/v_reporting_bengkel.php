@@ -64,54 +64,67 @@
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
-          <!-- Form -->
-          <section class="signup">
+        <!-- Form -->
+        <section class="signup">
             <div class="container1">
                 <div class="signup-content">
                    
-                <div class="col-lg-4">
-                                    <div class="card-body">
-                                        <div class="progress-box progress-1">
-                                            <h4 class="por-title"> Page Visits</h4>
-                                            <div class="por-txt">100,000 Users</div>
-                                            <div class="progress mb-2" style="height: 5px;">
-                                                <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="progress-box progress-2">
-                                            <h4 class="por-title">Workshop Visitors</h4>
-                                            <div class="por-txt">30,000 Users</div>
-                                            <div class="progress mb-2" style="height: 5px;">
-                                                <div class="progress-bar bg-flat-color-3" role="progressbar" style="width: 60%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="progress-box progress-2">
-                                            <h4 class="por-title">Targeted  Visitors</h4>
-                                            <div class="por-txt">250,000 Users</div>
-                                            <div class="progress mb-2" style="height: 5px;">
-                                                <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div> <!-- /.card-body -->
-                                </div>
+                <!-- Start First Part -->
+                <div class="col-lg-4" >
+                    <div class="card-body">
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> Last Month Item Sold</h4>
+                            <div class="por-txt">100,000 Item Sold</div>
+                        </div><br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> Last Month Services</h4>
+                            <div class="por-txt">100,000 Services</div>
+                        </div><br>
+                    </div> <hr>
                 </div>
-            </div>
-         </section>
+                <div class="col-lg-4" >
+                    <div class="card-body">
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> This Month Item Sold</h4>
+                            <div class="por-txt">100,000 Item Sold</div>
+                        </div><br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> This Month Services</h4>
+                            <div class="por-txt">100,000 Services</div>
+                        </div><br>
+                    </div> <hr>
+                </div>
+                <div class="col-lg-4" >
+                    <div class="card-body">
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> Total Item Sold</h4>
+                            <div class="por-txt">100,000 Item Sold</div>
+                        </div><br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> Total Services Completed</h4>
+                            <div class="por-txt">100,000 Services</div>
+                        </div><br>
+                    </div> <hr>
+                </div>
+             </div> 
+             <!-- End First Part -->
 
-            
-           
-          </div>
-        </div> 
-      </div>
-      <!-- end slide-item -->
-      
-  
-    </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
+
+            <!-- Start Second Part -->
+            <div class="col-lg-4" >
+                    <div class="card-body" style="margin-top:-20%;">
+                            <h4 class="por-title"> Last Month Item Sold</h4>
+                            <div class="por-txt">100,000 Item Sold</div>
+                        <br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> Last Month Services</h4>
+                            <div class="por-txt">100,000 Services</div>
+                        </div><br>
+                    </div> <hr>
+                </div>
+            <!-- End Second Part -->
+
+        </section>
 </section>
 <!--  Banner End -->
 
