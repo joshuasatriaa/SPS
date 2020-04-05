@@ -97,11 +97,11 @@
                                     </td>
                                     <td class="p-price first-row">Rp. <?php //echo $list->harga_barang; ?></td>
                                     <td class="qua-col first-row">
-                                        <div class="quantity">
+                                        
                                             <div class="pro-qty">
-                                                <input type="text" value="1">
+                                                <input type="text" value="1" style="width:40px;text-align:center">
                                             </div>
-                                        </div>
+                                        
                                     </td>
                                     <td class="total-price first-row">$60.00</td>
                                     <td class="close-td first-row"><i class="ti-close"></i></td>
