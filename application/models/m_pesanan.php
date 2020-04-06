@@ -56,5 +56,41 @@ class m_pesanan extends CI_Model{
 		SET jumlah_barang="'.$jumlah.'"
 		WHERE id_barang="'.$idB.'" ');
 	}
+
+	function reporting1($where)
+	{
+		//Penjualan bulan lalu
+		return $this->db->query('');
+	}
+
+	function reporting2($where)
+	{
+		//Penjualan bulan ini
+		return $this->db->query('');
+	}
+
+	function reporting3($where)
+	{
+		//total Penjualan
+		return $this->db->query('');
+	}
+
+	function reporting4($where)
+	{
+		//servis bulan lalu
+		return $this->db->query('');
+	}
+
+	function reporting5($where)
+	{
+		//servis bulan ini
+		return $this->db->query('');
+	}
+
+	function reporting6($where)
+	{
+		//Total servis
+		return $this->db->query('');
+	}
 }
 ?>

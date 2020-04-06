@@ -71,7 +71,7 @@
                     <center>
                         <h4 style="font-family: 'Open Sans', sans-serif;" class="por-title"> <?php echo $this->session->userdata('nama') ?>
                         <br>
-                        Reporting, <?php echo date("d F Y") ?>
+                        Reporting on <?php echo date("d F Y") ?>
                         </h4>
                     </center>
                 </div>
@@ -82,11 +82,11 @@
                 <div class="col-lg-4" >
                     <div class="card-body">
                         <div class="progress-box progress-1">
-                            <h4 class="por-title"> Last Month Item Sold</h4>
+                            <h4 class="por-title font1"> Last Month Item Sold</h4>
                             <div class="por-txt">100,000 Item Sold</div>
                         </div><br>
                         <div class="progress-box progress-1">
-                            <h4 class="por-title"> Last Month Services</h4>
+                            <h4 class="por-title font1"> Last Month Services</h4>
                             <div class="por-txt">100,000 Services</div>
                         </div><br>
                     </div> <hr>
@@ -94,11 +94,11 @@
                 <div class="col-lg-4" >
                     <div class="card-body">
                         <div class="progress-box progress-1">
-                            <h4 class="por-title"> This Month Item Sold</h4>
+                            <h4 class="por-title font1"> This Month Item Sold</h4>
                             <div class="por-txt">100,000 Item Sold</div>
                         </div><br>
                         <div class="progress-box progress-1">
-                            <h4 class="por-title"> This Month Services</h4>
+                            <h4 class="por-title font1"> This Month Services</h4>
                             <div class="por-txt">100,000 Services</div>
                         </div><br>
                     </div> <hr>
@@ -106,11 +106,11 @@
                 <div class="col-lg-4" >
                     <div class="card-body">
                         <div class="progress-box progress-1">
-                            <h4 class="por-title"> Total Item Sold</h4>
+                            <h4 class="por-title font1"> Total Item Sold</h4>
                             <div class="por-txt">100,000 Item Sold</div>
                         </div><br>
                         <div class="progress-box progress-1">
-                            <h4 class="por-title"> Total Services Completed</h4>
+                            <h4 class="por-title font1"> Total Services</h4>
                             <div class="por-txt">100,000 Services</div>
                         </div><br>
                     </div> <hr>
