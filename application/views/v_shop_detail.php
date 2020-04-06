@@ -161,8 +161,14 @@
 		
 		
 		<div class="row">
-		
-			
+			<?php if($this->session->flashdata('message')){?>
+				<div class="alert alert-success alert-dismissible fade show text-center" role="alert" style="width:100%">
+					<strong><?php echo $this->session->flashdata('message');?></strong>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php }?>
 			<div class="col-md-12">
 			<?php foreach($barang as $list){ ?>
 			
@@ -357,7 +363,7 @@
 							<div class="sidebar">
 								<div class="widget text-center" >
 									
-									<h2 style="font-family: 'Open Sans', sans-serif;">Rp <?php echo $list->harga_barang?></h2>
+									<h2 style="font-family: 'Open Sans', sans-serif;">Rp. <?php echo number_format($list->harga_barang, 0, 0, ".");?></h2>
 
 									<?php
 									if($member != null)

@@ -360,6 +360,7 @@ a:hover {
 #main-nav {
   top: 0;
   z-index: 99;
+  transition: background-color 0.4s ease-out;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -1322,7 +1323,7 @@ background-color: #c67605;
 .cart-table table tr td.total-price {
 	color: #e7ab3c;
 	font-size: 16px;
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .cart-table table tr td.qua-col {
@@ -1371,7 +1372,7 @@ background-color: #c67605;
 }
 
 .cart-table table tr td.total-price {
-	width: 12%;
+	width: 15%;
 }
 
 .cart-table table tr td.close-td {
@@ -1493,4 +1494,10 @@ background-color: #c67605;
 .font1
 {
   font-family: 'Open Sans', sans-serif;
+}
+
+/*WARNA NAVBAR ON SCROLL*/
+
+nav.scroll {
+  background-color: #31363d;
 }

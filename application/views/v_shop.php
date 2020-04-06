@@ -132,7 +132,6 @@
 					</button>
 				</div>
 				
-				</a>
 			<?php }else{?>
 			<?php }?>
 			<div class="row">
