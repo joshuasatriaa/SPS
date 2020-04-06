@@ -56,5 +56,9 @@ class m_pesanan extends CI_Model{
 		SET jumlah_barang="'.$jumlah.'"
 		WHERE id_barang="'.$idB.'" ');
 	}
+
+	function remove($id_barang, $id_user){
+		return $this->db->query('DELETE FROM pesanan WHERE id_barang = "'.$id_barang.'" AND id_pembeli = "'.$id_user.'" AND status_pesanan = 0');
+	}
 }
 ?>

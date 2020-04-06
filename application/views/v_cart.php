@@ -60,7 +60,7 @@
     </div>
   </div>
 </section>
-        
+<?php //if($cart) {?>  
 <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
         <div class="container">
@@ -95,16 +95,16 @@
                                     <td class="cart-title first-row">
                                         <h5><?php echo $list->nama_barang; ?></h5>
                                     </td>
-                                    <td class="p-price first-row">Rp. <?php //echo $list->harga_barang; ?></td>
+                                    <td class="p-price first-row">Rp. <?php echo $list->harga_barang; ?></td>
                                     <td class="qua-col first-row">
                                         
                                             <div class="pro-qty">
-                                                <input type="text" value="1" style="width:40px;text-align:center">
+                                                <input type="text" id="qty" value="<?php echo $list->jumlah_barang?>" style="width:40px;text-align:center">
                                             </div>
                                         
                                     </td>
-                                    <td class="total-price first-row">$60.00</td>
-                                    <td class="close-td first-row"><i class="ti-close"></i></td>
+                                    <td class="total-price first-row"></td>
+                                    <td class="close-td first-row"><i class="ti-close"><a href="<?php echo base_url(). 'Shop/removeFromCart/'.$list->id_barang;?>" class="btn" style="position: absolute; right: 0;"></a></i></td>
                                 </tr>
                                  <?php }?>
                             </tbody>
@@ -136,6 +136,24 @@
         </div>
     </section>
     <!-- Shopping Cart Section End -->
+    <?php //}else{?>
+    <!-- <section style="padding: 100px 0;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 mx-auto">
+            <div class="text-center p-5 shadow rounded">
+					<h2 class="mb-3">Sorry, your cart is empty.</h2>
+					<h4 class="mb-3">Please check our store! We have a lot of stuff for you to see!</h4>
+					<a href="<?php //echo base_url(). 'Shop'?>" class="btn btn-main">Shop Now</a>			
+				</div>
+            </div>
+		</div>
+	</div>
+</section> -->
+
+<?php //}?>
+
+
 <?php //if($cart) {?>
 <!-- <form action="" method="post">
     <section style="padding: 100px 0;">
@@ -350,20 +368,24 @@
 
 <!-- Shop JS End -->
 <script type="text/javascript">
-$(document).ready(function (){
-// Listen for click on toggle checkbox
-    $('#select-all').click(function(event) {   
-        if(this.checked) {
-            // Iterate each checkbox
-            $(':checkbox').each(function() {
-                this.checked = true;                        
-            });
-        } else {
-            $(':checkbox').each(function() {
-                this.checked = false;                       
-            });
-        }
+// Restricts input for the given textbox to the given inputFilter function.
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      } else {
+        this.value = "";
+      }
     });
+  });
+}
+$(document).ready(function (){
     var proQty = $('.pro-qty');
     proQty.prepend('<span class="dec qtybtn">-</span>');
     proQty.append('<span class="inc qtybtn">+</span>');
@@ -372,18 +394,42 @@ $(document).ready(function (){
         var oldValue = $button.parent().find('input').val();
         if ($button.hasClass('inc')) {
             var newVal = parseFloat(oldValue) + 1;
+            $val = $button.parent().find('input').val();
+            
+            $.ajax({
+                url : "<?php echo base_url(). 'Shop/addCartQuantity'?>",
+                type: "POST",
+                data: {qty:$val},
+                datatype: 'json',
+                success : function(data){
+
+                },
+            });
         } else {
-            // Don't allow decrementing below zero
-            if (oldValue > 0) {
+            // Don't allow decrementing below one
+            if (oldValue > 1) {
                 var newVal = parseFloat(oldValue) - 1;
+                $val = $button.parent().find('input').val();
+            
+                $.ajax({
+                    url : "<?php echo base_url(). 'Shop/addCartQuantity'?>",
+                    type: "POST",
+                    data: {qty:$val},
+                    datatype: 'json',
+                    success : function(data){
+
+                    },
+                });
             } else {
-                newVal = 0;
+                newVal = 1;
             }
         }
         $button.parent().find('input').val(newVal);
     });
 
-
+    setInputFilter(document.getElementById("qty"), function(value) {
+        return /^\d*\.?\d*$/.test(value); // Allow digits and '.' only, using a RegExp
+    });
 });
 
 
