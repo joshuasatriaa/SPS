@@ -65,10 +65,19 @@
           <div class="container">
 
         <!-- Form -->
-        <section class="signup">
-            <div class="container1">
+        <section class="signup" >
+            <div class="container1"> 
+                <div class="col-lg-12" style="padding-top:5%;">
+                    <center>
+                        <h4 style="font-family: 'Open Sans', sans-serif;" class="por-title"> <?php echo $this->session->userdata('nama') ?>
+                        <br>
+                        Reporting, <?php echo date("d F Y") ?>
+                        </h4>
+                    </center>
+                </div>
+
                 <div class="signup-content">
-                   
+                
                 <!-- Start First Part -->
                 <div class="col-lg-4" >
                     <div class="card-body">
