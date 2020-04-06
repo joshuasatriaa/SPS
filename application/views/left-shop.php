@@ -31,15 +31,7 @@
 
 					<?php } ?>
 
-					<div class="widget1 filter">
-						<h4 class="widget-header">Show Produts</h4>
-						<select>
-							<option>Popularity</option>
-							<option value="1">Top rated</option>
-							<option value="2">Lowest Price</option>
-							<option value="4">Highest Price</option>
-						</select>
-					</div>
+					
 
 					<div class="widget1 price-range w-100">
 						<h4 class="widget-header">Price Range</h4>
@@ -53,33 +45,7 @@
                     	<input type="hidden" id="hidden_maximum_price" value="" />
 					</div>
 
-					<div class="widget1 product-shorting">
-						<h4 class="widget-header">By Condition</h4>
-						<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Brand New
-						</label>
-						</div>
-						<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Almost New
-						</label>
-						</div>
-						<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Gently New
-						</label>
-						</div>
-						<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" value="">
-							Havely New
-						</label>
-						</div>
-					</div>
+					
 
 				</div>
 			</div>

@@ -121,7 +121,7 @@
 	
 	<section class="section-sm">
 		<div class="container">
-			<?php if($member == NULL){?>
+			<?php if($member == NULL && $this->session->userdata('email') != null){?>
 			<a href="<?php echo base_url().'Shop/membership'?>"><button class="btn btn-dark btn-lg btn-block mb-30">Merchant/Workshop Owner but not a member yet? <br><br>Click to join our membership and get all the exclusive benefits!</button>
 			</a>
 			<?php }else if($this->session->flashdata('message')){ ?>
