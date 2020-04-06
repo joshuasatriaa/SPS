@@ -50,17 +50,21 @@ class m_pesanan extends CI_Model{
 		$this->db->delete($table);
 	}
 
-	function gantiJumlah($idB,$jumlah)
+	function gantiJumlah($id_user,$id_barang,$jumlah)
 	{
 		return $this->db->query('UPDATE pesanan
-		SET jumlah_barang="'.$jumlah.'"
-		WHERE id_barang="'.$idB.'" ');
+		SET jumlah_barang = '.$jumlah.'
+		WHERE id_pembeli = "'.$id_user.'" AND id_barang="'.$id_barang.'" AND status_pesanan = 0');
 	}
 
+	function searchBarangCart($id_user, $id_barang){
+		return $this->db->query('SELECT * FROM pesanan
+		WHERE id_pembeli = "'.$id_user.'" AND id_barang = "'.$id_barang.'" AND status_pesanan = 0');
+	}
 	function remove($id_barang, $id_user){
 		return $this->db->query('DELETE FROM pesanan WHERE id_barang = "'.$id_barang.'" AND id_pembeli = "'.$id_user.'" AND status_pesanan = 0');
 	}
-	
+
 	function reporting1($where)
 	{
 		//Penjualan bulan lalu

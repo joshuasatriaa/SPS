@@ -637,7 +637,19 @@
 		window.addEventListener('load', 
 				function() { 
 					setInterval(updateChat, 1000, '<?php echo base_url(). 'Chat/update'?>', '<?php echo $this->session->userdata('id_user'); ?>');
-				}, false);
+				}, false
+		);
+
+		window.onscroll = () => {
+  			const nav = document.querySelector('#main-nav');
+  			if(window.pageYOffset > 10){
+				nav.classList.add('scroll');  
+			} 
+			else {
+				nav.classList.remove('scroll');
+			}
+
+		};
 		
 	});
 
@@ -778,5 +790,6 @@ function updateChat(url, receiver){
    
 }
 </script>
+
 </body>
 </html>
