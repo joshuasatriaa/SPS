@@ -83,7 +83,7 @@
                     <div class="card-body">
                         <div class="progress-box progress-1">
                             <h4 class="por-title font1"> Last Month Item Sold</h4>
-                            <div class="por-txt">100,000 Item Sold</div>
+                            <div class="por-txt"><?php echo $r1; ?> Item Sold</div>
                         </div><br>
                         <div class="progress-box progress-1">
                             <h4 class="por-title font1"> Last Month Services</h4>
@@ -95,7 +95,7 @@
                     <div class="card-body">
                         <div class="progress-box progress-1">
                             <h4 class="por-title font1"> This Month Item Sold</h4>
-                            <div class="por-txt">100,000 Item Sold</div>
+                            <div class="por-txt"><?php echo $r2; ?> Item Sold</div>
                         </div><br>
                         <div class="progress-box progress-1">
                             <h4 class="por-title font1"> This Month Services</h4>
@@ -107,7 +107,7 @@
                     <div class="card-body">
                         <div class="progress-box progress-1">
                             <h4 class="por-title font1"> Total Item Sold</h4>
-                            <div class="por-txt">100,000 Item Sold</div>
+                            <div class="por-txt"><?php echo $r3; ?> Item Sold</div>
                         </div><br>
                         <div class="progress-box progress-1">
                             <h4 class="por-title font1"> Total Services</h4>

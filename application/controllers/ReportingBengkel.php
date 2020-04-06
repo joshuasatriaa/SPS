@@ -19,7 +19,9 @@ class ReportingBengkel extends CI_Controller {
         $data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
         
         //Reporting
-        $data['r1'] = $this->m_pesanan->reporting1($this->session->userdata('id_user'))->result();
+        $data['r1'] = $this->m_pesanan->reporting1($this->session->userdata('id_user'))->num_rows();
+        $data['r2'] = $this->m_pesanan->reporting2($this->session->userdata('id_user'))->num_rows();
+        $data['r3'] = $this->m_pesanan->reporting3($this->session->userdata('id_user'))->num_rows();
 		$this->load->view('v_reporting_bengkel',$data);
 	}
 	
