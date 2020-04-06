@@ -50,7 +50,7 @@ class Barang extends CI_Controller{
 			$this->load->view('v_shop_add_item', $data);
 		}
 		else{
-			$count = $this->m_barang->tampilkanBarang()->num_rows()+1;
+			$count = $this->m_barang->tampilkanSemuaBarang()->num_rows()+1;
 			$id_barang = "BARANG-".$count;
 	
 			$nama = htmlspecialchars($this->input->post('nama_barang'), TRUE);

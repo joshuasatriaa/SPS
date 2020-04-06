@@ -128,7 +128,7 @@
                 </td>
                 <td>
                     <?php
-                        if($list->stok_barang = 0)
+                        if($list->stok_barang == 0)
                         {
                             echo "<span style ='color:Red;'>Sold</span>";
                         }

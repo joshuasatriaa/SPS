@@ -9,7 +9,7 @@
 						</div>
 					</a>
 
-					<?php if($this->session->userdata('tipe_user') == $user){?>
+					<?php if($this->session->userdata('tipe_user') == $user || $this->session->userdata('tipe_user') == $bengkel){?>
 						<a href = "<?php echo base_url() ?>Barang/MyItem">
 							<div class="widget1 category-list">
 								<h4 style="font-family: 'Open Sans', sans-serif;">
@@ -19,7 +19,7 @@
 						</a>
 					<?php } ?>
 
-					<?php if($this->session->userdata('tipe_user') == $user){?>
+					<?php if($this->session->userdata('tipe_user') == $user || $this->session->userdata('tipe_user') == $bengkel){?>
 						<a href = "<?php echo base_url() ?>Barang/History">
 							<div class="widget1 category-list">
 								<h4 style="font-family: 'Open Sans', sans-serif;">

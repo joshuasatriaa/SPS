@@ -64,54 +64,78 @@
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
-          <!-- Form -->
-          <section class="signup">
-            <div class="container1">
-                <div class="signup-content">
-                   
-                <div class="col-lg-4">
-                                    <div class="card-body">
-                                        <div class="progress-box progress-1">
-                                            <h4 class="por-title"> Page Visits</h4>
-                                            <div class="por-txt">100,000 Users</div>
-                                            <div class="progress mb-2" style="height: 5px;">
-                                                <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="progress-box progress-2">
-                                            <h4 class="por-title">Workshop Visitors</h4>
-                                            <div class="por-txt">30,000 Users</div>
-                                            <div class="progress mb-2" style="height: 5px;">
-                                                <div class="progress-bar bg-flat-color-3" role="progressbar" style="width: 60%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                        <div class="progress-box progress-2">
-                                            <h4 class="por-title">Targeted  Visitors</h4>
-                                            <div class="por-txt">250,000 Users</div>
-                                            <div class="progress mb-2" style="height: 5px;">
-                                                <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </div> <!-- /.card-body -->
-                                </div>
+        <!-- Form -->
+        <section class="signup" >
+            <div class="container1"> 
+                <div class="col-lg-12" style="padding-top:5%;">
+                    <center>
+                        <h4 style="font-family: 'Open Sans', sans-serif;" class="por-title"> <?php echo $this->session->userdata('nama') ?>
+                        <br>
+                        Reporting on <?php echo date("d F Y") ?>
+                        </h4>
+                    </center>
                 </div>
-            </div>
-         </section>
 
-            
-           
-          </div>
-        </div> 
-      </div>
-      <!-- end slide-item -->
-      
-  
-    </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
+                <div class="signup-content">
+                
+                <!-- Start First Part -->
+                <div class="col-lg-4" >
+                    <div class="card-body">
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title font1"> Last Month Item Sold</h4>
+                            <div class="por-txt"><?php echo $r1; ?> Item Sold</div>
+                        </div><br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title font1"> Last Month Services</h4>
+                            <div class="por-txt"><?php echo $r4; ?> Services</div>
+                        </div><br>
+                    </div> <hr>
+                </div>
+                <div class="col-lg-4" >
+                    <div class="card-body">
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title font1"> This Month Item Sold</h4>
+                            <div class="por-txt"><?php echo $r2; ?> Item Sold</div>
+                        </div><br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title font1"> This Month Services</h4>
+                            <div class="por-txt"><?php echo $r5; ?> Services</div>
+                        </div><br>
+                    </div> <hr>
+                </div>
+                <div class="col-lg-4" >
+                    <div class="card-body">
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title font1"> Total Item Sold</h4>
+                            <div class="por-txt"><?php echo $r3; ?> Item Sold</div>
+                        </div><br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title font1"> Total Services</h4>
+                            <div class="por-txt"><?php echo $r6; ?> Services</div>
+                        </div><br>
+                    </div> <hr>
+                </div>
+             </div> 
+             <!-- End First Part -->
+
+
+            <!-- Start Second Part -->
+            <!--
+            <div class="col-lg-4" >
+                    <div class="card-body" style="margin-top:-20%;">
+                            <h4 class="por-title"> Last Month Item Sold</h4>
+                            <div class="por-txt">100,000 Item Sold</div>
+                        <br>
+                        <div class="progress-box progress-1">
+                            <h4 class="por-title"> Last Month Services</h4>
+                            <div class="por-txt">100,000 Services</div>
+                        </div><br>
+                    </div> <hr>
+                </div>
+                -->
+            <!-- End Second Part -->
+
+        </section>
 </section>
 <!--  Banner End -->
 

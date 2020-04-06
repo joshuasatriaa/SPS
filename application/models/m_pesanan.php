@@ -60,5 +60,68 @@ class m_pesanan extends CI_Model{
 	function remove($id_barang, $id_user){
 		return $this->db->query('DELETE FROM pesanan WHERE id_barang = "'.$id_barang.'" AND id_pembeli = "'.$id_user.'" AND status_pesanan = 0');
 	}
+	
+	function reporting1($where)
+	{
+		//Penjualan bulan lalu
+		return $this->db->query('SELECT * FROM pesanan 
+		JOIN barang ON pesanan.id_barang = barang.id_barang
+		WHERE status_pesanan = 1 
+		AND YEAR(waktu_pesanan) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+		AND MONTH(waktu_pesanan) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+		AND barang.id_penjual = "'.$where.'"');
+	}
+
+	function reporting2($where)
+	{
+		//Penjualan bulan ini
+		return $this->db->query('SELECT * FROM pesanan 
+		JOIN barang ON pesanan.id_barang = barang.id_barang
+		WHERE status_pesanan = 1 
+		AND MONTH(waktu_pesanan) = MONTH(CURRENT_DATE())
+		AND YEAR(waktu_pesanan) = YEAR(CURRENT_DATE())
+		AND barang.id_penjual = "'.$where.'"');
+	}
+
+	function reporting3($where)
+	{
+		//total Penjualan
+		return $this->db->query('SELECT * FROM pesanan 
+		JOIN barang ON pesanan.id_barang = barang.id_barang
+		WHERE status_pesanan = 1
+		AND barang.id_penjual = "'.$where.'"
+		');
+	}
+
+	function reporting4($where)
+	{
+		//servis bulan lalu
+		return $this->db->query('SELECT * FROM booking
+		JOIN service ON booking.id_service = service.id_service
+		WHERE booking.status_booking = 3
+		AND YEAR(waktu_service) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+		AND MONTH(waktu_service) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+		AND service.id_bengkel = "'.$where.'"');
+	}
+
+	function reporting5($where)
+	{
+		//servis bulan ini
+		return $this->db->query('SELECT * FROM booking
+		JOIN service ON booking.id_service = service.id_service
+		WHERE booking.status_booking = 3
+		AND MONTH(waktu_service) = MONTH(CURRENT_DATE())
+		AND YEAR(waktu_service) = YEAR(CURRENT_DATE())
+		AND service.id_bengkel = "'.$where.'"');
+	}
+
+	function reporting6($where)
+	{
+		//Total servis
+		return $this->db->query('SELECT * FROM booking
+		JOIN service ON booking.id_service = service.id_service
+		WHERE booking.status_booking = 3
+		AND service.id_bengkel = "'.$where.'"');
+	}
 }
 ?>

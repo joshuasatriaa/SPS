@@ -31,6 +31,12 @@
   <link rel="shortcut icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
 
+<style>
+    .pro-qty:hover
+    {
+        cursor:pointer;
+    }
+</style>
 </head>
 
 <body>
