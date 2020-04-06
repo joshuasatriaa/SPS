@@ -1494,3 +1494,8 @@ background-color: #c67605;
 {
   font-family: 'Open Sans', sans-serif;
 }
+
+.navbar-fixed-top.scrolled {
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
+}
