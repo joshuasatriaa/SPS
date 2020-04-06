@@ -92,19 +92,32 @@ class m_pesanan extends CI_Model{
 	function reporting4($where)
 	{
 		//servis bulan lalu
-		//return $this->db->query('');
+		return $this->db->query('SELECT * FROM booking
+		JOIN service ON booking.id_service = service.id_service
+		WHERE booking.status_booking = 3
+		AND YEAR(waktu_service) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+		AND MONTH(waktu_service) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+		AND service.id_bengkel = "'.$where.'"');
 	}
 
 	function reporting5($where)
 	{
 		//servis bulan ini
-		//return $this->db->query('');
+		return $this->db->query('SELECT * FROM booking
+		JOIN service ON booking.id_service = service.id_service
+		WHERE booking.status_booking = 3
+		AND MONTH(waktu_service) = MONTH(CURRENT_DATE())
+		AND YEAR(waktu_service) = YEAR(CURRENT_DATE())
+		AND service.id_bengkel = "'.$where.'"');
 	}
 
 	function reporting6($where)
 	{
 		//Total servis
-		//return $this->db->query('');
+		return $this->db->query('SELECT * FROM booking
+		JOIN service ON booking.id_service = service.id_service
+		WHERE booking.status_booking = 3
+		AND service.id_bengkel = "'.$where.'"');
 	}
 }
 ?>
