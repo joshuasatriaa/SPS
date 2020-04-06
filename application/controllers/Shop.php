@@ -16,7 +16,25 @@ class Shop extends CI_Controller {
 
 	public function index()
 	{
-		$data['barang'] = $this->m_barang->tampilkanBarang()->result();
+		if (!isset($_GET['page'])) 
+		{
+			$page = 1;
+		} 
+		else 
+		{
+			$page = $_GET['page'];
+		}
+
+		//pagination
+
+		//define berapa barang per page
+		//harus sama 
+		$data['results_per_page'] = 9;
+		$results_per_page = 9;
+
+		$this_page_first_result = ($page-1)*$results_per_page;
+
+		$data['barang'] = $this->m_barang->tampilkanBarangP($this_page_first_result,$results_per_page)->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
@@ -24,6 +42,9 @@ class Shop extends CI_Controller {
 
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+
+		$data['totalbarang'] = $this->m_barang->tampilkanSemuaBarang()->num_rows();
+
 		$this->load->view('v_shop',$data);
 	}
 

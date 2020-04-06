@@ -121,7 +121,7 @@
 	
 	<section class="section-sm">
 		<div class="container">
-			<?php if($member == NULL){?>
+			<?php if($member == NULL && $this->session->userdata('email') != null){?>
 			<a href="<?php echo base_url().'Shop/membership'?>"><button class="btn btn-dark btn-lg btn-block mb-30">Merchant/Workshop Owner but not a member yet? <br><br>Click to join our membership and get all the exclusive benefits!</button>
 			</a>
 			<?php }else if($this->session->flashdata('message')){ ?>
@@ -139,20 +139,7 @@
 				?> 
 
 				<div class="col-md-9">
-					<div class="category-search-filter">
-						<div class="row">
-							<div class="col-md-6">
-								<strong>Short</strong>
-								<select id="getProduct">
-									<option value="show-all" selected="selected">Most Recent</option>
-									<option value="2">Lowest Price</option>
-									<option value="3">Highest Price</option>
-								</select>
-								
-							</div>
-							
-						</div>
-					</div>
+					
 	
 					<div class="product-grid-list">
 						<div class="row mt-30 filter_data">
@@ -186,7 +173,7 @@
 																<a href="#"><i class="fa fa-shopping-basket"></i><?php echo $list->stok_barang ?> left !</a>
 															</li>
 														</ul>
-														<p class="card-text">Rp. <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p>
+														<p class="card-text">Rp <?php echo number_format($list->harga_barang, 0, ",", "."); ?></p>
 													</div>
 												</div>
 											</div>
@@ -203,21 +190,52 @@
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
+							<!--
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span>
 									<span class="sr-only">Previous</span>
 								</a>
 							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							-->
+							<?php
+								
+								//define berapa page
+								$number_of_pages = ceil($totalbarang/$results_per_page);
+
+								//sekarang page berapa
+								// determine which page number visitor is currently on
+								if (!isset($_GET['page'])) 
+								{
+									$page = 1;
+								} 
+								else 
+								{
+									$page = $_GET['page'];
+								}
+
+								// determine the sql LIMIT starting number for the results on the displaying page
+								$this_page_first_result = ($page-1)*$results_per_page;
+							?>
+							<?php
+							// angka pagination
+							for ($page=1;$page<=$number_of_pages;$page++) 
+							{
+								//echo '<a href="index.php?page=' . $page . '">' . $page . '</a> ';
+								echo '<li class="page-item"><a class="page-link" href="'. base_url().'Shop?page='.$page.'">'.$page.'</a></li>';
+							}
+							?>
+							<!--
+								<li class="page-item active"><a class="page-link" href="#">1</a></li>
+							-->
+							<!--
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 									<span class="sr-only">Next</span>
 								</a>
 							</li>
+							-->
 						</ul>
 					</nav>
 				</div>

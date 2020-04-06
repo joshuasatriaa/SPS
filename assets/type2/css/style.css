@@ -1319,12 +1319,12 @@ ul.pagination .active a {
 }
 
 .product-details .content .nav .nav-item .nav-link:hover {
-  background: #5672f9;
+  background: #e1001a;
   color: #fff;
 }
 
 .product-details .content .nav .nav-item .nav-link.active {
-  background: #5672f9;
+  background: #e1001a;
 }
 
 .product-details .content .tab-content {

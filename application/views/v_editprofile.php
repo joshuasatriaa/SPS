@@ -90,7 +90,7 @@
 
                                 <div class="form-group">
                                   <p>Gender<p>
-                                  <select data-placeholder="Your Gender" class="standardSelect" tabindex="1"name="user_gender" id="gender">
+                                  <select data-placeholder="Your Gender" class="standardSelect form-control" tabindex="1"name="user_gender" id="gender">
                                     <option value="1" <?php echo ($list->jenis_kelamin == 1 ? "selected" : "") ?>>Laki - Laki</option>
                                     <option value="2" <?php echo ($list->jenis_kelamin == 2 ? "selected" : "") ?>>Perempuan</option>
                                   </select>
@@ -122,7 +122,7 @@
                                 </div>
                                 
                                 <div class="form-group form-button">
-                                  <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Submit </button>
+                                  <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Confirm Edit </button>
                                 </div>
                               
                             </form>
@@ -146,11 +146,7 @@
       
   
     </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
+    
 </section>
 <!--  Banner End -->
 
