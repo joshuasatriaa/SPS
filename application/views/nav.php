@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-expand-lg main-nav py-lg-3 position-fixed w-100" id="main-nav">
 		<div class="container">
 			<a class="navbar-brand" href="<?php echo base_url()?>Home">
-				<img src="<?php echo base_url()?>assets/type1/images/logo.png" width="300px" class="img-fluid">
+				<img src="<?php echo base_url()?>assets/type1/images/Logo67.png" width="300px" class="img-fluid">
 			</a>
 
 			<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navigation"

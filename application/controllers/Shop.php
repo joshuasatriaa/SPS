@@ -117,7 +117,7 @@ class Shop extends CI_Controller {
 		}
 		else{
 
-			$count = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows()+1;
+			$count = $this->m_pesanan->tampilkanPesanan()->num_rows()+1;
 			$id_pesanan = "CART-".$count;
 	
 			$data = [

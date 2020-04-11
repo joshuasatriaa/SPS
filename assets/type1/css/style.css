@@ -706,7 +706,7 @@ ul.dropdown-menu > li > a:hover,
 }
 
 .cta {
-  background: url("../images/banner/cta-bg.jpg") fixed 50% 50% no-repeat;
+  background: url("../images/banner/garage1.jpeg") fixed 50% 50% no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -1494,6 +1494,12 @@ background-color: #c67605;
 .font1
 {
   font-family: 'Open Sans', sans-serif;
+}
+
+.font2
+{
+  font-family: 'Baloo Bhai 2', cursive;
+  font-family: 'Dosis', sans-serif;
 }
 
 /*WARNA NAVBAR ON SCROLL*/

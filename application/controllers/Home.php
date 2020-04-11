@@ -41,8 +41,11 @@ class Home extends CI_Controller {
 			$this->load->view('v_home', $data);
 		}
 		
-		
+	}
 
+	public function comingSoon()
+	{
+		$this->load->view('v_comingsoon1');
 	}
 
 	public function get_image(){
