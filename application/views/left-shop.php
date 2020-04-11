@@ -33,8 +33,8 @@
 
 					
 
-					<div class="widget1 price-range w-100">
-						<h4 class="widget-header">Price Range</h4>
+					<div class="widget1 price-range w-100" style="margin-top:30px;">
+						<h4 class="widget-header" style="font-family: 'Open Sans', sans-serif;">Price Range</h4>
 						<div class="block">
 						<input type="hidden" id="minimum_price" value="0" />
 						<input type="hidden" id="maximum_price" value="100000000"/>

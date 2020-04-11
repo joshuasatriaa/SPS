@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BengCool</title>
+  <title>BengCool - Shop</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,6 +52,12 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
+  	<style>
+		a.hoverstyle:hover
+		{
+			color: #e10019;
+		}
+	</style>
 </head>
 
 <body>
@@ -69,56 +75,34 @@
 	include 'modal-login.php';
 ?>
 
-
-
 <!--  Banner start -->
-<section class="">
-  
     <div class="">
-      <!-- start slide-item -->
-      <div class="">
         <div class="searchbar" style="background-image: url('<?php echo base_url() ?>assets/type1/images/Vshop.jpg')">
-          <div class="container">
-			
-		 	 <section class="page-search">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<!-- Advance Search -->
-							<div class="advance-search">
-								<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
-									<div class="form-row" style="padding-left:25%;">
-										<div class="form-group col-md-6">
-											<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
-										</div>
-											
-										<button type="submit" class="btn btn-primary">Search</button>
-									</div>
-									
-								</form>
-							</div>
+          	<div class="container">
+		 	 	<section class="page-search">
+					<div class="col-md-12">
+						
+						<!-- Advance Search -->
+						<div class="advance-search">
+							<form action="<?php echo base_url(). 'Shop/searchBarang'?>" method="post">
+								<div class="form-row" style="padding-left:25%;">
+									<div class="form-group col-md-6">
+										<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for" name="nama_barang">
+									</div>						
+									<button type="submit" class="btn btn-primary" style="background-color:#e10019;">Search</button>
+								</div>	
+							</form>
 						</div>
-					</div>
-				</div>
-			</section>     
 
-          </div>
+					</div>
+				</section>     
+          	</div>
         </div> 
-      </div>
-      <!-- end slide-item -->
-      
-  
     </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  
-</section>
-<!--  Banner End -->
+<!-- Banner End -->
+      
 <div class="body">
 
-	
 	<section class="section-sm">
 		<div class="container">
 			<?php if($member == NULL && $this->session->userdata('email') != null){?>
@@ -154,14 +138,13 @@
 														<!-- <div class="price">$200</div> -->
 														<a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>">
 														<?php
-															
 															echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar_barang).'" alt="Card image cap" />';
-															
 															?>
 														</a>
 													</div>
-													<div class="card-body">
-														<h4 class="card-title"><a href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4>
+													<div class="card-body" style="position:absolute;bottom:0px;">
+														<hr>
+														<h4 class="card-title font1"><a class="hoverstyle" href="<?php echo base_url() ?>Shop/ShopDetail/<?php echo $list->id_barang ?>"><?php echo $list->nama_barang ?></a></h4>
 														<ul class="list-inline product-meta">
 															<li class="list-inline-item">
 																<a href="single.html"><i class="fa fa-male"></i><?php echo (substr($list->id_penjual, 0, 4) == "USER") ? $list->nama_pengguna : $list->nama_bengkel ?></a>
@@ -242,83 +225,9 @@
 		
 </section>
 
-<!--Footer start -->
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
-					
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-						class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-					</li>
-					<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-				</li>
-				<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-				class="ti-dribbble mr-2 "></i></a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-		<div class="widget">
-			<h4 class="mb-3">Contact Info</h4>
-			
-			<ul class="list-unstyled mb-0 footer-contact">
-				<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-				<li><i class="ti-email"></i>mail@support.com</li>
-				<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-			</ul>
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-		<div class="widget">
-			<h4 class="mb-3">Opening Hours</h4>
-			
-			<div class="info mb-4">
-				<p class="mb-0">Monday - Thursday</p>
-				<h5>10:00 AM - 11:00 PM</h5>
-			</div>
-			<div class="info">
-				<p class="mb-0">Friday - Sunday</p>
-				<h5>12:00 AM - 03:00 AM</h5>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-</div>
-</footer>
-
-<section class="footer-btm py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-					class="text-white">themefisher.com</a></p>
-					
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-</div>
-<!-- Footer  End -->
+<?php
+	include('footer.php');
+?>
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>

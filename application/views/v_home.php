@@ -192,52 +192,68 @@
 </section>
 <!--  Intro End -->
 
-<!-- About start -->
-<section class="section about">
+
+<!--App start -->
+<section class="section download">
 	<div class="container">
-		<div class="row  justify-content-center mb-5">
-			<div class="col-lg-8 text-center">
-				<span class="text-primary font-extra font-md">About Bengcool</span>
-				<h2 class="mt-3 mb-4 font2">We are a community website with marketplace-based system </h2>
-			</div>
-		</div>
+		<div class="row ">
+			<div class="col-lg-10 col-md-12">
+				<div class="row align-items-center">
+					<div class="col-lg-6 col-md-6">
+						<!-- <img src="<?php echo base_url() ?>assets/type1/images/about/2-mbl.png" alt="" class="img-fluid"> -->
 
-		<div class="row">
-			<div class="col-lg-3 col-md-3 mb-5 mb-lg-0" data-aos="fade-up">
-				<img src="<?php echo base_url() ?>assets/type1/images/about/andy.jpg" alt="" class="img-fluid">
-				<div class="mt-3">
-					<h3 class="font2">Andy Fransisko</h3>
-					<p>Project Manager</p>
-				</div>
-			</div>
 
-			<div class="col-lg-3 col-md-3 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
-				<img src="<?php echo base_url() ?>assets/type1/images/about/calvin.jpg" alt="" class="img-fluid">
-				<div class="mt-3">
-					<h3 class="font2">Calvin Fernando</h3>
-					<p>Web Developer</p>
-				</div>
-			</div>
+						<!-- for change phone model follow this link: https://marvelapp.github.io/devices.css/ -->
+						<div class="marvel-device iphone-x">
+							<div class="notch">
+								<div class="camera"></div>
+								<div class="speaker"></div>
+							</div>
+							<div class="top-bar"></div>
+							<div class="sleep"></div>
+							<div class="bottom-bar"></div>
+							<div class="volume"></div>
+							<div class="overflow">
+								<div class="shadow shadow--tr"></div>
+								<div class="shadow shadow--tl"></div>
+								<div class="shadow shadow--br"></div>
+								<div class="shadow shadow--bl"></div>
+							</div>
+							<div class="inner-shadow"></div>
+							<div class="screen">
+								<img src="<?php echo base_url() ?>assets/type1/images/HP.png" alt="" class="img-fluid">
+							</div>
+						</div>
+					</div>
 
-			<div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="600">
-				<img src="<?php echo base_url() ?>assets/type1/images/about/joshua.jpg" alt="" class="img-fluid">
-				<div class="mt-3">
-					<h3 class="font2">Joshua Satria</h3>
-					<p>System Analyst</p>
-				</div>
-			</div>
+					<div class="col-lg-6 col-md-6">
+						<span class="text-primary font-md font-extra">Make it easy</span>
+						<h2 class="mt-3 font2">the Bengcool Mobile App</h2>
+						<p class="mt-4">Under Development right now! </p>
 
-			<div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="900">
-				<img src="<?php echo base_url() ?>assets/type1/images/about/kelvin.jpg" alt="" class="img-fluid">
-				<div class="mt-3">
-					<h3 class="font2">Kelvin Cahyadi</h3>
-					<p>Business Analyst</p>
+						<div class="mt-5">
+							<a href="<?php echo base_url().'Home/comingSoon'?>" target="_blank" class="btn-download active mb-2">
+								<i class="ti ti-android"></i>
+								<div class="btn-text">
+									<span>Get it later on</span>
+									Google Play
+								</div>
+							</a>
+							<a href="<?php echo base_url().'Home/comingSoon'?>" target="_blank" class="btn-download">
+								<i class="ti ti-apple"></i>
+								<div class="btn-text">
+									<span>Get it later on</span>
+									app store
+								</div>
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<!-- About  End -->
+<!-- App  End -->
 
 <!-- CTA start -->
 <section class="section cta">
@@ -369,67 +385,53 @@
 -->
 <!-- DISHES  End -->
 
-<!--App start -->
-<section class="section download">
+<!-- About start -->
+<section class="section about">
 	<div class="container">
-		<div class="row ">
-			<div class="col-lg-10 col-md-12">
-				<div class="row align-items-center">
-					<div class="col-lg-6 col-md-6">
-						<!-- <img src="<?php echo base_url() ?>assets/type1/images/about/2-mbl.png" alt="" class="img-fluid"> -->
+		<div class="row  justify-content-center mb-5">
+			<div class="col-lg-8 text-center">
+				<span class="text-primary font-extra font-md">About Bengcool</span>
+				<h2 class="mt-3 mb-4 font2">We are a community website with marketplace-based system </h2>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-lg-3 col-md-3 mb-5 mb-lg-0" data-aos="fade-up">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/andy.jpg" alt="" class="img-fluid">
+				<div class="mt-3">
+					<h3 class="font2">Andy Fransisko</h3>
+					<p>Project Manager</p>
+				</div>
+			</div>
 
-						<!-- for change phone model follow this link: https://marvelapp.github.io/devices.css/ -->
-						<div class="marvel-device iphone-x">
-							<div class="notch">
-								<div class="camera"></div>
-								<div class="speaker"></div>
-							</div>
-							<div class="top-bar"></div>
-							<div class="sleep"></div>
-							<div class="bottom-bar"></div>
-							<div class="volume"></div>
-							<div class="overflow">
-								<div class="shadow shadow--tr"></div>
-								<div class="shadow shadow--tl"></div>
-								<div class="shadow shadow--br"></div>
-								<div class="shadow shadow--bl"></div>
-							</div>
-							<div class="inner-shadow"></div>
-							<div class="screen">
-								<img src="<?php echo base_url() ?>assets/type1/images/HP.png" alt="" class="img-fluid">
-							</div>
-						</div>
-					</div>
+			<div class="col-lg-3 col-md-3 mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/calvin.jpg" alt="" class="img-fluid">
+				<div class="mt-3">
+					<h3 class="font2">Calvin Fernando</h3>
+					<p>Web Developer</p>
+				</div>
+			</div>
 
-					<div class="col-lg-6 col-md-6">
-						<span class="text-primary font-md font-extra">Make it easy</span>
-						<h2 class="mt-3 font2">the Bengcool Mobile App</h2>
-						<p class="mt-4">Under Development right now! </p>
+			<div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="600">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/joshua.jpg" alt="" class="img-fluid">
+				<div class="mt-3">
+					<h3 class="font2">Joshua Satria</h3>
+					<p>System Analyst</p>
+				</div>
+			</div>
 
-						<div class="mt-5">
-							<a href="<?php echo base_url().'Home/comingSoon'?>" target="_blank" class="btn-download active mb-2">
-								<i class="ti ti-android"></i>
-								<div class="btn-text">
-									<span>Get it later on</span>
-									Google Play
-								</div>
-							</a>
-							<a href="<?php echo base_url().'Home/comingSoon'?>" target="_blank" class="btn-download">
-								<i class="ti ti-apple"></i>
-								<div class="btn-text">
-									<span>Get it later on</span>
-									app store
-								</div>
-							</a>
-						</div>
-					</div>
+			<div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="900">
+				<img src="<?php echo base_url() ?>assets/type1/images/about/kelvin.jpg" alt="" class="img-fluid">
+				<div class="mt-3">
+					<h3 class="font2">Kelvin Cahyadi</h3>
+					<p>Business Analyst</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<!-- App  End -->
+<!-- About  End -->
+
 
 <?php
 	include('footer.php');
