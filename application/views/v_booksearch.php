@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BengCool</title>
+  <title>BengCool - Book Services</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -67,44 +67,32 @@
 ?>
 
 <!--  Banner start -->
-<section class="slider-hero hero-slider  hero-style-1  ">
-      <!-- start slide-item -->
-      <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vbooking.jpeg">
-          <!-- <div class="overlay"></div> -->
-          <div class="container">
-
-			<section class="page-search">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-12">
-								<!-- Advance Search -->
-								<div class="advance-search">
-									<form action="<?php echo base_url(). 'Booking/searchBengkel'?>" method="post">
-										<div class="form-row" style="padding-left:25%;">
-											<div class="form-group col-md-6">
-												<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="BengCool Partner" name="nama_bengkel">
-											</div>
-												
-											<button type="submit" class="btn btn-primary">Search</button>
-										</div>
-										
-									</form>
-								</div>
-							</div>
+<div class="">
+        <div class="searchbar" style="background-image: url('<?php echo base_url() ?>assets/type1/images/Vshop.jpg')">
+          	<div class="container">
+		 	 	<section class="page-search">
+					<div class="col-md-12">
+						
+						<!-- Advance Search -->
+						<div class="advance-search">
+							<form action="<?php echo base_url(). 'Booking/searchBengkel'?>" method="post">
+								<div class="form-row" style="padding-left:25%;">
+									<div class="form-group col-md-6">
+										<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="Search for BengCool Partners" name="nama_barang">
+									</div>						
+									<button type="submit" class="btn btn-primary" style="background-color:#e10019;">Search</button>
+								</div>	
+							</form>
 						</div>
+
 					</div>
-				</section>   
-           
-          </div>
+				</section>     
+          	</div>
         </div> 
-      </div>
-      <!-- end slide-item -->
-  
-</section>
-<!--  Banner End -->
+    </div>
+<!-- Banner End -->
 
-
+<div class="body">
 <section class="section-sm">
 	<div class="container">
 		<div class="row">
@@ -120,20 +108,7 @@
 				include('left-booking.php');
 			?>
 			<div class="col-md-9">
-				<div class="category-search-filter">
-					<div class="row">
-						<div class="col-md-6">
-							<strong>Short</strong>
-							<select>
-								<option>Most Recent</option>
-								<option value="1">Most Popular</option>
-								<option value="2">Lowest Price</option>
-								<option value="4">Highest Price</option>
-							</select>
-						</div>
-						
-					</div>
-				</div>
+				
 				<div class="product-grid-list">
 					<div class="row mt-30">
 						<?php
@@ -149,7 +124,7 @@
 									</div>
 									<div class="card-body">
 										<a href="<?php echo base_url() ?>Booking/ProfileBengkel/<?php echo $list->id_bengkel ?>">
-											<h4 class="card-title">
+											<h4 class="card-title font2">
 												<?php echo $list->nama_bengkel ?>
 											</h4>
 										</a>
@@ -189,107 +164,18 @@
 							?>
 						</div>
 						
-				<div class="pagination justify-content-center">
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-									<span class="sr-only">Next</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
+				
 			</div>
 		</div>
 	</div>
 </section>
 
 <!--Footer start -->
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
 
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-									class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-									class="ti-dribbble mr-2 "></i></a></li>
-					</ul>
-				</div>
-			</div>
+<?php
+	include('footer.php');
+?>
 
-			<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Contact Info</h4>
-
-					<ul class="list-unstyled mb-0 footer-contact">
-						<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-						<li><i class="ti-email"></i>mail@support.com</li>
-						<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Opening Hours</h4>
-
-					<div class="info mb-4">
-						<p class="mb-0">Monday - Thursday</p>
-						<h5>10:00 AM - 11:00 PM</h5>
-					</div>
-					<div class="info">
-						<p class="mb-0">Friday - Sunday</p>
-						<h5>12:00 AM - 03:00 AM</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		
-	</div>
-</footer>
-
-<section class="footer-btm py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-							class="text-white">themefisher.com</a></p>
-
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 <!-- Footer  End -->
 
 <!-- jQuery -->

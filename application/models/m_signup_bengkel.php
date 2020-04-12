@@ -10,10 +10,12 @@
 			return $query;	
 		}
 
-		function tampilkanData1()
+		function tampilkanData1($this_page_first_result,$results_per_page)
 		{
 			return $this->db->query('SELECT * FROM bengkel JOIN lokasi_bengkel ON 
-			bengkel.id_bengkel = lokasi_bengkel.id_bengkel');
+			bengkel.id_bengkel = lokasi_bengkel.id_bengkel
+			LIMIT ' . $this_page_first_result . ',' .  $results_per_page . '
+			');
 		}
 
 		function tampilkanDataLokasi()

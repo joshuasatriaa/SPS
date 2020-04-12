@@ -126,7 +126,7 @@
 									</div>
 									<div class="card-body">
 										<a href="<?php echo base_url() ?>Booking/ProfileBengkel/<?php echo $list->id_bengkel ?>">
-											<h4 class="card-title">
+											<h4 class="card-title font2">
 												<?php echo $list->nama_bengkel ?>
 											</h4>
 										</a>
@@ -256,27 +256,55 @@
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
+							<!--
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Previous">
 									<span aria-hidden="true">&laquo;</span>
 									<span class="sr-only">Previous</span>
 								</a>
 							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
+							-->
+							<?php
+								
+								//define berapa page
+								$number_of_pages = ceil($totalbarang/$results_per_page);
+
+								//sekarang page berapa
+								// determine which page number visitor is currently on
+								if (!isset($_GET['page'])) 
+								{
+									$page = 1;
+								} 
+								else 
+								{
+									$page = $_GET['page'];
+								}
+
+								// determine the sql LIMIT starting number for the results on the displaying page
+								$this_page_first_result = ($page-1)*$results_per_page;
+							?>
+							<?php
+							// angka pagination
+							for ($page=1;$page<=$number_of_pages;$page++) 
+							{
+								//echo '<a href="index.php?page=' . $page . '">' . $page . '</a> ';
+								echo '<li class="page-item"><a class="page-link" href="'. base_url().'Booking?page='.$page.'">'.$page.'</a></li>';
+							}
+							?>
+							<!--
+								<li class="page-item active"><a class="page-link" href="#">1</a></li>
+							-->
+							<!--
 							<li class="page-item">
 								<a class="page-link" href="#" aria-label="Next">
 									<span aria-hidden="true">&raquo;</span>
 									<span class="sr-only">Next</span>
 								</a>
 							</li>
+							-->
 						</ul>
 					</nav>
 				</div>
-			</div>
-		</div>
-	</div>
 </section>
 
 <!--Footer start -->

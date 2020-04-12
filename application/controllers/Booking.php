@@ -13,7 +13,27 @@ class Booking extends CI_Controller {
 	}
 	public function index()
 	{
-		$data['bengkels'] = $this->m_signup_bengkel->tampilkanData1()->result();
+		if (!isset($_GET['page'])) 
+		{
+			$page = 1;
+		} 
+		else 
+		{
+			$page = $_GET['page'];
+		}
+
+		//pagination
+
+		//define berapa barang per page
+		//harus sama 
+		$data['results_per_page'] = 9;
+		$results_per_page = 9;
+
+		$this_page_first_result = ($page-1)*$results_per_page;
+
+		$data['bengkels'] = $this->m_signup_bengkel->tampilkanData1($this_page_first_result,$results_per_page)->result();
+		$data['totalbarang'] = $this->m_signup_bengkel->tampilkanData()->num_rows();
+
 		$data['jumlah'] = $this->m_signup_bengkel->tampilkanData()->num_rows();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
