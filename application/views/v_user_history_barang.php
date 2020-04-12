@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BengCool</title>
+  <title>BengCool - Items History</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,7 +83,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12" style="margin-bottom:10px;">
-                <h2 style="font-family: 'Open Sans', sans-serif;">History </h2>
+                <h2 style="font-family: 'Open Sans', sans-serif;">Items History </h2>
 			</div>
 		</div>
 		
@@ -202,81 +202,25 @@
 </section>
 
 <!--Footer start -->
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
 
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-									class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-									class="ti-dribbble mr-2 "></i></a></li>
-					</ul>
-				</div>
-			</div>
+<?php
+  include('footer.php');
+?>
 
-			<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Contact Info</h4>
-
-					<ul class="list-unstyled mb-0 footer-contact">
-						<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-						<li><i class="ti-email"></i>mail@support.com</li>
-						<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Opening Hours</h4>
-
-					<div class="info mb-4">
-						<p class="mb-0">Monday - Thursday</p>
-						<h5>10:00 AM - 11:00 PM</h5>
-					</div>
-					<div class="info">
-						<p class="mb-0">Friday - Sunday</p>
-						<h5>12:00 AM - 03:00 AM</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		
-	</div>
-</footer>
-
-<section class="footer-btm py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-							class="text-white">themefisher.com</a></p>
-
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 <!-- Footer  End -->
+
+<!-- Scroll JS -->
+<script>
+window.onscroll = () => {
+	const nav = document.querySelector('#main-nav');
+  	if(window.pageYOffset > 10){
+		nav.classList.add('scroll');  
+		} 
+	else {
+		nav.classList.remove('scroll');
+		}
+	};
+</script>
 
 <!-- jQuery -->
 <script src="<?php echo base_url() ?>assets/type1/plugins/jQuery/jquery.min.js"></script>

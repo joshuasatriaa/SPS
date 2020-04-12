@@ -13,11 +13,14 @@ class Chat extends CI_Controller {
 	function checkChatBarang($idSaya,$idDia)
 	{
 		
-		$data['chat'] = $this->m_pesan->tampilkanPesan($idSaya,$idDia)->result();
+		$data['chat1'] = $this->m_pesan->tampilkanPesan($idSaya,$idDia)->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
-        $data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
         
         $data['idsaya'] = $idSaya;
         $data['iddia'] = $idDia;

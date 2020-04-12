@@ -53,48 +53,55 @@
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
   <style>
-.container1 {
-  border: 2px solid #dedede;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-.darker {
-  border-color: #ccc;
-  background-color: #ddd;
-}
-
-.container1::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.container1 img {
-  float: left;
-  max-width: 60px;
-  width: 100%;
-  margin-right: 20px;
-  border-radius: 50%;
-}
-
-.container1 img.right {
-  float: right;
-  margin-left: 20px;
-  margin-right:0;
-}
-
-.time-right {
-  float: right;
-  color: #aaa;
-}
-
-.time-left {
-  float: left;
-  color: #999;
-}
+    .bubbleWrapper {
+        padding: 10px 100px;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-self: flex-end;
+        color: #fff;
+    }
+    .inlineContainer {
+        display: inline-flex;
+    }
+    .inlineContainer.own {
+        flex-direction: row-reverse;
+    }
+    .inlineIcon {
+        width:20px;
+        object-fit: contain;
+    }
+    .ownBubble {
+        min-width: 60px;
+        max-width: 700px;
+        padding: 14px 18px;
+        margin: 6px 8px;
+        background-color: #5b5377;
+        border-radius: 16px 16px 0 16px;
+        border: 1px solid #443f56;
+    
+    }
+    .otherBubble {
+        min-width: 60px;
+        max-width: 700px;
+        padding: 14px 18px;
+        margin: 6px 8px;
+        background-color: #e1001a;
+        border-radius: 16px 16px 16px 0;
+        border: 1px solid #e1001a;
+    
+    }
+    .own {
+        align-self: flex-end;
+    }
+    .other {
+        align-self: flex-start;
+    }
+    span.own,
+    span.other{
+        font-size: 14px;
+        color: white;
+    }
   </style>
 
 </head>
@@ -122,28 +129,36 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item" >
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg" >
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop.jpg" >
             <div class="container">
 
                 <section class="section-sm">
-	                <div class="container">
-                        <?php foreach($chat1 as $list) {?>
-                            <?php if($list->id_pengirim == $this->session->userdata('id_user')){?>
-                                <div class="container1">
-                                    <span style="color:black"><?php echo "Me" ?></span>
-                                    
-                                    <p><?php echo $list->pesan ?></p>
-                                    <span class="time-right"><?php echo $list->waktu_kirim ?></span>
-                                </div>
-                            <?php }else{ ?>
-                                <div class="container1 darker">
-                                    <span style="color:black" class="float-right"><?php echo $list->nama_penerima ?></span><br>
-                                    
-                                    <p class="float-right"><?php echo $list->pesan ?></p>
-                                    <span class="time-left"><?php echo $list->waktu_kirim ?></span>
-                                </div>
+	                <div class="container" >
+                        <div style="height:420px;width:80%;margin-left:10%;margin-right:10%;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                            <?php foreach($chat1 as $list) {?>
+                                <?php if($list->id_pengirim == $this->session->userdata('id_user')){?>
+                                    <div class="bubbleWrapper font2">
+                                        <div class="inlineContainer">
+                                            <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                                            <div class="otherBubble other">
+                                                Me<br>
+                                                <?php echo $list->pesan ?>
+                                            </div>
+                                        </div><span class="other"><?php echo date("d F Y H:i",strtotime($list->waktu_kirim)); ?></span>
+                                    </div>
+                                <?php }else{ ?>
+                                    <div class="bubbleWrapper font2">
+                                        <div class="inlineContainer own">
+                                            <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                                            <div class="otherBubble other">
+                                                <?php echo $list->nama_penerima ?><br>
+                                                <?php echo $list->pesan ?>
+                                            </div>
+                                        </div><span class="own"><?php echo date("d F Y H:i",strtotime($list->waktu_kirim)); ?></span>
+                                    </div>
+                                <?php } ?>
                             <?php } ?>
-                        <?php } ?>
+                        </div>
 
                             <!-- Chat -->
                             <section class="page-search">
@@ -158,7 +173,7 @@
                                                             <input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="Type a Message" name="input_pesan">
                                                         </div>
                                                             
-                                                        <button type="submit" class="btn btn-primary">Send</button>
+                                                        <button type="submit" class="btn btn-primary" style="background-color: #e1001a;">Send</button>
                                                     </div>
                                                     
                                                 </form>
@@ -291,6 +306,20 @@ $(document).ready(function(){
         	$(".print-error-msg").css('display','none');
 	    });
 });
+</script>
+
+
+<!-- Scroll JS -->
+<script>
+window.onscroll = () => {
+	const nav = document.querySelector('#main-nav');
+  	if(window.pageYOffset > 10){
+		nav.classList.add('scroll');  
+		} 
+	else {
+		nav.classList.remove('scroll');
+		}
+	};
 </script>
 
 </body>

@@ -107,9 +107,9 @@
 		<div class="row">
 			<div class="col-md-8 mx-auto">
 				<div class="text-center p-5 shadow rounded">
-					<h2 class="mb-3">Membership</h2>
-					<h4 class="mb-3">To get access to all the feature we provide for customer members </h4>
-					<h4>Why go member?</h4>
+					<h2 class="mb-3 font2">Membership</h2>
+					<h4 class="mb-3 font2">To get access to all the feature we provide for customer members </h4>
+					<h4 class="font2">Why go member?</h4>
 					<ul class="list-unstyled mb-4">
 						<li>Full Ads Support</li>
 						<li>Free and easy to use</li>
@@ -117,7 +117,7 @@
 						<li>Analytics</li>
 						<li>Subscription-based payment</li>
 					</ul>
-					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main">Become Member</a>			
+					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main"  style="background-color:#e10019;border-radius:30px;">Become Member</a>			
 				</div>
 			</div>
 		</div>
@@ -142,81 +142,11 @@
 
 <?php }?>
 <!--Footer start -->
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
-					
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-						class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-					</li>
-					<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-				</li>
-				<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-				class="ti-dribbble mr-2 "></i></a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-		<div class="widget">
-			<h4 class="mb-3">Contact Info</h4>
-			
-			<ul class="list-unstyled mb-0 footer-contact">
-				<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-				<li><i class="ti-email"></i>mail@support.com</li>
-				<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-			</ul>
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-		<div class="widget">
-			<h4 class="mb-3">Opening Hours</h4>
-			
-			<div class="info mb-4">
-				<p class="mb-0">Monday - Thursday</p>
-				<h5>10:00 AM - 11:00 PM</h5>
-			</div>
-			<div class="info">
-				<p class="mb-0">Friday - Sunday</p>
-				<h5>12:00 AM - 03:00 AM</h5>
-			</div>
-		</div>
-	</div>
-</div>
 
+<?php
+	include('footer.php');
+?>
 
-</div>
-</footer>
-
-<section class="footer-btm py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-					class="text-white">themefisher.com</a></p>
-					
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-</div>
 <!-- Footer  End -->
 
 <!-- jQuery -->

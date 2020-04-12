@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BengCool</title>
+  <title>BengCool - Shop</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -140,7 +140,7 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item" style="height:120px">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg" >
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop.jpg" >
           
            
 
@@ -303,7 +303,7 @@
 															</div>
 															
 															<div class="date">
-																<p><?php echo $list1->waktu_rating ?></p>
+																<p><?php echo date("d F Y H:i",strtotime($list1->waktu_rating)); ?></p>
 															</div>
 															<div class="review-comment">
 																<p>
@@ -345,7 +345,7 @@
 																<textarea name="keterangan" id="review" rows="10" class="form-control" placeholder="Message"></textarea>
 															</div>
 															<div class="col-12">
-																<button type="submit" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Submit</button>
+																<button type="submit" style="background-color: #e1001a;border-radius:30px;" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Submit</button>
 															</div>
 														</form>
 													</div>
@@ -391,15 +391,24 @@
 									
 									<form action="<?php echo base_url(). 'Shop/addCart'; ?>" method="post">
 											<input type="hidden" name="id_barang" value="<?php echo $list->id_barang;?>">
-											Amount : <input type="number" name="jumlah_barang" value="1" min="1" max="<?php echo $list->stok_barang;?>" > 
+											Amount : <input type="number" name="jumlah_barang" style="text-align:center" value="1" min="1" max="<?php echo $list->stok_barang;?>" > 
 											<ul class="list-inline mt-20">
-												<li class="list-inline-item"><a href="<?php echo base_url()?>Chat/checkChatBarang/<?php echo $this->session->userdata('id_user') ?>/<?php echo $list->id_penjual ?>" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3" style="background-color:#e1001a;">Contact</a></li>
+												
+												<?php if($this->session->userdata('email') != null) {?>
+												<!-- COntact -->
+												<li class="list-inline-item">
+													<a href="<?php echo base_url()?>Chat/checkChatBarang/<?php echo $this->session->userdata('id_user') ?>/<?php echo $list->id_penjual ?>" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3" style="background-color:#e1001a;border-radius:20px;">
+														Contact
+													</a>
+												</li>
+												<?php } ?>
+
 												<?php if($this->session->userdata('id_user')){?>
 												<li class="list-inline-item">
-													<a><button type="submit" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3" style="background-color:#e1001a;">Add to Cart</button></a>
+													<a><button type="submit" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3" style="background-color:#e1001a;border-radius:20px;">Add to Cart</button></a>
 												</li>
 												<?php }else{?>
-													<li class="list-inline-item"><a class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3 btn-add-cart text-white" style="background-color:#e1001a;">Add to Cart</a></li>
+													<li class="list-inline-item"><a class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3 btn-add-cart text-white" style="background-color:#e1001a;border-radius:20px;">Add to Cart</a></li>
 												<?php }?>
 											</ul>
 									</form>
@@ -547,6 +556,19 @@
   ga('create', 'UA-46156385-1', 'cssscript.com');
   ga('send', 'pageview');
 
+</script>
+
+<!-- Scroll JS -->
+<script>
+window.onscroll = () => {
+	const nav = document.querySelector('#main-nav');
+  	if(window.pageYOffset > 10){
+		nav.classList.add('scroll');  
+		} 
+	else {
+		nav.classList.remove('scroll');
+		}
+	};
 </script>
 
 <!-- Shop JS End -->

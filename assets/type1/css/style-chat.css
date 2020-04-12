@@ -21,8 +21,8 @@ body {
   transition: all 250ms ease-out;
   border-radius: 50%;
   opacity: 0;
-  background: -moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
-  background: -webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%);
+  background: -moz-linear-gradient(-45deg, #31363d 0, #31363d 25%, #31363d 50%, #31363d 75%, #31363d 100%);
+  background: -webkit-linear-gradient(-45deg, #31363d 0, #31363d 25%, #31363d 50%, #31363d 75%, #31363d 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   z-index: 9999;
@@ -148,11 +148,11 @@ body {
   -webkit-animation: show-chat-odd 0.15s 1 ease-in;
   float: right;
   margin-right: 45px;
-  color: #0AD5C1;
+  color: white;
 }
 .floating-chat .chat .messages li.other:before {
   right: -45px;
-  background-image: url(https://github.com/Thatkookooguy.png);
+  background-image: url(../images/livesupport.png);
 }
 .floating-chat .chat .messages li.other:after {
   border-right: 10px solid transparent;
@@ -164,11 +164,11 @@ body {
   -webkit-animation: show-chat-even 0.15s 1 ease-in;
   float: left;
   margin-left: 45px;
-  color: #0EC879;
+  color: white;
 }
 .floating-chat .chat .messages li.self:before {
   left: -45px;
-  background-image: url(https://github.com/ortichon.png);
+  background-image: url(../images/people.png);
 }
 .floating-chat .chat .messages li.self:after {
   border-left: 10px solid transparent;
