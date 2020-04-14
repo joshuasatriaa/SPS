@@ -1,3 +1,25 @@
+<?php
+require_once(base_url('midtrans-php-master') . '/Midtrans.php');
+
+//Set Your server key
+\Midtrans\Config::$serverKey = "SB-Mid-server-WSw3DC8IrsG8INjSlWvinCcD";
+
+// Uncomment for production environment
+// \Midtrans\Config::$isProduction = true;
+
+\Midtrans\Config::$isSanitized = true;
+\Midtrans\Config::$is3ds = true;
+
+$transaction = array(
+    'transaction_details' => array(
+        'order_id' => "<your order_id>",
+        'gross_amount' => 10000 // no decimal allowed
+        )
+    );
+
+$snapToken = \Midtrans\Snap::getSnapToken($transaction);
+?>
+
 <!DOCTYPE html>
 
 <head>
@@ -23,7 +45,6 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
   
-
   <!-- Main Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
 
@@ -52,6 +73,10 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
+
+  <script type="text/javascript"
+            src="https://app.sandbox.midtrans.com/snap/snap.js"
+            data-client-key="SB-Mid-client-tRXlSX7W2n9rJF1m"></script> 
 </head>
 
 <body>
@@ -107,16 +132,17 @@
 		<div class="row">
 			<div class="col-md-8 mx-auto">
 				<div class="text-center p-5 shadow rounded">
-					<h2 class="mb-3">Pay Membership</h2>
+					<h2 class="mb-3">We use DOKU to manage our payment gateway</h2>
 					<h4 class="mb-3">To get access to all the feature we provide for customer members </h4>
-					<h4>Why go member?</h4>
-					<ul class="list-unstyled mb-4">
-						<li>Full Ads Support</li>
-						<li>Free and easy to use</li>
-						<li>Pay only when needed</li>
-						<li>Analytics</li>
-						<li>Subscription-based payment</li>
-					</ul>
+					<h4>Please </h4>
+					<form action="charge.php" method="POST" id="payment-form">
+						<div doku-div='form-payment'>
+							<input id="doku-token" name="doku-token" type="hidden" />
+							<input id=" doku-pairing-code" name="doku-pairing-code" type="hidden" />
+						</div>
+					</form>
+					<button id="pay-button">Pay!</button>
+						
 					<a href="<?php echo base_url(). 'Shop/goMember'?>" class="btn btn-main">Pay Membership</a>			
 				</div>
 			</div>
@@ -326,6 +352,27 @@ jQuery(function()
 	});
 
 
+</script>
+<script type="text/javascript">
+$(function() {
+ var data = new Object();
+ data.req_merchant_code = '1';
+ data.req_chain_merchant = 'NA';
+ data.req_payment_channel = '04';
+ data.req_transaction_id = '<?php echo $invoice ?>';
+ data.req_currency = '<?php echo $currency ?>';
+ data.req_amount = '<?php echo $amount ?>';
+ data.req_words = '<?php echo $words ?>';
+ data.req_form_type = 'full';
+getForm(data);
+});
+</script>
+
+<script type="text/javascript">
+						var payButton = document.getElementById('pay-button');
+						payButton.addEventListener('click', function () {
+							snap.pay('<?php echo $snap_Token; ?>'); // store your snap token here
+						});
 </script>
 </html>
 

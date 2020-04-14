@@ -12,6 +12,7 @@ class Shop extends CI_Controller {
 		$this->load->model('m_pengguna');
 		$this->load->model('m_member');
 		$this->load->model('m_rating_barang');
+		$this->load->model('m_signup_pengguna');
 	}
 
 	public function index()
@@ -154,7 +155,7 @@ class Shop extends CI_Controller {
 		$id = $this->input->post('id_barang');
 		$jumlah = $this->input->post('jumlah_barang');
 		
-		$this->m_pesanan->gantiJumlah($id,$jumlah);
+		$this->m_pesanan->gantiJumlah($this->session->userdata('id_user'),$id,$jumlah);
 
 	}
 	function removeFromCart($id){
@@ -216,6 +217,12 @@ class Shop extends CI_Controller {
 	}
 
 	function payMembership(){
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_paymembership');
 	}
 
@@ -300,6 +307,30 @@ class Shop extends CI_Controller {
 		}
 		$encode_data = json_encode($return_arr);
 		echo $encode_data;
+	}
+
+
+	function process_checkout(){
+
+		$data['cart'] = $this->m_pesanan->showCart($this->session->userdata('id_user'))->result();
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+		$data['profil'] = $this->m_signup_pengguna->tampilkanRecordProfile($this->session->userdata('id_user'))->result();
+		$this->load->view('v_checkout',$data);
+	}
+
+	function paidCart(){
+		$id_cart = $this->input->post("id_pesanan");
+
+		$this->m_pesanan->gantiStatusPesanan($this->session->userdata('id_user'), $id_cart);
+		$this->session->set_flashdata(
+			'message' , "You've just checkout! Feel free to look for more item!"
+		);
+		redirect('Shop/cart');
 	}
 
 }

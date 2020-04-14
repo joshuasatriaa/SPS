@@ -52,6 +52,7 @@
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
+  
 </head>
 
 <body>
@@ -117,7 +118,8 @@
 						<li>Analytics</li>
 						<li>Subscription-based payment</li>
 					</ul>
-					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main"  style="background-color:#e10019;border-radius:30px;">Become Member</a>			
+					<a href="<?php echo base_url(). 'Shop/payMembership'?>" class="btn btn-main"  style="background-color:#e10019;border-radius:30px;">Become Member</a>			
+					<button id="pay-button">Pay!</button>		
 				</div>
 			</div>
 		</div>
@@ -132,7 +134,8 @@
 					<h2 class="mb-3">Renew Membership</h2>
 					<h4 class="mb-3">We have detected that you had been our member before. <br> Your latest membership ends in <?php echo date("d F Y", strtotime($checkmember['tanggal_selesai']))?></h4>
 					<h4>Renew your membership?</h4>
-					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main">Become Member</a>			
+					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main">Become Member</a>	
+					
 				</div>
 			</div>
 		</div>
@@ -188,7 +191,9 @@
 <script src="<?php echo base_url() ?>assets/type2/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
-
+<script type="text/javascript"
+            src="https://app.sandbox.midtrans.com/snap/snap.js"
+            data-client-key="SB-Mid-client-tRXlSX7W2n9rJF1m"></script> 
 <!-- Shop JS End -->
 <!-- <script>
 jQuery(function()

@@ -57,6 +57,13 @@ class m_pesanan extends CI_Model{
 		WHERE id_pembeli = "'.$id_user.'" AND id_barang="'.$id_barang.'" AND status_pesanan = 0');
 	}
 
+	function gantiStatusPesanan($id_user,$id_pesanan)
+	{
+		return $this->db->query('UPDATE pesanan
+		SET status_pesanan = 1
+		WHERE id_pembeli = "'.$id_user.'" AND id_pesanan="'.$id_pesanan.'" AND status_pesanan = 0');
+	}
+
 	function searchBarangCart($id_user, $id_barang){
 		return $this->db->query('SELECT * FROM pesanan
 		WHERE id_pembeli = "'.$id_user.'" AND id_barang = "'.$id_barang.'" AND status_pesanan = 0');
