@@ -95,6 +95,21 @@ class Booking extends CI_Controller {
 		$this->load->view('v_cek_booking',$data);
 	}
 
+	function HistoryBooking()
+	{
+		$data['databooking'] = $this->m_booking->tampilkan_bookingku3($this->session->userdata('id_user'))->result();
+		
+		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+			
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+			
+		$this->load->view('v_history_booking',$data);
+	}
+
 	function ConfirmBooking($id)
 	{
 		$this->m_booking->confirm($id);

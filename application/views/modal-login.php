@@ -13,13 +13,19 @@
             <button class="form-control">Reporting</button><br>
           </a>
         <?php } ?>
-        <a href="<?php echo base_url() ?>Edit_profile">        
-          <button class="form-control">Edit Profile</button><br>
-        </a>
-        <a href="<?php echo base_url() ?>Login/changepassword">        
+        <?php if($this->session->userdata('tipe_user') == $bengkel){?>
+          <a href="<?php echo base_url() ?>Edit_profile/Bengkel">
+            <button class="form-control">Edit Profile</button><br>
+          </a>
+        <?php }else{ ?>
+          <a href="<?php echo base_url() ?>Edit_profile">
+            <button class="form-control">Edit Profile</button><br>
+          </a>
+        <?php } ?>
+        <a href="<?php echo base_url() ?>Login/changepassword">
           <button class="form-control">Change Password</button><br>
         </a>
-        <a href="<?php echo base_url() ?>Login/logout">        
+        <a href="<?php echo base_url() ?>Login/logout">
           <button class="form-control">Log Out</button><br>
         </a>
     </div>

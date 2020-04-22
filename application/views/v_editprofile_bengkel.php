@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>BengCool</title>
+  <title>BengCool - Edit Profile</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,92 +60,94 @@
     <div class="swiper-wrapper">
       <!-- start slide-item -->
       <div class="swiper-slide slide-item">
-        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/home5.jpeg">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop.jpg">
           <!-- <div class="overlay"></div> -->
           <div class="container">
 
-        <!-- Form -->
-        <section class="signup" >
-            <div class="container1"> 
-                <div class="col-lg-12" style="padding-top:5%;">
-                    <center>
-                        <h4 style="font-family: 'Open Sans', sans-serif;" class="por-title"> <?php echo $this->session->userdata('nama') ?>
-                        <br>
-                        Reporting on <?php echo date("d F Y") ?>
-                        </h4>
-                    </center>
-                </div>
-
+          <!-- Form -->
+          <section class="signup">
+            <div class="container1">
                 <div class="signup-content">
-                
-                <!-- Start First Part -->
-                <div class="col-lg-4" >
-                    <div class="card-body">
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title font1"> Last Month Item Sold</h4>
-                            <div class="por-txt"><?php echo $r1; ?> Item Sold</div>
-                        </div><br>
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title font1"> Last Month Services</h4>
-                            <div class="por-txt"><?php echo $r4; ?> Services</div>
-                        </div><br>
-                    </div> <hr>
-                </div>
-                <div class="col-lg-4" >
-                    <div class="card-body">
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title font1"> This Month Item Sold</h4>
-                            <div class="por-txt"><?php echo $r2; ?> Item Sold</div>
-                        </div><br>
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title font1"> This Month Services</h4>
-                            <div class="por-txt"><?php echo $r5; ?> Services</div>
-                        </div><br>
-                    </div> <hr>
-                </div>
-                <div class="col-lg-4" >
-                    <div class="card-body">
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title font1"> Total Item Sold</h4>
-                            <div class="por-txt"><?php echo $r3; ?> Item Sold</div>
-                        </div><br>
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title font1"> Total Services</h4>
-                            <div class="por-txt"><?php echo $r6; ?> Services</div>
-                        </div><br>
-                    </div> <hr>
-                </div>
-             </div> 
-             <!-- End First Part -->
+                    <div class="signup-form">
+                        <h2 class="form-title">Edit Profile</h2>
+                        <?php echo $this->session->flashdata('message'); ?>
+                          <form action="<?php echo base_url().'Edit_profile'?>" method="POST" novalidate="novalidate">
+                            <?php foreach($bengkels as $list){ ?>
+                            
+                                <input type="hidden" name="user_id" value="<?php echo $list->id_bengkel?>">
 
+                                <div class="form-group">
+                                  <p>Name</p>
+                                  <input type="text" id="name" name="user_name" value="<?php echo $list->nama_bengkel ?>">
+                                  <?php echo form_error('user_name', '<small class="text-danger">', '</small>') ?>  
+                                </div>
+                                
+                                <div class="form-group">
+                                  <p>Email</p>
+                                  <input type="email" id="email" name="user_email" value="<?php echo $list->email ?>">
+                                  <?php echo form_error('user_email', '<small class="text-danger">', '</small>') ?>
+                                </div>
 
-            <!-- Start Second Part -->
-            <!--
-            <div class="col-lg-4" >
-                    <div class="card-body" style="margin-top:-20%;">
-                            <h4 class="por-title"> Last Month Item Sold</h4>
-                            <div class="por-txt">100,000 Item Sold</div>
-                        <br>
-                        <div class="progress-box progress-1">
-                            <h4 class="por-title"> Last Month Services</h4>
-                            <div class="por-txt">100,000 Services</div>
-                        </div><br>
-                    </div> <hr>
+                                <div class="form-group">
+                                  <p>Address</p>
+                                  <input type="text" id="address" name="user_address" value="<?php echo $list->alamat ?>">
+                                  <?php echo form_error('user_address', '<small class="text-danger">', '</small>') ?>
+                                </div>
+
+                                <div class="form-group">
+                                  <p>Phone Number</p>
+                                  <input type="number" id="phonenumber" name="user_phonenumber" value="<?php echo $list->telepon ?>">
+                                  <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
+                                </div>
+
+                                <div class="form-group">
+                                  <p>Open</p>
+                                  <input type="time" id="phonenumber" name="user_phonenumber" value="<?php echo $list->jam_buka ?>">
+                                  <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
+                                </div>
+
+                                <div class="form-group">
+                                  <p>Close</p>
+                                  <input type="time" id="phonenumber" name="user_phonenumber" value="<?php echo $list->jam_tutup ?>">
+                                  <?php echo form_error('user_phonenumber', '<small class="text-danger">', '</small>') ?>
+                                </div>
+                                
+                                <div class="form-group form-button">
+                                  <button type="submit" name="signup" id="signup" class="form-submit" value="Add" style="background-color:#e10019;border-radius:30px;"/>Confirm Edit </button>
+                                </div>
+                              
+                            </form>
+                            <?php } ?>
+                    
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="<?php echo base_url() ?>assets/type1/images/signup-image.jpg" ></figure>
+
+                    </div>
                 </div>
-                -->
-            <!-- End Second Part -->
+            </div>
+         </section>
 
-        </section>
+            
+           
+          </div>
+        </div> 
+      </div>
+      <!-- end slide-item -->
+      
+  
+    </div>
+    
 </section>
 <!--  Banner End -->
 
-
 <!--Footer start -->
-<?php
-	include('footer.php');
-?>
-<!-- Footer  End -->
 
+<?php
+  include('footer.php');
+?>
+
+<!-- Footer  End -->
 
 <!-- Scroll JS -->
 <script>

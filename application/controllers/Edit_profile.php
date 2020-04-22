@@ -4,6 +4,7 @@
 		function __construct(){
             parent::__construct();		
             $this->load->model('m_signup_pengguna');
+            $this->load->model('m_signup_bengkel');
             $this->load->model('m_user');
             $this->load->model('m_pesanan');
             $this->load->model('m_notif');
@@ -24,6 +25,21 @@
 			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
             $this->load->view('v_editprofile',$data);
         }
+
+        function Bengkel()
+        {
+            $data['user'] = $this->m_user->tampilkanData()->result();
+            $where1 = $this->session->userdata('id_user');
+            $data['bengkels'] = $this->m_signup_bengkel->tampilkan_profile($where1)->result();
+            $data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+            $data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+            $data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+            $data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+            $this->load->view('v_editprofile_bengkel',$data);
+        }
+
         function updateData(){
             $this->form_validation->set_rules('user_name', 'Name', 'required|trim');
             $this->form_validation->set_rules('user_gender', 'Sex', 'required|trim');
