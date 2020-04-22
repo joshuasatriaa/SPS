@@ -54,67 +54,34 @@
                                             <th>ID Admin</th>
                                             <th>Nama Admin</th>
                                             <th>Keterangan</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                            $i=1;
-                            foreach($admin as $list){
-                          ?>
+                                            $i=1;
+                                            foreach($admin as $list){
+                                        ?>
                                         <tr align="center">
                                             <td> <?php echo $list->id_admin ?></td>
                                             <td> <?php echo $list->nama_admin ?></td>
-                                            <td> <?php echo $list->level_admin ?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editAdmin_<?php echo $list->id_admin?>">Edit</button>
+                                            <td> 
+                                                <?php
+                                                    if($list->level_admin == 1)
+                                                    {
+                                                        echo "Super Admin";
+                                                    } 
+                                                    else
+                                                    {
+                                                        echo "Admin";
+                                                    }
+//                                                    echo $list->level_admin 
+                                                ?>
                                             </td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-danger"><a href="<?php echo base_url(). 'Admin/hapusData/'.$list->id_admin;?>">Delete</button>
-                                            </td>
+                                            
                                         </tr>
-
-
-
-                                        <div class="modal fade" id="editAdmin_<?php echo $list->id_admin?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="mediumModalLabel">Edit Data Admin</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                            
-                            <form action="<?php echo 'updateData'?>" method="POST" novalidate="novalidate">
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">ID Admin</label>
-                                                <input type="text" class="form-control" placeholder = "ID Admin" id="id_admin" name="id_admin" value="<?php echo $list->id_admin ?>" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Nama Admin</label>
-                                                <input  type="text" class="form-control" placeholder = "Nama Admin" id="nama_admin" name="nama_admin" value="<?php echo $list->nama_admin?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Keterangan</label>
-                                                <input type="text" class="form-control" placeholder = "Keterangan" id="keterangan" name="keterangan" value="<?php echo $list->keterangan?>">
-                                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-
                                         <?php
-                          } 
-                          ?>
+                                            } 
+                                            ?>
                                     </tbody>
                                 </table>
                             </div>

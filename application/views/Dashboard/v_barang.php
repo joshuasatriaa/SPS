@@ -66,9 +66,9 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                            $i=1;
-                            foreach($barang as $list){
-                          ?>
+                                            $i=1;
+                                            foreach($barang as $list){
+                                        ?>
                                         <tr align="center">
                                             <td><?php echo $list->id_barang ?></td>
                                             <td><?php echo $list->nama_barang ?></td>
@@ -83,6 +83,8 @@
                                                 <button type="button" class="btn btn-outline-danger"><a href="<?php echo base_url(). 'Dashboard/Barang/hapusData/'.$list->id_barang;?>">Delete</button>
                                             </td>
                                         </tr>
+                                        
+                                        <!-- modal edit -->
                                         <div class="modal fade" id="editBarang_<?php echo $list->id_barang?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
@@ -94,46 +96,47 @@
                                                     </div>
                                                     <div class="modal-body">
                             
-                                         <form action="<?php echo base_url().'Dashboard/Barang/updateData'?>" method="POST" novalidate="novalidate">
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">ID Barang</label>
-                                                <input type="text" class="form-control" placeholder = "ID Barang" id="id_barang" name="id_barang" value="<?php echo $list->id_barang ?>" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Nama Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Nama Barang" id="nama_barang" name="nama_barang" value="<?php echo $list->nama_barang?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Email Penjual</label><br>
-                                                <select data-placeholder="Pilih Email" class="standardSelect form-control" tabindex="1" name="id_user" id="id_user">
-                                                                        <?php foreach($user as $a){ ?>
-                                                                            <option value="<?php echo $a->id_user ?>" <?php echo (($list->id_penjual == $a->id_user)? "selected" : "" ) ?>><?php echo $a->email ?></option>
-                                                                        <?php } ?>
-                                                                    </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Harga Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Harga Barang" id="harga_barang" name="harga_barang" value="<?php echo $list->harga_barang?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Stok Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Stok Barang" id="stok_barang" name="stok_barang" value="<?php echo $list->stok_barang?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Keterangan Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keterangan_barang" name="keterangan_barang" value="<?php echo $list->keterangan_barang?>">
-                                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                                          <?php
-                          } 
-                          ?>
-                                    </tbody>
-                                </table>
-                            </form>
+                                                        <form action="<?php echo base_url().'Dashboard/Barang/updateData'?>" method="POST" novalidate="novalidate">
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">ID Barang</label>
+                                                                <input type="text" class="form-control" placeholder = "ID Barang" id="id_barang" name="id_barang" value="<?php echo $list->id_barang ?>" readonly>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Nama Barang</label>
+                                                                <input  type="text" class="form-control" placeholder = "Nama Barang" id="nama_barang" name="nama_barang" value="<?php echo $list->nama_barang?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Email Penjual</label><br>
+                                                                <select data-placeholder="Pilih Email" class="standardSelect form-control" tabindex="1" name="id_user" id="id_user">
+                                                                    <?php foreach($user as $a){ ?>
+                                                                        <option value="<?php echo $a->id_user ?>" <?php echo (($list->id_penjual == $a->id_user)? "selected" : "" ) ?>><?php echo $a->email ?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Harga Barang</label>
+                                                                <input  type="text" class="form-control" placeholder = "Harga Barang" id="harga_barang" name="harga_barang" value="<?php echo $list->harga_barang?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Stok Barang</label>
+                                                                <input  type="text" class="form-control" placeholder = "Stok Barang" id="stok_barang" name="stok_barang" value="<?php echo $list->stok_barang?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Keterangan Barang</label>
+                                                                <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keterangan_barang" name="keterangan_barang" value="<?php echo $list->keterangan_barang?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                        <?php
+                                                            } 
+                                                            ?>
+                                                    </tbody>
+                                                </table>
+                                            
                             </div>
                         </div>
                     </div>
@@ -143,8 +146,8 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="inputBarang" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+            <!-- Modal Input-->
+            <div class="modal fade" id="inputBarang" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -156,42 +159,42 @@
                         <div class="modal-body">
                             
                             <form action="<?php echo base_url().'Dashboard/Barang/insertData'?>" method="post" novalidate="novalidate">
-                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">ID Barang</label>
-                                                <input type="text" class="form-control" placeholder = "ID Barang" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>"readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Nama Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Nama Barang" id="nama_barang" name="nama_barang" >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Email Penjual</label>
-                                                <br>
-                                                    <select data-placeholder="Pilih Pengguna" class="standardSelect" tabindex="1" name="id_user">
-                                                    <?php foreach($user as $a){ ?>
-                                                        <option value="<?php echo $a->id_user ?>"><?php echo $a->email ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Harga Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Harga Barang" id="harga_barang" name="harga_barang" >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Stok Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "Stok Barang" id="stok_barang" name="stok_barang" >
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">keterangan Barang</label>
-                                                <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keterangan_barang" name="keterangan_barang" >
-                                            </div>
-                                            </div>
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">ID Barang</label>
+                                    <input type="text" class="form-control" placeholder = "ID Barang" id="id_barang" name="id_barang" value="BARANG-<?php echo $count+1 ?>"readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Nama Barang</label>
+                                    <input  type="text" class="form-control" placeholder = "Nama Barang" id="nama_barang" name="nama_barang" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Email Penjual</label>
+                                    <br>
+                                    <select data-placeholder="Pilih Pengguna" class="form-control standardSelect" tabindex="1" name="id_user">
+                                        <?php foreach($user as $a){ ?>
+                                            <option value="<?php echo $a->id_user ?>"><?php echo $a->email ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Harga Barang</label>
+                                    <input  type="text" class="form-control" placeholder = "Harga Barang" id="harga_barang" name="harga_barang" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Stok Barang</label>
+                                    <input  type="text" class="form-control" placeholder = "Stok Barang" id="stok_barang" name="stok_barang" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">keterangan Barang</label>
+                                    <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keterangan_barang" name="keterangan_barang" >
+                                </div>
+                            </div>
 
                     
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                          </form>
                     </div>
                 </div>
