@@ -129,13 +129,6 @@
         </div> 
       </div>
       <!-- end slide-item -->
-      
-  
-    </div>
-    <!-- end swiper-wrapper -->
-    <!-- swipper controls -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
   
 </section>
 <!--  Banner End -->
