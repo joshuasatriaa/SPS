@@ -206,17 +206,33 @@ $snapToken = Snap::getSnapToken($transaction);
 ?>
 
 
-<section class="section-header bg-1">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="text-center">
-          <h1 class="text-capitalize mb-4 font-lg text-white">My Cart</h1>
-        </div>
+<!--  Banner start -->
+<section class="slider-hero hero-slider  hero-style-1 ">
+  
+    <div class="swiper-wrapper">
+      <!-- start slide-item -->
+      <div class="swiper-slide slide-item" style="height:120px">
+        <div class="slide-inner slide-bg-image main-sider-inner" data-background="<?php echo base_url() ?>assets/type1/images/Vshop.jpg" >
+          
+           
+
+          </div>
+        
       </div>
+      <!-- end slide-item -->
+      
+  
     </div>
-  </div>
+
 </section>
+<!--  Banner End -->
+
+<center>
+    <h1 class="font2" style="margin-top:5%;">
+        My Cart
+    </h1>
+</center>
+
 <?php if($cart) {?>  
 <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
@@ -285,11 +301,11 @@ $snapToken = Snap::getSnapToken($transaction);
                         <div class="proceed-checkout">
                             <ul>
                                 <li class="subtotal">Subtotal <span id="subtotal">Rp. <?php echo number_format($total, 0, 0, ".");?></span></li>
-                                <li class="cart-total">Total <span id="total">Rp. <?php echo number_format($total, 0, 0, ".");?></span></li>
+                                <li class="cart-total">Total <span style="color:#e1001a;" id="total">Rp. <?php echo number_format($total, 0, 0, ".");?></span></li>
                             </ul>
                             <form action="<?php echo base_url(). 'Shop/process_checkout'?>" method="post">
                                 <input type="hidden" name="total_cart" id="total_cart_hidden" value="<?php echo $total;?>">
-                                <button class="proceed-btn pay-button">PROCEED TO CHECK OUT</button>
+                                <button class="proceed-btn pay-button" style="background-color:#e1001a;">PROCEED TO CHECK OUT</button>
                             </form>
                         </div>
                     </div>
@@ -315,90 +331,9 @@ $snapToken = Snap::getSnapToken($transaction);
 
 <?php }?>
 
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
-
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-									class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-						</li>
-						<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-									class="ti-dribbble mr-2 "></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Contact Info</h4>
-
-					<ul class="list-unstyled mb-0 footer-contact">
-						<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-						<li><i class="ti-email"></i>mail@support.com</li>
-						<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">Opening Hours</h4>
-
-					<div class="info mb-4">
-						<p class="mb-0">Monday - Thursday</p>
-						<h5>10:00 AM - 11:00 PM</h5>
-					</div>
-					<div class="info">
-						<p class="mb-0">Friday - Sunday</p>
-						<h5>12:00 AM - 03:00 AM</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row justify-content-center mt-5">
-			<div class="col-lg-6 text-center">
-				<h4 class="text-white-50 mb-3">Get latest food recipe at your inbox</h4>
-				<form action="#" class="footer-newsletter">
-					<div class="form-group">
-						<button class="button"><span class="ti-email"></span></button>
-						<input type="email" class="form-control" placeholder="Enter Email">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</footer>
-
-<section class="footer-btm py-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-							class="text-white">themefisher.com</a></p>
-
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<?php
+    include('footer.php');
+?>
 
 
 <!-- jQuery -->
