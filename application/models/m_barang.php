@@ -18,7 +18,21 @@ class m_barang extends CI_Model{
 		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
 		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
 		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
-		WHERE d.id_foto_barang LIKE "FOTO-BARANG-%1" AND a.status_delete != 1
+		LEFT JOIN membership f ON a.id_penjual = f.id_user
+		WHERE d.id_foto_barang LIKE "FOTO-BARANG-%1" AND a.status_delete != 1 AND (f.status_membership = 0 OR f.status_membership IS NULL)
+		LIMIT ' . $this_page_first_result . ',' .  $results_per_page . '
+		');
+	}
+
+	function tampilkanBarangMemberP($this_page_first_result,$results_per_page){
+		return $this->db->query('SELECT a.id_barang, a.nama_barang, a.id_penjual,
+		a.harga_barang, a.waktu_add, a.stok_barang, b.nama_pengguna, b.alamat alamat_pengguna, d.gambar_barang, d.id_foto_barang, c.nama_bengkel, e.alamat FROM barang a
+		LEFT JOIN pengguna b ON a.id_penjual = b.id_pengguna
+		LEFT JOIN bengkel c ON a.id_penjual = c.id_bengkel
+		LEFT JOIN foto_barang d ON a.id_barang = d.id_barang
+		LEFT JOIN lokasi_bengkel e ON c.id_bengkel = e.id_bengkel
+		LEFT JOIN membership f ON a.id_penjual = f.id_user
+		WHERE d.id_foto_barang LIKE "FOTO-BARANG-%1" AND a.status_delete != 1 AND f.status_membership = 1
 		LIMIT ' . $this_page_first_result . ',' .  $results_per_page . '
 		');
 	}

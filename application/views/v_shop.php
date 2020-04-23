@@ -131,7 +131,7 @@
 											foreach($barang as $list){
 												?>
 										<!-- product card -->
-										<div class="col-sm-12 col-lg-4 col-md-6 ">
+										<div class="col-sm-12 col-lg-4 col-md-6">
 											<div class="product-item bg-light">
 												<div class="card">
 													<div class="thumb-content">
@@ -165,6 +165,8 @@
 										<?php
 											}
 											?>
+										<!-- Barang non member -->
+
 								
 						</div>				
 					</div>
@@ -408,6 +410,201 @@ jQuery(function()
 	});
 
 
+</script>
+
+<!-- Login Ajax -->
+<script type="text/javascript">
+
+
+	$(document).ready(function() {
+	    $(".btn-submit").click(function(e){
+	    	e.preventDefault();
+	    	var email = $("input[name='email']").val();
+	    	var password = $("input[name='password']").val();
+	    	
+
+				$.ajax({
+					url: "<?php echo base_url() ?>Login",
+					type:'POST',
+					dataType: "json",
+					data: {email:email, password:password},
+					success: function(data) {
+						if($.isEmptyObject(data.error)){
+							$(".print-error-msg").css('display','none');
+							window.location.reload(true);
+							
+						}else{
+							$(".print-error-msg").css('display','block');
+							$(".print-error-msg").html(data.error);
+						}
+						
+					}
+				});
+			
+
+
+	    }); 
+
+		$("#password").on("input", function(){
+        	$(".print-error-msg").css('display','none');
+	    });
+		
+
+		window.addEventListener('load', 
+				function() { 
+					setInterval(updateChat, 1000, '<?php echo base_url(). 'Chat/update'?>', '<?php echo $this->session->userdata('id_user'); ?>');
+				}, false
+		);
+
+		window.onscroll = () => {
+  			const nav = document.querySelector('#main-nav');
+  			if(window.pageYOffset > 10){
+				nav.classList.add('scroll');  
+			} 
+			else {
+				nav.classList.remove('scroll');
+			}
+
+		};
+		
+	});
+
+
+</script>
+
+<!-- CHAT -->
+<script type="text/javascript">
+var element = $('.floating-chat');
+var myStorage = localStorage;
+
+if (!myStorage.getItem('chatID')) {
+    myStorage.setItem('chatID', createUUID());
+}
+
+setTimeout(function() {
+    element.addClass('enter');
+}, 1000);
+
+element.click(openElement);
+
+function openElement() {
+    var messages = element.find('.messages');
+    var textInput = element.find('.text-box');
+    element.find('>i').hide();
+    element.addClass('expand');
+    element.find('.chat').addClass('enter');
+    var strLength = textInput.val().length * 2;
+    textInput.keydown(onMetaAndEnter).prop("disabled", false).focus();
+    element.off('click', openElement);
+    element.find('.header button').click(closeElement);
+    element.find('#sendMessage').click(sendNewMessage);
+    messages.scrollTop(messages.prop("scrollHeight"));
+}
+
+function closeElement() {
+    element.find('.chat').removeClass('enter').hide();
+    element.find('>i').show();
+    element.removeClass('expand');
+    element.find('.header button').off('click', closeElement);
+    element.find('#sendMessage').off('click', sendNewMessage);
+    element.find('.text-box').off('keydown', onMetaAndEnter).prop("disabled", true).blur();
+    setTimeout(function() {
+        element.find('.chat').removeClass('enter').show()
+        element.click(openElement);
+    }, 500);
+}
+
+function createUUID() {
+    // http://www.ietf.org/rfc/rfc4122.txt
+    var s = [];
+    var hexDigits = "0123456789abcdef";
+    for (var i = 0; i < 36; i++) {
+        s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+    }
+    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+    s[8] = s[13] = s[18] = s[23] = "-";
+
+    var uuid = s.join("");
+    return uuid;
+}
+
+function sendNewMessage() {
+    var userInput = $('.text-box');
+    var newMessage = userInput.html().replace(/\<div\>|\<br.*?\>/ig, '\n').replace(/\<\/div\>/g, '').trim().replace(/\n/g, '<br>');
+
+    if (!newMessage) return;
+
+    var messagesContainer = $('.messages');
+
+    messagesContainer.append([
+        '<li class="self">',
+        newMessage,
+        '</li>'
+    ].join(''));
+
+    // clean out old message
+    userInput.html('');
+    // focus on input
+    userInput.focus();
+
+    messagesContainer.finish().animate({
+        scrollTop: messagesContainer.prop("scrollHeight")
+    }, 250);
+
+    $.ajax({
+					url: "<?php echo base_url() ?>Chat/sendChatAdmin",
+					type:'POST',
+					dataType: "json",
+					data: {input_pesan:newMessage},
+					success: function(data) {
+						userInput.focus();
+					}
+				});
+}
+
+function onMetaAndEnter(event) {
+    if ((event.metaKey || event.ctrlKey) && event.keyCode == 13) {
+        sendNewMessage();
+    }
+}
+
+function updateChat(url, receiver){
+	var messagesContainer = $('.messages');
+	var count = $('.messages li').length;
+	var lines = count-1;
+	$.ajax({
+		type: "POST",
+		url: url,
+		data: {  
+				'function': 'update',
+				'state' : lines,
+				'receiver' : receiver,
+				},
+		dataType: "json",
+		success: function(data){
+			if(data.text){
+				//$('.messages').empty();
+				for (var i = 0; i < data.text.length; i++) {
+					$id = data.text[i].id_pengirim;
+					if($id.substring(0,5) == "ADMIN"){
+						$nama = "other";
+					}
+					else{
+						$nama = "self";
+						}
+					$('.messages').append($("<li class='"+$nama+"'>"+ data.text[i].pesan +"</li>"));
+				}								  
+			}
+			document.getElementsByClassName('messages').scrollTop = document.getElementsByClassName('messages').scrollHeight - document.getElementsByClassName('messages').clientHeight;
+			console.log("berhasil");
+		},
+		error: function(xhr, status, error) {
+			console.log(xhr.responseText);
+		},
+	});
+   
+}
 </script>
 </html>
 

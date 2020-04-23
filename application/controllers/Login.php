@@ -45,6 +45,27 @@ class Login extends CI_Controller{
 						'tipe_user' => 'USER'
 					);
 					$this->session->set_userdata($data_session);
+
+					//$member = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+					// if($member){
+					// 	$datenow = date("d-m-y");
+					// 	$tglselesai = date("d-m-y",$member['tanggal_selesai']);
+					// 	if($datenow == $tglselesai){
+					// 		$this->load->model('m_notif');
+					// 		$countNotif = $this->m_notif->tampilkan_notifku($pengguna['id_pengguna'])->num_rows()+1;
+					// 		$data = [
+					// 			'id_notifikasi' => 'NTF-'.$this->session->userdata('id_user').'-'.$countNotif,
+					// 			'id_user' => $this->session->userdata('id_user'),
+					// 			'id_tipe_notifikasi' => 3,
+					// 			'isi_notifikasi' => "Hi, ".$this->session->userdata('id_user').", <br> Your membership is over today! <br> Please renew your membership as soon as possible!",
+					// 			'status_notifikasi' => 0,
+					// 		];
+
+					// 		$this->db->set('waktu_notifikasi', 'NOW()', FALSE);
+					// 		$this->m_notif->insertTable('notifikasi', $data);
+					// 	}
+					// }
+					
 					echo json_encode(['success'=>"berhasil login"]);
 				}
 				else if($text == "ADMN"){
@@ -67,6 +88,38 @@ class Login extends CI_Controller{
 						'tipe_user' => 'BID'
 					);
 					$this->session->set_userdata($data_session);
+
+					//$member = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+					
+					// if($member){
+					// 	$datenow = date("d-m-y");
+					// 	$tglselesai = date("d-m-y",$member['tanggal_selesai']);
+					// 	if($datenow == $tglselesai){
+					// 		$this->load->model('m_notif');
+					// 		$countNotif = $this->m_notif->tampilkan_notifku($pengguna['id_pengguna'])->num_rows()+1;
+					// 		$data = [
+					// 			'id_notifikasi' => 'NTF-'.$this->session->userdata('id_user').'-'.$countNotif,
+					// 			'id_user' => $this->session->userdata('id_user'),
+					// 			'id_tipe_notifikasi' => 3,
+					// 			'isi_notifikasi' => "Hi, ".$this->session->userdata('id_user').", <br> Your membership is over today! <br> Please renew your membership as soon as possible!",
+					// 			'status_notifikasi' => 0,
+					// 		];
+
+					// 		$this->db->set('waktu_notifikasi', 'NOW()', FALSE);
+					// 		$this->m_notif->insertTable('notifikasi', $data);
+					// 	}else if($datenow > $tglselesai){
+					// 		$this->load->model('m_member');
+					// 		$data = [
+					// 			'status_membership' => 0,
+					// 		];
+					
+					// 		$where = [
+					// 			'id_user' => $this->session->userdata('id_user'),
+					// 		];
+					
+					// 		$this->m_member->update('membership', $data, $where);
+					// 	}
+					// }
 					echo json_encode(['success'=>"berhasil login"]);
 				}
 				

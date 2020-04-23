@@ -499,12 +499,13 @@
         	$(".print-error-msg").css('display','none');
 	    });
 		
-
-		window.addEventListener('load', 
-				function() { 
-					setInterval(updateChat, 1000, '<?php echo base_url(). 'Chat/update'?>', '<?php echo $this->session->userdata('id_user'); ?>');
-				}, false
-		);
+		<?php if($this->session->userdata('id_user')){ ?>
+			window.addEventListener('load', 
+					function() { 
+						setInterval(updateChat, 1000, '<?php echo base_url(). 'Chat/update'?>', '<?php echo $this->session->userdata('id_user'); ?>');
+					}, false
+			);
+		<?php } ?>
 
 		window.onscroll = () => {
   			const nav = document.querySelector('#main-nav');

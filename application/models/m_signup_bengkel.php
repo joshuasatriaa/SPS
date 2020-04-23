@@ -26,7 +26,7 @@
 
 		function tampilkanRecordProfile($id_bengkel)
 		{
-			return $this->db->query('SELECT id_bengkel, nama_bengkel, jam_buka, jam_tutup, alamat, telepon, email FROM bengkel WHERE id_bengkel="'.$id_bengkel.'"');
+			return $this->db->query('SELECT id_bengkel, nama_bengkel, jam_buka, jam_tutup, telepon, email FROM bengkel WHERE id_bengkel="'.$id_bengkel.'"');
 		}
 
 		function getRecord($table,$where){

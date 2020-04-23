@@ -25,7 +25,10 @@ class m_member extends CI_Model{
 	function searchNewestMembership($id){
 		return $this->db->query('SELECT * FROM membership WHERE id_user = "'.$id.'" ORDER BY tanggal_selesai DESC LIMIT 1');
 	}
-	
+
+	function checkMyMembership($id){
+		return $this->db->query('SELECT * FROM membership WHERE id_user = "'.$id.'"');
+	}
 	function update($table,$data,$where){
 		$this->db->where($where);
 		$this->db->update($table,$data);

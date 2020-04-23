@@ -13,6 +13,9 @@ class Shop extends CI_Controller {
 		$this->load->model('m_member');
 		$this->load->model('m_rating_barang');
 		$this->load->model('m_signup_pengguna');
+		$this->load->model('m_signup_bengkel');
+		$this->load->model('m_bengkel');
+		
 	}
 
 	public function index()
@@ -35,6 +38,19 @@ class Shop extends CI_Controller {
 
 		$this_page_first_result = ($page-1)*$results_per_page;
 
+		$data['barangMember'] = $this->m_barang->tampilkanBarangMemberP($this_page_first_result,$results_per_page)->result();
+		
+		$countBrgMember = $this->m_barang->tampilkanBarangMemberP($this_page_first_result,$results_per_page)->num_rows();
+		$last_page_member = ceil($countBrgMember / $results_per_page);
+		
+		// if($countBrgMember > $results_per_page){
+		// 	$sisa = $countBrgMember % $results_per_page;
+		// 	$sisa_page_sekarang = $results_per_page - $sisa;
+		// 	$target_page = $sisa_page_sekarang + $results_per_page;
+		// 	$mulai_baru = 0;
+		// 	$data['barang'] = $this->m_barang->tampilkanBarangP($mulai_baru,$target_page)->result();
+
+		// }
 		$data['barang'] = $this->m_barang->tampilkanBarangP($this_page_first_result,$results_per_page)->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
@@ -45,7 +61,7 @@ class Shop extends CI_Controller {
 		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 
 		$data['totalbarang'] = $this->m_barang->tampilkanSemuaBarang()->num_rows();
-
+		$data['message'] = "";
 		$this->load->view('v_shop',$data);
 	}
 
@@ -59,7 +75,7 @@ class Shop extends CI_Controller {
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
-
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_shopsearch',$data);
 	}
@@ -89,7 +105,7 @@ class Shop extends CI_Controller {
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
-
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$this->load->view('v_cart',$data);
 	}
@@ -136,18 +152,6 @@ class Shop extends CI_Controller {
 			$this->session->set_flashdata('message', 'Added to Cart!');
 			redirect('Shop/ShopDetail/'.$id);
 		}
-	}
-	function editCart($id_barang){
-		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
-		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
-		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
-		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
-		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
-
-		$where = array('id_barang' => $id_barang);
-		$data['cartEdit'] = $this->m_pesanan->showThisCart($this->session->userdata('id_user'),$id_barang)->result();
-		$this->load->view('v_edit_item_cart', $data);
 	}
 	
 	function updateCart(){
@@ -200,7 +204,7 @@ class Shop extends CI_Controller {
 		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
 
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$this->load->view('v_chat_barang',$data);
 	}
 
@@ -212,71 +216,33 @@ class Shop extends CI_Controller {
 
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
 		$data['checkmember'] = $this->m_member->searchNewestMembership($this->session->userdata('id_user'))->row_array();
-
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$this->load->view('v_member',$data);
 	}
 
 	function payMembership(){
+		
+		$data['checkmember'] = $this->m_member->searchNewestMembership($this->session->userdata('id_user'))->row_array();
+		$data['myMember'] = $this->m_member->checkMyMembership($this->session->userdata('id_user'))->result();
+
+		$data['cart'] = $this->m_pesanan->showCart($this->session->userdata('id_user'))->result();
 		$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
 		$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
 		$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 		$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+		$data['alamat'] = $this->m_bengkel->findDefaultAddress($this->session->userdata('id_user'))->row_array();
 
 		$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-		$this->load->view('v_paymembership');
-	}
+		
+		$text = substr($this->session->userdata('id_user'),0,4);
+		if($text == "USER"){
 
-	function editMembership(){
-		$where = array(
-			'id_user' => $this->session->userdata('id_user')
-		);
-
-		$cek = $this->m_member->tampilkan_member('membership', $where)->num_rows();
-		$count = $this->m_member->tampilkan_semua_member()->num_rows()+1;
-		if($cek < 1){
-			$data = array(
-				'id_membership' => 'MBR-'.$count,
-				'id_user' => $this->session->userdata('id_user'),
-				'jenis_membership' => 1,
-				'status_membership' => 1,
-				'tanggal_mulai' => date("Y-m-d H:i:s"),
-				'tanggal_selesai' => date('Y-m-d H:i:s', strtotime('+1 month')) 
-			);
-			$this->m_member->insert('membership', $data);
-			$data['barang'] = $this->m_barang->tampilkanBarang()->result();
-			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
-			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
-			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
-			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
-			$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
-
-			$this->session->set_flashdata(
-				'message' , "Congratulations, now you are a member! Please try our membership function!"
-			);
-			$this->load->view('v_shop', $data);
+			$data['profil'] = $this->m_signup_pengguna->tampilkanRecordProfile($this->session->userdata('id_user'))->result();
 		}else{
-			$data = array(
-				'status_membership' => 1,
-				'tanggal_mulai' => date("Y-m-d H:i:s"),
-				'tanggal_selesai' => date('Y-m-d H:i:s', strtotime('+1 month')) 
-			);
-
-			$this->m_member->update('membership', $data, $where);
-			$data['barang'] = $this->m_barang->tampilkanBarang()->result();
-			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
-			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
-			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
-			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
-			$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
-
-			$this->session->set_flashdata(
-				'message' , "Your membership have been renewed!"
-			);
-			$this->load->view('v_shop', $data);
-
+			$data['profil'] = $this->m_signup_bengkel->tampilkanRecordProfile($this->session->userdata('id_user'))->result();
 		}
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+		$this->load->view('v_paymembership', $data);
 	}
 
 
@@ -331,6 +297,74 @@ class Shop extends CI_Controller {
 			'message' , "You've just checkout! Feel free to look for more item!"
 		);
 		redirect('Shop/cart');
+	}
+
+
+	function payMember(){
+		
+		$id_member = $this->input->post("id_member");
+		$where = array(
+			'id_membership' => $id_member
+		);
+
+		$cek = $this->m_member->tampilkan_member('membership', $where)->num_rows();
+		if($cek == 0){
+			$data = array(
+				'id_membership' => $id_member,
+				'id_user' => $this->session->userdata('id_user'),
+				'jenis_membership' => 1,
+				'status_membership' => 1,
+				'tanggal_mulai' => date("Y-m-d H:i:s"),
+				'tanggal_selesai' => date('Y-m-d H:i:s', strtotime('+1 month')) 
+			);
+			$this->m_member->insert('membership', $data);
+			$data['barang'] = $this->m_barang->tampilkanBarang()->result();
+			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+			$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+
+			$this->session->set_flashdata(
+				'message' , "Congratulations, now you are a member! Please try our membership function!"
+			);
+			$this->load->view('v_shop', $data);
+		}else{
+			$data = array(
+				'status_membership' => 1,
+				'tanggal_mulai' => date("Y-m-d H:i:s"),
+				'tanggal_selesai' => date('Y-m-d H:i:s', strtotime('+1 month')) 
+			);
+
+			$this->m_member->update('membership', $data, $where);
+			$data['barang'] = $this->m_barang->tampilkanBarang()->result();
+			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();	
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+			$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+
+			$this->session->set_flashdata(
+				'message' , "Your membership have been renewed!"
+			);
+			$this->load->view('v_shop', $data);
+
+		}
+		redirect('Shop/cart');
+	}
+
+	function stopMember($id){
+		$data = [
+			'status_membership' => 0,
+		];
+
+		$where = [
+			'id_user' => $id,
+		];
+
+		$this->m_member->update('membership', $data, $where);
 	}
 
 }

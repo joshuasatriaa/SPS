@@ -320,27 +320,6 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 </script>
-<?php if($snapToken != null){?>
-<!-- TODO: Remove ".sandbox" from script src URL for production environment. Also input your client key in "data-client-key" -->
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-tRXlSX7W2n9rJF1m"></script>
-        <script type="text/javascript">
-                // SnapToken acquired from previous step
-                snap.pay('<?php echo $snapToken?>', {
-                    // Optional
-                    onSuccess: function(result){
-                        /* You may add your own js here, this is just example */ //document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    },
-                    // Optional
-                    onPending: function(result){
-                        /* You may add your own js here, this is just example */ //document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    },
-                    // Optional
-                    onError: function(result){
-                        /* You may add your own js here, this is just example */ //document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
-                    }
-                });
-        </script>
-<?php }?>
 
 </body>
 </html>

@@ -118,8 +118,9 @@
 						<li>Analytics</li>
 						<li>Subscription-based payment</li>
 					</ul>
-					<a href="<?php echo base_url(). 'Shop/payMembership'?>" class="btn btn-main"  style="background-color:#e10019;border-radius:30px;">Become Member</a>			
-					<button id="pay-button">Pay!</button>		
+					<form action="<?php echo base_url(). 'Shop/paymembership'?>" method="post">
+						<button class="btn pay-button" style="background-color:#e10019;border-radius:30px;"><a href="<?php echo base_url(). 'Shop/payMembership'?>" >Become Member</a></button>			
+					</form>
 				</div>
 			</div>
 		</div>
@@ -132,10 +133,11 @@
 			<div class="col-md-8 mx-auto">
 				<div class="text-center p-5 shadow rounded">
 					<h2 class="mb-3">Renew Membership</h2>
-					<h4 class="mb-3">We have detected that you had been our member before. <br> Your latest membership ends in <?php echo date("d F Y", strtotime($checkmember['tanggal_selesai']))?></h4>
+					<h4 class="mb-3">Your latest membership ends in <?php echo date("d F Y", strtotime($checkmember['tanggal_selesai']))?></h4>
 					<h4>Renew your membership?</h4>
-					<a href="<?php echo base_url(). 'Shop/editMembership'?>" class="btn btn-main">Become Member</a>	
-					
+					<form action="<?php echo base_url(). 'Shop/paymembership'?>" method="post">
+						<button class="btn btn-main pay-button" type="submit" style="background-color:#e10019;border-radius:30px;">Renew Member</button>			
+					</form>
 				</div>
 			</div>
 		</div>

@@ -32,7 +32,8 @@ class Service extends CI_Controller {
 	{
         $data['bengkel'] = $this->m_bengkel->tampilkanData()->result();
         $data['service'] = $this->m_service->tampilkanData()->result();
-        $data['count']=$this->m_service->tampilkanData()->num_rows();
+		$data['count']=$this->m_service->tampilkanData()->num_rows();
+		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$this->head();
 		$this->load->view('Dashboard/v_service',$data);
 		$this->foot();

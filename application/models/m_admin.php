@@ -12,6 +12,11 @@ class m_admin extends CI_Model{
     function editData($where, $table){
 		return $this->db->get_where($table,$where);
 	}
+	function getData($where, $table){
+	
+		return $this->db->get_where($table,$where);
+	}
+	
 	
 	function updateData($where,$data,$table){
 		$this->db->where($where);

@@ -245,7 +245,66 @@
 <script src="<?php echo base_url() ?>assets/type1/js/script.js"></script>
 
 <!-- Login Script -->
-<script  src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
+<script src="<?php echo base_url() ?>assets/type1/js/script1.js"></script>
+<!-- Login Ajax -->
+<script type="text/javascript">
 
+
+	$(document).ready(function() {
+	    $(".btn-submit").click(function(e){
+	    	e.preventDefault();
+	    	var email = $("input[name='email']").val();
+	    	var password = $("input[name='password']").val();
+	    	
+
+				$.ajax({
+					url: "<?php echo base_url() ?>Login",
+					type:'POST',
+					dataType: "json",
+					data: {email:email, password:password},
+					success: function(data) {
+						if($.isEmptyObject(data.error)){
+							$(".print-error-msg").css('display','none');
+							window.location.reload(true);
+							
+						}else{
+							$(".print-error-msg").css('display','block');
+							$(".print-error-msg").html(data.error);
+						}
+						
+					}
+				});
+			
+
+
+	    }); 
+
+		$("#password").on("input", function(){
+        	$(".print-error-msg").css('display','none');
+	    });
+		
+		if($this->session->userdata('id_user')){
+			window.addEventListener('load', 
+					function() { 
+						setInterval(updateChat, 1000, '<?php echo base_url(). 'Chat/update'?>', '<?php echo $this->session->userdata('id_user'); ?>');
+					}, false
+			);
+		}
+
+		window.onscroll = () => {
+  			const nav = document.querySelector('#main-nav');
+  			if(window.pageYOffset > 10){
+				nav.classList.add('scroll');  
+			} 
+			else {
+				nav.classList.remove('scroll');
+			}
+
+		};
+		
+	});
+
+
+</script>
 
 </html>

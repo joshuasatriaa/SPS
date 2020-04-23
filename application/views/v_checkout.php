@@ -72,7 +72,6 @@ foreach($profil as $a){
         'last_name'     => $nama[1],
         'address'       => $a->alamat,
         'city'          => "Jakarta",
-        'postal_code'   => "16602",
         'phone'         => $a->telepon,
         'country_code'  => 'IDN'
     );
@@ -82,7 +81,6 @@ foreach($profil as $a){
         'last_name'     => $nama[1],
         'address'       => $a->alamat,
         'city'          => "Jakarta",
-        'postal_code'   => "16601",
         'phone'         => $a->telepon,
         'country_code'  => 'IDN'
     );
@@ -148,6 +146,17 @@ $transaction = array(
 $snapToken = Snap::getSnapToken($transaction);
 //echo "snapToken = ".$snapToken;
 
+//buat tes pembayaran
+//pakai credit card
+//Card Number: 4811 1111 1111 1114 
+// CVV: 123 
+// Expiry: <any future date>
+
+// pakai VA
+// untuk bca : https://simulator.sandbox.midtrans.com/bca/va/index
+
+//pakai gopay atau QRIS
+// test disini : https://simulator.sandbox.midtrans.com/gopay/ui/index 
 ?>
 <!DOCTYPE html>
 

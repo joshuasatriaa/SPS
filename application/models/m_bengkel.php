@@ -22,5 +22,13 @@ class m_bengkel extends CI_Model{
 		$this->db->where($where);
 		$this->db->delete($table);
 	}
+
+	function findAddress($id){
+		return $this->db->query('SELECT * FROM lokasi_bengkel WHERE id_bengkel = "'.$id.'"');
+	}
+
+	function findDefaultAddress($id){
+		return $this->db->query('SELECT * FROM lokasi_bengkel WHERE id_bengkel = "'.$id.'" LIMIT 1');
+	}
 }
 ?>

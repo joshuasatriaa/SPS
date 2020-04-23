@@ -1,25 +1,176 @@
 <?php
-require_once(base_url('midtrans-php-master') . '/Midtrans.php');
+
+namespace Midtrans;
+
+require_once dirname(__FILE__) . '/../../midtrans-php-master/Midtrans.php';
 
 //Set Your server key
-\Midtrans\Config::$serverKey = "SB-Mid-server-WSw3DC8IrsG8INjSlWvinCcD";
+Config::$serverKey = "SB-Mid-server-WSw3DC8IrsG8INjSlWvinCcD";
 
 // Uncomment for production environment
-// \Midtrans\Config::$isProduction = true;
+// Config::$isProduction = true;
 
-\Midtrans\Config::$isSanitized = true;
-\Midtrans\Config::$is3ds = true;
+// Enable sanitization
+Config::$isSanitized = true;
 
+// Enable 3D-Secure
+Config::$is3ds = true;
+
+if($myMember != null){
+
+	// Optional (contoh)
+	 $item1_details = array(
+		'id' => $checkmember['id_membership'],
+		'price' => 150000,
+		'quantity' => 1,
+		'name' => "Monthly Subcription Bengcool Membership"
+	);
+
+
+}
+else{
+	// Optional (contoh)
+	$item1_details = array(
+		'id' => 'MBR-'.$this->session->userdata('id_user').'-1',
+		'price' => 150000,
+		'quantity' => 1,
+		'name' => "Monthly Subcription Bengcool Membership"
+	);
+}
+
+// Optional (contoh)
+// $item2_details = array(
+//     'id' => 'a2',
+//     'price' => 20000,
+//     'quantity' => 2,
+//     'name' => "Orange"
+// );
+
+// Optional
+$item_details = array($item1_details);
+
+//$item_details = array ($item1_details, $item2_details);
+
+// Optional
+$billing_address = array();
+$shipping_address = array();
+$customer_details  =array();
+
+function split_name($name) {
+    $name = trim($name);
+    $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
+    $first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
+    return array($first_name, $last_name);
+}
+
+$text = substr($this->session->userdata('id_user'),0,4);
+foreach($profil as $a){
+	if($text == "USER"){
+		$nama = split_name($a->nama_pengguna);
+
+		$billing_address = array(
+			'first_name'    => $nama[0],
+			'last_name'     => $nama[1],
+			'address'       => $alamat['alamat'],
+			'phone'         => $a->telepon,
+			'country_code'  => 'IDN'
+		);
+	
+		$customer_details = array(
+			'first_name'    => $nama[0],
+			'last_name'     => $nama[1],
+			'email'         => $a->email,
+			'phone'         => $a->telepon,
+			'billing_address'  => $billing_address,
+			'shipping_address' => $shipping_address
+		);
+	}
+	else{
+		$billing_address = array(
+			'first_name'    => $a->nama_bengkel,
+			'last_name'     => '',
+			'address'       => $alamat['alamat'],
+			'phone'         => $a->telepon,
+			'country_code'  => 'IDN'
+		);
+	
+		$customer_details = array(
+			'first_name'    => $a->nama_bengkel,
+			'last_name'     => '',
+			'email'         => $a->email,
+			'phone'         => $a->telepon,
+			'billing_address'  => $billing_address,
+			'shipping_address' => $shipping_address
+		);
+	}
+    
+    
+}
+// $billing_address = array(
+//     'first_name'    => "Andri",
+//     'last_name'     => "Litani",
+//     'address'       => "Mangga 20",
+//     'city'          => "Jakarta",
+//     'postal_code'   => "16602",
+//     'phone'         => "081122334455",
+//     'country_code'  => 'IDN'
+// );
+
+// Optional
+// $shipping_address = array(
+//     'first_name'    => "Obet",
+//     'last_name'     => "Supriadi",
+//     'address'       => "Manggis 90",
+//     'city'          => "Jakarta",
+//     'postal_code'   => "16601",
+//     'phone'         => "08113366345",
+//     'country_code'  => 'IDN'
+// );
+
+// Optional
+// $customer_details = array(
+//     'first_name'    => "Andri",
+//     'last_name'     => "Litani",
+//     'email'         => "andri@litani.com",
+//     'phone'         => "081122334455",
+//     'billing_address'  => $billing_address,
+//     'shipping_address' => $shipping_address
+// );
+
+// Optional, remove this to display all available payment methods
+$enable_payments = array('credit_card','gopay','bca_va');
+
+// Required
+$today = getdate();
+$transaction_details = array(
+    'order_id' => $this->session->userdata('id_user')."".$today['mday']."".$today['mon']."".$today['year']."".$today['hours']."".$today['minutes']."".$today['seconds'],
+    'gross_amount' => 150000, // no decimal allowed for creditcard
+);
+
+// Fill transaction details
 $transaction = array(
-    'transaction_details' => array(
-        'order_id' => "<your order_id>",
-        'gross_amount' => 10000 // no decimal allowed
-        )
-    );
+    'enabled_payments' => $enable_payments,
+    'transaction_details' => $transaction_details,
+    'customer_details' => $customer_details,
+    'item_details' => $item_details,
+);
 
-$snapToken = \Midtrans\Snap::getSnapToken($transaction);
+$snapToken = Snap::getSnapToken($transaction);
+//echo "snapToken = ".$snapToken;
+
+//buat tes pembayaran
+//pakai credit card
+//Card Number: 4811 1111 1111 1114 
+// CVV: 123 
+// Expiry: <any future date>
+
+// pakai VA
+// untuk bca : https://simulator.sandbox.midtrans.com/bca/va/index
+
+//pakai gopay atau QRIS
+// test disini : https://simulator.sandbox.midtrans.com/gopay/ui/index 
+
 ?>
-
 <!DOCTYPE html>
 
 <head>
@@ -45,6 +196,7 @@ $snapToken = \Midtrans\Snap::getSnapToken($transaction);
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap-touchpin/jquery.bootstrap-touchspin.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/devices.min.css">
   
+
   <!-- Main Stylesheet -->
   <link href="<?php echo base_url() ?>assets/type1/css/style.css" rel="stylesheet">
 
@@ -73,10 +225,7 @@ $snapToken = \Midtrans\Snap::getSnapToken($transaction);
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
-
-  <script type="text/javascript"
-            src="https://app.sandbox.midtrans.com/snap/snap.js"
-            data-client-key="SB-Mid-client-tRXlSX7W2n9rJF1m"></script> 
+  
 </head>
 
 <body>
@@ -125,107 +274,57 @@ $snapToken = \Midtrans\Snap::getSnapToken($transaction);
   
 </section>
 <!--  Banner End -->
-
 <div class="body">
+<?php if($checkmember == null){?>
 <section style="padding: 100px 0;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 mx-auto">
 				<div class="text-center p-5 shadow rounded">
-					<h2 class="mb-3">We use DOKU to manage our payment gateway</h2>
-					<h4 class="mb-3">To get access to all the feature we provide for customer members </h4>
-					<h4>Please </h4>
-					<form action="charge.php" method="POST" id="payment-form">
-						<div doku-div='form-payment'>
-							<input id="doku-token" name="doku-token" type="hidden" />
-							<input id=" doku-pairing-code" name="doku-pairing-code" type="hidden" />
-						</div>
+					<h2 class="mb-3 font2">Membership</h2>
+					<h4 class="mb-3 font2">To get access to all the feature we provide for customer members </h4>
+					<h4 class="font2">Why go member?</h4>
+					<ul class="list-unstyled mb-4">
+						<li>Full Ads Support</li>
+						<li>Free and easy to use</li>
+						<li>Pay only when needed</li>
+						<li>Analytics</li>
+						<li>Subscription-based payment</li>
+					</ul>
+					<form action="<?php echo base_url(). 'Shop/paymembership'?>" method="post">
+						<button class="btn btn-main pay-button" type="submit" style="background-color:#e10019;border-radius:30px;">Become Member</button>			
 					</form>
-					<button id="pay-button">Pay!</button>
-						
-					<a href="<?php echo base_url(). 'Shop/goMember'?>" class="btn btn-main">Pay Membership</a>			
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
-<!--Footer start -->
-<footer class="section footer">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-4 col-md-3 mb-5 mb-lg-0">
-				<div class="widget">
-					<h4 class="mb-3">About</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, nam!</p>
-					
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i
-						class="ti-facebook mr-2"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="ti-twitter mr-2 "></i></a>
-					</li>
-					<li class="list-inline-item"><a href="https://github.com/themefisher/"><i class="ti-github mr-2 "></i></a>
-				</li>
-				<li class="list-inline-item"><a href="https://dribbble.com/themefisher/"><i
-				class="ti-dribbble mr-2 "></i></a></li>
-			</ul>
-		</div>
-	</div>
-	
-	<div class="col-lg-4 ml-auto col-md-5 mb-5 mb-lg-0">
-		<div class="widget">
-			<h4 class="mb-3">Contact Info</h4>
-			
-			<ul class="list-unstyled mb-0 footer-contact">
-				<li><i class="ti-mobile"></i>+1 987 654 3210</li>
-				<li><i class="ti-email"></i>mail@support.com</li>
-				<li><i class="ti-map"></i>1234 Altschul, New York,NY 10027-0000</li>
-			</ul>
-		</div>
-	</div>
-	<div class="col-lg-3 col-md-4 mb-5 mb-lg-0">
-		<div class="widget">
-			<h4 class="mb-3">Opening Hours</h4>
-			
-			<div class="info mb-4">
-				<p class="mb-0">Monday - Thursday</p>
-				<h5>10:00 AM - 11:00 PM</h5>
-			</div>
-			<div class="info">
-				<p class="mb-0">Friday - Sunday</p>
-				<h5>12:00 AM - 03:00 AM</h5>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-</div>
-</footer>
-
-<section class="footer-btm py-3">
+<?php }else{?>
+	<section style="padding: 100px 0;">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="d-md-flex justify-content-between align-items-center py-3 text-center text-md-left">
-					<p class="mb-0 ">Copyright &copy; 2019 a theme by <a href="https://themefisher.com/"
-					class="text-white">themefisher.com</a></p>
-					
-					<div class="footer-menu mt-3 mt-lg-0">
-						<ul class="list-inline mb-0">
-							<li class="list-inline-item pl-2"><a href="index.html">Home</a></li>
-							<li class="list-inline-item pl-2"><a href="about.html">About Us</a></li>
-							<li class="list-inline-item pl-2"><a href="gallery.html">Gallery</a></li>
-							<li class="list-inline-item pl-2"><a href="policy.html">Privacy Policy</a></li>
-							<li class="list-inline-item pl-2"><a href="terms.html">Use of terms</a></li>
-						</ul>
-					</div>
+			<div class="col-md-8 mx-auto">
+				<div class="text-center p-5 shadow rounded">
+					<h2 class="mb-3">Renew Membership</h2>
+					<h4 class="mb-3">We have detected that you had been our member before. <br> Your latest membership ends in <?php echo date("d F Y", strtotime($checkmember['tanggal_selesai']))?>.</h4>
+					<h4>Renew your membership?</h4>
+					<form action="<?php echo base_url(). 'Shop/paymembership'?>" method="post">
+						<button class="btn btn-main pay-button" type="submit" style="background-color:#e10019;border-radius:30px;">Become Member</button>			
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-</div>
+
+
+<?php }?>
+<!--Footer start -->
+
+<?php
+	include('footer.php');
+?>
+
 <!-- Footer  End -->
 
 <!-- jQuery -->
@@ -267,7 +366,9 @@ $snapToken = \Midtrans\Snap::getSnapToken($transaction);
 <script src="<?php echo base_url() ?>assets/type2/plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/fancybox/jquery.fancybox.pack.js"></script>
 <script src="<?php echo base_url() ?>assets/type2/plugins/smoothscroll/SmoothScroll.min.js"></script>
-
+<script type="text/javascript"
+            src="https://app.sandbox.midtrans.com/snap/snap.js"
+            data-client-key="SB-Mid-client-tRXlSX7W2n9rJF1m"></script> 
 <!-- Shop JS End -->
 <!-- <script>
 jQuery(function()
@@ -353,26 +454,60 @@ jQuery(function()
 
 
 </script>
-<script type="text/javascript">
-$(function() {
- var data = new Object();
- data.req_merchant_code = '1';
- data.req_chain_merchant = 'NA';
- data.req_payment_channel = '04';
- data.req_transaction_id = '<?php echo $invoice ?>';
- data.req_currency = '<?php echo $currency ?>';
- data.req_amount = '<?php echo $amount ?>';
- data.req_words = '<?php echo $words ?>';
- data.req_form_type = 'full';
-getForm(data);
+<!-- Scroll JS -->
+<script>
+window.onscroll = () => {
+	const nav = document.querySelector('#main-nav');
+  	if(window.pageYOffset > 10){
+		nav.classList.add('scroll');  
+		} 
+	else {
+		nav.classList.remove('scroll');
+		}
+	};
+</script>
+
+<script src='https://app.sandbox.midtrans.com/snap/snap.js' data-client-key='SB-Mid-client-tRXlSX7W2n9rJF1m'></script>
+<script>
+// SnapToken acquired from previous step 
+snap.pay('<?php echo $snapToken; ?>', {
+    onSuccess: function(result){
+        /* You may add your own js here, this is just example */ //document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+	<?php 
+	if($myMember != null){
+	?>
+			$.ajax({
+				url : "<?php echo base_url(). 'Shop/payMember'?>",
+				data : "id_member=<?php echo $checkmember['id_membership'];?>",
+				type : 'post',
+				success : function(response) {
+				
+				}
+			});
+	<?php }
+	else{?>
+			$.ajax({
+				url : "<?php echo base_url(). 'Shop/payMember'?>",
+				data : "id_member=<?php echo 'MBR-'.$this->session->userdata('id_user').'-1';?>",
+				type : 'post',
+				success : function(response) {
+				
+				}
+			});
+	<?php } ?>
+        location.href= "<?php echo base_url(). 'Shop/index'?>";
+    },
+    // Optional
+    onPending: function(result){
+        /* You may add your own js here, this is just example */ //document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+    },
+    // Optional
+    onError: function(result){
+        /* You may add your own js here, this is just example */ //document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+    }
 });
 </script>
 
-<script type="text/javascript">
-						var payButton = document.getElementById('pay-button');
-						payButton.addEventListener('click', function () {
-							snap.pay('<?php echo $snap_Token; ?>'); // store your snap token here
-						});
-</script>
+
 </html>
 
