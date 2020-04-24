@@ -83,36 +83,33 @@ class Barang extends CI_Controller {
 	}
 
 	function updateData(){
-		$this->load->library('form_validation');
+		//$this->load->library('form_validation');
 		
-		$this->form_validation->set_rules('nama_barang', 'Name', 'required|trim');
-		$this->form_validation->set_rules('id_user', 'ID Seller', 'required|trim');
-		$this->form_validation->set_rules('harga_barang', 'Price', 'required|trim');
-		$this->form_validation->set_rules('stok_barang', 'Stock', 'required|trim');
-		$this->form_validation->set_rules('keterangan_barang', 'Keterangan', 'required|trim');
+		//$this->form_validation->set_rules('nama_barang', 'Name', 'required|trim');
+		//$this->form_validation->set_rules('id_user', 'ID Seller', 'required|trim');
+		//$this->form_validation->set_rules('harga_barang', 'Price', 'required|trim');
+		//$this->form_validation->set_rules('stok_barang', 'Stock', 'required|trim');
+		//$this->form_validation->set_rules('keterangan_barang', 'Keterangan', 'required|trim');
 
-		if($this->form_validation->run() == false){
-			echo validation_errors();
-		}
-		else{
+		//if($this->form_validation->run() == false){
+			//echo validation_errors();
+		//}
+		//else{
+			$this->load->model('m_barang');
 			$data_barang = array(
-				'id_barang' => htmlspecialchars($this->input->post('id_barang')), 
-				'nama_barang' => htmlspecialchars($this->input->post('nama_barang')), 
-				'id_penjual' => htmlspecialchars($this->input->post('id_user')), 
-				'harga_barang' => htmlspecialchars($this->input->post('harga_barang')), 
-				'stok_barang' => htmlspecialchars($this->input->post('stok_barang')),
-				'keterangan_barang' => htmlspecialchars($this->input->post('keterangan_barang')),
-				'user_add' => htmlspecialchars($this->input->post('id_user')),  
-				'user_edit' => $this->session->userdata('id_user'),  
+				'nama_barang' =>  $this->input->post('namabarang'),
+				'harga_barang' => $this->input->post('hargabarang'),
+				'stok_barang' => $this->input->post('stokbarang'),
+				'keterangan_barang' => $this->input->post('keterangan')
 			);
 
 			$where = array(
 				'id_barang' => $this->input->post('id_barang'),
 			);
-			$this->m_barang->updateRecord($where,$data_barang,'barang');
+			$this->m_barang->updateData($where,$data_barang,'barang');
 			redirect('Dashboard/Barang/index');
 
-		}
+		//}
 	}
 	
 	function hapusData($id_barang){

@@ -129,7 +129,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Nama Barang</label>
-                                                                <input  type="text" class="form-control" placeholder = "Nama Barang" id="nama_barang" name="nama_barang" value="<?php echo $list->nama_barang?>">
+                                                                <input  type="text" class="form-control" placeholder = "Nama Barang" id="namabarang" name="namabarang" value="<?php echo $list->nama_barang?>">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Email Penjual</label><br>
@@ -141,15 +141,15 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Harga Barang</label>
-                                                                <input  type="text" class="form-control" placeholder = "Harga Barang" id="harga_barang" name="harga_barang" value="<?php echo $list->harga_barang?>">
+                                                                <input  type="text" class="form-control" placeholder = "Harga Barang" id="hargabarang" name="hargabarang" value="<?php echo $list->harga_barang?>">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Stok Barang</label>
-                                                                <input  type="text" class="form-control" placeholder = "Stok Barang" id="stok_barang" name="stok_barang" value="<?php echo $list->stok_barang?>">
+                                                                <input  type="text" class="form-control" placeholder = "Stok Barang" id="stokbarang" name="stokbarang" value="<?php echo $list->stok_barang?>">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Keterangan Barang</label>
-                                                                <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keterangan_barang" name="keterangan_barang" value="<?php echo $list->keterangan_barang?>">
+                                                                <input  type="text" class="form-control" placeholder = "keterangan Barang" id="keteranganbarang" name="keterangan" value="<?php echo $list->keterangan_barang?>">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
