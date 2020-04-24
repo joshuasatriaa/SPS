@@ -5,6 +5,12 @@ class m_bengkel extends CI_Model{
 	{
 		return $this->db->query('SELECT id_bengkel, nama_bengkel, email, telepon, tanggal_registrasi, gambar, jam_buka, jam_tutup FROM bengkel');
 	}
+	
+	function tampilkanData1()
+	{
+		return $this->db->query('SELECT * FROM bengkel JOIN lokasi_bengkel WHERE bengkel.id_bengkel = lokasi_bengkel.id_bengkel');
+	}
+
     function insertTable($table,$where){
 		$this->db->insert($table,$where);
 
@@ -23,12 +29,23 @@ class m_bengkel extends CI_Model{
 		$this->db->delete($table);
 	}
 
+	function hapusData1($where){
+		return $this->db->query('UPDATE bengkel
+		SET bengkel.status_delete=1
+		WHERE id_bengkel= "'.$where.'" ');
+	}
+
 	function findAddress($id){
 		return $this->db->query('SELECT * FROM lokasi_bengkel WHERE id_bengkel = "'.$id.'"');
 	}
 
 	function findDefaultAddress($id){
 		return $this->db->query('SELECT * FROM lokasi_bengkel WHERE id_bengkel = "'.$id.'" LIMIT 1');
+	}
+
+	function checkLocation()
+	{
+		return $this->db->query('SELECT * FROM lokasi_bengkel');
 	}
 }
 ?>
