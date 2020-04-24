@@ -80,9 +80,35 @@
                                                 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editBarang_<?php echo $list->id_barang?>">Edit</button>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-outline-danger"><a href="<?php echo base_url(). 'Dashboard/Barang/hapusData/'.$list->id_barang;?>">Delete</button>
+                                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deletebarang_<?php echo $list->id_barang?>">Delete</button>
                                             </td>
                                         </tr>
+
+                                        <!-- modal delete -->
+                                        <div class="modal fade" id="deletebarang_<?php echo $list->id_barang?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mediumModalLabel">Confirmation</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    Confirm Delete This Row ?
+                                                    </div>
+                                                    
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                            <a href="<?php echo base_url(). 'Dashboard/Barang/hapusData1/'.$list->id_barang;?>">
+                                                                <button type="submit" class="btn btn-primary">Yes</button>
+                                                            </a>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         
                                         <!-- modal edit -->
                                         <div class="modal fade" id="editBarang_<?php echo $list->id_barang?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
@@ -107,10 +133,10 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Email Penjual</label><br>
-                                                                <select data-placeholder="Pilih Email" class="standardSelect form-control" tabindex="1" name="id_user" id="id_user">
-                                                                    <?php foreach($user as $a){ ?>
-                                                                        <option value="<?php echo $a->id_user ?>" <?php echo (($list->id_penjual == $a->id_user)? "selected" : "" ) ?>><?php echo $a->email ?></option>
-                                                                    <?php } ?>
+                                                                <select data-placeholder="Pilih Email" class="standardSelect form-control" tabindex="1" name="id_user" id="id_user" readonly>
+                                                                    <option>
+                                                                        <?php echo $list->email; ?>
+                                                                    </option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">

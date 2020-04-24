@@ -46,6 +46,14 @@ class m_barang extends CI_Model{
 	{
 		return $this->db->query('SELECT a.id_barang, a.nama_barang, b.email, a.harga_barang, a.keterangan_barang, a.stok_barang FROM barang a JOIN user b ON a.id_penjual=b.id_user');
 	}
+
+
+	function tampilkanData1()
+	{
+		return $this->db->query('SELECT * FROM 
+								barang a JOIN user b ON a.id_penjual=b.id_user
+								WHERE status_delete != 1');
+	}
 	
 	
 	function insertTable($table,$where){
@@ -123,6 +131,17 @@ class m_barang extends CI_Model{
 		JOIN barang ON foto_barang.id_barang = barang.id_barang
 		WHERE barang.id_barang = "'.$where.'"');
 		
+	}
+
+	function tampilkanDataAdmin()
+	{
+		return $this->db->query('SELECT barang.nama_barang,pengguna.nama_pengguna,
+								bengkel.nama_bengkel,bengkel.email as email_b,pengguna.email as email_a,
+								barang.harga_barang,barang.status_delete 
+								FROM barang
+								LEFT JOIN pengguna ON barang.id_penjual = pengguna.id_pengguna
+								LEFT JOIN bengkel ON barang.id_penjual = bengkel.id_bengkel
+								WHERE barang.status_delete !=1 ');
 	}
 }
 

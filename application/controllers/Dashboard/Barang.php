@@ -30,7 +30,7 @@ class Barang extends CI_Controller {
 	
 	public function index()
 	{
-		$data['barang'] = $this->m_barang->tampilkanData()->result();
+		$data['barang'] = $this->m_barang->tampilkanData1()->result();
 		$data['user'] = $this->m_user->tampilkanData()->result();
 		$this->head();
 		$data['count']=$this->m_barang->tampilkanData()->num_rows();
@@ -119,13 +119,22 @@ class Barang extends CI_Controller {
 		$this->load->model('m_barang');
 		$where = array('id_barang' => $id_barang);
 
-		$this->m_barang->hapusRecord($where,'barang');
+		$this->m_barang->hapusData($where);
 		redirect('Barang/index');
+	}
+
+	function hapusData1($id_barang){
+		$this->load->model('m_barang');
+		$where = array('id_barang' => $id_barang);
+
+		$this->m_barang->hapusData($id_barang);
+		redirect('Dashboard/Barang/index');
 	}
 
 	function exportPDF()
 	{
-		$data['barang'] = $this->m_barang->tampilkanData()->result();
+		$this->load->model('m_barang');
+		$data['barang1'] = $this->m_barang->tampilkanDataAdmin()->result();
 		$this->load->view('Dashboard/E_barang',$data);
 	}
 }
