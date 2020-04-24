@@ -115,7 +115,9 @@ class Pesanan extends CI_Controller {
 
 	function exportPDF()
 	{
-		$data['pesanan'] = $this->m_pesanan->tampilkanData()->result();
+		$data['barang'] = $this->m_barang->tampilkanData()->result();
+        $data['pengguna'] = $this->m_pengguna->tampilkanData()->result();
+        $data['pesanan'] = $this->m_pesanan->tampilkanData()->result();
 		$this->load->view('Dashboard/E_Pesanan',$data);
 	}
 }

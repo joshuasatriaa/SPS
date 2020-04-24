@@ -57,7 +57,7 @@ td
 
 <div style="font-size:20px;color:#369BB6;">
     <center>
-        BENGKEL
+        ORDERS
     </center>
 </div>
 
@@ -67,23 +67,23 @@ td
 <table>
     <tr>
         <th>No</th>
-        <th>Nama Bengkel</th>
-        <th>Email</th>
-        <th>Alamat</th>
-        <th>Telepon</th>
-        <th>Tanggal Registrasi</th>
+        <th>Nama Pembeli</th>
+        <th>Nama Barang</th>
+        <th>Jumlah Barang</th>
+        <th>Status Pesanan</th>
+        <th>Waktu Pesanan</th>
     </tr>
     <?php
-        foreach($bengkel as $list){
+        foreach($pesanan as $list){
     ?>
     <tr>
         <td> <?php echo $i; $i++; ?></td>
-        <td> <?php echo $list->nama_bengkel ?></td>
-        <td> <?php echo $list->email ?></td>
-        <td> <?php echo $list->alamat ?></td>
-        <td> <?php echo $list->telepon ?></td>
-        <td><?php echo date("d F Y ",strtotime($list->tanggal_registrasi)) ?></td>    
-        </tr>
+        <td><?php echo $list->nama_pengguna ?></td>
+        <td><?php echo $list->nama_barang ?></td>
+        <td><?php echo $list->jumlah_barang ?></td>
+        <td><?php echo ($list->status_pesanan == 1) ? "Sudah dibayar" : "Masuk ke Cart" ?></td>
+        <td><?php echo date("d F Y, H:i",strtotime($list->waktu_pesanan)) ?></td>
+    </tr>
     <?php
         }
     ?>
@@ -99,5 +99,5 @@ $pdf->setPaper('A4','landscape');
 
 $pdf->render();
 
-$pdf->stream('listBengkel.pdf', Array('Attachment'=>0));
+$pdf->stream('Orders.pdf', Array('Attachment'=>0));
 ?>

@@ -117,5 +117,5 @@ $pdf->setPaper('A4','landscape');
 
 $pdf->render();
 
-$pdf->stream('listAdmin.pdf', Array('Attachment'=>0));
+$pdf->stream('listBarang.pdf', Array('Attachment'=>0));
 ?>
