@@ -43,7 +43,7 @@
                             <li><i class="menu-icon fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Barang/index';?>"> Barang</a></li>
                             <li><i class="menu-icon fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Bengkel/index';?>"> Bengkel</a></li>
                             <li><i class="menu-icon fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/Service/index';?>"> Service</a></li>
-                            <li><i class="menu-icon fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/User/index';?>"> User</a></li>
+                            <li><i class="menu-icon fa fa-table"></i><a href="<?php echo base_url() .'Dashboard/User/index';?>"> Pengguna</a></li>
                             
                         </ul>
                     </li>
@@ -56,7 +56,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>"><i class="menu-icon fa fa-copy"></i>See Orders</a>
+                        <a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>"><i class="menu-icon fa fa-copy"></i>Orders</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>"><i class="menu-icon fa fa-address-book"></i>Booking</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>"><i class="menu-icon fa fa-user"></i>Membership Status</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url() .'Dashboard/ChatUser/index';?>"><i class="menu-icon fa fa-comments"></i>Live Chat Support </a>

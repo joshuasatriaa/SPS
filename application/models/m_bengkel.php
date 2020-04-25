@@ -8,7 +8,7 @@ class m_bengkel extends CI_Model{
 	
 	function tampilkanData1()
 	{
-		return $this->db->query('SELECT * FROM bengkel JOIN lokasi_bengkel WHERE bengkel.id_bengkel = lokasi_bengkel.id_bengkel');
+		return $this->db->query('SELECT * FROM bengkel JOIN lokasi_bengkel WHERE bengkel.id_bengkel = lokasi_bengkel.id_bengkel AND bengkel.status_delete != 1');
 	}
 
     function insertTable($table,$where){

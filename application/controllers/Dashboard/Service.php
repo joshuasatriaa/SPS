@@ -31,9 +31,9 @@ class Service extends CI_Controller {
 	public function index()
 	{
         $data['bengkel'] = $this->m_bengkel->tampilkanData()->result();
-        $data['service'] = $this->m_service->tampilkanData()->result();
+        $data['service'] = $this->m_service->tampilkanData1()->result();
 		$data['count']=$this->m_service->tampilkanData()->num_rows();
-		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
+		//$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$this->head();
 		$this->load->view('Dashboard/v_service',$data);
 		$this->foot();
@@ -48,7 +48,7 @@ class Service extends CI_Controller {
 		$this->form_validation->set_rules('id_bengkel', 'Workshop Name', 'required|trim');
 		$this->form_validation->set_rules('nama_service', 'Service Name', 'required|trim');
 		$this->form_validation->set_rules('harga_service', 'Service Price', 'required|trim');
-		$this->form_validation->set_rules('gambar', 'Picture', 'required|trim');
+		//$this->form_validation->set_rules('gambar', 'Picture', 'required|trim');
 		
 		if($this->form_validation->run() == false){
 			echo validation_errors();
@@ -59,11 +59,11 @@ class Service extends CI_Controller {
 				'id_bengkel' => htmlspecialchars($this->input->post('id_bengkel')), 
 				'nama_service' => htmlspecialchars($this->input->post('nama_service')), 
 				'harga_service' => htmlspecialchars($this->input->post('harga_service')),  
-                'gambar' => htmlspecialchars($this->input->post('gambar')),
-				'user_add' => htmlspecialchars($this->input->post('id_user')),  
-				'user_edit' => '',  
-				'user_delete' => '',
-				'status_delete' => 1
+                //'gambar' => htmlspecialchars($this->input->post('gambar')),
+				'user_add' => $this->session->userdata('id_user'),  
+				//'user_edit' => '',  
+				//'user_delete' => '',
+				'status_delete' => 0
 			);
 
 			$this->m_service->insertTable('service',$data_service);
@@ -83,29 +83,29 @@ class Service extends CI_Controller {
 	function updateData(){
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('id_bengkel', 'Workshop Name', 'required|trim');
+		//$this->form_validation->set_rules('id_bengkel', 'Workshop Name', 'required|trim');
 		$this->form_validation->set_rules('nama_service', 'Service Name', 'required|trim');
 		$this->form_validation->set_rules('harga_service', 'Service Price', 'required|trim');
-		$this->form_validation->set_rules('gambar', 'Picture', 'required|trim');
+		//$this->form_validation->set_rules('gambar', 'Picture', 'required|trim');
 
 		if($this->form_validation->run() == false){
 			echo validation_errors();
 		}
 		else{
 			$data_service = array(
-				'id_service' => htmlspecialchars($this->input->post('id_service')), 
-				'id_bengkel' => htmlspecialchars($this->input->post('id_bengkel')), 
+				//'id_service' => htmlspecialchars($this->input->post('id_service')), 
+				//'id_bengkel' => htmlspecialchars($this->input->post('id_bengkel')), 
 				'nama_service' => htmlspecialchars($this->input->post('nama_service')), 
 				'harga_service' => htmlspecialchars($this->input->post('harga_service')),  
-                'gambar' => htmlspecialchars($this->input->post('gambar')),
-				'user_add' => htmlspecialchars($this->input->post('id_user')),  
-				'user_edit' => $this->session->userdata('id_user'),  
+                //'gambar' => htmlspecialchars($this->input->post('gambar')),
+				//'user_add' => htmlspecialchars($this->input->post('id_user')),  
+				'user_edit' => $this->session->userdata('id_user')
 			);
 
 			$where = array(
 				'id_service' => $this->input->post('id_service'),
 			);
-			$this->m_service->updateRecord($where,$data_service,'service');
+			$this->m_service->updateData($where,$data_service,'service');
 			redirect('Dashboard/Service/index');
 
 		}
@@ -117,6 +117,14 @@ class Service extends CI_Controller {
 
 		$this->m_service->hapusRecord($where,'service');
 		redirect('Service/index');
+	}
+
+	function hapusData1($id_service){
+		$this->load->model('m_service');
+		//$where = array('id_service' => $id_service);
+
+		$this->m_service->hapusRecord1($id_service);
+		redirect('Dashboard/Service/index');
 	}
 
 	function exportPDF()

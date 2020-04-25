@@ -58,7 +58,6 @@
                                             <th>Nama Bengkel</th>
                                             <th>Nama Service</th>
                                             <th>Harga Service</th>
-                                            <th>Gambar</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
                                         </tr>
@@ -73,14 +72,42 @@
                                             <td><?php echo $list->nama_bengkel ?></td>
                                             <td><?php echo $list->nama_service ?></td>
                                             <td><?php echo $list->harga_service ?></td>
-                                            <td><?php echo '<img class="card-img-top img-fluid" src="data:image/jpeg;base64,' .base64_encode($list->gambar).'" alt="Card image cap" />'?></td>
+                                            
                                             <td>
                                                 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editservice_<?php echo $list->id_service?>">Edit</button>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-outline-danger"><a href="<?php echo base_url(). 'Dashboard/service/hapusData/'.$list->id_service;?>">Delete</button>
+                                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteservice_<?php echo $list->id_service?>">Delete</button>
                                             </td>
                                         </tr>
+
+                                         <!-- modal delete -->
+                                         <div class="modal fade" id="deleteservice_<?php echo $list->id_service?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mediumModalLabel">Confirmation</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                    Confirm Delete This Row ?
+                                                    </div>
+                                                    
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                                            <a href="<?php echo base_url(). 'Dashboard/Service/hapusData1/'.$list->id_service;?>">
+                                                                <button type="button" class="btn btn-primary">Yes</button>
+                                                            </a>
+                                                        </div>
+                                                      
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- edit -->
                                         <div class="modal fade" id="editservice_<?php echo $list->id_service?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
@@ -92,35 +119,32 @@
                                                     </div>
                                                     <div class="modal-body">
                             
-                                         <form action="<?php echo base_url().'Dashboard/Service/updateData'?>" method="POST" novalidate="novalidate">
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">ID Service</label>
-                                                <input type="text" class="form-control" placeholder = "ID service" id="id_service" name="id_service" value="<?php echo $list->id_service ?>" readonly>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Nama Bengkel</label>
-                                                <input  type="text" class="form-control" placeholder = "Nama Bengkel" id="nama_bengkel" name="nama_bengkel" value="<?php echo $list->nama_bengkel?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Nama Service</label>
-                                                <input  type="text" class="form-control" placeholder = "Nama Service" id="nama_service" name="nama_service" value="<?php echo $list->nama_service?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Harga Service</label>
-                                                <input  type="text" class="form-control" placeholder = "Harga Service" id="harga_service" name="harga_service" value="<?php echo $list->harga_service?>">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Gambar</label>
-                                                <input type="file" name="gambar" size="20" value="<?= $list->gambar ?>"?>
-                                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                                                        <form action="<?php echo base_url().'Dashboard/Service/updateData'?>" method="POST" novalidate="novalidate">
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">ID Service</label>
+                                                                <input type="text" class="form-control" placeholder = "ID service" id="id_service" name="id_service" value="<?php echo $list->id_service ?>" readonly>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Nama Bengkel</label>
+                                                                <input  type="text" class="form-control" placeholder = "Nama Bengkel" id="nama_bengkel" name="nama_bengkel" value="<?php echo $list->nama_bengkel?>" readonly>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Nama Service</label>
+                                                                <input  type="text" class="form-control" placeholder = "Nama Service" id="nama_service" name="nama_service" value="<?php echo $list->nama_service?>">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Harga Service</label>
+                                                                <input  type="text" class="form-control" placeholder = "Harga Service" id="harga_service" name="harga_service" value="<?php echo $list->harga_service?>">
+                                                            </div>
+                                                                    
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        </div>
                                           <?php
-                          } 
-                          ?>
+                                            } 
+                                            ?>
                                     </tbody>
                                 </table>
                             </form>
@@ -133,7 +157,7 @@
             </div><!-- .animated -->
         </div><!-- .content -->
 
-        <!-- Modal -->
+        <!-- Modal input -->
         <div class="modal fade" id="inputservice" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -152,7 +176,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Nama Bengkel</label><br>
-                                                <select data-placeholder="Pilih Bengkel" class="standardSelect" tabindex="1" name="id_bengkel">
+                                                <select data-placeholder="Pilih Bengkel" class="standardSelect form-control" tabindex="1" name="id_bengkel">
                                                     <?php foreach($bengkel as $a){ ?>
                                                         <option value="<?php echo $a->id_bengkel ?>"><?php echo $a->nama_bengkel ?></option>
                                                     <?php } ?>
@@ -166,15 +190,12 @@
                                                 <label for="cc-payment" class="control-label mb-1">Harga Service</label>
                                                 <input  type="text" class="form-control" placeholder = "Harga Service" id="harga_service" name="harga_service">
                                             </div>
-                                            <div class="form-group">
-                                                <label for="cc-payment" class="control-label mb-1">Gambar</label><br>
-                                                <input type="file" name="gambar" size="20">
-                                            </div>
-                                            </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </div>
                          </form>
                     </div>
                 </div>

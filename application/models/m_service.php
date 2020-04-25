@@ -18,6 +18,12 @@ class m_service extends CI_Model{
 	{
 		return $this->db->query('SELECT a.id_service, b.nama_bengkel, a.nama_service, a.harga_service, a.gambar FROM service a JOIN bengkel b ON a.id_bengkel=b.id_bengkel');
 	}
+
+	function tampilkanData1()
+	{
+		return $this->db->query('SELECT a.id_service, b.nama_bengkel, a.nama_service, a.harga_service, a.gambar 
+		FROM service a JOIN bengkel b ON a.id_bengkel=b.id_bengkel WHERE a.status_delete != 1');
+	}
  
     function editData($where, $table){
 		return $this->db->get_where($table,$where);
@@ -31,6 +37,12 @@ class m_service extends CI_Model{
 	function hapusData($where,$table){
 		$this->db->where($where);
 		$this->db->delete($table);
+	}
+
+	function hapusRecord1($where){
+		return $this->db->query('UPDATE service
+		SET status_delete = 1
+		WHERE id_service = "'.$where.'" ');
 	}
 }
 ?>
