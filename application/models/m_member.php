@@ -10,8 +10,9 @@ class m_member extends CI_Model{
 		$this->db->insert($a,$b);
 	}	
 
-	function insertTable($a,$b){
-		$this->db->insert($a,$b);
+	function insertTable($table,$data){
+		$this->db->insert($table,$data);
+
 	}	
 
 	function tampilkan_member($table, $where){

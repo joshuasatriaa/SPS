@@ -30,9 +30,13 @@
 					<?php } ?>
 
 					<?php } ?>
-
 					
 
+					<?php if($this->session->userdata('tipe_user') == $user){?>
+						<div class="widget1 w-100" style="margin-top:30px;">
+							<h5 style="font-family: 'Open Sans', sans-serif;text-align:center;">You have <br><?php echo $jumlahDiscountCodes; ?> discount codes</h5>
+						</div>
+					<?php }?>
 					<div class="widget1 price-range w-100" style="margin-top:30px;">
 						<h4 class="widget-header" style="font-family: 'Open Sans', sans-serif;">Price Range</h4>
 						<div class="block">

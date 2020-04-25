@@ -11,8 +11,8 @@ class m_bengkel extends CI_Model{
 		return $this->db->query('SELECT * FROM bengkel JOIN lokasi_bengkel WHERE bengkel.id_bengkel = lokasi_bengkel.id_bengkel AND bengkel.status_delete != 1');
 	}
 
-    function insertTable($table,$where){
-		$this->db->insert($table,$where);
+    function insertTable($table,$data){
+		$this->db->insert($table,$data);
 
 	}
     function editData($where, $table){

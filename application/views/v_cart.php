@@ -149,9 +149,27 @@
                     <div class="col-lg-12">
                         <div class="discount-coupon">
                             <h6 class="font2">Discount Codes</h6>
-                            <form action="#" class="coupon-form">
-                                <input type="text" placeholder="Enter your codes">
-                                <button type="submit" class="site-btn coupon-btn">Apply</button>
+                            <form action="#" id="form_kode_diskon" class="coupon-form">
+                                <div class="input-group">
+                                    <select class="custom-select" id="kode_diskon">
+                                        <option value="0">Don't use discount codes</option>
+                                        <?php if($discountCodes){
+                                                    $arr = [
+                                                        1=>10,
+                                                        2=>20,
+                                                        3=>30,
+                                                    ];
+                                                    foreach($discountCodes as $a){?>
+                                                        <option value="<?php echo $a->id_promo; ?>"><?php echo $a->kode_promo. " (". $arr[$a->jenis_promo]."%)";?></option>
+                                            <?php   }
+                                                } ?>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-sm proceed-btn pay-button btn-danger" type="submit" style="color:#FFF;">Apply</button>
+                                    </div>
+                                </div>
+                                <!-- <input type="" placeholder="Enter your codes">
+                                <button type="submit" class="btn site-btn coupon-btn" style="background-color:#e1001a;">Apply</button> -->
                             </form>
                         </div>
                     </div>
@@ -159,11 +177,14 @@
                         <div class="proceed-checkout">
                             <ul>
                                 <li class="subtotal">Subtotal <span id="subtotal">Rp. <?php echo number_format($total, 0, 0, ".");?></span></li>
+                                <li class="subtotal" style="display: none;" id="li-diskon">Discount <strong id="jumlah_diskon"></strong><span id="hasil_diskon"></span></li>
                                 <li class="cart-total">Total <span style="color:#e1001a;" id="total">Rp. <?php echo number_format($total, 0, 0, ".");?></span></li>
                             </ul>
                             <form action="<?php echo base_url(). 'Shop/process_checkout'?>" method="post">
                                 <input type="hidden" name="total_cart" id="total_cart_hidden" value="<?php echo $total;?>">
-                                <button class="proceed-btn pay-button" style="background-color:#e1001a;">PROCEED TO CHECK OUT</button>
+                                <input type="hidden" name="promo_value" id="promo_value_hidden" value="0">
+                                <input type="hidden" name="promo_id" id="promo_id_hidden" value="0">
+                                <button class="proceed-btn pay-button" type="submit" style="background-color:#e1001a;">PROCEED TO CHECK OUT</button>
                             </form>
                         </div>
                     </div>
@@ -309,9 +330,33 @@ function save_to_db(cart_id, new_quantity, newPrice) {
                 var price = cart_price.replace(/\./g,"");
                 totalItemPrice = parseInt(totalItemPrice) + parseInt(price);
             });
-            $("#subtotal").text("Rp. "+numberWithCommas(totalItemPrice));
-            $("#total").text("Rp. "+numberWithCommas(totalItemPrice));
-            $("#total_cart_hidden").val(totalItemPrice);
+            // $("#subtotal").text("Rp. "+numberWithCommas(totalItemPrice));
+            // $("#total").text("Rp. "+numberWithCommas(totalItemPrice));
+            // $("#total_cart_hidden").val(totalItemPrice);
+
+            // if(1 == 2){
+
+            // }
+            // else{
+            //     $("#subtotal").text("Rp. "+numberWithCommas(totalItemPrice));
+            //     $("#total").text("Rp. "+numberWithCommas(totalItemPrice));
+            //     $("#total_cart_hidden").val(totalItemPrice);
+            // }
+            if($('#jumlah_diskon').text().length != 0){
+                var cart_discount = $('#jumlah_diskon').text().replace("%)","");
+                var num = cart_discount.replace("(","");
+                var discount = parseInt(num);
+                var price_discount = parseInt(totalItemPrice) * discount / 100;
+                var new_total_price = parseInt(totalItemPrice) - parseInt(price_discount);
+                $("#subtotal").text("Rp. "+numberWithCommas(totalItemPrice));
+                $("#total").text("Rp. "+numberWithCommas(new_total_price));
+                $("#hasil_diskon").text("Rp. "+numberWithCommas(price_discount));
+                $("#total_cart_hidden").val(new_total_price);
+            }else{
+                $("#subtotal").text("Rp. "+numberWithCommas(totalItemPrice));
+                $("#total").text("Rp. "+numberWithCommas(totalItemPrice));
+                $("#total_cart_hidden").val(totalItemPrice);
+            }
 		}
 	});
 }
@@ -320,6 +365,53 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 </script>
+<script>
+$('#form_kode_diskon').on("submit", function (event){
+    event.preventDefault();
+    $kode = $('#kode_diskon').val();
 
+    $.ajax({
+        url :"<?php echo base_url(). 'Shop/applyCode'?>",
+        data :"id_promo="+$kode,
+        type : "POST",
+        dataType: "json",
+        success : function(response){
+            if($.isEmptyObject(response.error)){
+                var cart_price = $('#subtotal').text().replace("Rp. ","");
+                var price = cart_price.replace(/\./g,"");
+                
+                var discount;
+                if(response.promo == 1){
+                    discount = 10;
+                }
+                else if(response.promo == 2){
+                    discount = 20;
+                }
+                else if(response.promo == 3){
+                    discount = 30;
+                }
+                else{
+                    discount = 0;
+                }
+
+                if(discount > 0){
+                    var price_discount = parseInt(price) * discount / 100;
+                    var new_total_price = parseInt(price) - parseInt(price_discount);
+                    $("#li-diskon").css('display','block');
+                    $("#jumlah_diskon").text("("+discount+"%)");
+                    $("#hasil_diskon").text("Rp. "+numberWithCommas(price_discount));
+                    $("#total").text("Rp. "+numberWithCommas(new_total_price));
+                    $("#total_cart_hidden").val(new_total_price);
+                    $('#promo_value_hidden').val(discount);
+                    $('#promo_id_hidden').val(response.id);
+                }
+                
+            }else{
+                alert('Code not found!');
+            }
+        }
+    });
+});
+</script>
 </body>
 </html>

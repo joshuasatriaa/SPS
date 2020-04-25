@@ -5,8 +5,8 @@ class m_admin extends CI_Model{
 	{
 		return $this->db->query('SELECT * FROM admin');
 	}
-    function insertTable($table,$where){
-		$this->db->insert($table,$where);
+    function insertTable($table,$data){
+		$this->db->insert($table,$data);
 
 	}
     function editData($where, $table){

@@ -1468,6 +1468,17 @@ background-color: #c67605;
 	font-weight: 700;
 }
 
+.proceed-checkout ul li.hasil_diskon {
+	font-weight: 400;
+	text-transform: capitalize;
+	border-bottom: 1px solid #ffffff;
+	padding-bottom: 14px;
+}
+
+.proceed-checkout ul li.hasil_diskon span {
+	font-weight: 700;
+}
+
 .proceed-checkout ul li.cart-total {
 	padding-top: 10px;
 }

@@ -6,9 +6,10 @@ class m_service extends CI_Model{
 		return $query;
 	}
 	
-	function insertTable($a,$b){
-		$this->db->insert($a,$b);
-	}	
+	function insertTable($table,$data){
+		$this->db->insert($table,$data);
+
+	}
 
 	function tampilkan_serviceku($where){
 		$query = $this->db->query('SELECT * FROM Service WHERE id_bengkel = "'.$where.'"');

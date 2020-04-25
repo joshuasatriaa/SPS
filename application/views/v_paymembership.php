@@ -64,48 +64,47 @@ function split_name($name) {
 }
 
 $text = substr($this->session->userdata('id_user'),0,4);
-foreach($profil as $a){
-	if($text == "USER"){
-		$nama = split_name($a->nama_pengguna);
+if($text == "USER"){
+		$nama = split_name($profil['nama_pengguna']);
 
 		$billing_address = array(
 			'first_name'    => $nama[0],
 			'last_name'     => $nama[1],
-			'address'       => $alamat['alamat'],
-			'phone'         => $a->telepon,
+			'address'       => $alamat,
+			'phone'         => $profil['telepon'],
 			'country_code'  => 'IDN'
 		);
 	
 		$customer_details = array(
 			'first_name'    => $nama[0],
 			'last_name'     => $nama[1],
-			'email'         => $a->email,
-			'phone'         => $a->telepon,
+			'email'         => $profil['email'],
+			'phone'         => $profil['telepon'],
 			'billing_address'  => $billing_address,
 			'shipping_address' => $shipping_address
 		);
-	}
-	else{
+}
+else{
 		$billing_address = array(
-			'first_name'    => $a->nama_bengkel,
+			'first_name'    => $profil['nama_bengkel'],
 			'last_name'     => '',
 			'address'       => $alamat['alamat'],
-			'phone'         => $a->telepon,
+			'phone'         => $profil['telepon'],
 			'country_code'  => 'IDN'
 		);
 	
 		$customer_details = array(
-			'first_name'    => $a->nama_bengkel,
+			'first_name'    => $profil['nama_bengkel'],
 			'last_name'     => '',
-			'email'         => $a->email,
-			'phone'         => $a->telepon,
+			'email'         => $profil['email'],
+			'phone'         => $profil['telepon'],
 			'billing_address'  => $billing_address,
 			'shipping_address' => $shipping_address
 		);
-	}
-    
-    
 }
+    
+    
+
 // $billing_address = array(
 //     'first_name'    => "Andri",
 //     'last_name'     => "Litani",

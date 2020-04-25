@@ -5,8 +5,8 @@ class m_pengguna extends CI_Model{
 	{
 		return $this->db->query('SELECT id_pengguna, nama_pengguna,jenis_kelamin,tempat_lahir,alamat, email, telepon, tanggal_registrasi, gambar FROM pengguna');
 	}
-    function insertTable($table,$where){
-		$this->db->insert($table,$where);
+    function insertTable($table,$data){
+		$this->db->insert($table,$data);
 
 	}
     function editData($where, $table){

@@ -1,8 +1,8 @@
 <?php
 class m_notif extends CI_Model{
     
-	function insertTable($a,$b){
-		$this->db->insert($a,$b);
+	function insertTable($table,$data){
+		$this->db->insert($table,$data);
 
 	}
 	
