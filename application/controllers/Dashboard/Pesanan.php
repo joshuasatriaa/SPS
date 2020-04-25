@@ -79,27 +79,28 @@ class Pesanan extends CI_Controller {
 	function updateData(){
 		$this->load->library('form_validation');
 		
-		$this->form_validation->set_rules('id_pengguna', 'ID Buyer', 'required|trim');
-		$this->form_validation->set_rules('id_barang', 'ID Item', 'required|trim');
+		//$this->form_validation->set_rules('id_pengguna', 'ID Buyer', 'required|trim');
+		//$this->form_validation->set_rules('id_barang', 'ID Item', 'required|trim');
 		$this->form_validation->set_rules('status_pesanan', 'Status Order', 'required|trim');
-        $this->form_validation->set_rules('waktu_pesanan', 'Time Order', 'required|trim');
+        //$this->form_validation->set_rules('waktu_pesanan', 'Time Order', 'required|trim');
 
 		if($this->form_validation->run() == false){
 			echo validation_errors();
 		}
 		else{
 			$data_pesanan = array(
-				'id_pesanan' => htmlspecialchars($this->input->post('id_pesanan')), 
-				'id_pembeli' => htmlspecialchars($this->input->post('id_pengguna')),  
-				'id_barang' => htmlspecialchars($this->input->post('id_barang')),  
-                'status_pesanan' => htmlspecialchars($this->input->post('status_pesanan')),
-                'waktu_pesanan' => htmlspecialchars($this->input->post('waktu_pesanan'))
+				//'id_pesanan' => htmlspecialchars($this->input->post('id_pesanan')), 
+				//'id_pembeli' => htmlspecialchars($this->input->post('id_pengguna')),  
+				//'id_barang' => htmlspecialchars($this->input->post('id_barang')),  
+				'jumlah_barang' => $this->input->post('jumlahbarang'),
+                'status_pesanan' => $this->input->post('status_pesanan')
+                //'waktu_pesanan' => htmlspecialchars($this->input->post('waktu_pesanan'))
 			);
 
 			$where = array(
 				'id_pesanan' => $this->input->post('id_pesanan'),
 			);
-			$this->m_pesanan->updateRecord($where,$data_pesanan,'pesanan');
+			$this->m_pesanan->updateData($where,$data_pesanan,'pesanan');
 			redirect('Dashboard/Pesanan/index');
 
 		}

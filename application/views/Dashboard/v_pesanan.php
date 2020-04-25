@@ -33,7 +33,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Pesanan</strong>
+                                <strong class="card-title">TABLE</strong>
                                 <div class="float-right">
                                     <a href="<?php echo base_url().'Dashboard/Pesanan/exportPDF' ?>" target="_blank">
                                         <button type="button" class="btn btn-success">
@@ -54,7 +54,6 @@
                                             <th>Status Pesanan</th>
                                             <th>Waktu Pesanan</th>
                                             <th>Edit</th>
-                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -72,9 +71,9 @@
                                             <td>
                                                 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editpesanan_<?php echo $list->id_pesanan?>">Edit</button>
                                             </td>
-                                            <td>
+                                            <!--<td>
                                                 <button type="button" class="btn btn-outline-danger"><a href="<?php echo base_url(). 'Dashboard/pesanan/hapusData/'.$list->id_pesanan;?>">Delete</button>
-                                            </td>
+                                            </td>-->
                                         </tr>
                                         <div class="modal fade" id="editpesanan_<?php echo $list->id_pesanan?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
@@ -93,8 +92,16 @@
                                                 <input type="text" class="form-control" placeholder = "ID pesanan" id="id_pesanan" name="id_pesanan" value="<?php echo $list->id_pesanan ?>" readonly>
                                             </div>
                                             <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Nama Pembeli</label>
+                                                <input type="text" class="form-control"  value="<?php echo $list->nama_pengguna ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Nama Barang</label>
+                                                <input type="text" class="form-control"  value="<?php echo $list->nama_barang ?>" readonly>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Jumlah Pesanan</label>
-                                                <input type="text" class="form-control" placeholder = "ID pesanan" id="id_pesanan" name="id_pesanan" value="<?php echo $list->jumlah_barang ?>">
+                                                <input type="text" class="form-control" id="jumlahbarang" name="jumlahbarang" value="<?php echo $list->jumlah_barang ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Status Pesanan</label>
@@ -105,19 +112,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Waktu Pesanan</label>
-                                                <input type="datetime" class="form-control" placeholder = "Waktu Pesanan" id="waktu_pesanan" name="waktu_pesanan" value="<?php echo $list->waktu_pesanan?>">
+                                                <input type="datetime" class="form-control" placeholder = "Waktu Pesanan" id="waktu_pesanan" name="waktu_pesanan" value="<?php echo $list->waktu_pesanan?>" readonly>
                                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                        </div></form>
                                           <?php
                           } 
                           ?>
                                     </tbody>
                                 </table>
-                            </form>
+                            
                             </div>
                         </div>
                     </div>
