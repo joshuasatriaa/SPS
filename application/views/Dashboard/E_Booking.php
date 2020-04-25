@@ -116,5 +116,5 @@ $pdf->setPaper('A4','landscape');
 
 $pdf->render();
 
-$pdf->stream('listHistoryPromo.pdf', Array('Attachment'=>0));
+$pdf->stream('listBooking.pdf', Array('Attachment'=>0));
 ?>
