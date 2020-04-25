@@ -207,7 +207,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Konfirmasi Password</label>
-                                                <input  type="password" class="form-control" placeholder = "Konfirmasi Password" id="email" name="password2">
+                                                <input  type="password" class="form-control" placeholder = "Konfirmasi Password" id="password2" name="password2">
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Alamat</label>

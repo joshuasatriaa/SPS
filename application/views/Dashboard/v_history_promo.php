@@ -31,7 +31,7 @@
                             <div class="card-header">
                                 <strong class="card-title">Promo</strong>
                                 <div class="float-right">
-                                    <a href="<?php echo base_url().'Dashboard/service/exportPDF' ?>" target="_blank">
+                                    <a href="<?php echo base_url().'Dashboard/PromoManagement/exportPDF2' ?>" target="_blank">
                                         <button type="button" class="btn btn-success">
                                             Export
                                         </button>

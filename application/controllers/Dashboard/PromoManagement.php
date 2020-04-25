@@ -115,5 +115,17 @@ class PromoManagement extends CI_Controller {
         $this->m_promo->deleteRecord($id);
         redirect('Dashboard/PromoManagement/Current');
     }
+
+    function exportPDF1()
+	{
+		$data['promo'] = $this->m_promo->tampilkan_data_sekarang()->result();
+		$this->load->view('Dashboard/E_Promo1',$data);
+    }
+    
+    function exportPDF2()
+	{
+		$data['promo'] = $this->m_promo->tampilkan_semua_data()->result();
+		$this->load->view('Dashboard/E_Promo2',$data);
+	}
 }
 ?>
