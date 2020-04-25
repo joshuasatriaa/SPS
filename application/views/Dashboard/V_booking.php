@@ -13,18 +13,13 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Master Data</h1>
+                                <h1>Booking</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li>Master Data</li>
-                                    <li class="active">Bengkel</li>
-                                </ol>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -38,146 +33,129 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Bengkel</strong>
+                                <strong class="card-title">TABLE</strong>
                                 <div class="float-right">
-                                    <a href="<?php echo base_url().'Dashboard/Bengkel/exportPDF' ?>" target="_blank">
+                                    <a href="<?php echo base_url().'Dashboard/Booking/exportPDF' ?>" target="_blank">
                                         <button type="button" class="btn btn-success">
                                             Export
                                         </button>
                                     </a>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputBengkel">
-                                        <span class="ti-plus"></span> Input
-                                    </button>
+                                    
                                 </div>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead align="center">
                                         <tr>
-                                            <th>ID Bengkel</th>
+                                            <th>ID Booking</th>
+                                            <th>Nama Pelanggan</th>
                                             <th>Nama Bengkel</th>
-                                            <th>Email</th>
-                                            <th>Alamat</th>
-                                            <th>Telepon</th>
-                                            <th>Tanggal Registrasi</th>
-                                            <th>Jam Buka</th>
-                                            <th>Jam Tutup</th>
+                                            <th>Service</th>
+                                            <th>Waktu Booking</th>
+                                            <th>Status Booking</th>
                                             <th>Edit</th>
-                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                             $i=1;
-                                            foreach($bengkel as $list){
-                                        ?>    
+                                            foreach($booking as $list){
+                                        ?>
                                         <tr align="center">
-                                            <td><?php echo $list->id_bengkel ?></td>
+                                            <td><?php echo $list->id_booking ?></td>
+                                            <td><?php echo $list->nama_pengguna ?></td>
                                             <td><?php echo $list->nama_bengkel ?></td>
-                                            <td><?php echo $list->email?></td>
-                                            <td><?php echo $list->alamat?></td>
-                                            <td><?php echo $list->telepon ?></td>
-                                            <td><?php echo date("d F Y ",strtotime($list->tanggal_registrasi)) ?></td>    
-                                            <td><?php echo $list->jam_buka?></td>
-                                            <td><?php echo $list->jam_tutup?></td>
-                                            <td>
-                                                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editbengkel_<?php echo $list->id_bengkel?>">Edit</button>
+                                            <td><?php echo $list->nama_service ?></td>
+                                            <td><?php echo date("d F Y, H:i",strtotime($list->waktu_service)) ?></td>
+                                            <td><?php 
+                                                    if($list->status_booking == 0)
+                                                    {
+                                                        echo "Belum Konfirmasi";
+                                                    }
+                                                    else if($list->status_booking == 1)
+                                                    {
+                                                        echo "Ditolak";
+                                                    }
+                                                    else if($list->status_booking == 2)
+                                                    {
+                                                        echo "Dikonfirmasi";
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "Selesai";
+                                                    } 
+                                                ?>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#deletebengkel_<?php echo $list->id_bengkel?>">Delete</button>
+                                                <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#editbook_<?php echo $list->id_booking?>">Edit</button>
                                             </td>
+                                            <!--<td>
+                                                <button type="button" class="btn btn-outline-danger"><a href="<?php echo base_url(). 'Dashboard/pesanan/hapusData/'.$list->id_pesanan;?>">Delete</button>
+                                            </td>-->
                                         </tr>
 
-                                        <!-- modal delete -->
-                                        <div class="modal fade" id="deletebengkel_<?php echo $list->id_bengkel?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="mediumModalLabel">Confirmation</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                    Confirm Delete This Row ?
-                                                    </div>
-                                                    
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                                                            <a href="<?php echo base_url(). 'Dashboard/Bengkel/hapusData1/'.$list->id_bengkel;?>">
-                                                                <button type="button" class="btn btn-primary">Yes</button>
-                                                            </a>
-                                                        </div>
-                                                      
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- modal edit -->
-                                        <div class="modal fade" id="editbengkel_<?php echo $list->id_bengkel?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                                        <!-- Modal edit-->
+                                        <div class="modal fade" id="editbook_<?php echo $list->id_booking?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mediumModalLabel">Edit Data Bengkel</h5>
+                                                        <h5 class="modal-title" id="mediumModalLabel">Edit Data Booking</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body">
-                            
-                                                        <form action="<?php echo base_url().'Dashboard/Bengkel/updateData'?>" method="POST" novalidate="novalidate">
+                                                    <form action="<?php echo base_url().'Dashboard/Booking/updateData'?>" method="post" novalidate="novalidate">
+                                                        <div class="modal-body">
+                                            
                                                             <div class="form-group">
-                                                                <label for="cc-payment" class="control-label mb-1">ID Bengkel</label>
-                                                                <input type="text" class="form-control" placeholder = "ID Bengkel" id="id_bengkel" name="id_bengkel" value="<?php echo $list->id_bengkel ?>" readonly>
+                                                                <label for="cc-payment" class="control-label mb-1">ID Booking</label>
+                                                                <input type="text" class="form-control" placeholder = "ID Bengkel" id="idbook" name="idbook" value="<?php echo $list->id_booking ?>"readonly>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="cc-payment" class="control-label mb-1">Nama Pelanggan</label>
+                                                                <input  type="text" class="form-control" placeholder = "Nama Bengkel"  value="<?php echo $list->nama_pengguna?>" readonly>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Nama Bengkel</label>
-                                                                <input  type="text" class="form-control" placeholder = "Nama Bengkel" id="nama_bengkel" name="nama_bengkel" value="<?php echo $list->nama_bengkel?>">
+                                                                <input  type="text" class="form-control" placeholder = "Nama Bengkel"  value="<?php echo $list->nama_bengkel ?>" readonly>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="cc-payment" class="control-label mb-1">Email</label>
-                                                                <input  type="text" class="form-control" placeholder = "Email" id="email" name="email" value="<?php echo $list->email?>">
-                                                            </div>
-                                                            
-                                                            <div class="form-group">
-                                                                <label for="cc-payment" class="control-label mb-1">Alamat</label>
-                                                                <input  type="text" class="form-control" placeholder = "Alamat" id="alamat" name="alamat" value="<?php echo $list->alamat ?>">
+                                                                <label for="cc-payment" class="control-label mb-1">Service</label>
+                                                                <input  type="text" class="form-control" placeholder = "Nama Bengkel"  value="<?php echo $list->nama_service ?>" readonly>
                                                             </div>
                                                             <div class="form-group">
-                                                                <label for="cc-payment" class="control-label mb-1">Telepon</label>
-                                                                <input  type="text" class="form-control" placeholder = "Telepon" id="telepon" name="telepon" value="<?php echo $list->telepon?>">
-                                                            </div>        
-                                                            <div class="form-group">
-                                                                <label for="cc-payment" class="control-label mb-1">Jam Buka</label>
-                                                                <input  type="text" class="form-control" placeholder = "Jam Buka" id="jam_buka" name="jam_buka" value="<?php echo $list->jam_buka?>">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="cc-payment" class="control-label mb-1">Jam Tutup</label>
-                                                                <input  type="text" class="form-control" placeholder = "Jam Tutup" id="jam_tutup" name="jam_tutup" value="<?php echo $list->jam_tutup?>">
+                                                                <label for="cc-payment" class="control-label mb-1">Waktu Service</label>
+                                                                <input  type="datetime" class="form-control" id="waktu" name="waktu"  value="<?php echo $list->waktu_service ?>">
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                                             <button type="submit" class="btn btn-primary">Submit</button>
-                                                        </div>    </form>
-                                                        <?php
-                                                            } 
-                                                        ?>
-                                                    </tbody>
-                                                </table>
-                                        
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
-                                        
-                                    </div>
+                                        </div>
+                                        <!-- end modal -->
 
-
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
-
-                    <!-- Modal input-->
-                    <div class="modal fade" id="inputBengkel" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
+                                        <?php
+                                            }
+                                        ?>                    
+                                    </tbody>                    
+                                </table>                    
+                            </div>                                
+                        </div>                                
+                    </div>                               
+                </div> 
+            </div>
+        </div> <!-- .content -->
+                             
+                                            
+                            
+         
+        
+                        <!-- Modal input-->
+                        <div class="modal fade" id="inputBengkel" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -186,9 +164,9 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">
+                                    <form action="<?php echo base_url().'Dashboard/Bengkel/insertData'?>" method="post" novalidate="novalidate">
+                                        <div class="modal-body">
                             
-                                        <form action="<?php echo base_url().'Dashboard/Bengkel/insertData'?>" method="post" novalidate="novalidate">
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">ID Bengkel</label>
                                                 <input type="text" class="form-control" placeholder = "ID Bengkel" id="id_bengkel" name="id_bengkel" value="BID-<?php echo $count+1 ?>"readonly>
@@ -231,18 +209,17 @@
                                                 <label for="cc-payment" class="control-label mb-1">Jam Tutup</label>
                                                 <input  type="time" class="form-control" placeholder = "Jam Tutup" id="jam_tutup" name="jam_tutup">
                                             </div>
-                                            </div>
-
-                                        
+                                        </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
-                                        </form>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
-                            </div>
+                        </div>
+                        <!-- end modal input -->
+                            
 
         <div class="clearfix"></div>
 

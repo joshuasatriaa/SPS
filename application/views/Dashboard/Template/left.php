@@ -59,10 +59,10 @@
                         <a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>"><i class="menu-icon fa fa-copy"></i>Orders</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>"><i class="menu-icon fa fa-address-book"></i>Booking</a>
+                        <a href="<?php echo base_url() .'Dashboard/Booking/index';?>"><i class="menu-icon fa fa-address-book"></i>Booking</a>
                     </li>
                     <li>
-                        <a href="<?php echo base_url() .'Dashboard/Pesanan/index';?>"><i class="menu-icon fa fa-user"></i>Membership Status</a>
+                        <a href="<?php echo base_url() .'Dashboard/Membership/index';?>"><i class="menu-icon fa fa-user"></i>Membership Status</a>
                     </li>
                     <li>
                         <a href="<?php echo base_url() .'Dashboard/ChatUser/index';?>"><i class="menu-icon fa fa-comments"></i>Live Chat Support </a>

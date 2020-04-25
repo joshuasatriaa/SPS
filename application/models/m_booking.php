@@ -104,5 +104,13 @@ class m_booking extends CI_Model{
 		LEFT JOIN lokasi_bengkel e ON a.id_bengkel = e.id_bengkel
 		WHERE a.nama_bengkel LIKE "%'.$keyword.'%" ');
 	}
+
+	function dataAdmin()
+	{
+		return $this->db->query('SELECT * FROM Booking
+		 LEFT JOIN Pengguna ON booking.id_pengguna = pengguna.id_pengguna 
+		 LEFT JOIN service ON service.id_service = booking.id_service
+		 LEFT JOIN Bengkel ON service.id_bengkel = bengkel.id_bengkel');
+	}
 }
 ?>
