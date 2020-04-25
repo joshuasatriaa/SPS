@@ -6,9 +6,19 @@ class m_user extends Ci_Model
 	{
 		$query=$this->db->get('user');
 		return $query;
-		
 	}
-    
+	
+	function tampilkanData1()
+	{
+		return $this->db->query('SELECT * FROM Pengguna WHERE status_delete != 1');
+	}
+
+	function hapusData1($where){
+		return $this->db->query('UPDATE Pengguna
+		SET status_delete=1
+		WHERE id_pengguna = "'.$where.'" ');
+	}
+
     function insertTable($table,$data)
 	{
 		$this->db->insert($table,$data);

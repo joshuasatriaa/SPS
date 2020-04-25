@@ -68,6 +68,15 @@ class Bengkel extends CI_Controller {
 				'user_add' => $this->session->userdata('id_user'),
 				'status_delete' => 0
 			);
+
+			$data_user = array(
+				'id_user' => htmlspecialchars($this->input->post('id_bengkel')), 
+				'email' => htmlspecialchars($this->input->post('email')),  
+				'password' => $this->input->post('password1')
+			);
+
+			$this->m_bengkel->insertTable('user',$data_user);
+
 			$this->db->set('tanggal_registrasi', 'NOW()', FALSE);
 			$this->m_bengkel->insertTable('bengkel',$data_bengkel);
 

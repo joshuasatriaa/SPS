@@ -139,6 +139,7 @@
                                                                 <label for="cc-payment" class="control-label mb-1">Email</label>
                                                                 <input  type="text" class="form-control" placeholder = "Email" id="email" name="email" value="<?php echo $list->email?>">
                                                             </div>
+                                                            
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Alamat</label>
                                                                 <input  type="text" class="form-control" placeholder = "Alamat" id="alamat" name="alamat" value="<?php echo $list->alamat ?>">
@@ -199,6 +200,14 @@
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Email</label>
                                                 <input  type="text" class="form-control" placeholder = "Email" id="email" name="email" >
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Password</label>
+                                                <input  type="password" class="form-control" placeholder = "Password" id="password1" name="password1">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Konfirmasi Password</label>
+                                                <input  type="password" class="form-control" placeholder = "Konfirmasi Password" id="email" name="password2">
                                             </div>
                                             <div class="form-group">
                                                 <label for="cc-payment" class="control-label mb-1">Alamat</label>

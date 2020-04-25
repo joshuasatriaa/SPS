@@ -30,7 +30,7 @@ class User extends CI_Controller {
 	
 	public function index()
 	{
-        $data['user'] = $this->m_user->tampilkanData()->result();
+        $data['user'] = $this->m_user->tampilkanData1()->result();
         $data['count']=$this->m_user->tampilkanData()->num_rows();
 		$this->head();
 		$this->load->view('Dashboard/v_user',$data);
@@ -50,11 +50,26 @@ class User extends CI_Controller {
 		}
 		else{
 			$data_user = array(
-				'id_user' => htmlspecialchars($this->input->post('id_user')), 
-				'email' => htmlspecialchars($this->input->post('email')), 
+				'id_pengguna' => htmlspecialchars($this->input->post('id_user')), 
+				'nama_pengguna' => $this->input->post('nama'),
+				'jenis_kelamin' => $this->input->post('jk'),
+				'tanggal_lahir' => $this->input->post('tanggal'),
+				'tempat_lahir' => $this->input->post('tempat'),
+				'alamat' => $this->input->post('alamat'),
+				'email' => $this->input->post('email'),
+				'telepon' => $this->input->post('telepon'), 
+				'user_add' => $this->session->userdata('id_user'),
+				'status_delete' => 0
 			);
 
-			$this->m_user->insertTable('user',$data_user);
+			$data_user1 = array(
+				'id_user' => htmlspecialchars($this->input->post('id_user')), 
+				'email' => $this->input->post('email'),
+				'password' => $this->input->post('password1')
+			);
+
+			$this->m_user->insertTable('pengguna',$data_user);
+			$this->m_user->insertTable('user',$data_user1);
 			redirect('Dashboard/User/index');
 
 		}
@@ -78,14 +93,21 @@ class User extends CI_Controller {
 		}
 		else{
 			$data_user = array(
-				'id_user' => htmlspecialchars($this->input->post('id_user')), 
-				'email' => htmlspecialchars($this->input->post('email')), 
+				//'id_user' => htmlspecialchars($this->input->post('id_user')), 
+				'nama_pengguna' => $this->input->post('nama'),
+				'jenis_kelamin' => $this->input->post('jk'),
+				'tanggal_lahir' => $this->input->post('tanggal'),
+				'tempat_lahir' => $this->input->post('tempat'),
+				'alamat' => $this->input->post('alamat'),
+				'email' => $this->input->post('email'),
+				'telepon' => $this->input->post('telepon'), 
+				'user_edit' => $this->session->userdata('id_user')
 			);
 
 			$where = array(
-				'id_user' => $this->input->post('id_user'),
+				'id_pengguna' => $this->input->post('id_user'),
 			);
-			$this->m_user->updateRecord($where,$data_user,'user');
+			$this->m_user->updateRecord($where,$data_user,'pengguna');
 			redirect('Dashboard/User/index');
 
 		}
@@ -99,9 +121,17 @@ class User extends CI_Controller {
 		redirect('User/index');
 	}
 
+	function hapusData1($id_user){
+		$this->load->model('m_user');
+		//$where = array('id_user' => $id_user);
+
+		$this->m_user->hapusData1($id_user);
+		redirect('Dashboard/User/index');
+	}
+
 	function exportPDF()
 	{
-		$data['user'] = $this->m_user->tampilkanData()->result();
+		$data['user'] = $this->m_user->tampilkanData1()->result();
 		$this->load->view('Dashboard/E_User',$data);
 	}
 }
