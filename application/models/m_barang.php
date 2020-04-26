@@ -103,10 +103,21 @@ class m_barang extends CI_Model{
 		WHERE id_barang= "'.$where.'" ');
 	}
 
+	function delete($where, $table){
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
 	function tampilkanFotoBarangIni($where){
 		return $this->db->query('SELECT * FROM foto_barang
 		JOIN barang ON foto_barang.id_barang = barang.id_barang
 		WHERE barang.id_barang = "'.$where.'"');
+		
+	}
+
+	function tampilkanSatuFotoBarang($where){
+		return $this->db->query('SELECT * FROM foto_barang
+		JOIN barang ON foto_barang.id_barang = barang.id_barang
+		WHERE barang.id_barang = "'.$where.'" LIMIT 1');
 		
 	}
 

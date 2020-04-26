@@ -207,8 +207,8 @@ $snapToken = Snap::getSnapToken($transaction);
   <link href="<?php echo base_url()?>assets/type1/css/style.css" rel="stylesheet">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="<?php echo base_url()?>assets/type1/images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
+  <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
 
 <style>
     .pro-qty:hover

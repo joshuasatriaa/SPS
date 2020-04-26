@@ -91,8 +91,8 @@
                                 <div class="form-group">
                                   <p>Gender<p>
                                   <select data-placeholder="Your Gender" class="standardSelect form-control" tabindex="1"name="user_gender" id="gender">
-                                    <option value="1" <?php echo ($list->jenis_kelamin == 1 ? "selected" : "") ?>>Laki - Laki</option>
-                                    <option value="2" <?php echo ($list->jenis_kelamin == 2 ? "selected" : "") ?>>Perempuan</option>
+                                    <option value="1" <?php echo ($list->jenis_kelamin == 1 ? "selected" : "") ?>>Male</option>
+                                    <option value="2" <?php echo ($list->jenis_kelamin == 2 ? "selected" : "") ?>>Female</option>
                                   </select>
                                   <?php echo form_error('user_gender', '<small class="text-danger">', '</small>') ?>
                                 </div>

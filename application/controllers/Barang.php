@@ -46,6 +46,10 @@ class Barang extends CI_Controller{
 		}
 
 		if($this->form_validation->run() == FALSE){
+			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 			$data['count'] = $this->m_barang->tampilkanBarang()->num_rows();
 			$data['error'] = '';
 			$this->load->view('v_shop_add_item', $data);
@@ -182,14 +186,23 @@ class Barang extends CI_Controller{
 			$this->form_validation->set_rules('keterangan_barang', 'Item Description', 'required|trim');
 			$this->form_validation->set_rules('harga', 'Item Price', 'required|trim');
 			$this->form_validation->set_rules('stok_barang', 'Item Stock', 'required|trim|numeric');
-
+			//$this->form_validation->set_rules('userfile', 'Item Picture', 'required');
 			if (empty($_FILES['userfile']['name']))
 			{
 				$this->form_validation->set_rules('userfile', 'Profile Picture', 'required');
 			}
 
-			if($this->form_validation->run() == TRUE){
+			if($this->form_validation->run() == FALSE){
+				$where = array('id_barang' => $this->input->post('id_barang'));
+				$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
+				$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+				$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+				$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+				$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+				$data['error'] = '';
+				$this->load->view('v_edit_barang',$data);
 
+			}else{
 				$id = $this->input->post('id_barang');
 				$nama = $this->input->post('nama');
 				$harga = $this->input->post('harga');
@@ -211,8 +224,6 @@ class Barang extends CI_Controller{
 				$this->db->set('waktu_edit', 'NOW()', FALSE);
 				$this->m_barang->updateData($where,$data,'barang');
 
-
-				$this->m_barang->hapusData($where, 'foto_barang');
 				
 				$filesCount = count($_FILES['userfile']['name']);
 			
@@ -237,6 +248,7 @@ class Barang extends CI_Controller{
 					
 					// Upload file to server
 					if($this->upload->do_upload('userfiles')){
+						$this->m_barang->delete($where, 'foto_barang');
 						// Uploaded file data
 						$fileData = $this->upload->data();
 						
@@ -261,19 +273,14 @@ class Barang extends CI_Controller{
 					}else{
 						$data['count'] = $this->m_barang->tampilkanBarang()->num_rows();
 						$data['error'] = $this->upload->display_errors();
-						$this->load->view('v_shop_add_item', $data);
+						$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
+						$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+						$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
+						$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
+						$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
+						$this->load->view('v_edit_barang',$data);
 					}
 				}	
-			}else{
-				$where = array('id_barang' => $this->input->post('id_barang'));
-				$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
-				$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
-	
-				$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
-				$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
-	
-	
-				$this->load->view('v_edit_barang',$data);
 			}
 		}
 		
@@ -288,13 +295,14 @@ class Barang extends CI_Controller{
 			$where = array('id_barang' => $id);
 			$data['barangEdit'] = $this->m_barang->editData($where,'barang')->result();
 			$data['countCart'] = $this->m_pesanan->searchCart($this->session->userdata('id_user'))->num_rows();
+			$data['gambar'] = $this->m_barang->tampilkanSatuFotoBarang($id)->row_array();
 
 			$data['notif'] = $this->m_notif->tampilkan_notifku($this->session->userdata('id_user'))->result();
 			$data['countNotif'] = $this->m_notif->tampilkan_notif_belum_dilihat($this->session->userdata('id_user'))->num_rows();
 			$data['countChat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->num_rows();
 			$data['jumlahDiscountCodes'] = $this->m_promo->cekKodeDiskon($this->session->userdata('id_user'))->num_rows();
 			$data['chat'] = $this->m_pesan->cekPesan($this->session->userdata('id_user'))->result();
-
+			$data['error'] = '';
 			$this->load->view('v_edit_barang',$data);
 		}
 	
