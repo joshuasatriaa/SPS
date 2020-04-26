@@ -46,6 +46,7 @@
                                     <thead align="center">
                                         <tr>
                                             <th>ID Promo</th>
+                                            <th>Kode Promo</th>
                                             <th>Jenis Promo Promo</th>
                                             <th>Mulai Promo</th>
                                             <th>Akhir Promo</th>
@@ -60,6 +61,7 @@
                                         ?>
                                         <tr align="center">
                                             <td><?php echo $list->id_promo ?></td>
+                                            <td> <?php echo $list->kode_promo; ?></td>
                                             <td><?php 
                                                 if($list->jenis_promo == 1)
                                                 {
@@ -67,11 +69,11 @@
                                                 }
                                                 else if($list->jenis_promo == 2)
                                                 {
-                                                    echo "Discount 15%";
-                                                }
-                                                else
-                                                {
                                                     echo "Discount 20%";
+                                                }
+                                                else if($list->jenis_promo == 3)
+                                                {
+                                                    echo "Discount 30%";
                                                 }
                                             ?></td>
                                             <td><?php $new_format = (new DateTime($list->tanggal_mulai))->format('d M Y'); echo $new_format; ?></td>
@@ -106,8 +108,8 @@
                                                                 <label for="cc-payment" class="control-label mb-1">Jenis Promo</label>
                                                                 <select class="form-control" name="jenispromo">
                                                                     <option value = "1" <?php if($list->jenis_promo == 1){echo 'selected';}?> >Discount 10%</option>
-                                                                    <option value = "2" <?php if($list->jenis_promo == 2){echo 'selected';}?> >Discount 15%</option>
-                                                                    <option value = "3" <?php if($list->jenis_promo == 3){echo 'selected';}?> >Discount 20%</option>
+                                                                    <option value = "2" <?php if($list->jenis_promo == 2){echo 'selected';}?> >Discount 20%</option>
+                                                                    <option value = "3" <?php if($list->jenis_promo == 3){echo 'selected';}?> >Discount 30%</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
@@ -117,6 +119,13 @@
                                                             <div class="form-group">
                                                                 <label for="cc-payment" class="control-label mb-1">Akhir Promo</label>
                                                                 <input type="date" class="form-control" name="tanggalselesai" value="<?php echo $list->tanggal_selesai ?>" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="statusUsed" class="control-label mb-1">Status Used</label>
+                                                                <select class="form-control" name="statusUsed">
+                                                                    <option value = "0" <?php if($list->jenis_promo == 1){echo 'selected';}?> >Belum Dipakai</option>
+                                                                    <option value = "1" <?php if($list->jenis_promo == 2){echo 'selected';}?> >Sudah Dipakai</option>
+                                                                </select>
                                                             </div>
                                                            
                                                         </div>
@@ -186,11 +195,19 @@
                                     <input type="text" class="form-control" name="idpromo" value="PRO-<?php echo $count+1 ?>" readonly>
                                 </div>
                                 <div class="form-group">
+                                    <label for="user" class="control-label mb-1">ID User</label>
+                                    <select class="form-control" name="user">
+                                        <?php foreach($user as $list) {?>
+                                            <option value = "<?php echo $list->id_user?>"><?php echo $list->id_user?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Jenis Promo</label>
                                     <select class="form-control" name="jenispromo">
                                         <option value = "1">Discount 10%</option>
-                                        <option value = "2">Discount 15%</option>
-                                        <option value = "3">Discount 20%</option>
+                                        <option value = "2">Discount 20%</option>
+                                        <option value = "3">Discount 30%</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -200,6 +217,13 @@
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Akhir Promo</label>
                                     <input type="date" class="form-control" name="tanggalselesai">
+                                </div>
+                                <div class="form-group">
+                                    <label for="statusUsed" class="control-label mb-1">Status Used</label>
+                                    <select class="form-control" name="statusUsed">
+                                        <option value = "0" >Belum Dipakai</option>
+                                        <option value = "1" >Sudah Dipakai</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="modal-footer">

@@ -48,12 +48,11 @@ class PromoManagement extends CI_Controller {
 
     public function updateData()
     {
-        $statusdelete = "0";
         $data= array(
             'jenis_promo' => $this->input->post('jenispromo'), 
             'tanggal_mulai' => $this->input->post('tanggalmulai'), 
             'tanggal_selesai' => $this->input->post('tanggalselesai'),
-            'status_delete' => $statusdelete
+            'status_used' => $this->input->post('statusUsed'),
         );
 
         $where = array(
@@ -65,13 +64,14 @@ class PromoManagement extends CI_Controller {
 
     public function insertData()
     {
-        $statusdelete = "0";
         $data= array(
             'id_promo' => $this->input->post('idpromo'),
+            'id_user' => $this->input->post('user'),
+            'kode_promo' => substr(md5(microtime()),rand(0,26),6),
             'jenis_promo' => $this->input->post('jenispromo'), 
             'tanggal_mulai' => $this->input->post('tanggalmulai'), 
             'tanggal_selesai' => $this->input->post('tanggalselesai'),
-            'status_delete' => $statusdelete
+            'status_used' => $this->input->post('statusUsed'),
         );
 
         $this->m_promo->insertTable('promo',$data);
@@ -80,12 +80,11 @@ class PromoManagement extends CI_Controller {
 
     public function updateData1()
     {
-        $statusdelete = "0";
         $data= array(
             'jenis_promo' => $this->input->post('jenispromo'), 
             'tanggal_mulai' => $this->input->post('tanggalmulai'), 
             'tanggal_selesai' => $this->input->post('tanggalselesai'),
-            'status_delete' => $statusdelete
+            'status_used' => $this->input->post('statusUsed'),
         );
 
         $where = array(
@@ -97,13 +96,14 @@ class PromoManagement extends CI_Controller {
 
     public function insertData1()
     {
-        $statusdelete = "0";
         $data= array(
             'id_promo' => $this->input->post('idpromo'),
+            'id_user' => $this->input->post('user'),
+            'kode_promo' => substr(md5(microtime()),rand(0,26),6),
             'jenis_promo' => $this->input->post('jenispromo'), 
             'tanggal_mulai' => $this->input->post('tanggalmulai'), 
             'tanggal_selesai' => $this->input->post('tanggalselesai'),
-            'status_delete' => $statusdelete
+            'status_used' => $this->input->post('statusUsed'),
         );
 
         $this->m_promo->insertTable('promo',$data);

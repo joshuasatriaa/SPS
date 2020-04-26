@@ -113,7 +113,13 @@
                                                                 <label for="cc-payment" class="control-label mb-1">Akhir Promo</label>
                                                                 <input type="date" class="form-control" name="tanggalselesai" value="<?php echo $list->tanggal_selesai ?>" >
                                                             </div>
-                                                           
+                                                            <div class="form-group">
+                                                                <label for="statusUsed" class="control-label mb-1">Status Used</label>
+                                                                <select class="form-control" name="statusUsed">
+                                                                    <option value = "0" <?php if($list->jenis_promo == 1){echo 'selected';}?> >Belum Dipakai</option>
+                                                                    <option value = "1" <?php if($list->jenis_promo == 2){echo 'selected';}?> >Sudah Dipakai</option>
+                                                                </select>
+                                                            </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -153,6 +159,14 @@
                                     <input type="text" class="form-control" name="idpromo" value="PRO-<?php echo $count+1 ?>" readonly>
                                 </div>
                                 <div class="form-group">
+                                    <label for="user" class="control-label mb-1">ID User</label>
+                                    <select class="form-control" name="user">
+                                        <?php foreach($user as $list) {?>
+                                            <option value = "<?php echo $list->id_user?>"><?php echo $list->id_user?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Jenis Promo</label>
                                     <select class="form-control" name="jenispromo">
                                         <option value = "1">Discount 10%</option>
@@ -167,6 +181,13 @@
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Akhir Promo</label>
                                     <input type="date" class="form-control" name="tanggalselesai">
+                                </div>
+                                <div class="form-group">
+                                    <label for="statusUsed" class="control-label mb-1">Status Used</label>
+                                    <select class="form-control" name="statusUsed">
+                                        <option value = "0" <?php if($list->jenis_promo == 1){echo 'selected';}?> >Belum Dipakai</option>
+                                        <option value = "1" <?php if($list->jenis_promo == 2){echo 'selected';}?> >Sudah Dipakai</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="modal-footer">

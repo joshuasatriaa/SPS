@@ -26,7 +26,7 @@ class m_promo extends CI_Model{
     
     function tampilkan_data_sekarang()
     {
-        return $this->db->query('SELECT * FROM Promo WHERE status_delete = 0 AND tanggal_selesai >= CURDATE()');
+        return $this->db->query('SELECT * FROM Promo WHERE status_used = 0 AND tanggal_selesai >= CURDATE()');
     }
 
     function deleteRecord($where)

@@ -67,6 +67,7 @@ td
 <table>
     <tr>
         <th>No</th>
+        <th>Kode Promo</th>
         <th>Jenis Promo Promo</th>
                                             <th>Mulai Promo</th>
                                             <th>Akhir Promo</th>
@@ -76,6 +77,7 @@ td
     ?>
     <tr>
         <td> <?php echo $i; $i++; ?></td>
+        <td> <?php echo $list->kode_promo; ?></td>
         <td><?php 
                                                 if($list->jenis_promo == 1)
                                                 {
@@ -83,11 +85,11 @@ td
                                                 }
                                                 else if($list->jenis_promo == 2)
                                                 {
-                                                    echo "Discount 15%";
-                                                }
-                                                else
-                                                {
                                                     echo "Discount 20%";
+                                                }
+                                                else if($list->jenis_promo == 3)
+                                                {
+                                                    echo "Discount 30%";
                                                 }
                                             ?></td>
                                             <td><?php $new_format = (new DateTime($list->tanggal_mulai))->format('d M Y'); echo $new_format; ?></td>
