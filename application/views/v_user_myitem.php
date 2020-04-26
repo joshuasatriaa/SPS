@@ -117,7 +117,7 @@
                 <td class="product-details">
                   <h3 class="title" style="font-family: 'Open Sans', sans-serif;padding-left:20px;"><?php echo $list->nama_barang ?></h3>
                   
-                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo $list->waktu_add ?></time> </span>
+                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo date("d F Y, H:i",strtotime($list->waktu_add)) ?></time> </span>
                   <span class="status" style="padding-left:20px"><strong>Price : </strong>
                         <?php echo "Rp " .$list->harga_barang; ?>
                    </span>

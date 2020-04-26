@@ -129,7 +129,7 @@
                   <?php
                     $hasil = $list->status_booking;
                     ?>
-                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo $list->waktu_service ?></time> </span>
+                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo date("d F Y, H:i",strtotime($list->waktu_service)) ?></time> </span>
                   <span class="status <?php if($hasil == 2){echo 'active';} ?>" style="padding-left:20px"><strong>Status : </strong>
                   <?php
                     if($hasil == 0)

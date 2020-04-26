@@ -108,7 +108,7 @@
                                 </div>
 
                                 <div class="form-group form-button">
-                                  <button type="submit" name="signup" id="signup" class="form-submit" value="Add"/>Edit </button>
+                                  <button type="submit" name="signup" id="signup" style="background-color:#e1001a;border-radius:40px;" class="form-submit" value="Add"/>Save Changes </button>
                                 </div>
                               
                             </form>

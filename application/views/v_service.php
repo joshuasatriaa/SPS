@@ -130,15 +130,7 @@
 												<?php echo $list->nama_bengkel ?>
 											</h4>
 										</a>
-										<div class="product-ratings">
-											<ul class="list-inline">
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-												<li class="list-inline-item"><i class="fa fa-star"></i></li>
-											</ul>
-										</div>
+										
 										<ul class="list-inline product-meta">
 											<li class="list-inline-item">
 												<a><i class="fa fa-envelope-open"></i><?php echo $list->email ?></a>

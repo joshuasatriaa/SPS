@@ -224,4 +224,23 @@ class Booking extends CI_Controller {
 		$data['member'] = $this->m_member->checkMembership($this->session->userdata('id_user'))->row_array();
 		$this->load->view('v_booksearch',$data);
 	}
+
+	function GoRate()
+	{
+		$count=$this->m_booking->hitung_jumlah_rating()->num_rows()+1;
+
+		$idB = 'RATE-'.$count;
+		$data_service = array(
+			'id_rating' => $idB,
+			'id_pemberi' => $this->session->userdata('id_user'),
+			'id_penerima' => $this->input->post('idbengkel'),
+			'id_transaksi' => $this->input->post('idservice'),
+			'rating_bengkel' => $this->input->post('rating'),
+			'keterangan' => $this->input->post('keterangan')
+		);
+
+		$this->m_booking->insertTable('rating',$data_service);
+		
+		redirect('StatusBooking/CurrentBooking');
+	}
 }

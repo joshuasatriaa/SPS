@@ -7,7 +7,7 @@
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <!-- ** Plugins Needed for the Project ** -->
   <!-- Bootstrap -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/type1/plugins/bootstrap/bootstrap.min.css">
@@ -48,6 +48,69 @@
   <!--Favicon-->
   <link rel="shortcut icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
   <link rel="icon" href="<?php echo base_url() ?>assets/type1/images/logo1.png" type="image/x-icon">
+
+  <style>
+
+.cont {
+width: 93%;
+max-width: 350px;
+text-align: center;
+margin: 4% auto;
+padding: 30px 0;
+
+color: #EEE;
+
+overflow: hidden;
+}
+
+hr {
+margin: 20px;
+border: none;
+border-bottom: thin solid rgba(255,255,255,.1);
+}
+
+div.title { font-size: 2em; }
+
+h1 span {
+font-weight: 300;
+color: #Fd4;
+}
+
+div.stars {
+width: 270px;
+display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+float: right;
+padding: 10px;
+font-size: 36px;
+color: #444;
+transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+content: '\f005';
+color: #e1001a;
+transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+color: #FE7;
+text-shadow: 0 0 20px #952;
+}
+
+input.star-1:checked ~ label.star:before { color: #F62; }
+
+label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+label.star:before {
+content: '\f006';
+font-family: FontAwesome;
+}
+</style>
 
 </head>
 
@@ -114,7 +177,7 @@
                   <?php
                     $hasil = $list->status_booking;
                     ?>
-                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo $list->waktu_service ?></time> </span>
+                  <span><strong style="padding-left:20px">Date : </strong><time><?php echo date("d F Y, H:i",strtotime($list->waktu_service)); ?></time> </span>
                   <span class="status <?php if($hasil == 2){echo 'active';} ?>" style="padding-left:20px"><strong>Status : </strong>
                   <?php
                     if($hasil == 0)
@@ -128,24 +191,81 @@
                     else if($hasil == 2)
                     {
                         echo "Confirmed";
-					}
-					else
-					{
-						echo "Done";
-					}
+                    }
+                    else
+                    {
+                      echo "Done";
+                    }
                    ?>
                    </span>
                    <?php $bintang = $list->rating_bengkel ?>
+
+                   
                    <?php if($hasil == 3){ ?>
                         <span><strong style="padding-left:20px">Rate : </strong>
                         
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/1/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=1){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/2/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=2){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/3/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=3){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/4/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=4){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
-                            <a href="<?php echo base_url() ?>Booking/RateBengkel/5/<?php echo $list->id_bengkel ?>/<?php echo $list->id_service ?>"><li class="list-inline-item "><i class="fa <?php if($bintang>=5){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li></a>
+                            <li class="list-inline-item "><i class="fa <?php if($bintang>=1){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                            <li class="list-inline-item "><i class="fa <?php if($bintang>=2){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                            <li class="list-inline-item "><i class="fa <?php if($bintang>=3){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                            <li class="list-inline-item "><i class="fa <?php if($bintang>=4){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
+                            <li class="list-inline-item "><i class="fa <?php if($bintang>=5){echo 'fa-star';}else{echo 'fa-star-o';}?>"></i></li>
                    <?php } ?>
                 </td>
+                <td>
+                <?php if($hasil == 3){ ?>
+                      <button class="btn btn-primary" style="background-color:#e1001a;border-radius:40px;" onclick="document.getElementById('id01').style.display='block'">Rate</button>
+
+                  <!-- Modal -->
+                  <div id="id01" class="w3-modal" style="z-index:999">
+                    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                      <div class="w3-center"><br>
+                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                        <img src="<?php echo base_url()?>assets/type1/images/Logo.png" style="width:30%" class=" w3-margin-top">
+                      </div>
+
+                      <form class="w3-container" action="<?php echo base_url()?>Booking/GoRate" method="POST">
+                        <div class="w3-section">
+                        <!--Stars-->
+															<div class="cont">
+                                <input type="hidden" name="idbengkel" value ="<?php echo $list->id_bengkel?>">
+                                <input type="hidden" name="idservice" value ="<?php echo $list->id_service?>">
+                                <h3 class="font2">
+                                  Rate Your Experience !
+                                </h3>
+																<div class="stars">
+																	
+																	<input class="star star-5" id="star-5-2" type="radio" name="rating" value = "5"/>
+																	<label class="star star-5" for="star-5-2"></label>
+																	<input class="star star-4" id="star-4-2" type="radio" name="rating" value = "4"/>
+																	<label class="star star-4" for="star-4-2"></label>
+																	<input class="star star-3" id="star-3-2" type="radio" name="rating" value = "3"/>
+																	<label class="star star-3" for="star-3-2"></label>
+																	<input class="star star-2" id="star-2-2" type="radio" name="rating" value = "2"/>
+																	<label class="star star-2" for="star-2-2"></label>
+																	<input class="star star-1" id="star-1-2" type="radio" name="rating" value = "1"/>
+																	<label class="star star-1" for="star-1-2"></label>
+																	
+																</div>
+															</div>
+															<!-- STars -->
+                          <label><b>Comments</b></label>
+                          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Any Comments ?" name="keterangan">
+                        </div>
+                      
+
+                      <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                        <!--<button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>-->
+                        <span class="w3-right w3-padding w3-hide-small">
+                          <button class="btn btn-primary" type ="submit" style="background-color:#e1001a;border-radius:40px;">Submit</button>
+                        </span>
+                      </div>
+                      </form>
+                    </div>
+                  </div>
+                   
+                  <?php } ?>
+                  </td>
               </tr>
               <tr>
                 <?php
