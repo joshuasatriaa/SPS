@@ -13,6 +13,11 @@ class m_user extends Ci_Model
 		return $this->db->query('SELECT * FROM Pengguna WHERE status_delete != 1');
 	}
 
+	function tampilkanData2($where)
+	{
+		return $this->db->query('SELECT * FROM admin WHERE id_admin = "'.$where.'" ');
+	}
+
 	function hapusData1($where){
 		return $this->db->query('UPDATE Pengguna
 		SET status_delete=1
