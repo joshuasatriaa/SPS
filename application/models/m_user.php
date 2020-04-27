@@ -53,6 +53,18 @@ class m_user extends Ci_Model
 		$this->db->delete($table);
 	}
 
+	function tampilkanPenggunaPadaBulan($month){
+		return $this->db->query('SELECT *
+		FROM pengguna
+		WHERE MONTH(waktu_add) = '.$month);
+	}
+
+	function tampilkanBengkelPadaBulan($month){
+		return $this->db->query('SELECT *
+		FROM bengkel
+		WHERE MONTH(waktu_add) = '.$month);
+	}
+
 
 
 

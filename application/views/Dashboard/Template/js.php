@@ -17,6 +17,10 @@
     <script src="<?php echo base_url() ?>assets/dashboard/js/lib/data-table/buttons.print.min.js"></script>
     <script src="<?php echo base_url() ?>assets/dashboard/js/lib/data-table/buttons.colVis.min.js"></script>
     <script src="<?php echo base_url() ?>assets/dashboard/js/init/datatables-init.js"></script>
+
+    <!--  Chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+    <!-- <script src="<?php echo base_url() ?>assets/dashboard/js/init/chartjs-init.js"></script> -->
     <script type="text/javascript">
    
 
@@ -108,4 +112,137 @@
 
              
       } );
+  </script>
+
+  <script>
+      ( function ( $ ) {
+            "use strict";
+            //doughut chart
+            var ctx = document.getElementById( "doughutChart" );
+                ctx.height = 150;
+                var myChart = new Chart( ctx, {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [ {
+                            data: [ <?php echo $countbengkel;?>, <?php echo $countpengguna;?> ],
+                            backgroundColor: [
+                                                "rgba(0, 194, 146,0.9)",
+                                                "rgba(0, 194, 146,0.5)",
+                                                
+                                            ],
+                            hoverBackgroundColor: [
+                                                "rgba(0, 194, 146,0.9)",
+                                                "rgba(0, 194, 146,0.5)",
+                                            ]
+
+                                        } ],
+                        labels: [
+                                        "User",
+                                        "Bengkel",
+                                    ]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                } );
+
+           //bar chart
+            var ctx = document.getElementById( "barChart" );
+            ctx.height = 150;
+            var myChart = new Chart( ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
+                        datasets: [
+                            {
+                                label: "User",
+                                data: [ 
+                                    <?php for($i = 1; $i <= 12; $i++) {
+                                            if($user[$i]){
+                                                echo $user[$i];
+                                            }
+                                            else{
+                                                echo 0;
+                                            }
+                                            if($i != 12){
+                                                echo ", ";
+                                            }
+                                        }?>],
+                                borderColor: "rgba(0, 194, 146, 0.9)",
+                                borderWidth: "0",
+                                backgroundColor: "rgba(0, 194, 146, 0.5)"
+                                        },
+                            {
+                                label: "Bengkel",
+                                data: [ <?php for($i = 1; $i <= 12; $i++) {
+                                                if($bengkel[$i]){
+                                                    echo $bengkel[$i];
+                                                }
+                                                else{
+                                                    echo 0;
+                                                }
+                                                if($i != 12){
+                                                    echo ", ";
+                                                }
+                                            }?>],
+                                borderColor: "rgba(0,0,0,0.09)",
+                                borderWidth: "0",
+                                backgroundColor: "rgba(0,0,0,0.07)"
+                                        }
+                                    ]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [ {
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                                            } ]
+                        }
+                    }
+                } );
+
+
+                 // //line chart
+                var ctx = document.getElementById( "lineChart" );
+                //ctx.height = 150;
+                var myChart = new Chart( ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [ "January", "February", "March", "April", "May", "June", "July" ],
+                        datasets: [
+                            {
+                                label: "Amount of Transaction",
+                                borderColor: "rgba(0, 194, 146, 0.9)",
+                                borderWidth: "1",
+                                backgroundColor: "rgba(0, 194, 146, 0.5)",
+                                pointHighlightStroke: "rgba(26,179,148,1)",
+                                data: [ <?php for($i = 1; $i <= 6; $i++) {
+                                                if($transaction[$i]){
+                                                    echo $transaction[$i];
+                                                }
+                                                else{
+                                                    echo 0;
+                                                }
+                                                if($i != 6){
+                                                    echo ", ";
+                                                }
+                                            }?>]
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        }
+
+                    }
+                } );
+        } )( jQuery );
   </script>

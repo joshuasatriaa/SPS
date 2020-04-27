@@ -34,8 +34,23 @@ class Welcome extends CI_Controller {
         $this->head();
         $data['countbengkel'] = $this->m_bengkel->tampilkanData()->num_rows();
         $data['countpengguna'] = $this->m_pengguna->tampilkanData()->num_rows();
-        $data['countbarang'] = $this->m_barang->tampilkanData()->num_rows();
-        $data['pesanan'] = $this->m_pesanan->tampilkanData()->result();
+		$data['countbarang'] = $this->m_barang->tampilkanData()->num_rows();
+		$data['countservice'] = $this->m_service->tampilkan_service()->num_rows();
+		$data['countnewusers'] = ($this->m_user->tampilkanPenggunaPadaBulan(date('n'))->num_rows()) + ($this->m_user->tampilkanBengkelPadaBulan(date('n'))->num_rows());
+		$data['counttransaction'] = $this->m_pesanan->tampilkanPesananSelesaiPadaBulan(date('n'))->num_rows();
+
+		$data['pesanan'] = $this->m_pesanan->tampilkanData()->result();
+		
+
+		//chart
+		for($i = 1; $i <= 12; $i++){
+			$data['user'][$i] = $this->m_user->tampilkanPenggunaPadaBulan($i)->num_rows();
+			$data['bengkel'][$i] = $this->m_user->tampilkanBengkelPadaBulan($i)->num_rows();
+		}
+		for($i = 1; $i <=6 ; $i++){
+			$data['transaction'][$i] = $this->m_pesanan->tampilkanPesananSelesaiPadaBulan($i)->num_rows();;
+		}
+
 		/*if($this->session->userdata('tipe_akun') == 2){
 			$data['mahasiswa'] = $this->M_Mahasiswa->tampilkanRecord()->result();*/
 			$this->load->view('Dashboard/index',$data);/*;

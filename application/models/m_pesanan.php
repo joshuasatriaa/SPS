@@ -5,7 +5,16 @@ class m_pesanan extends CI_Model{
 	}
 	function tampilkanData()
 	{
-		return $this->db->query('SELECT a.id_pesanan, b.nama_pengguna, c.nama_barang, a.status_pesanan, a.waktu_pesanan, b.gambar, a.jumlah_barang FROM pesanan a JOIN user d ON a.id_pembeli=d.id_user JOIN pengguna b ON d.id_user=b.id_pengguna JOIN barang c ON a.id_barang=c.id_barang');
+		return $this->db->query('SELECT a.id_pesanan, b.nama_pengguna, c.nama_barang, a.status_pesanan, a.waktu_pesanan, b.gambar, a.jumlah_barang, e.gambar_barang  
+		FROM pesanan a 
+		JOIN user d ON a.id_pembeli=d.id_user 
+		JOIN pengguna b ON d.id_user=b.id_pengguna 
+		JOIN barang c ON a.id_barang=c.id_barang
+		JOIN foto_barang e ON a.id_barang = e.id_barang');
+	}
+
+	function tampilkanPesananSelesaiPadaBulan($month){
+		return $this->db->query('SELECT * FROM pesanan WHERE status_pesanan = 1 AND MONTH(waktu_pesanan) = '.$month);
 	}
 	
 	function insertTable($table,$where){

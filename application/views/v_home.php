@@ -1,5 +1,5 @@
 <?php if(substr($this->session->userdata('id_user'),0,4) == 'ADMN'){
-	redirect('Dashboard/Admin');
+	redirect('Dashboard/Welcome');
 }?>
 
 <!DOCTYPE html>
