@@ -15,7 +15,7 @@ email bengkel : bengkel1@gmail.com
 password : 12121212
 
 user
-email user : kelvin@gmail.com
+email user : andyfransisko1@gmail.com
 password : 12121212
 
 user (sudah membership)
