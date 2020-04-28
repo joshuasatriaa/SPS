@@ -50,4 +50,13 @@ class Home extends CI_Controller {
 		$this->load->view('v_comingsoon1');
 	}
 	
+	public function Privacy()
+	{
+		$this->load->view('privacy');
+	}
+
+	public function Terms()
+	{
+		$this->load->view('terms');
+	}
 }
